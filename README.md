@@ -11,7 +11,7 @@
 
 `git add .`  添加文件到本地仓库
 
-`git commit -m "xxxxxx"` 提交到本地仓库
+`git commit -m "xxxxxx"` 提交到本地仓库，注意提交信息备注使用""，而不是''
 
 `git push`  提交到远程仓库
 
