@@ -1,14 +1,28 @@
 package com.june.studyproject;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
 
-import android.os.Bundle;
+import com.june.studyproject.thread.CacheThreadActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseAppActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
+        findViewById(R.id.text).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CacheThreadActivity.start(MainActivity.this);
+            }
+        });
+    }
+
+    @Override
+    protected void loadData() {
+
     }
 }
