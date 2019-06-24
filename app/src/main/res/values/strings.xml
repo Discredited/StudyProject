@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StudyProject</string>
+
+    <string name="current_thread_information">当前执行线程：%1$s</string>
 </resources>

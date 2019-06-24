@@ -1,12 +1,18 @@
 package com.june.studyproject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
-public abstract class BaseAppActivity extends AppCompatActivity {
+public abstract class BaseAppActivity<T extends ViewDataBinding> extends AppCompatActivity {
+
+    protected Activity mActivity;
+    protected T mBinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -15,8 +21,8 @@ public abstract class BaseAppActivity extends AppCompatActivity {
             finish();
             return;
         }
-
-        setContentView(getLayoutResId());
+        mActivity = this;
+        mBinding = DataBindingUtil.setContentView(this, getLayoutResId());
         initView();
         loadData();
     }
