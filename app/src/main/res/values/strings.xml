@@ -2,4 +2,5 @@
     <string name="app_name">StudyProject</string>
 
     <string name="current_thread_information">当前执行线程：%1$s</string>
+    <string name="handle_service_time">于%1$d年%2$d月%3$d日%4$d时%5$d分获取服务</string>
 </resources>

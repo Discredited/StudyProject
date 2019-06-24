@@ -2,6 +2,7 @@ package com.june.studyproject;
 
 import android.view.View;
 
+import com.june.studyproject.service.ServiceActivity;
 import com.june.studyproject.thread.ThreadPoolActivity;
 
 public class MainActivity extends BaseAppActivity {
@@ -17,6 +18,12 @@ public class MainActivity extends BaseAppActivity {
             @Override
             public void onClick(View v) {
                 ThreadPoolActivity.start(mActivity);
+            }
+        });
+        findViewById(R.id.tv_service_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ServiceActivity.start(mActivity);
             }
         });
     }

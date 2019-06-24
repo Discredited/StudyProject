@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".thread.ThreadPoolActivity" />
+        <activity android:name=".service.ServiceActivity" />
+
+        <service android:name=".service.TestBindService" />
     </application>
 
 </manifest>
