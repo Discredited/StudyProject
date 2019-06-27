@@ -44,8 +44,8 @@ public class TestBindService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         Log.e(TAG, "onUnbind: 解绑TestBindService");
-        return super.onUnbind(intent);
-        //return true;
+        //return super.onUnbind(intent);
+        return true;
     }
 
     @Override

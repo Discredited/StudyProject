@@ -49,6 +49,12 @@ public class ServiceActivity extends BaseAppActivity<ActivityServiceBinding> imp
             isBindService = false;
         }
         super.onDestroy();
+        //从destroy的activity启动服务
+        //startService(new Intent(this, TestBindService.class));
+
+        //从destroy的activity绑定服务
+        //这样的会在activity destroy后绑定服务导致内存泄漏（虽然不应该在destroy后还绑定服务...）
+        //bindService(new Intent(this, TestBindService.class), this, BIND_AUTO_CREATE);
     }
 
     @Override
