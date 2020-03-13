@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="Thread Pool" />
+        android:text="@string/str_thread_pool" />
 
 
     <TextView
@@ -19,5 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="Service Test" />
+        android:text="@string/str_service_test" />
+
+    <TextView
+        android:id="@+id/tv_rx_java"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="@string/str_rx_java" />
 </androidx.appcompat.widget.LinearLayoutCompat>
