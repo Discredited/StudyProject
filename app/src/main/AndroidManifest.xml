@@ -20,7 +20,6 @@
         </activity>
         <activity android:name=".thread.ThreadPoolActivity" />
         <activity android:name=".service.ServiceActivity" />
-        <activity android:name=".picker.DisplayActivity" />
         <activity android:name=".thread.rxjava.RxJavaActivity" />
 
         <service android:name=".service.TestBindService" />
