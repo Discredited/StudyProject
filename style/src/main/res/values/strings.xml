@@ -1,0 +1,11 @@
+<resources>
+    <string name="str_component">Component</string>
+    <string name="str_library">Library</string>
+    <string name="str_expand">Expand</string>
+
+    <string name="current_thread_information">当前执行线程：%1$s</string>
+    <string name="handle_service_time">于%1$d年%2$d月%3$d日%4$d时%5$d分获取服务</string>
+    <string name="str_thread_pool">Thread Pool</string>
+    <string name="str_service_test">Service Test</string>
+    <string name="str_rx_java">Rx Java</string>
+</resources>

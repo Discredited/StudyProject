@@ -1,4 +1,4 @@
-package com.june.studyproject;
+package com.june.studyproject.base;
 
 import android.app.Activity;
 import android.content.Intent;
