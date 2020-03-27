@@ -46,4 +46,7 @@ dependencies {
 
     //哔哩哔哩  boxing
     implementation 'com.bilibili:boxing:1.0.4'
+
+    //BaseRecyclerViewAdapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.1'
 }
