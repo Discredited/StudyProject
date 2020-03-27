@@ -9,12 +9,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bn_navigation"
+        style="@style/Widget.Design.BottomNavigationView"
         android:layout_width="0dp"
-        android:layout_height="56dp"
-        app:itemIconSize="25dp"
-        app:labelVisibilityMode="labeled"
+        android:layout_height="@dimen/dp_56"
+        android:background="@color/color_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:itemTextColor="@color/color_selector_checked_text_theme_to_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_main_navigation" />
 
@@ -26,5 +27,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/color_theme" />
+        tools:background="@color/color_white" />
 </androidx.constraintlayout.widget.ConstraintLayout>
