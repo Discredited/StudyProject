@@ -8,7 +8,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 
-import com.june.studyproject.base.BaseAppActivity;
+import com.june.studyproject.base.component.BaseAppActivity;
 import com.june.studyproject.R;
 import com.june.studyproject.databinding.ActivityServiceBinding;
 

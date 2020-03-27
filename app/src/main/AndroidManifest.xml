@@ -21,6 +21,7 @@
         <activity android:name=".thread.ThreadPoolActivity" />
         <activity android:name=".service.ServiceActivity" />
         <activity android:name=".thread.rxjava.RxJavaActivity" />
+        <activity android:name=".component.ExampleActivity" />
 
         <service android:name=".service.TestBindService" />
     </application>

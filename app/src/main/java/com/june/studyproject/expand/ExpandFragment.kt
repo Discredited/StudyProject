@@ -1,7 +1,7 @@
 package com.june.studyproject.expand
 
 import com.june.studyproject.R
-import com.june.studyproject.base.BaseFragment
+import com.june.studyproject.base.component.BaseFragment
 
 class ExpandFragment : BaseFragment() {
     override fun getLayoutResId(): Int = R.layout.fragment_expand

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.june.studyproject.base.BaseAppActivity;
+import com.june.studyproject.base.component.BaseAppActivity;
 import com.june.studyproject.R;
 import com.june.studyproject.databinding.ActivityThreadPoolActivityBinding;
 

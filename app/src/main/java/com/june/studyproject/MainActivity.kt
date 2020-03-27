@@ -1,8 +1,8 @@
 package com.june.studyproject
 
 import androidx.fragment.app.Fragment
-import com.june.studyproject.base.BaseActivity
-import com.june.studyproject.component.ComponentFragment
+import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.component.index.ComponentFragment
 import com.june.studyproject.expand.ExpandFragment
 import com.june.studyproject.library.LibraryFragment
 import kotlinx.android.synthetic.main.activity_main.*

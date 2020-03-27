@@ -3,28 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_thread_pool"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:text="@string/str_thread_pool" />
+    <include layout="@layout/view_toolbar_layout" />
 
-
-    <TextView
-        android:id="@+id/tv_service_test"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_component"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:text="@string/str_service_test" />
-
-    <TextView
-        android:id="@+id/tv_rx_java"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:text="@string/str_rx_java" />
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/common_margin"
+        android:paddingEnd="@dimen/common_margin"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_component"
+        tools:orientation="vertical"
+        tools:spanCount="2" />
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,4 +1,4 @@
-package com.june.studyproject.base
+package com.june.studyproject.base.component
 
 import android.os.Bundle
 import android.view.LayoutInflater
