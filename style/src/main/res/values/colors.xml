@@ -12,13 +12,14 @@
     <color name="color_green">#0BDE8A</color>
     <color name="color_yellow">#FFB433</color>
     <color name="color_purple">#E655D3</color>
+    <color name="color_pink">#FF8585</color>
 
     <!-- style 1 -->
-    <color name="color_style_1_150940">#150940</color>
-    <color name="color_style_1_F2E74B">#F2E74B</color>
-    <color name="color_style_1_F2C849">#F2C849</color>
-    <color name="color_style_1_F2B749">#F2B749</color>
-    <color name="color_style_1_F29849">#F29849</color>
+    <color name="color_style_1_1">#084056</color>
+    <color name="color_style_1_2">#188367</color>
+    <color name="color_style_1_3">#9EA66D</color>
+    <color name="color_style_1_4">#FF914D</color>
+    <color name="color_style_1_5">#F26D6D</color>
 
 
     <color name="color_text_99">#999999</color>

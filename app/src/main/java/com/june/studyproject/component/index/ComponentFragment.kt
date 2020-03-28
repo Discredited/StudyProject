@@ -24,8 +24,12 @@ class ComponentFragment : BaseFragment() {
         rv_component.setGridManager(2)
         rv_component.adapter = adapter
         rv_component.setHasFixedSize(true)
-        rv_component.addItemDecoration(GridItemDecoration(2, resources
-            .getDimensionPixelSize(R.dimen.dp_5)))
+        rv_component.addItemDecoration(
+            GridItemDecoration(
+                2, resources
+                .getDimensionPixelSize(R.dimen.dp_5)
+            )
+        )
 
         adapter.setOnItemClickListener { adapter, _, position ->
             (adapter.getItem(position) as CardExampleVo).action()
@@ -49,21 +53,28 @@ class ComponentFragment : BaseFragment() {
                     iconRes = R.color.color_purple
                 ),
                 CardExampleVo(
+                    getString(R.string.str_broad_cast),
+                    getString(R.string.broad_cast_desc),
+                    { ServiceActivity.start(requireActivity()) },
+                    iconRes = R.color.color_pink
+                ),
+                CardExampleVo(
                     getString(R.string.str_fragment),
                     getString(R.string.fragment_desc),
                     { Toast.showShort(R.string.str_fragment) },
-                    iconRes = R.color.color_blue),
+                    iconRes = R.color.color_blue
+                ),
                 CardExampleVo(
                     getString(R.string.str_coordinator),
                     getString(R.string.coordinator_desc),
                     { Toast.showShort(R.string.str_coordinator) },
-                    iconRes = R.color.color_yellow
+                    iconRes = R.color.color_green
                 ),
                 CardExampleVo(
                     getString(R.string.str_recyclerView),
                     getString(R.string.recycler_desc),
                     { Toast.showShort(R.string.str_recyclerView) },
-                    iconRes = R.color.color_green
+                    iconRes = R.color.color_yellow
                 ),
                 CardExampleVo(
                     getString(R.string.str_view_pager_2),

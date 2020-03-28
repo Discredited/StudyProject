@@ -8,4 +8,6 @@ class ExpandFragment : BaseFragment() {
 
     override fun initView() {
     }
+
+    override fun fitsSystemWindows(): Boolean = false
 }

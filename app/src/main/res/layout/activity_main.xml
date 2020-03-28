@@ -13,9 +13,9 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_56"
         android:background="@color/color_white"
+        app:itemTextColor="@color/color_selector_checked_text_theme_to_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:itemTextColor="@color/color_selector_checked_text_theme_to_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_main_navigation" />
 
@@ -23,9 +23,11 @@
         android:id="@+id/fc_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bn_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_main"
         tools:background="@color/color_white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

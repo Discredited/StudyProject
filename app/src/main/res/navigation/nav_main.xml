@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/component">
+
+    <fragment
+        android:id="@+id/component"
+        android:name="com.june.studyproject.component.index.ComponentFragment"
+        android:label="fragment_component"
+        tools:layout="@layout/fragment_component" />
+    <fragment
+        android:id="@+id/library"
+        android:name="com.june.studyproject.library.LibraryFragment"
+        android:label="LibraryFragment"
+        tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/expand"
+        android:name="com.june.studyproject.expand.ExpandFragment"
+        android:label="ExpandFragment"
+        tools:layout="@layout/fragment_expand" />
+</navigation>
