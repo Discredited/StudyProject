@@ -8,4 +8,10 @@
     <string name="str_thread_pool">Thread Pool</string>
     <string name="str_service_test">Service Test</string>
     <string name="str_rx_java">Rx Java</string>
+    <string name="str_activity">Activity</string>
+    <string name="str_service">Service</string>
+    <string name="str_fragment">Fragment</string>
+    <string name="str_coordinator">Coordinator</string>
+    <string name="str_recyclerView">RecyclerView</string>
+    <string name="str_view_pager_2">ViewPager2</string>
 </resources>
