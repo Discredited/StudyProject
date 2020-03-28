@@ -14,6 +14,8 @@
         <item name="android:windowBackground">@color/color_white</item>
         <!-- actionMode  true-弹出时覆盖部分布局 false-不符盖将原有布局下移 -->
         <item name="windowActionModeOverlay">true</item>
+
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
 </resources>

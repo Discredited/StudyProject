@@ -5,6 +5,7 @@ import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseFragment
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setGridManager
+import com.june.studyproject.common.GridItemDecoration
 import kotlinx.android.synthetic.main.fragment_component.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
@@ -21,15 +22,22 @@ class ComponentFragment : BaseFragment() {
         rv_component.setGridManager(2)
         rv_component.adapter = adapter
         rv_component.setHasFixedSize(true)
+        rv_component.addItemDecoration(
+            GridItemDecoration(
+                2,
+                resources.getDimensionPixelSize(R.dimen.dp_5)
+            )
+        )
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         adapter.setNewData(mutableListOf(
-                CardExampleVo("Activity", "Activity生命周期、启动模式和相关属性参数", iconRes = R.color.color_theme),
-                CardExampleVo("Fragment", "Fragment生命周期、切换、属性方法调用", iconRes = R.color.color_green),
-                CardExampleVo("RecyclerView", "RecyclerView必知必会", iconRes = R.color.color_yellow),
-                CardExampleVo("Coordinator", "关于折叠布局属性设置和Behavior", iconRes = R.color.color_red)
+            CardExampleVo("Activity", "Activity生命周期、启动模式和相关属性参数", iconRes = R.color.color_theme),
+            CardExampleVo("Fragment", "Fragment生命周期、切换、属性方法调用", iconRes = R.color.color_blue),
+            CardExampleVo("Coordinator", "关于折叠布局属性设置和Behavior", iconRes = R.color.color_yellow),
+            CardExampleVo("RecyclerView", "RecyclerView必知必会", iconRes = R.color.color_green),
+            CardExampleVo("ViewPager2", "替换ViewPager的组件", iconRes = R.color.color_red)
         ))
     }
 }

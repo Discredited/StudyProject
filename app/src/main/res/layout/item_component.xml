@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/dp_5">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_component_cover"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_200"
+        android:layout_height="@dimen/dp_180"
         tools:background="@color/color_theme" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -17,7 +19,9 @@
         android:layout_gravity="bottom"
         android:layout_marginBottom="@dimen/dp_40"
         android:background="#33000000"
+        android:ellipsize="end"
         android:gravity="center_vertical"
+        android:lines="1"
         android:paddingStart="@dimen/dp_20"
         android:paddingEnd="@dimen/dp_20"
         android:textColor="@color/color_white"
@@ -32,10 +36,10 @@
         android:background="#33000000"
         android:ellipsize="end"
         android:gravity="center_vertical"
-        android:lines="1"
+        android:lines="2"
         android:paddingStart="@dimen/dp_20"
         android:paddingEnd="@dimen/dp_20"
         android:textColor="@color/color_white"
         android:textSize="@dimen/sp_12"
         tools:text="描述描述描述描述描述描述描描述描述描述描述描述描述描述描述描述描描述描述描述描述描述描述描述述描述描述描述描述描述描述描述描述描述描述述描述描述描述描述描述描述" />
-</FrameLayout>
+</androidx.cardview.widget.CardView>
