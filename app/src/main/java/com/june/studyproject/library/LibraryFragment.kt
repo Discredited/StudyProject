@@ -6,6 +6,8 @@ import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseFragment
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
+import com.june.studyproject.common.Toast
+import com.june.studyproject.component.index.CardExampleVo
 import kotlinx.android.synthetic.main.fragment_library.*
 
 class LibraryFragment : BaseFragment() {
@@ -16,13 +18,16 @@ class LibraryFragment : BaseFragment() {
 
     override fun initView() {
         adapter = LibraryAdapter()
-
         rv_library.setLinearManager()
         rv_library.adapter = adapter
         rv_library.addItemDecoration(
             LinearItemDecoration(
-                ContextCompat.getColor(requireActivity(), R.color.color_theme),
-                size = resources.getDimensionPixelSize(R.dimen.dp_5))
+                ContextCompat.getColor(
+                    requireActivity(),
+                    R.color.color_theme
+                ),
+                size = resources.getDimensionPixelSize(R.dimen.dp_5)
+            )
         )
     }
 
@@ -30,11 +35,36 @@ class LibraryFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         adapter.setNewData(
             mutableListOf(
-                LibraryVo("OkHttp + Retrofit", R.color.color_style_1_150940),
-                LibraryVo("RxJava", R.color.color_style_1_F2E74B),
-                LibraryVo("Glide", R.color.color_style_1_F2C849),
-                LibraryVo("BaseQuickAdapter", R.color.color_style_1_F2B749),
-                LibraryVo("Video", R.color.color_style_1_F29849)
+                CardExampleVo(
+                    "OkHttp + Retrofit",
+                    "",
+                    { Toast.showShort("OkHttp + Retrofit") },
+                    iconRes = R.color.color_style_1_150940
+                ),
+                CardExampleVo(
+                    "RxJava",
+                    "",
+                    { Toast.showShort("RxJava") },
+                    iconRes = R.color.color_style_1_F2E74B
+                ),
+                CardExampleVo(
+                    "Glide",
+                    "",
+                    { Toast.showShort("Glide") },
+                    iconRes = R.color.color_style_1_F2C849
+                ),
+                CardExampleVo(
+                    "BaseQuickAdapter",
+                    "",
+                    { Toast.showShort("BaseQuickAdapter") },
+                    iconRes = R.color.color_style_1_F2B749
+                ),
+                CardExampleVo(
+                    "Video",
+                    "",
+                    { Toast.showShort("Video") },
+                    iconRes = R.color.color_style_1_F29849
+                )
             )
         )
     }

@@ -1,4 +1,4 @@
-package com.june.studyproject.thread.rxjava
+package com.june.studyproject.library.rxjava
 
 import android.content.Context
 import android.content.Intent
