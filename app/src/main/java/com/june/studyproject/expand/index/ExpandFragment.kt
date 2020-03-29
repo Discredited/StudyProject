@@ -1,12 +1,11 @@
-package com.june.studyproject.expand
+package com.june.studyproject.expand.index
 
-import androidx.appcompat.widget.AppCompatImageView
-import com.june.imageabout.box.ImageBoxLoader
+import android.content.Intent
 import com.june.imageabout.box.ImageVo
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseFragment
-import com.june.studyproject.base.ext.loadRoundImage
-import com.june.studyproject.common.ConstHelper
+import com.june.studyproject.expand.img.ImageBoxListActivity
+import com.june.studyproject.expand.img.ImageLoader
 import kotlinx.android.synthetic.main.fragment_expand.*
 
 class ExpandFragment : BaseFragment() {
@@ -17,6 +16,9 @@ class ExpandFragment : BaseFragment() {
 
         tv_random.setOnClickListener {
             v_image_box.setImageList(getList())
+        }
+        tv_start_image_box.setOnClickListener {
+            startActivity(Intent(requireActivity(), ImageBoxListActivity::class.java))
         }
     }
 
@@ -36,10 +38,4 @@ class ExpandFragment : BaseFragment() {
     }
 
     override fun fitsSystemWindows(): Boolean = false
-
-    class ImageLoader : ImageBoxLoader {
-        override fun loadImage(imageView: AppCompatImageView, image: ImageVo, position: Int) {
-            imageView.loadRoundImage(ConstHelper.IMAGE_SOURCE[position])
-        }
-    }
 }
