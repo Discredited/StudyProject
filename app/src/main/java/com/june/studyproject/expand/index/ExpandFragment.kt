@@ -4,8 +4,8 @@ import android.content.Intent
 import com.june.imageabout.box.ImageVo
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseFragment
-import com.june.studyproject.expand.img.ImageBoxListActivity
-import com.june.studyproject.expand.img.ImageLoader
+import com.june.studyproject.expand.image.box.ImageBoxListActivity
+import com.june.studyproject.expand.image.box.ImageLoader
 import kotlinx.android.synthetic.main.fragment_expand.*
 
 class ExpandFragment : BaseFragment() {

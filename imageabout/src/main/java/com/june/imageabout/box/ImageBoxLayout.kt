@@ -1,11 +1,11 @@
 package com.june.imageabout.box
 
 import android.content.Context
-import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
 import com.june.imageabout.R
 import timber.log.Timber
@@ -25,13 +25,19 @@ class ImageBoxLayout @JvmOverloads constructor(
 
     private var mFourStyle: Int = 0
 
-    private var mImageWith: Int = 0 //单张图片宽度
-    private var mImageHeight: Int = 0 //单张图片高度
+    private var mImageWidth: Int = 0 //图片宽度
+    private var mImageHeight: Int = 0 //图片高度
+    private var mExpectImageWidth: Int = 540 //宽度预估值
+    private var mExpectImageHeight: Int = 720 //高度预估值
+    private var mImageGap = 10  //图片之前的间隙
+
+    //在列表中首次获取width可能为0,所以需要一个默认LayoutParams大小的预设值
+    private var mExpectLayoutParamsSize: Int = 400//默认LayoutParams推荐大小
 
     private var mRow: Int = 0
     private var mColumn: Int = 0
     private var mExpectColumn: Int = 3  //默认显示三列
-    private var mImageGap = 10  //图片之前的间隙
+    private var mMaxImage = 9  //图片最大显示数量 -1表示限制
 
     private var mImageBoxLoader: ImageBoxLoader? = null
 
@@ -56,23 +62,30 @@ class ImageBoxLayout @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height: Int = if (mImageList.size == 1) {
+            if (mImageWidth == 0) {
+                mImageWidth = mExpectImageWidth
+            }
+            if (mImageHeight == 0) {
+                mImageHeight = mExpectImageHeight
+            }
             mImageHeight
         } else {
             //即使size==0 也默认显示高度样式
             if (mImageList.size == 0) {
                 mRow = 1 //默认显示一行
                 mColumn = 1 //默认显示一列
-                mImageHeight = (width - paddingLeft - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
             }
+            mImageWidth = (width - paddingStart - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
+            mImageHeight = mImageWidth
             // 1 2
             // 3 4
             mRow * mImageHeight + mImageGap * (mRow - 1) + paddingTop + paddingBottom
         }
+        Timber.e("measure=>w:$width,$height")
         setMeasuredDimension(width, height)
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        //super.onLayout(changed, left, top, right, bottom)
         for (index in 0 until childCount) {
             val child = getChildAt(index)
             //child所在列
@@ -80,23 +93,19 @@ class ImageBoxLayout @JvmOverloads constructor(
             //child所在行
             val row = index / mColumn
 
-            val childLeft = column * (mImageWith + mImageGap) + paddingLeft
-            val childRight = childLeft + mImageWith
+            val childLeft = column * (mImageWidth + mImageGap) + paddingLeft
+            val childRight = childLeft + mImageWidth
             val childTop = row * (mImageHeight + mImageGap) + paddingTop
             val childBottom = childTop + mImageHeight
             Timber.e(
-                "childCount:$childCount    index:$index    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom"
+                "layout=>childCount:$childCount    index:$index    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom"
             )
             child.layout(childLeft, childTop, childRight, childBottom)
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-        Timber.e("onDraw")
-    }
-
-    private fun getDefaultParams(width: Int = 0, height: Int = 0): LayoutParams {
+    private fun getDefaultParams(width: Int = mExpectLayoutParamsSize,
+                                 height: Int = mExpectLayoutParamsSize): LayoutParams {
         return LayoutParams(width, height)
     }
 
@@ -114,6 +123,7 @@ class ImageBoxLayout @JvmOverloads constructor(
         } else {
             //创建新的ImageView并添加至缓存
             val newImageView = AppCompatImageView(context)
+            newImageView.scaleType = ImageView.ScaleType.CENTER_CROP
             mImageViewCache.add(newImageView)
             //Timber.e("position:$position    newImageView创建新的ImageView  ${mImageViewCache.size}")
             newImageView
@@ -164,27 +174,35 @@ class ImageBoxLayout @JvmOverloads constructor(
             mRow = rowColumn[0]
             mColumn = rowColumn[1]
             val vo = list[0]
-            mImageWith = vo.width
+            mImageWidth = vo.width
             mImageHeight = vo.height
 
             val cacheImageView = getImageViewFromCache(0)
             mImageBoxLoader?.loadImage(cacheImageView, list[0], 0)
-            addView(cacheImageView, getDefaultParams(mImageWith, mImageHeight))
+            addView(cacheImageView, getDefaultParams(mImageWidth, mImageHeight))
         } else {
             //多张图片
             mRow = rowColumn[0]
             mColumn = rowColumn[1]
 
-            mImageWith = (width - ((mExpectColumn - 1) * mImageGap) - paddingLeft - paddingRight) / mExpectColumn
-            mImageHeight = mImageWith
+            //在列表中首次加载该布局时，getWidth == 0
+            //此时只能使用默认的mExpectLayoutParamsSize推荐值大小
+            //当布局复用能够获取到getWidth后，再重置mExpectLayoutParamsSize为正确值
+            if (width != 0) {
+                mExpectLayoutParamsSize = (width - paddingStart - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
+            }
+
             for (index in 0 until list.size) {
                 val vo = list[index]
                 val cacheImageView = getImageViewFromCache(index)
                 mImageBoxLoader?.loadImage(cacheImageView, vo, index)
-                addView(cacheImageView, getDefaultParams(mImageWith, mImageHeight))
+                addView(
+                    cacheImageView,
+                    getDefaultParams(mExpectLayoutParamsSize, mExpectLayoutParamsSize)
+                )
             }
         }
-        Timber.e("当前ImageWidth:$mImageWith  ImageHeight:$mImageHeight")
+        Timber.e("当前ImageWidth:$mImageWidth  ImageHeight:$mImageHeight    width:$width,height:$height")
 
         mImageList.clear()
         mImageList.addAll(list)

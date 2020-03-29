@@ -1,4 +1,4 @@
-package com.june.studyproject.expand.img
+package com.june.studyproject.expand.image.box
 
 import androidx.appcompat.widget.AppCompatImageView
 import com.june.imageabout.box.ImageBoxLoader

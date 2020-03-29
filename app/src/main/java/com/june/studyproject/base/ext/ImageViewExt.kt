@@ -13,7 +13,8 @@ fun ImageView.loadRoundImage(position: Int) {
     val radius: Int = resources.getDimensionPixelSize(R.dimen.dp_5)
     Glide.with(context)
         .load(url)
-        .transform(CenterCrop(), RoundedCorners(radius))
+        .transform(RoundedCorners(radius))
+        .placeholder(R.drawable.layer_placeholder_square)
         .into(this)
 }
 
