@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ImageBoxLayout">
+        <attr name="imageBoxFourStyle" format="integer">
+            <enum name="normal" value="0" />
+            <enum name="square" value="1" />
+        </attr>
+        <attr name="imageBoxExpectColumn" format="integer" />
+        <attr name="imageBoxGap" format="dimension" />
+    </declare-styleable>
+</resources>
