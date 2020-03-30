@@ -29,6 +29,8 @@
         <activity android:name="com.june.studyproject.library.rxjava.RxJavaActivity" />
         <activity android:name=".component.activity.ExampleActivity" />
         <activity android:name=".expand.image.box.ImageBoxListActivity" />
+        <activity android:name=".component.activity.LifecycleActivity" />
+        <activity android:name=".component.activity.LifecycleSecondActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

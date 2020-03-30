@@ -27,7 +27,7 @@ class ImageBoxListActivity : BaseActivity() {
     override fun getLayoutResId(): Int = R.layout.activity_image_box_list
 
     override fun initView() {
-        toolbar.initToolbar("ImageBoxList")
+        toolbar.initToolbar(javaClass.simpleName)
         toolbar.setNavigationOnClickListener { onBackPressed() }
 
         adapter = ImageBoxListAdapter()
@@ -35,13 +35,13 @@ class ImageBoxListActivity : BaseActivity() {
         rv_image_box.adapter = adapter
         rv_image_box.setHasFixedSize(true)
         rv_image_box.addItemDecoration(
-                LinearItemDecoration(
-                        ContextCompat.getColor(
-                                this,
-                                R.color.color_yellow
-                        ),
-                        size = resources.getDimensionPixelSize(R.dimen.dp_15)
-                )
+            LinearItemDecoration(
+                ContextCompat.getColor(
+                    this,
+                    R.color.color_yellow
+                ),
+                size = resources.getDimensionPixelSize(R.dimen.dp_15)
+            )
         )
     }
 

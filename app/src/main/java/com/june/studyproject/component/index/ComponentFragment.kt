@@ -20,7 +20,7 @@ class ComponentFragment : BaseFragment() {
     override fun getLayoutResId(): Int = R.layout.fragment_component
 
     override fun initView() {
-        toolbar.initToolbar(getString(R.string.str_component), 0, false)
+        toolbar.initToolbar(getString(R.string.str_component), navIcon = 0, titleCenter = false)
 
         adapter = ComponentAdapter()
         rv_component.setGridManager(2)

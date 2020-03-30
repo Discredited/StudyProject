@@ -6,9 +6,10 @@ import com.june.studyproject.R
 import kotlinx.android.synthetic.main.view_toolbar_layout.view.*
 
 fun Toolbar.initToolbar(
-        title: String,
-        navIcon: Int = R.drawable.ic_back_black,
-        titleCenter: Boolean = true
+    title: String,
+    menu: Int = 0,
+    navIcon: Int = R.drawable.ic_back_black,
+    titleCenter: Boolean = true
 ) {
     //设置返回键按钮
     if (navIcon == 0) {
@@ -30,5 +31,10 @@ fun Toolbar.initToolbar(
     } else {
         //使用Toolbar默认标题
         setTitle(title)
+    }
+
+    //设置菜单
+    if (menu != 0) {
+        inflateMenu(menu)
     }
 }

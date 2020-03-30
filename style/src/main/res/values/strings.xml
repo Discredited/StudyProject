@@ -36,4 +36,5 @@
     <string name="str_thread_pool">Thread Pool</string>
     <string name="str_service_test">Service Test</string>
     <string name="str_rx_java">Rx Java</string>
+    <string name="str_next">next</string>
 </resources>

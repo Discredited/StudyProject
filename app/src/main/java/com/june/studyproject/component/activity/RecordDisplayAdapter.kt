@@ -5,7 +5,10 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.june.studyproject.R
 import kotlinx.android.synthetic.main.item_record_display.view.*
 
-class RecordDisplayAdapter : BaseQuickAdapter<RecordDisplayVo, BaseViewHolder>(R.layout.item_record_display) {
+class RecordDisplayAdapter(list: MutableList<RecordDisplayVo>) : BaseQuickAdapter<RecordDisplayVo, BaseViewHolder>(
+    R.layout.item_record_display,
+    list
+) {
 
     override fun convert(helper: BaseViewHolder, item: RecordDisplayVo) {
         helper.itemView.tvRecordMillis.text = item.millis
