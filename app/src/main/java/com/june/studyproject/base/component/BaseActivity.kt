@@ -12,8 +12,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //设置状态栏颜色
-        window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window?.statusBarColor = ContextCompat.getColor(this, R.color.color_transparent)
+        //window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        //window?.statusBarColor = ContextCompat.getColor(this, R.color.color_transparent)
         super.onCreate(savedInstanceState)
         mActivity = this
         setContentView(getLayoutResId())
