@@ -1,5 +1,6 @@
 package com.june.studyproject.component.index
 
+import android.content.Intent
 import android.os.Bundle
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseFragment
@@ -7,6 +8,7 @@ import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setGridManager
 import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.common.Toast
+import com.june.studyproject.component.activity.ExampleActivity
 import com.june.studyproject.component.service.ServiceActivity
 import kotlinx.android.synthetic.main.fragment_component.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
@@ -43,7 +45,7 @@ class ComponentFragment : BaseFragment() {
                 CardExampleVo(
                     getString(R.string.str_activity),
                     getString(R.string.activity_desc),
-                    { Toast.showShort(R.string.str_activity) },
+                    { startActivity(Intent(context, ExampleActivity::class.java)) },
                     iconRes = R.color.color_theme
                 ),
                 CardExampleVo(

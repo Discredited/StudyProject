@@ -20,10 +20,12 @@ class MainActivity : BaseActivity() {
     override fun loadData() {
         val navHostFragment = NavHostFragment.create(R.navigation.nav_main)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fc_container, navHostFragment, javaClass.simpleName)
-            .setPrimaryNavigationFragment(navHostFragment)
-            .commitNow()
+                .add(R.id.fc_container, navHostFragment, javaClass.simpleName)
+                .setPrimaryNavigationFragment(navHostFragment)
+                .commitNow()
 
+        //todo 了解和改造 BottomNavigation与NvaController的关联
+        //NavigationUI.setupWithNavController()根据源码了解，每次都是重新创建Fragment实例
         bn_navigation.setupWithNavController(navHostFragment.findNavController())
     }
 }

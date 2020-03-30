@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/component">
+    app:startDestination="@id/componentFragment">
 
     <fragment
-        android:id="@+id/component"
+        android:id="@+id/componentFragment"
         android:name="com.june.studyproject.component.index.ComponentFragment"
         android:label="fragment_component"
         tools:layout="@layout/fragment_component" />
     <fragment
-        android:id="@+id/library"
+        android:id="@+id/libraryFragment"
         android:name="com.june.studyproject.library.LibraryFragment"
         android:label="LibraryFragment"
         tools:layout="@layout/fragment_library" />
     <fragment
-        android:id="@+id/expand"
+        android:id="@+id/expandFragment"
         android:name="com.june.studyproject.expand.index.ExpandFragment"
         android:label="ExpandFragment"
         tools:layout="@layout/fragment_expand" />
