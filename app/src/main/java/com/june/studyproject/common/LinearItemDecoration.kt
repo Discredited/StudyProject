@@ -99,11 +99,17 @@ class LinearItemDecoration(
         val childCount = parent.childCount
         for (i in 0 until childCount) {
             val child = parent.getChildAt(i)
-            parent.layoutManager?.getDecoratedBoundsWithMargins(child, mBounds)
-            val right = mBounds.right + child.translationX.roundToInt()
-            val left = right - mDivider.intrinsicWidth
-            mDivider.setBounds(left, top, right, bottom)
-            mDivider.draw(canvas)
+            val childPosition = parent.getChildAdapterPosition(child)
+            val itemCount = (parent.adapter?.itemCount ?: 0) - 1
+            Timber.e("drawVertical:$i    childPosition:$childPosition    itemCount:$itemCount")
+            //最后一条不绘制
+            if (itemCount == -1 || childPosition < itemCount) {
+                parent.layoutManager?.getDecoratedBoundsWithMargins(child, mBounds)
+                val right = mBounds.right + child.translationX.roundToInt()
+                val left = right - mDivider.intrinsicWidth
+                mDivider.setBounds(left, top, right, bottom)
+                mDivider.draw(canvas)
+            }
         }
         canvas.restore()
     }
