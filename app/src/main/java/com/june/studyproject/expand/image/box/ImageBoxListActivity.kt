@@ -14,6 +14,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * @author <a href="mailto:xujun@snqu.com">徐俊</a>
+ * @description ImageBox 列表中的表现
+ * @version 1.0.0
+ * @time 2020/3/30 16:37
+ */
 class ImageBoxListActivity : BaseActivity() {
 
     private lateinit var adapter: ImageBoxListAdapter
@@ -29,13 +35,13 @@ class ImageBoxListActivity : BaseActivity() {
         rv_image_box.adapter = adapter
         rv_image_box.setHasFixedSize(true)
         rv_image_box.addItemDecoration(
-            LinearItemDecoration(
-                ContextCompat.getColor(
-                    this,
-                    R.color.color_yellow
-                ),
-                size = resources.getDimensionPixelSize(R.dimen.dp_15)
-            )
+                LinearItemDecoration(
+                        ContextCompat.getColor(
+                                this,
+                                R.color.color_yellow
+                        ),
+                        size = resources.getDimensionPixelSize(R.dimen.dp_15)
+                )
         )
     }
 
