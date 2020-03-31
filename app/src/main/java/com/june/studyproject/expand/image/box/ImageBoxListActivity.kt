@@ -1,13 +1,13 @@
 package com.june.studyproject.expand.image.box
 
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.june.imageabout.box.ImageVo
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.ext.addLinearItemDecoration
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
-import com.june.studyproject.common.LinearItemDecoration
+import com.june.studyproject.common.ConstHelper
 import kotlinx.android.synthetic.main.activity_image_box_list.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 import kotlinx.coroutines.Dispatchers
@@ -34,22 +34,14 @@ class ImageBoxListActivity : BaseActivity() {
         rv_image_box.setLinearManager()
         rv_image_box.adapter = adapter
         rv_image_box.setHasFixedSize(true)
-        rv_image_box.addItemDecoration(
-            LinearItemDecoration(
-                ContextCompat.getColor(
-                    this,
-                    R.color.color_yellow
-                ),
-                size = resources.getDimensionPixelSize(R.dimen.dp_15)
-            )
-        )
+        rv_image_box.addLinearItemDecoration(size = resources.getDimensionPixelSize(R.dimen.dp_15))
     }
 
     override fun loadData() {
         lifecycleScope.launch {
             val result = withContext(Dispatchers.IO) {
                 val list = mutableListOf<ImageBoxItemVo>()
-                for (index in 0..10) {
+                for (index in 0..30) {
                     val imageList = getList()
                     list.add(ImageBoxItemVo("第 $index 个  共有${imageList.size}张图片", imageList))
                 }
@@ -59,17 +51,18 @@ class ImageBoxListActivity : BaseActivity() {
         }
     }
 
-
     private fun getList(): MutableList<ImageVo> {
-        val random = (Math.random() * 10).toInt()
+        val random = (Math.random() * 15).toInt()
         val list = mutableListOf<ImageVo>()
         if (random <= 1) {
             val width = 540
             val height = 720
-            list.add(ImageVo("11111", width, height))
+            val diffImage = ConstHelper.getDiffImage(1)
+            list.add(ImageVo(diffImage[0], width, height))
         } else {
-            for (index in 0..random) {
-                list.add(ImageVo("11111", 0, 0))
+            val diffImage = ConstHelper.getDiffImage(random)
+            diffImage.forEach {
+                list.add(ImageVo(it, 0, 0))
             }
         }
         return list

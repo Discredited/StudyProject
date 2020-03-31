@@ -5,18 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/color_green">
 
-    <com.june.imageabout.box.ImageBoxLayout
-        android:id="@+id/v_image_box"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_margin"
-        android:layout_marginEnd="@dimen/common_margin"
-        android:background="@color/color_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_random"
         android:layout_width="0dp"

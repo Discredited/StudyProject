@@ -1,5 +1,7 @@
 package com.june.studyproject.common
 
+import timber.log.Timber
+
 object ConstHelper {
 
     val IMAGE_SOURCE = arrayOf(
@@ -33,4 +35,15 @@ object ConstHelper {
         "http://tupian.qqw21.com/article/UploadPic/2020-3/2020371171913337.jpg",
         "http://uploads.5068.com/allimg/1801/82-1P123151011-50.jpg"
     )
+
+    fun getDiffImage(count: Int): MutableList<String> {
+        val imageSet = mutableSetOf<String>()
+        do {
+            val random = (Math.random() * IMAGE_SOURCE.size).toInt()
+            val image = IMAGE_SOURCE[random]
+            Timber.e("random:${random}    IMAGE_SOURCE:${IMAGE_SOURCE.size}")
+            imageSet.add(image)
+        } while (imageSet.size < count)
+        return imageSet.toMutableList()
+    }
 }

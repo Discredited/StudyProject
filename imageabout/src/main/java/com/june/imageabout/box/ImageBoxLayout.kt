@@ -1,6 +1,9 @@
 package com.june.imageabout.box
 
 import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +11,6 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
 import com.june.imageabout.R
-import timber.log.Timber
 
 class ImageBoxLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -18,6 +20,7 @@ class ImageBoxLayout @JvmOverloads constructor(
         // 1 2 3
         // 4
         const val FOUR_STYLE_NORMAL = 0
+
         // 1 2
         // 3 4
         const val FOUR_STYLE_SQUARE = 1
@@ -37,12 +40,15 @@ class ImageBoxLayout @JvmOverloads constructor(
     private var mRow: Int = 0
     private var mColumn: Int = 0
     private var mExpectColumn: Int = 3  //默认显示三列
-    private var mMaxImage = 9  //图片最大显示数量 -1表示限制
+    private var mImageMax = 9  //图片最大显示数量 -1表示不限制
+    private var mImageMaxOver = true //是否显示超过Max的图片数量
 
     private var mImageBoxLoader: ImageBoxLoader? = null
 
     private val mImageList: MutableList<ImageVo> = mutableListOf()
     private val mImageViewCache: MutableList<AppCompatImageView> = mutableListOf()
+
+    private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     init {
         val array = context.obtainStyledAttributes(R.styleable.ImageBoxLayout)
@@ -53,6 +59,8 @@ class ImageBoxLayout @JvmOverloads constructor(
             )
             mExpectColumn = array.getInt(R.styleable.ImageBoxLayout_imageBoxExpectColumn, 3)
             mImageGap = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxGap, 5)
+            mImageMax = array.getInt(R.styleable.ImageBoxLayout_imageBoxMax, 9)
+            mImageMaxOver = array.getBoolean(R.styleable.ImageBoxLayout_imageBoxMaxOver, true)
         } finally {
             array.recycle()
         }
@@ -81,7 +89,7 @@ class ImageBoxLayout @JvmOverloads constructor(
             // 3 4
             mRow * mImageHeight + mImageGap * (mRow - 1) + paddingTop + paddingBottom
         }
-        Timber.e("measure=>w:$width,$height")
+        //Timber.e("measure=>w:$width,$height")
         setMeasuredDimension(width, height)
     }
 
@@ -97,10 +105,36 @@ class ImageBoxLayout @JvmOverloads constructor(
             val childRight = childLeft + mImageWidth
             val childTop = row * (mImageHeight + mImageGap) + paddingTop
             val childBottom = childTop + mImageHeight
-            Timber.e(
-                "layout=>childCount:$childCount    index:$index    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom"
-            )
+//            Timber.e(
+//                "layout=>childCount:$childCount    index:$index    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom"
+//            )
             child.layout(childLeft, childTop, childRight, childBottom)
+        }
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        val overCount = mImageList.size - mImageMax
+        val needDrawOver = overCount > 0
+        if (mImageMaxOver && needDrawOver) {
+            //绘制背景
+            val left = (width - mImageWidth).toFloat()
+            val right = width.toFloat()
+            val top = (height - mImageHeight).toFloat()
+            val bottom = height.toFloat()
+            val radius = 5F
+            mPaint.color = Color.parseColor("#33000000")
+            canvas.drawRoundRect(left, top, right, bottom, radius, radius, mPaint)
+            //绘制文字
+            mPaint.color = Color.parseColor("#FFFFFF")
+            mPaint.textSize = 30F
+            mPaint.ascent()
+            val drawString = "+$overCount"
+            val stringWidth = mPaint.measureText(drawString)
+            val stringHeight = mPaint.descent() - mPaint.ascent()
+            val textX = width - mImageWidth / 2F - stringWidth / 2
+            val textY = height - mImageHeight / 2F - stringHeight / 2
+            canvas.drawText(drawString, textX, textY, mPaint)
         }
     }
 
@@ -127,6 +161,14 @@ class ImageBoxLayout @JvmOverloads constructor(
             mImageViewCache.add(newImageView)
             //Timber.e("position:$position    newImageView创建新的ImageView  ${mImageViewCache.size}")
             newImageView
+        }
+    }
+
+    private fun getImageSize(imageSize: Int): Int {
+        return if (mImageMax != -1 && imageSize > mImageMax) {
+            mImageMax
+        } else {
+            imageSize
         }
     }
 
@@ -162,14 +204,15 @@ class ImageBoxLayout @JvmOverloads constructor(
             visibility = View.GONE
         }
 
-        Timber.e("----------------------------------------")
-        Timber.e("当前ImageVo数量：${list.size}")
+//        Timber.e("----------------------------------------")
+//        Timber.e("当前ImageVo数量：${list.size}")
         removeAllViews()
 
         //获取行列
-        val rowColumn = getRowColumn(list.size, mFourStyle)
+        val imageSize = getImageSize(list.size)
+        val rowColumn = getRowColumn(imageSize, mFourStyle)
 
-        if (list.size == 1) {
+        if (imageSize == 1) {
             //单张图片
             mRow = rowColumn[0]
             mColumn = rowColumn[1]
@@ -192,7 +235,7 @@ class ImageBoxLayout @JvmOverloads constructor(
                 mExpectLayoutParamsSize = (width - paddingStart - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
             }
 
-            for (index in 0 until list.size) {
+            for (index in 0 until imageSize) {
                 val vo = list[index]
                 val cacheImageView = getImageViewFromCache(index)
                 mImageBoxLoader?.loadImage(cacheImageView, vo, index)
@@ -202,7 +245,7 @@ class ImageBoxLayout @JvmOverloads constructor(
                 )
             }
         }
-        Timber.e("当前ImageWidth:$mImageWidth  ImageHeight:$mImageHeight    width:$width,height:$height")
+        //Timber.e("当前ImageWidth:$mImageWidth  ImageHeight:$mImageHeight    width:$width,height:$height")
 
         mImageList.clear()
         mImageList.addAll(list)

@@ -7,5 +7,7 @@
         </attr>
         <attr name="imageBoxExpectColumn" format="integer" />
         <attr name="imageBoxGap" format="dimension" />
+        <attr name="imageBoxMax" format="integer" />
+        <attr name="imageBoxMaxOver" format="boolean" />
     </declare-styleable>
 </resources>

@@ -14,7 +14,6 @@ fun ImageView.loadRoundImage(position: Int) {
     Glide.with(context)
         .load(url)
         .transform(RoundedCorners(radius))
-        .placeholder(R.drawable.layer_placeholder_square)
         .into(this)
 }
 
