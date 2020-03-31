@@ -1,15 +1,11 @@
 package com.june.imageabout.box
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
-import androidx.appcompat.widget.AppCompatImageView
 import com.june.imageabout.R
 
 class ImageBoxLayout @JvmOverloads constructor(
@@ -41,14 +37,12 @@ class ImageBoxLayout @JvmOverloads constructor(
     private var mColumn: Int = 0
     private var mExpectColumn: Int = 3  //默认显示三列
     private var mImageMax = 9  //图片最大显示数量 -1表示不限制
-    private var mImageMaxOver = true //是否显示超过Max的图片数量
+    private var mImageMaxOver = false //是否显示超过Max的图片数量
 
     private var mImageBoxLoader: ImageBoxLoader? = null
 
     private val mImageList: MutableList<ImageVo> = mutableListOf()
-    private val mImageViewCache: MutableList<AppCompatImageView> = mutableListOf()
-
-    private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val mImageViewCache: MutableList<BoxImageView> = mutableListOf()
 
     init {
         val array = context.obtainStyledAttributes(R.styleable.ImageBoxLayout)
@@ -112,39 +106,13 @@ class ImageBoxLayout @JvmOverloads constructor(
         }
     }
 
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        val overCount = mImageList.size - mImageMax
-        val needDrawOver = overCount > 0
-        if (mImageMaxOver && needDrawOver) {
-            //绘制背景
-            val left = (width - mImageWidth).toFloat()
-            val right = width.toFloat()
-            val top = (height - mImageHeight).toFloat()
-            val bottom = height.toFloat()
-            val radius = 5F
-            mPaint.color = Color.parseColor("#33000000")
-            canvas.drawRoundRect(left, top, right, bottom, radius, radius, mPaint)
-            //绘制文字
-            mPaint.color = Color.parseColor("#FFFFFF")
-            mPaint.textSize = 30F
-            mPaint.ascent()
-            val drawString = "+$overCount"
-            val stringWidth = mPaint.measureText(drawString)
-            val stringHeight = mPaint.descent() - mPaint.ascent()
-            val textX = width - mImageWidth / 2F - stringWidth / 2
-            val textY = height - mImageHeight / 2F - stringHeight / 2
-            canvas.drawText(drawString, textX, textY, mPaint)
-        }
-    }
-
     private fun getDefaultParams(width: Int = mExpectLayoutParamsSize,
                                  height: Int = mExpectLayoutParamsSize): LayoutParams {
         return LayoutParams(width, height)
     }
 
     //从缓存中获取ImageView
-    private fun getImageViewFromCache(position: Int): AppCompatImageView {
+    private fun getImageViewFromCache(position: Int): BoxImageView {
         return if (position < mImageViewCache.size) {
             //直接从缓存中读取ImageView
             val cacheImageView = mImageViewCache[position]
@@ -152,14 +120,16 @@ class ImageBoxLayout @JvmOverloads constructor(
                 //从原父布局移除
                 (cacheImageView.parent as ViewGroup).removeView(cacheImageView)
             }
+            cacheImageView.resetMaxOver()
             //Timber.e("position:$position    cacheImageView直接从缓存中读取  ${mImageViewCache.size}")
             cacheImageView
         } else {
             //创建新的ImageView并添加至缓存
-            val newImageView = AppCompatImageView(context)
+            val newImageView = BoxImageView(context)
             newImageView.scaleType = ImageView.ScaleType.CENTER_CROP
             mImageViewCache.add(newImageView)
             //Timber.e("position:$position    newImageView创建新的ImageView  ${mImageViewCache.size}")
+            newImageView.resetMaxOver()
             newImageView
         }
     }
@@ -211,7 +181,11 @@ class ImageBoxLayout @JvmOverloads constructor(
         //获取行列
         val imageSize = getImageSize(list.size)
         val rowColumn = getRowColumn(imageSize, mFourStyle)
-
+        val overCount = if (mImageMax != -1) {
+            list.size - mImageMax
+        } else {
+            0
+        }
         if (imageSize == 1) {
             //单张图片
             mRow = rowColumn[0]
@@ -238,6 +212,10 @@ class ImageBoxLayout @JvmOverloads constructor(
             for (index in 0 until imageSize) {
                 val vo = list[index]
                 val cacheImageView = getImageViewFromCache(index)
+                if (index == imageSize - 1 && mImageMaxOver && overCount > 0) {
+                    cacheImageView.setMaxOver(overCount, mImageMaxOver)
+                }
+
                 mImageBoxLoader?.loadImage(cacheImageView, vo, index)
                 addView(
                     cacheImageView,

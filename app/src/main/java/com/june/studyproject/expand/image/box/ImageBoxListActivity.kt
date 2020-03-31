@@ -8,6 +8,7 @@ import com.june.studyproject.base.ext.addLinearItemDecoration
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.ConstHelper
+import com.june.studyproject.common.Toast
 import kotlinx.android.synthetic.main.activity_image_box_list.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 import kotlinx.coroutines.Dispatchers
@@ -31,6 +32,10 @@ class ImageBoxListActivity : BaseActivity() {
         toolbar.setNavigationOnClickListener { onBackPressed() }
 
         adapter = ImageBoxListAdapter()
+        adapter.setOnItemClickListener { adapter, _, position ->
+            val item = adapter.getItem(position) as ImageBoxItemVo
+            Toast.showShort(item.title)
+        }
         rv_image_box.setLinearManager()
         rv_image_box.adapter = adapter
         rv_image_box.setHasFixedSize(true)
