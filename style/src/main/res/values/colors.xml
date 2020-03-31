@@ -2,15 +2,18 @@
 <resources>
 
     <color name="color_theme">#0BCADE</color>
-    <color name="color_gray">#BBBBBB</color>
+    <color name="color_nav_gray">#BBBBBB</color>
+
     <color name="color_transparent">#00000000</color>
     <color name="color_white">#FFFFFF</color>
     <color name="color_black">#000000</color>
+    <color name="color_gray">#ECEDF2</color>
 
     <color name="color_red">#FF4E33</color>
     <color name="color_blue">#337EFF</color>
     <color name="color_green">#0BDE8A</color>
     <color name="color_yellow">#FFB433</color>
+    <color name="color_yellow_light">#66FFB433</color>
     <color name="color_purple">#E655D3</color>
     <color name="color_pink">#FF8585</color>
 

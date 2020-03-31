@@ -16,6 +16,8 @@ class RecordDisplayAdapter(list: MutableList<RecordDisplayVo>) : BaseQuickAdapte
         helper.itemView.tvRecordMinute.text = item.minute
         helper.itemView.tvRecordSecond.text = item.second
         helper.itemView.tvRecordTitle.text = item.title
+        helper.itemView.tvRecordTitle.setTextColor(item.titleColor)
         helper.itemView.tvRecordDesc.text = item.desc
+        helper.itemView.tvRecordDesc.setTextColor(item.descColor)
     }
 }

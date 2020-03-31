@@ -24,6 +24,10 @@ class LifecycleSecondActivity : BaseActivity() {
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
 
+    private var mTitleColor = 0
+    private var mDescColor = 0
+    private var isFirstResume = true
+
     override fun getLayoutResId(): Int = R.layout.activity_lifecycle
 
     override fun initView() {
@@ -46,62 +50,80 @@ class LifecycleSecondActivity : BaseActivity() {
     }
 
     override fun loadData() {
+        mTitleColor = ContextCompat.getColor(this, R.color.color_yellow)
+        mDescColor = ContextCompat.getColor(this, R.color.color_yellow_light)
+
         intent.getParcelableArrayListExtra<RecordDisplayVo>("RECORD_LIST")?.let {
             mRecordList.addAll(it)
         }
-        mRecordList.add(RecordDisplayVo("onCreate()", javaClass.simpleName))
+        Timber.e("onStart()")
+        mRecordList.add(RecordDisplayVo("onCreate()", javaClass.simpleName, mTitleColor, mDescColor))
     }
 
     override fun onStart() {
         super.onStart()
         Timber.e("onStart()")
-        mRecordList.add(RecordDisplayVo("onStart()", javaClass.simpleName))
+        mRecordList.add(RecordDisplayVo("onStart()", javaClass.simpleName, mTitleColor, mDescColor))
     }
 
     override fun onRestart() {
         super.onRestart()
         Timber.e("onRestart()")
-        mRecordList.add(RecordDisplayVo("onRestart()", javaClass.simpleName))
+        mRecordList.add(RecordDisplayVo("onRestart()", javaClass.simpleName, mTitleColor, mDescColor))
     }
 
     override fun onResume() {
         super.onResume()
         Timber.e("onResume()")
-        mRecordList.add(RecordDisplayVo("onResume()", javaClass.simpleName))
+        mRecordList.add(RecordDisplayVo("onResume()", javaClass.simpleName, mTitleColor, mDescColor))
+        if (isFirstResume) {
+            //当前页面创建、开始、恢复之后，上一个页面才会调用stop方法
+            mRecordList.add(RecordDisplayVo("onStop()", "LifecycleActivity"))
+            isFirstResume = false
+        }
         adapter.notifyDataSetChanged()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        mRecordList.add(RecordDisplayVo("onKeyDown()", javaClass.simpleName))
+        mRecordList.add(RecordDisplayVo("onKeyDown()", javaClass.simpleName, mTitleColor, mDescColor))
         Timber.e("onKeyDown()  $keyCode  ${event?.action}")
         return super.onKeyDown(keyCode, event)
     }
 
     override fun finish() {
-        mRecordList.add(RecordDisplayVo("finish()", javaClass.simpleName))
+        //setResult应该在finish或者onBackPressed之前设置
+        //onPause onStop onDestroy之前就会返回result结果默认RESULT_CANCELED
+        mRecordList.add(RecordDisplayVo("finish()", javaClass.simpleName, mTitleColor, mDescColor))
+        mRecordList.add(RecordDisplayVo("onBackPressed()", javaClass.simpleName, mTitleColor, mDescColor))
+        mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName, mTitleColor, mDescColor))
+        //stop和onDestroy方法会在上一个页面onResume以后调用
         val intent = Intent()
         intent.putExtra(RESPONSE_CODE_LIFECYCLE, mRecordList)
         setResult(RESULT_OK, intent)
+
         super.finish()
         Timber.e("finish()")
     }
 
     override fun onBackPressed() {
-        mRecordList.add(RecordDisplayVo("onBackPressed()", javaClass.simpleName))
         super.onBackPressed()
         Timber.e("onBackPressed()")
     }
 
     override fun onPause() {
-        mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName))
         super.onPause()
         Timber.e("onPause()")
+        if (!isFinishing) {
+            mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName, mTitleColor, mDescColor))
+        }
     }
 
     override fun onStop() {
-        mRecordList.add(RecordDisplayVo("onStop()", javaClass.simpleName))
         super.onStop()
         Timber.e("onStop()")
+        if (!isFinishing) {
+            mRecordList.add(RecordDisplayVo("onStop()", javaClass.simpleName, mTitleColor, mDescColor))
+        }
     }
 
     override fun onDestroy() {

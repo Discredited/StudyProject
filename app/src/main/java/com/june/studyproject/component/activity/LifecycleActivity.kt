@@ -18,13 +18,22 @@ class LifecycleActivity : BaseActivity() {
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
 
+    private var isFromResult = false
+    private var isToNext = false
+
+    private var mTitleColor = 0
+    private var mDescColor = 0
+
     override fun getLayoutResId(): Int = R.layout.activity_lifecycle
 
     override fun initView() {
-        Timber.e("onCreate()")
         toolbar.initToolbar(javaClass.simpleName, R.menu.menu_text_next)
         toolbar.setNavigationOnClickListener { onBackPressed() }
         toolbar.setOnMenuItemClickListener {
+            //跳转其他页面之前,当前当前页面会先执行onPause
+            //具体参照logo日志
+            isToNext = true
+            mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName))
             LifecycleSecondActivity.starter(this, mRecordList)
             true
         }
@@ -45,6 +54,10 @@ class LifecycleActivity : BaseActivity() {
     }
 
     override fun loadData() {
+        mTitleColor = ContextCompat.getColor(this, R.color.color_yellow)
+        mDescColor = ContextCompat.getColor(this, R.color.color_yellow_light)
+
+        Timber.e("onCreate()")
         mRecordList.add(RecordDisplayVo("onCreate()", javaClass.simpleName))
     }
 
@@ -64,16 +77,25 @@ class LifecycleActivity : BaseActivity() {
         super.onResume()
         Timber.e("onResume()")
         mRecordList.add(RecordDisplayVo("onResume()", javaClass.simpleName))
+        if (isFromResult) {
+            mRecordList.add(RecordDisplayVo("onStop()", "LifecycleSecondActivity", mTitleColor, mDescColor))
+            mRecordList.add(RecordDisplayVo("onDestroy()", "LifecycleSecondActivity", mTitleColor, mDescColor))
+            isFromResult = false
+        }
         adapter.notifyDataSetChanged()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Timber.e("onActivityResult()")
         if (resultCode != Activity.RESULT_OK) {
             return
         }
         if (requestCode == LifecycleSecondActivity.REQUEST_CODE_LIFECYCLE) {
+            isFromResult = true
+            isToNext = false
             data?.getParcelableArrayListExtra<RecordDisplayVo>(LifecycleSecondActivity.RESPONSE_CODE_LIFECYCLE)?.let {
+                mRecordList.clear()
                 mRecordList.addAll(it)
                 adapter.notifyDataSetChanged()
             }
@@ -99,13 +121,17 @@ class LifecycleActivity : BaseActivity() {
     }
 
     override fun onPause() {
-        mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName))
+        if (!isToNext) {
+            mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName))
+        }
         super.onPause()
         Timber.e("onPause()")
     }
 
     override fun onStop() {
-        mRecordList.add(RecordDisplayVo("onStop()", javaClass.simpleName))
+        if (!isToNext) {
+            mRecordList.add(RecordDisplayVo("onStop()", javaClass.simpleName))
+        }
         super.onStop()
         Timber.e("onStop()")
     }
