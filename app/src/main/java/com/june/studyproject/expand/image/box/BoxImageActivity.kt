@@ -13,13 +13,11 @@ import timber.log.Timber
 
 class BoxImageActivity : BaseActivity() {
 
-    private var mCornerType = BoxImageView.CORNER_ALL
-
     private val mSeekBarChangeListener = object : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
             Timber.e("onProgressChanged:${seekBar.progress}")
             val currentRadius = seekBar.progress
-            ivBoxImage.setCorner(currentRadius * 1F, mCornerType)
+            ivBoxImage.setCorner(currentRadius * 1F)
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -40,48 +38,55 @@ class BoxImageActivity : BaseActivity() {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.corner_left -> {
-                    mCornerType = BoxImageView.CORNER_LEFT
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), BoxImageView.CORNER_LEFT)
                 }
                 R.id.corner_top -> {
-                    mCornerType = BoxImageView.CORNER_TOP
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), BoxImageView.CORNER_TOP)
                 }
                 R.id.corner_right -> {
-                    mCornerType = BoxImageView.CORNER_RIGHT
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), BoxImageView.CORNER_RIGHT)
                 }
                 R.id.corner_bottom -> {
-                    mCornerType = BoxImageView.CORNER_BOTTOM
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), BoxImageView.CORNER_BOTTOM)
                 }
                 R.id.corner_diagonal_left -> {
-                    mCornerType = BoxImageView.CORNER_DIAGONAL_LEFT
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(
+                        vRadiusSeek.progress.toFloat(),
+                        BoxImageView.CORNER_DIAGONAL_LEFT
+                    )
                 }
                 R.id.corner_diagonal_right -> {
-                    mCornerType = BoxImageView.CORNER_DIAGONAL_RIGHT
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(
+                        vRadiusSeek.progress.toFloat(),
+                        BoxImageView.CORNER_DIAGONAL_RIGHT
+                    )
                 }
                 R.id.corner_only_top_left -> {
-                    mCornerType = BoxImageView.CORNER_ONLY_LEFT_TOP
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(
+                        vRadiusSeek.progress.toFloat(),
+                        BoxImageView.CORNER_ONLY_LEFT_TOP
+                    )
                 }
                 R.id.corner_only_top_right -> {
-                    mCornerType = BoxImageView.CORNER_ONLY_RIGHT_TOP
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(
+                        vRadiusSeek.progress.toFloat(),
+                        BoxImageView.CORNER_ONLY_RIGHT_TOP
+                    )
                 }
                 R.id.corner_only_bottom_left -> {
-                    mCornerType = BoxImageView.CORNER_ONLY_LEFT_BOTTOM
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(
+                        vRadiusSeek.progress.toFloat(),
+                        BoxImageView.CORNER_ONLY_LEFT_BOTTOM
+                    )
                 }
                 R.id.corner_only_bottom_right -> {
-                    mCornerType = BoxImageView.CORNER_ONLY_RIGHT_BOTTOM
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                    ivBoxImage.setCorner(
+                        vRadiusSeek.progress.toFloat(),
+                        BoxImageView.CORNER_ONLY_RIGHT_BOTTOM
+                    )
                 }
-                else->{
-                    mCornerType = BoxImageView.CORNER_ALL
-                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                else -> {
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), BoxImageView.CORNER_ALL)
                 }
             }
             true
