@@ -31,6 +31,8 @@
         <activity android:name=".expand.image.box.ImageBoxListActivity" />
         <activity android:name=".component.activity.LifecycleActivity" />
         <activity android:name=".component.activity.LifecycleSecondActivity" />
+        <activity android:name=".expand.image.box.BoxImageActivity" />
+        <activity android:name=".expand.image.box.ImageBoxActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/corner_all"
+        android:title="All" />
+
+    <item
+        android:id="@+id/corner_left"
+        android:title="Left" />
+
+    <item
+        android:id="@+id/corner_right"
+        android:title="Right" />
+
+    <item
+        android:id="@+id/corner_top"
+        android:title="Top" />
+
+    <item
+        android:id="@+id/corner_bottom"
+        android:title="Bottom" />
+
+    <item
+        android:id="@+id/corner_diagonal_left"
+        android:title="DiagonalLeft" />
+
+    <item
+        android:id="@+id/corner_diagonal_right"
+        android:title="DiagonalRight" />
+
+    <item
+        android:id="@+id/corner_only_top_left"
+        android:title="TopLeft" />
+
+    <item
+        android:id="@+id/corner_only_top_right"
+        android:title="TopRight" />
+
+    <item
+        android:id="@+id/corner_only_bottom_left"
+        android:title="BottomLeft" />
+
+    <item
+        android:id="@+id/corner_only_bottom_right"
+        android:title="BottomRight" />
+</menu>

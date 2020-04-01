@@ -20,6 +20,19 @@ class BoxImageView @JvmOverloads constructor(
     private var mRadius = resources.getDimension(R.dimen.box_image_default_radius)
     private var mOverTextSize = resources.getDimension(R.dimen.box_image_default_over_text_size)
     private var mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private var mPath = Path()
+    private var mRectF = RectF()
+
+    private var radiusArray: FloatArray? = null
+
+    init {
+        radiusArray = floatArrayOf(
+            mRadius, mRadius,
+            mRadius, mRadius,
+            mRadius, mRadius,
+            mRadius, mRadius
+        )
+    }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         super.onTouchEvent(event)
@@ -41,6 +54,21 @@ class BoxImageView @JvmOverloads constructor(
     }
 
     override fun onDraw(canvas: Canvas) {
+        //Path.Direction.CW	clockwise ，沿顺时针方向绘制
+        //Path.Direction.CCW	counter-clockwise ，沿逆时针方向绘制
+        radiusArray?.let {
+            if (mRectF.right == 0F || mRectF.bottom == 0F) {
+                mRectF.left = 0f
+                mRectF.right = width.toFloat()
+                mRectF.top = 0f
+                mRectF.bottom = height.toFloat()
+            }
+            //如果不reset() Path会出异常(具体表现：圆角Clip局部无效)
+            mPath.reset()
+            mPath.addRoundRect(mRectF, it, Path.Direction.CCW)
+        }
+
+        canvas.clipPath(mPath)  //设置可显示的区域，canvas四个角会被剪裁掉
         super.onDraw(canvas)
         val needDrawOver = mOverCount > 0
         if (isMaxOver && needDrawOver) {
@@ -65,13 +93,68 @@ class BoxImageView @JvmOverloads constructor(
         }
     }
 
+    fun resetMaxOver() {
+        mOverCount = 0
+        isMaxOver = false
+    }
+
     fun setMaxOver(overCount: Int, enable: Boolean) {
         isMaxOver = enable
         mOverCount = overCount
     }
 
-    fun resetMaxOver() {
-        mOverCount = 0
-        isMaxOver = false
+    fun setCorner(radius: Float, cornerType: Int = CORNER_ALL) {
+        when (cornerType) {
+            CORNER_LEFT -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index <= 1 || index >= 6) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            CORNER_TOP -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index <= 3) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            CORNER_RIGHT -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index in 2..5) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            CORNER_BOTTOM -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index in 4..7) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            else -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    radiusArray?.set(index, radius)
+                }
+            }
+        }
+        postInvalidate()
+    }
+
+    companion object {
+        const val CORNER_ALL = 0
+        const val CORNER_LEFT = 1
+        const val CORNER_TOP = 2
+        const val CORNER_RIGHT = 3
+        const val CORNER_BOTTOM = 4
     }
 }

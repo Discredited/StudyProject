@@ -2,7 +2,6 @@ package com.june.studyproject.base.ext
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.june.studyproject.R
 import com.june.studyproject.common.ConstHelper
@@ -19,10 +18,16 @@ fun ImageView.loadRoundImage(position: Int) {
 
 fun ImageView.loadRoundImage(
     url: String,
-    radius: Int = resources.getDimensionPixelSize(R.dimen.dp_5)
+    radius: Int = resources.getDimensionPixelSize(R.dimen.dp_10)
 ) {
     Glide.with(context)
         .load(url)
-        .transform(CenterCrop(), RoundedCorners(radius))
+        //.transform(CenterCrop(), RoundedCorners(radius))
+        .into(this)
+}
+
+fun ImageView.loadImage(url: String) {
+    Glide.with(context)
+        .load(url)
         .into(this)
 }

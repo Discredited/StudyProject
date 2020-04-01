@@ -195,8 +195,8 @@ class ImageBoxLayout @JvmOverloads constructor(
             mImageHeight = vo.height
 
             val cacheImageView = getImageViewFromCache(0)
-            mImageBoxLoader?.loadImage(cacheImageView, list[0], 0)
             addView(cacheImageView, getDefaultParams(mImageWidth, mImageHeight))
+            mImageBoxLoader?.loadImage(cacheImageView, list[0], 0)
         } else {
             //多张图片
             mRow = rowColumn[0]
@@ -215,12 +215,11 @@ class ImageBoxLayout @JvmOverloads constructor(
                 if (index == imageSize - 1 && mImageMaxOver && overCount > 0) {
                     cacheImageView.setMaxOver(overCount, mImageMaxOver)
                 }
-
-                mImageBoxLoader?.loadImage(cacheImageView, vo, index)
                 addView(
                     cacheImageView,
                     getDefaultParams(mExpectLayoutParamsSize, mExpectLayoutParamsSize)
                 )
+                mImageBoxLoader?.loadImage(cacheImageView, vo, index)
             }
         }
         //Timber.e("当前ImageWidth:$mImageWidth  ImageHeight:$mImageHeight    width:$width,height:$height")

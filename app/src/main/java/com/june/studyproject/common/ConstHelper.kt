@@ -1,7 +1,5 @@
 package com.june.studyproject.common
 
-import timber.log.Timber
-
 object ConstHelper {
 
     val IMAGE_SOURCE = arrayOf(
@@ -34,14 +32,24 @@ object ConstHelper {
         "http://www.jshddq.net/UploadFiles/img_2_2304607039_3307652783_26.jpg",
         "http://tupian.qqw21.com/article/UploadPic/2020-3/2020371171913337.jpg",
         "http://uploads.5068.com/allimg/1801/82-1P123151011-50.jpg"
+
+        //GIF
+//        "http://imgsrc.baidu.com/forum/w=580/sign=35ffe1078735e5dd902ca5d746c7a7f5/79fcc758ccbf6c81fa372dbdbe3eb13532fa40e5.gif",
+//        "https://b-ssl.duitang.com/uploads/item/201410/13/20141013151749_JH2rE.gif",
+//        "http://s9.rr.itc.cn/r/wapChange/20168_6_16/a37qr04592277918185.jpg",
+//        "http://imgsrc.baidu.com/forum/w=580/sign=c596754eb6b7d0a27bc90495fbee760d/53ac09e93901213fd0ac572050e736d12d2e95ef.jpg",
+//        "http://a.hiphotos.baidu.com/exp/w=500/sign=7a6bb544fad3572c66e29cdcba126352/1b4c510fd9f9d72a10e3f2b0dc2a2834359bbb9c.jpg"
     )
+
+    fun getDiffImage(): String {
+        val random = (Math.random() * IMAGE_SOURCE.size).toInt()
+        return IMAGE_SOURCE[random]
+    }
 
     fun getDiffImage(count: Int): MutableList<String> {
         val imageSet = mutableSetOf<String>()
         do {
-            val random = (Math.random() * IMAGE_SOURCE.size).toInt()
-            val image = IMAGE_SOURCE[random]
-            Timber.e("random:${random}    IMAGE_SOURCE:${IMAGE_SOURCE.size}")
+            val image = getDiffImage()
             imageSet.add(image)
         } while (imageSet.size < count)
         return imageSet.toMutableList()
