@@ -104,6 +104,7 @@ class BoxImageView @JvmOverloads constructor(
     }
 
     fun setCorner(radius: Float, cornerType: Int = CORNER_ALL) {
+        mRadius = radius
         when (cornerType) {
             CORNER_LEFT -> {
                 radiusArray?.forEachIndexed { index, _ ->
