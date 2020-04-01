@@ -120,6 +120,8 @@ class ImageBoxLayout @JvmOverloads constructor(
                 //从原父布局移除
                 (cacheImageView.parent as ViewGroup).removeView(cacheImageView)
             }
+            cacheImageView.layoutParams?.width = 0
+            cacheImageView.layoutParams?.height = 0
             cacheImageView.resetMaxOver()
             //Timber.e("position:$position    cacheImageView直接从缓存中读取  ${mImageViewCache.size}")
             cacheImageView
@@ -129,6 +131,8 @@ class ImageBoxLayout @JvmOverloads constructor(
             newImageView.scaleType = ImageView.ScaleType.CENTER_CROP
             mImageViewCache.add(newImageView)
             //Timber.e("position:$position    newImageView创建新的ImageView  ${mImageViewCache.size}")
+            newImageView.layoutParams?.width = 0
+            newImageView.layoutParams?.height = 0
             newImageView.resetMaxOver()
             newImageView
         }
