@@ -141,6 +141,60 @@ class BoxImageView @JvmOverloads constructor(
                     }
                 }
             }
+            CORNER_DIAGONAL_LEFT -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index <= 1 || index == 4 || index == 5) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            CORNER_DIAGONAL_RIGHT -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index == 2 || index == 3 || index == 6 || index == 7) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            CORNER_ONLY_LEFT_TOP -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index <= 1) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            CORNER_ONLY_RIGHT_TOP -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index == 2 || index == 3) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            CORNER_ONLY_LEFT_BOTTOM -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index == 6 || index == 7) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
+            CORNER_ONLY_RIGHT_BOTTOM -> {
+                radiusArray?.forEachIndexed { index, _ ->
+                    if (index == 4 || index == 5) {
+                        radiusArray?.set(index, radius)
+                    } else {
+                        radiusArray?.set(index, 0F)
+                    }
+                }
+            }
             else -> {
                 radiusArray?.forEachIndexed { index, _ ->
                     radiusArray?.set(index, radius)
@@ -152,9 +206,18 @@ class BoxImageView @JvmOverloads constructor(
 
     companion object {
         const val CORNER_ALL = 0
+
         const val CORNER_LEFT = 1
         const val CORNER_TOP = 2
         const val CORNER_RIGHT = 3
         const val CORNER_BOTTOM = 4
+
+        const val CORNER_DIAGONAL_LEFT = 5
+        const val CORNER_DIAGONAL_RIGHT = 6
+
+        const val CORNER_ONLY_LEFT_TOP = 7
+        const val CORNER_ONLY_RIGHT_TOP = 8
+        const val CORNER_ONLY_LEFT_BOTTOM = 9
+        const val CORNER_ONLY_RIGHT_BOTTOM = 10
     }
 }

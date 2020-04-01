@@ -55,6 +55,34 @@ class BoxImageActivity : BaseActivity() {
                     mCornerType = BoxImageView.CORNER_BOTTOM
                     ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
                 }
+                R.id.corner_diagonal_left -> {
+                    mCornerType = BoxImageView.CORNER_DIAGONAL_LEFT
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                }
+                R.id.corner_diagonal_right -> {
+                    mCornerType = BoxImageView.CORNER_DIAGONAL_RIGHT
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                }
+                R.id.corner_only_top_left -> {
+                    mCornerType = BoxImageView.CORNER_ONLY_LEFT_TOP
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                }
+                R.id.corner_only_top_right -> {
+                    mCornerType = BoxImageView.CORNER_ONLY_RIGHT_TOP
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                }
+                R.id.corner_only_bottom_left -> {
+                    mCornerType = BoxImageView.CORNER_ONLY_LEFT_BOTTOM
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                }
+                R.id.corner_only_bottom_right -> {
+                    mCornerType = BoxImageView.CORNER_ONLY_RIGHT_BOTTOM
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                }
+                else->{
+                    mCornerType = BoxImageView.CORNER_ALL
+                    ivBoxImage.setCorner(vRadiusSeek.progress.toFloat(), mCornerType)
+                }
             }
             true
         }
