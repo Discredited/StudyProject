@@ -13,11 +13,16 @@ import timber.log.Timber
 
 class BoxImageActivity : BaseActivity() {
 
+
+    private var mRadiusMax: Int = -1
     private val mSeekBarChangeListener = object : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
             Timber.e("onProgressChanged:${seekBar.progress}")
-            val currentRadius = seekBar.progress
-            ivBoxImage.setCorner(currentRadius * 1F)
+            if (mRadiusMax < 0) {
+                mRadiusMax = ivBoxImage.width / 2
+            }
+            val currentRadius = (seekBar.progress * 1F / seekBar.max) * mRadiusMax
+            ivBoxImage.setCorner(currentRadius)
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {

@@ -10,24 +10,37 @@
 
     <com.june.imageabout.box.BoxImageView
         android:id="@+id/ivBoxImage"
-        android:layout_width="@dimen/dp_150"
-        android:layout_height="@dimen/dp_150"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"
         android:layout_marginTop="@dimen/dp_100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@color/color_theme" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRadiusTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginStart="@dimen/common_margin"
+        android:layout_marginTop="@dimen/dp_20"
+        android:gravity="center"
+        android:text="@string/str_radius"
+        android:textColor="@color/color_text_66"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivBoxImage" />
+
     <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/vRadiusSeek"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="@dimen/common_margin"
-        android:layout_marginTop="@dimen/dp_20"
         android:layout_marginEnd="@dimen/common_margin"
-        android:max="300"
-        android:progress="60"
+        android:max="100"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="@id/tvRadiusTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivBoxImage" />
+        app:layout_constraintStart_toEndOf="@id/tvRadiusTitle"
+        app:layout_constraintTop_toTopOf="@id/tvRadiusTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

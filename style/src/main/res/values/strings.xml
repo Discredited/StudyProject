@@ -37,4 +37,5 @@
     <string name="str_service_test">Service Test</string>
     <string name="str_rx_java">Rx Java</string>
     <string name="str_next">next</string>
+    <string name="str_radius">圆角</string>
 </resources>

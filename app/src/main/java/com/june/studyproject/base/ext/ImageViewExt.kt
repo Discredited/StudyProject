@@ -27,5 +27,7 @@ fun ImageView.loadImageBoxItem(url: String) {
 fun ImageView.loadImage(url: String) {
     Glide.with(context)
         .load(url)
+        .placeholder(R.drawable.layer_placeholder_square)
+        .error(R.drawable.layer_placeholder_square)
         .into(this)
 }
