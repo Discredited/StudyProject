@@ -27,9 +27,9 @@ class BoxImageView @JvmOverloads constructor(
     private var radiusArray: FloatArray? = null
 
     init {
-        val array = context.obtainStyledAttributes(R.styleable.BoxImageView)
+        val array = context.obtainStyledAttributes(attrs, R.styleable.BoxImageView, defStyleAttr, 0)
         try {
-            mRadius = array.getDimension(R.styleable.BoxImageView_BoxImageRadius, 10F)
+            mRadius = array.getDimension(R.styleable.BoxImageView_BoxImageRadius, 0F)
             mOverTextSize = array.getDimension(R.styleable.BoxImageView_BoxImageOverTextSize, 60F)
             mCornerType = array.getInt(R.styleable.BoxImageView_BoxImageCornerType, CORNER_ALL)
         } finally {
@@ -61,12 +61,10 @@ class BoxImageView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         if (mRadius > 0F) {
             radiusArray?.let {
-                if (mRectF.right == 0F || mRectF.bottom == 0F) {
-                    mRectF.left = 0f
-                    mRectF.right = width.toFloat()
-                    mRectF.top = 0f
-                    mRectF.bottom = height.toFloat()
-                }
+                mRectF.left = 0f
+                mRectF.right = width.toFloat()
+                mRectF.top = 0f
+                mRectF.bottom = height.toFloat()
                 //如果不reset() Path会出异常(具体表现：圆角Clip局部无效)
                 mPath.reset()
                 //Path.Direction.CW	clockwise ，沿顺时针方向绘制
@@ -109,7 +107,7 @@ class BoxImageView @JvmOverloads constructor(
         mOverCount = overCount
     }
 
-    fun setCorner(radius: Float, cornerType: Int = mCornerType) {
+    fun setCorner(radius: Float, cornerType: Int = mCornerType, invalidate: Boolean = true) {
         mRadius = radius
         mCornerType = cornerType
 
@@ -210,7 +208,9 @@ class BoxImageView @JvmOverloads constructor(
                 }
             }
         }
-        postInvalidate()
+        if (invalidate) {
+            postInvalidate()
+        }
     }
 
     companion object {

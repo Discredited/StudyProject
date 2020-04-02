@@ -1,11 +1,11 @@
 package com.june.imageabout.box
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.ImageView
 import com.june.imageabout.R
 
 class ImageBoxLayout @JvmOverloads constructor(
@@ -39,13 +39,15 @@ class ImageBoxLayout @JvmOverloads constructor(
     private var mImageMax = 9  //图片最大显示数量 -1表示不限制
     private var mImageMaxOver = false //是否显示超过Max的图片数量
 
+    private var mImageRadius: Float = 0F  //图片圆角
+
     private var mImageBoxLoader: ImageBoxLoader? = null
 
     private val mImageList: MutableList<ImageVo> = mutableListOf()
     private val mImageViewCache: MutableList<BoxImageView> = mutableListOf()
 
     init {
-        val array = context.obtainStyledAttributes(R.styleable.ImageBoxLayout)
+        val array = context.obtainStyledAttributes(attrs, R.styleable.ImageBoxLayout, defStyleAttr, 0)
         try {
             mFourStyle = array.getInt(
                 R.styleable.ImageBoxLayout_imageBoxFourStyle,
@@ -55,6 +57,7 @@ class ImageBoxLayout @JvmOverloads constructor(
             mImageGap = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxGap, 5)
             mImageMax = array.getInt(R.styleable.ImageBoxLayout_imageBoxMax, 9)
             mImageMaxOver = array.getBoolean(R.styleable.ImageBoxLayout_imageBoxMaxOver, true)
+            mImageRadius = array.getDimension(R.styleable.ImageBoxLayout_imageBoxRadius, 0F)
         } finally {
             array.recycle()
         }
@@ -120,19 +123,17 @@ class ImageBoxLayout @JvmOverloads constructor(
                 //从原父布局移除
                 (cacheImageView.parent as ViewGroup).removeView(cacheImageView)
             }
-            cacheImageView.layoutParams?.width = 0
-            cacheImageView.layoutParams?.height = 0
             cacheImageView.resetMaxOver()
             //Timber.e("position:$position    cacheImageView直接从缓存中读取  ${mImageViewCache.size}")
             cacheImageView
         } else {
             //创建新的ImageView并添加至缓存
             val newImageView = BoxImageView(context)
-            newImageView.scaleType = ImageView.ScaleType.CENTER_CROP
             mImageViewCache.add(newImageView)
             //Timber.e("position:$position    newImageView创建新的ImageView  ${mImageViewCache.size}")
-            newImageView.layoutParams?.width = 0
-            newImageView.layoutParams?.height = 0
+            newImageView.setCorner(mImageRadius, invalidate = false)
+            newImageView.setBackgroundColor(Color.YELLOW)
+
             newImageView.resetMaxOver()
             newImageView
         }

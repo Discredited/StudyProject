@@ -9,5 +9,6 @@
         <attr name="imageBoxGap" format="dimension" />
         <attr name="imageBoxMax" format="integer" />
         <attr name="imageBoxMaxOver" format="boolean" />
+        <attr name="imageBoxRadius" format="dimension" />
     </declare-styleable>
 </resources>
