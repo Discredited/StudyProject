@@ -19,7 +19,7 @@ class LibraryFragment : BaseFragment() {
     override fun getLayoutResId(): Int = R.layout.fragment_library
 
     override fun initView() {
-        toolbar.initToolbar(getString(R.string.str_library), titleCenter = false)
+        toolbar.initToolbar(getString(R.string.str_library), navIcon = 0, titleCenter = false)
 
         adapter = LibraryAdapter()
         rv_library.setLinearManager()

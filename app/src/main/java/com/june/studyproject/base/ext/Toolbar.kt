@@ -1,5 +1,6 @@
 package com.june.studyproject.base.ext
 
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
@@ -27,9 +28,12 @@ fun Toolbar.initToolbar(
     //设置标题
     if (titleCenter) {
         //标题居中
+        toolbarTitle.visibility = View.VISIBLE
         toolbarTitle.text = title
+        setTitle("")
     } else {
         //使用Toolbar默认标题
+        toolbarTitle.visibility = View.GONE
         setTitle(title)
     }
 

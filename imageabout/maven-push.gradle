@@ -1,0 +1,36 @@
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'com.june.imageabout'
+                artifactId = 'final'
+                version = '1.0.0'
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+                from components.debug
+
+                groupId = 'com.june.imageabout'
+                artifactId = 'final-debug'
+                version = '1.0.0'
+            }
+        }
+
+        repositories {
+            maven {
+                // change to point to your repo, e.g. http://my.org/repo
+                url "https://dl.bintray.com/juneandroid/maven/ImageAbout"
+                credentials {
+                    username = 'discredite'
+                    password = 'june95925'
+                }
+            }
+        }
+    }
+}
