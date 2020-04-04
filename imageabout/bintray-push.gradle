@@ -1,12 +1,13 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-// 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
-version = "1.0.0"
-
 def siteUrl = 'https://github.com/Discredited/StudyProject'      // 项目的主页
 def gitUrl = 'https://github.com/Discredited/StudyProject.git'   // Git仓库的url
-group = "com.june.imageabout" // Maven Group ID for the artifact，一般填你唯一的包名
+
+// Maven Group ID for the artifact，一般填你唯一的包名
+group = "com.june.imageabout"
+// 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
+version = "1.0.0"
 
 install {
     repositories.mavenInstaller {
@@ -68,13 +69,23 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
+    //publications = ['Production']
     configurations = ['archives']
     pkg {
         repo = "maven"  //发布到Bintray的哪个仓库里，默认账户有四个库，我们这里上传到maven库
         name = "ImageAbout"  //发布到Bintray上的项目名字
+        userOrg = "juneandroid"
+        description = "a image about widget library"
+        publicDownloadNumbers = true
+        licenses = ["Apache-2.0"]
         websiteUrl = siteUrl
         vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
         publish = true
+        version {
+            name = this.version
+            desc = "Version ${this.version}"
+            released = new Date()
+            vcsTag = this.version
+        }
     }
 }

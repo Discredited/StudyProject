@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'maven-publish'
-apply from: 'maven-push.gradle'
+apply from: 'bintray-push.gradle'
+//apply from: 'maven-push.gradle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -37,7 +37,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoCore"
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    //implementation 'com.june.imageabout:final:1.0.0'
 }
 
 
