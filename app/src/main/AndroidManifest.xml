@@ -33,6 +33,8 @@
         <activity android:name=".component.activity.LifecycleSecondActivity" />
         <activity android:name=".expand.image.box.BoxImageActivity" />
         <activity android:name=".expand.image.box.ImageBoxActivity" />
+        <activity android:name=".component.fragment.FragmentActivity" />
+        <activity android:name=".component.fragment.lifecycle.FragmentLifecycleActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>
