@@ -8,5 +8,6 @@
     <fragment
         android:id="@+id/componentFragment"
         android:name="com.june.studyproject.component.index.ComponentFragment"
-        android:label="ComponentFragment" />
+        android:label="ComponentFragment"
+        tools:layout="@layout/fragment_component" />
 </navigation>

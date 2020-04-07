@@ -133,7 +133,11 @@ class ImageBoxLayout @JvmOverloads constructor(
             //Timber.e("position:$position    newImageView创建新的ImageView  ${mImageViewCache.size}")
             newImageView.setCorner(mImageRadius, invalidate = false)
             newImageView.setBackgroundColor(Color.YELLOW)
-
+            newImageView.setOnClickListener {
+                if (position >= 0 && position < mImageList.size) {
+                    mImageBoxLoader?.clickImage(newImageView, mImageList, position)
+                }
+            }
             newImageView.resetMaxOver()
             newImageView
         }
