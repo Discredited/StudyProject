@@ -19,9 +19,7 @@ class ImageWatchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_watch)
-        ImageWatcherHelper.instance.mImageLoader?.let {
-            adapter.setImageLoader(it)
-        }
+
         vpImageWatch.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         vpImageWatch.adapter = adapter
 
