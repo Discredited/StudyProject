@@ -19,7 +19,6 @@ class ImageWatchAdapter : RecyclerView.Adapter<ImageWatchViewHolder>() {
     override fun getItemCount(): Int = mItemList.size
 
     override fun onBindViewHolder(holder: ImageWatchViewHolder, position: Int) {
-        holder.itemView.tvImagePosition.text = "第${position}张图片"
         Glide.with(holder.itemView.context)
             .load(mItemList[position].thumbnail)
             .into(holder.itemView.vImageView)

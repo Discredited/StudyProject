@@ -15,6 +15,11 @@ import kotlinx.android.synthetic.main.activity_image_watch.*
 class ImageWatchActivity : AppCompatActivity() {
 
     private val adapter: ImageWatchAdapter = ImageWatchAdapter()
+    private val mPageChangeListener = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            tvImagePosition?.text = "${position + 1} / ${adapter.itemCount}"
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +27,19 @@ class ImageWatchActivity : AppCompatActivity() {
 
         vpImageWatch.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         vpImageWatch.adapter = adapter
+        vpImageWatch.registerOnPageChangeCallback(mPageChangeListener)
 
         val imageList = intent.getParcelableArrayListExtra<ImageVo>("IMAGE_LIST")
         imageList?.let {
             adapter.setImageList(it)
         }
+        val position = intent.getIntExtra("IMAGE_POSITION", 0)
+        vpImageWatch.currentItem = position
+    }
+
+    override fun onDestroy() {
+        vpImageWatch.unregisterOnPageChangeCallback(mPageChangeListener)
+        super.onDestroy()
     }
 
     companion object {
