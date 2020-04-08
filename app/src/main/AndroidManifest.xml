@@ -36,6 +36,8 @@
         <activity android:name=".component.fragment.FragmentActivity" />
         <activity android:name=".component.fragment.lifecycle.FragmentLifecycleActivity" />
 
+        <activity android:name="com.june.imageabout.watcher.ImageWatchActivity" />
+
         <service android:name=".component.service.TestBindService" />
     </application>
 

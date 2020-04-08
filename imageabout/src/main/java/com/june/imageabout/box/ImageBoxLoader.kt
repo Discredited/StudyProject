@@ -1,6 +1,7 @@
 package com.june.imageabout.box
 
-import androidx.appcompat.widget.AppCompatImageView
+import android.widget.ImageView
+import com.june.imageabout.vo.ImageVo
 
 /**
  * imageBox 图片加载器
@@ -8,8 +9,8 @@ import androidx.appcompat.widget.AppCompatImageView
 interface ImageBoxLoader {
 
     //加载图片
-    fun loadImage(imageView: AppCompatImageView, image: ImageVo, position: Int)
+    fun loadImage(imageView: ImageView, image: ImageVo, position: Int)
 
     //点击事件
-    fun clickImage(imageView: AppCompatImageView, imageList: MutableList<ImageVo>, position: Int)
+    fun clickImage(imageView: ImageView, imageList: MutableList<ImageVo>, position: Int)
 }

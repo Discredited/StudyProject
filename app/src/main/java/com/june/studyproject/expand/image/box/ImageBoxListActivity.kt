@@ -1,7 +1,8 @@
 package com.june.studyproject.expand.image.box
 
 import androidx.lifecycle.lifecycleScope
-import com.june.imageabout.box.ImageVo
+import com.june.imageabout.vo.ImageVo
+import com.june.imageabout.watcher.ImageWatcherHelper
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.addLinearItemDecoration
@@ -40,6 +41,8 @@ class ImageBoxListActivity : BaseActivity() {
         rv_image_box.adapter = adapter
         rv_image_box.setHasFixedSize(true)
         rv_image_box.addLinearItemDecoration(size = resources.getDimensionPixelSize(R.dimen.dp_15))
+
+        ImageWatcherHelper.instance.setImageLoader(adapter.imageLoader)
     }
 
     override fun loadData() {
@@ -63,11 +66,11 @@ class ImageBoxListActivity : BaseActivity() {
             val width = 540
             val height = 720
             val diffImage = ConstHelper.getDiffImage(1)
-            list.add(ImageVo(diffImage[0], width, height))
+            list.add(ImageVo(diffImage[0], diffImage[0], width, height))
         } else {
             val diffImage = ConstHelper.getDiffImage(random)
             diffImage.forEach {
-                list.add(ImageVo(it, 0, 0))
+                list.add(ImageVo(it, it, 0, 0))
             }
         }
         return list
