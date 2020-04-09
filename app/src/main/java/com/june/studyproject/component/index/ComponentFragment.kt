@@ -10,6 +10,7 @@ import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.activity.ExampleActivity
 import com.june.studyproject.component.fragment.FragmentActivity
+import com.june.studyproject.component.recycler.RecyclerActivity
 import com.june.studyproject.component.service.ServiceActivity
 import kotlinx.android.synthetic.main.fragment_component.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
@@ -76,7 +77,7 @@ class ComponentFragment : BaseFragment() {
                 CardExampleVo(
                     getString(R.string.str_recyclerView),
                     getString(R.string.recycler_desc),
-                    { Toast.showShort(R.string.str_recyclerView) },
+                    { startActivity(Intent(requireActivity(), RecyclerActivity::class.java)) },
                     iconRes = R.color.color_yellow
                 ),
                 CardExampleVo(

@@ -37,6 +37,8 @@
         <activity android:name=".component.fragment.lifecycle.FragmentLifecycleActivity" />
 
         <activity android:name="com.june.imageabout.watcher.ImageWatchActivity" />
+        <activity android:name=".component.recycler.RecyclerActivity" />
+        <activity android:name=".component.recycler.custom.CustomLayoutManagerActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

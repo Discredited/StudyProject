@@ -18,6 +18,18 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@color/color_theme" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivRandImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_oval_gray"
+        android:padding="@dimen/dp_8"
+        android:src="@drawable/ic_random_pic"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBoxImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivBoxImage"
+        app:layout_constraintTop_toTopOf="@+id/ivBoxImage" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvRadiusTitle"
         android:layout_width="wrap_content"

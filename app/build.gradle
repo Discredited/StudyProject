@@ -65,4 +65,6 @@ dependencies {
 
     //BaseRecyclerViewAdapter
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.1'
+
+    implementation 'github.hellocsl:GalleryLayoutManager:1.0.6'
 }

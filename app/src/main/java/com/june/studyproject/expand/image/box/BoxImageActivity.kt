@@ -9,15 +9,12 @@ import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.common.ConstHelper
 import kotlinx.android.synthetic.main.activity_box_image_view.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
-import timber.log.Timber
 
 class BoxImageActivity : BaseActivity() {
-
 
     private var mRadiusMax: Int = -1
     private val mSeekBarChangeListener = object : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            Timber.e("onProgressChanged:${seekBar.progress}")
             if (mRadiusMax < 0) {
                 mRadiusMax = ivBoxImage.width / 2
             }
@@ -26,13 +23,10 @@ class BoxImageActivity : BaseActivity() {
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {
-            Timber.e("onStartTrackingTouch:${seekBar.progress}")
         }
 
         override fun onStopTrackingTouch(seekBar: SeekBar) {
-            Timber.e("onStopTrackingTouch:${seekBar.progress}")
         }
-
     }
 
     override fun getLayoutResId(): Int = R.layout.activity_box_image_view
@@ -97,11 +91,13 @@ class BoxImageActivity : BaseActivity() {
             true
         }
 
-        ivBoxImage.loadImage(ConstHelper.getDiffImage())
         vRadiusSeek.setOnSeekBarChangeListener(mSeekBarChangeListener)
+
+        ivRandImage.setOnClickListener { ivBoxImage.loadImage(ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE)) }
     }
 
     override fun loadData() {
+        ivBoxImage.loadImage(ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE))
     }
 
     override fun onDestroy() {

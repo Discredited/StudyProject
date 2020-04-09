@@ -10,7 +10,8 @@ import com.june.imageabout.vo.ImageVo
 import kotlinx.android.synthetic.main.activity_image_watch.*
 
 /**
- * 大图展示控件
+ * 大图展示页面
+ * 需要自己注册ImageWatchActivity，方便配置Activity的Style
  */
 class ImageWatchActivity : AppCompatActivity() {
 
@@ -34,7 +35,10 @@ class ImageWatchActivity : AppCompatActivity() {
             adapter.setImageList(it)
         }
         val position = intent.getIntExtra("IMAGE_POSITION", 0)
-        vpImageWatch.currentItem = position
+        //smoothScroll false去掉翻页时的动画
+        if (position > 0) {
+            vpImageWatch.setCurrentItem(position, false)
+        }
     }
 
     override fun onDestroy() {
