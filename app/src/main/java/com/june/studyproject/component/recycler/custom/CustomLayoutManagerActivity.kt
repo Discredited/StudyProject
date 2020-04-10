@@ -31,6 +31,12 @@ class CustomLayoutManagerActivity : BaseActivity() {
             ContextCompat.getColor(this, R.color.color_style_1_2),
             ContextCompat.getColor(this, R.color.color_style_1_3),
             ContextCompat.getColor(this, R.color.color_style_1_4),
+            ContextCompat.getColor(this, R.color.color_style_1_5),
+
+            ContextCompat.getColor(this, R.color.color_style_1_1),
+            ContextCompat.getColor(this, R.color.color_style_1_2),
+            ContextCompat.getColor(this, R.color.color_style_1_3),
+            ContextCompat.getColor(this, R.color.color_style_1_4),
             ContextCompat.getColor(this, R.color.color_style_1_5)
         ))
     }

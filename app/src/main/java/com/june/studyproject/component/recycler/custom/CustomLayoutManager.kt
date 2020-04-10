@@ -50,8 +50,8 @@ class CustomLayoutManager(
             mMeasureHeight = height - paddingTop - paddingBottom
         }
 
-        mItemViewWidth = (mMeasureWidth * 0.87f).toInt()
-        mItemViewHeight = (mItemViewWidth * 1.46f).toInt()
+        mItemViewWidth = (mMeasureWidth * 0.95f).toInt()
+        mItemViewHeight = (mItemViewWidth * 1.5f).toInt()
         mItemCount = itemCount
         mScrollOffset = mItemViewHeight.coerceAtLeast(mScrollOffset).coerceAtMost(mItemCount * mItemViewHeight)
 
