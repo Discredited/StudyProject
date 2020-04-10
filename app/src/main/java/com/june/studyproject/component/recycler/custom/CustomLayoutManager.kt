@@ -39,25 +39,19 @@ class CustomLayoutManager(
     private var mItemViewHeight: Int = 0  //itemView高度
     private var mItemCount: Int = 0 //item数量
     private var mScrollOffset: Int = Int.MAX_VALUE
-
     private val mScale = 0.9
 
     override fun onLayoutChildren(recycler: RecyclerView.Recycler, state: RecyclerView.State) {
         if (state.itemCount == 0 || state.isPreLayout) return
+        removeAndRecycleAllViews(recycler)
 
         if (mMeasureWidth == 0 || mMeasureHeight == 0) {
             mMeasureWidth = width - paddingStart - paddingEnd
             mMeasureHeight = height - paddingTop - paddingBottom
         }
 
-        if (mItemViewWidth == 0 || mItemViewHeight == 0) {
-            mItemViewWidth = (mMeasureWidth * 0.87F).toInt()
-            mItemViewHeight = (mMeasureHeight * 1.46F).toInt()
-        }
-
-        //removeAndRecycleAllViews(recycler)
-        mItemViewWidth = (mItemViewWidth * 0.87f).toInt()
-        mItemViewHeight = (mItemViewHeight * 1.46f).toInt()
+        mItemViewWidth = (mMeasureWidth * 0.87f).toInt()
+        mItemViewHeight = (mItemViewWidth * 1.46f).toInt()
         mItemCount = itemCount
         mScrollOffset = mItemViewHeight.coerceAtLeast(mScrollOffset).coerceAtMost(mItemCount * mItemViewHeight)
 
