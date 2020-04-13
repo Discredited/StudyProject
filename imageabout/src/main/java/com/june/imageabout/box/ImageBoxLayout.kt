@@ -1,7 +1,6 @@
 package com.june.imageabout.box
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -27,8 +26,8 @@ class ImageBoxLayout @JvmOverloads constructor(
 
     private var mImageWidth: Int = 0 //图片宽度
     private var mImageHeight: Int = 0 //图片高度
-    private var mExpectImageWidth: Int = 540 //宽度预估值
-    private var mExpectImageHeight: Int = 720 //高度预估值
+    private var mExpectImageWidth: Int = 0 //宽度预估值
+    private var mExpectImageHeight: Int = 0 //高度预估值
     private var mImageGap = 10  //图片之前的间隙
 
     //在列表中首次获取width可能为0,所以需要一个默认LayoutParams大小的预设值
@@ -57,10 +56,19 @@ class ImageBoxLayout @JvmOverloads constructor(
             mExpectColumn = array.getInt(R.styleable.ImageBoxLayout_imageBoxExpectColumn, 3)
             mImageGap = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxGap, 5)
             mImageMax = array.getInt(R.styleable.ImageBoxLayout_imageBoxMax, 9)
-            mImageMaxOver = array.getBoolean(R.styleable.ImageBoxLayout_imageBoxMaxOver, true)
+            mImageMaxOver = array.getBoolean(R.styleable.ImageBoxLayout_imageBoxMaxOver, false)
             mImageRadius = array.getDimension(R.styleable.ImageBoxLayout_imageBoxRadius, 0F)
+            mExpectImageWidth = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxDefaultWidth, 0)
+            mExpectImageHeight = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxDefaultHeight, 0)
         } finally {
             array.recycle()
+        }
+
+        if (mExpectImageWidth == 0) {
+            mExpectImageWidth = 540
+        }
+        if (mExpectImageHeight == 0) {
+            mExpectImageHeight = 720
         }
     }
 
@@ -68,10 +76,8 @@ class ImageBoxLayout @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height: Int = if (mImageList.size == 1) {
-            if (mImageWidth == 0) {
+            if (mImageWidth == 0 || mImageHeight == 0) {
                 mImageWidth = mExpectImageWidth
-            }
-            if (mImageHeight == 0) {
                 mImageHeight = mExpectImageHeight
             }
             mImageHeight
@@ -202,6 +208,11 @@ class ImageBoxLayout @JvmOverloads constructor(
             val vo = list[0]
             mImageWidth = vo.width
             mImageHeight = vo.height
+            //如果宽高为0 设置推荐宽高
+            if (mImageWidth == 0 || mImageHeight == 0) {
+                mImageWidth = mExpectImageWidth
+                mImageHeight = mExpectImageHeight
+            }
 
             val cacheImageView = getImageViewFromCache(0)
             addView(cacheImageView, getDefaultParams(mImageWidth, mImageHeight))

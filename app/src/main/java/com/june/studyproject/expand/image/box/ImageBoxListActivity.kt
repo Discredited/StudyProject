@@ -63,8 +63,8 @@ class ImageBoxListActivity : BaseActivity() {
         val random = (Math.random() * 15).toInt()
         val list = mutableListOf<ImageVo>()
         if (random <= 1) {
-            val width = 540
-            val height = 720
+            val width = 0
+            val height = 0
             val diffImage = ConstHelper.getDiffImage(1)
             list.add(ImageVo(diffImage[0], diffImage[0], width, height))
         } else {

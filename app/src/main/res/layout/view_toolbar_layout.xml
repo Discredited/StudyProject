@@ -22,8 +22,8 @@
         android:gravity="center"
         android:lines="1"
         android:maxWidth="@dimen/dp_200"
-        android:textColor="@color/color_text_33"
-        android:textSize="@dimen/sp_18"
+        android:textColor="@color/color_text_223253"
+        android:textSize="@dimen/sp_20"
         tools:text="This is 标题This is 标题This is 标题This is 标题" />
 
 </com.google.android.material.appbar.MaterialToolbar>

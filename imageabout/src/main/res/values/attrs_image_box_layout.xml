@@ -10,5 +10,7 @@
         <attr name="imageBoxMax" format="integer" />
         <attr name="imageBoxMaxOver" format="boolean" />
         <attr name="imageBoxRadius" format="dimension" />
+        <attr name="imageBoxDefaultWidth" format="dimension" />
+        <attr name="imageBoxDefaultHeight" format="dimension" />
     </declare-styleable>
 </resources>
