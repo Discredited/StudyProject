@@ -2,33 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/color_green">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_random"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExpand"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dp_56"
-        android:layout_marginStart="@dimen/common_margin"
-        android:layout_marginEnd="@dimen/common_margin"
-        android:layout_marginBottom="@dimen/dp_56"
-        android:gravity="center"
-        android:text="@string/str_expand"
-        android:textSize="@dimen/sp_30"
+        android:layout_height="0dp"
+        android:background="@color/color_text_33"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_start_image_box"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dp_56"
-        android:layout_marginStart="@dimen/common_margin"
-        android:layout_marginEnd="@dimen/common_margin"
-        android:gravity="center"
-        android:text="@string/str_expand"
-        android:textSize="@dimen/sp_30"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
