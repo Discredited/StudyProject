@@ -6,11 +6,19 @@
             <enum name="square" value="1" />
         </attr>
         <attr name="imageBoxExpectColumn" format="integer" />
+        <!-- 固定列数 -->
+        <attr name="imageBoxFixedColumn" format="boolean" />
         <attr name="imageBoxGap" format="dimension" />
         <attr name="imageBoxMax" format="integer" />
         <attr name="imageBoxMaxOver" format="boolean" />
         <attr name="imageBoxRadius" format="dimension" />
-        <attr name="imageBoxDefaultWidth" format="dimension" />
-        <attr name="imageBoxDefaultHeight" format="dimension" />
+        <!-- 单张图片的宽高 -->
+        <attr name="imageBoxSingleWidth" format="dimension" />
+        <attr name="imageBoxSingleHeight" format="dimension" />
+        <!-- 单张图片的显示样式 -->
+        <attr name="imageBoxSingleStyle" format="integer">
+            <enum name="fixed" value="0" />
+            <enum name="scale" value="1" />
+        </attr>
     </declare-styleable>
 </resources>

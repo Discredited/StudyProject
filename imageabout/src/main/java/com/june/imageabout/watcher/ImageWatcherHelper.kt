@@ -1,12 +1,13 @@
 package com.june.imageabout.watcher
 
 import com.june.imageabout.box.ImageBoxLoader
+import com.june.imageabout.vo.ImageVo
 
 class ImageWatcherHelper private constructor() {
 
-    var mImageLoader: ImageBoxLoader? = null
+    var mImageLoader: ImageBoxLoader<ImageVo>? = null
 
-    fun setImageLoader(loader: ImageBoxLoader) {
+    fun setImageLoader(loader: ImageBoxLoader<ImageVo>) {
         mImageLoader = loader
     }
 

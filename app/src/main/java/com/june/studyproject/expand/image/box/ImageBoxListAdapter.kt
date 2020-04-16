@@ -2,6 +2,8 @@ package com.june.studyproject.expand.image.box
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.june.imageabout.box.ImageBoxLayout
+import com.june.imageabout.vo.ImageVo
 import com.june.studyproject.R
 import kotlinx.android.synthetic.main.item_image_box.view.*
 
@@ -10,8 +12,10 @@ class ImageBoxListAdapter : BaseQuickAdapter<ImageBoxItemVo, BaseViewHolder>(R.l
     val imageLoader = ImageLoader()
 
     override fun convert(helper: BaseViewHolder, item: ImageBoxItemVo) {
+        val imageBoxLayout = helper.itemView.findViewById<ImageBoxLayout<ImageVo>>(R.id.v_image_box)
+
         helper.itemView.tv_image.text = item.title
-        helper.itemView.v_image_box.setImageLoader(imageLoader)
-        helper.itemView.v_image_box.setImageList(item.list)
+        imageBoxLayout.setImageLoader(imageLoader)
+        imageBoxLayout.setImageList(item.list)
     }
 }

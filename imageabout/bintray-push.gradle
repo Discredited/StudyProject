@@ -7,7 +7,7 @@ def gitUrl = 'https://github.com/Discredited/StudyProject.git'   // Git仓库的
 // Maven Group ID for the artifact，一般填你唯一的包名
 group = "com.june.imageabout"
 // 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
-version = "1.0.1"
+version = "1.0.4"
 
 install {
     repositories.mavenInstaller {

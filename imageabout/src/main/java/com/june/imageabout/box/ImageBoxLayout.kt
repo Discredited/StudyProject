@@ -1,14 +1,15 @@
 package com.june.imageabout.box
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.june.imageabout.R
-import com.june.imageabout.vo.ImageVo
+import timber.log.Timber
 
-class ImageBoxLayout @JvmOverloads constructor(
+class ImageBoxLayout<T> @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
@@ -20,6 +21,9 @@ class ImageBoxLayout @JvmOverloads constructor(
         // 1 2
         // 3 4
         const val FOUR_STYLE_SQUARE = 1
+
+        const val SINGLE_STYLE_FIXED = 0  //固定宽高(1:1)显示
+        const val SINGLE_STYLE_SCALE = 1  //按比例显示
     }
 
     private var mFourStyle: Int = 0
@@ -28,6 +32,7 @@ class ImageBoxLayout @JvmOverloads constructor(
     private var mImageHeight: Int = 0 //图片高度
     private var mExpectImageWidth: Int = 0 //宽度预估值
     private var mExpectImageHeight: Int = 0 //高度预估值
+    private var mSingleStyle: Int = 0 //单张图片的显示类型
     private var mImageGap = 10  //图片之前的间隙
 
     //在列表中首次获取width可能为0,所以需要一个默认LayoutParams大小的预设值
@@ -36,14 +41,16 @@ class ImageBoxLayout @JvmOverloads constructor(
     private var mRow: Int = 0
     private var mColumn: Int = 0
     private var mExpectColumn: Int = 3  //默认显示三列
+    private var mFixedColumn: Boolean = false //固定列数
+
     private var mImageMax = 9  //图片最大显示数量 -1表示不限制
     private var mImageMaxOver = false //是否显示超过Max的图片数量
 
     private var mImageRadius: Float = 0F  //图片圆角
 
-    private var mImageBoxLoader: ImageBoxLoader? = null
+    private var mImageBoxLoader: ImageBoxLoader<T>? = null
 
-    private val mImageList: MutableList<ImageVo> = mutableListOf()
+    private val mImageList: MutableList<T> = mutableListOf()
     private val mImageViewCache: MutableList<BoxImageView> = mutableListOf()
 
     init {
@@ -57,18 +64,22 @@ class ImageBoxLayout @JvmOverloads constructor(
             mImageGap = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxGap, 5)
             mImageMax = array.getInt(R.styleable.ImageBoxLayout_imageBoxMax, 9)
             mImageMaxOver = array.getBoolean(R.styleable.ImageBoxLayout_imageBoxMaxOver, false)
+            mFixedColumn = array.getBoolean(R.styleable.ImageBoxLayout_imageBoxFixedColumn, false)
             mImageRadius = array.getDimension(R.styleable.ImageBoxLayout_imageBoxRadius, 0F)
-            mExpectImageWidth = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxDefaultWidth, 0)
-            mExpectImageHeight = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxDefaultHeight, 0)
+            mExpectImageWidth = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxSingleWidth, 0)
+            mExpectImageHeight = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxSingleHeight, 0)
+            mSingleStyle = array.getInt(R.styleable.ImageBoxLayout_imageBoxSingleStyle, SINGLE_STYLE_FIXED)
         } finally {
             array.recycle()
         }
 
+        //单张图片推荐宽度
         if (mExpectImageWidth == 0) {
             mExpectImageWidth = 540
         }
+        //单张图片推荐高度
         if (mExpectImageHeight == 0) {
-            mExpectImageHeight = 720
+            mExpectImageHeight = 540
         }
     }
 
@@ -76,9 +87,14 @@ class ImageBoxLayout @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height: Int = if (mImageList.size == 1) {
-            if (mImageWidth == 0 || mImageHeight == 0) {
-                mImageWidth = mExpectImageWidth
-                mImageHeight = mExpectImageHeight
+            if (mFixedColumn) {
+                mImageWidth = (width - paddingStart - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
+                mImageHeight = mImageWidth
+            } else {
+                if (mImageWidth == 0 || mImageHeight == 0) {
+                    mImageWidth = mExpectImageWidth
+                    mImageHeight = mExpectImageHeight
+                }
             }
             mImageHeight
         } else {
@@ -116,8 +132,10 @@ class ImageBoxLayout @JvmOverloads constructor(
         }
     }
 
-    private fun getDefaultParams(width: Int = mExpectLayoutParamsSize,
-                                 height: Int = mExpectLayoutParamsSize): LayoutParams {
+    private fun getDefaultParams(
+        width: Int = mExpectLayoutParamsSize,
+        height: Int = mExpectLayoutParamsSize
+    ): LayoutParams {
         return LayoutParams(width, height)
     }
 
@@ -180,11 +198,11 @@ class ImageBoxLayout @JvmOverloads constructor(
         return rowColumn
     }
 
-    fun setImageLoader(loader: ImageBoxLoader) {
+    fun setImageLoader(loader: ImageBoxLoader<T>) {
         mImageBoxLoader = loader
     }
 
-    fun setImageList(list: MutableList<ImageVo>) {
+    fun setImageList(list: MutableList<T>) {
         if (list.isEmpty()) {
             visibility = View.GONE
         }
@@ -205,14 +223,21 @@ class ImageBoxLayout @JvmOverloads constructor(
             //单张图片
             mRow = rowColumn[0]
             mColumn = rowColumn[1]
-            val vo = list[0]
-            mImageWidth = vo.width
-            mImageHeight = vo.height
+            //val vo = list[0]
+            if (mFixedColumn) {
+                mImageWidth = (width - paddingStart - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
+                mImageHeight = mImageWidth
+            } else {
+                mImageWidth = mImageBoxLoader?.singleImageWidth(list[0], mSingleStyle) ?: 0
+                mImageHeight = mImageBoxLoader?.singleImageHeight(list[0], mSingleStyle) ?: 0
+            }
             //如果宽高为0 设置推荐宽高
-            if (mImageWidth == 0 || mImageHeight == 0) {
+            if (mImageWidth <= 0 || mImageHeight <= 0) {
                 mImageWidth = mExpectImageWidth
                 mImageHeight = mExpectImageHeight
             }
+
+            Timber.e("mImageWidth$mImageWidth    mImageHeight:$mImageHeight")
 
             val cacheImageView = getImageViewFromCache(0)
             addView(cacheImageView, getDefaultParams(mImageWidth, mImageHeight))

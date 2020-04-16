@@ -20,12 +20,12 @@
         android:id="@+id/v_image_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:imageBoxDefaultHeight="@dimen/dp_320"
-        app:imageBoxDefaultWidth="@dimen/dp_240"
         app:imageBoxExpectColumn="3"
         app:imageBoxFourStyle="normal"
         app:imageBoxGap="@dimen/dp_2"
         app:imageBoxMax="9"
         app:imageBoxMaxOver="true"
-        app:imageBoxRadius="@dimen/dp_5" />
+        app:imageBoxRadius="@dimen/dp_5"
+        app:imageBoxSingleHeight="@dimen/dp_280"
+        app:imageBoxSingleWidth="@dimen/dp_280" />
 </androidx.appcompat.widget.LinearLayoutCompat>
