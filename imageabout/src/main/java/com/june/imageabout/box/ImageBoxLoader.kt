@@ -8,7 +8,7 @@ import android.widget.ImageView
 interface ImageBoxLoader<T> {
 
     //加载图片
-    fun loadImage(imageView: ImageView, image: T, position: Int)
+    fun loadImage(imageView: ImageView, image: T, position: Int, width: Int, height: Int)
 
     //点击事件
     fun clickImage(imageView: ImageView, imageList: MutableList<T>, position: Int)

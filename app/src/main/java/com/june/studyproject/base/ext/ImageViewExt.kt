@@ -6,6 +6,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.june.studyproject.R
+import timber.log.Timber
 
 /////////////////////测试
 fun ImageView.loadCircleImage(
@@ -28,7 +29,10 @@ fun ImageView.loadRoundImage(
         .into(this)
 }
 
-fun ImageView.loadImageBoxItem(url: String) {
+fun ImageView.loadImageBoxItem(url: String, width: Int, height: Int) {
+
+    Timber.i("width:$width    height:$height")
+
     Glide.with(context)
         .load(url)
         .transform(CenterCrop())

@@ -1,6 +1,8 @@
 package com.june.studyproject.expand.image.box
 
 import androidx.lifecycle.lifecycleScope
+import com.blankj.utilcode.util.ScreenUtils
+import com.blankj.utilcode.util.SizeUtils
 import com.june.imageabout.vo.ImageVo
 import com.june.imageabout.watcher.ImageWatcherHelper
 import com.june.studyproject.R
@@ -37,6 +39,9 @@ class ImageBoxListActivity : BaseActivity() {
             val item = adapter.getItem(position) as ImageBoxItemVo
             Toast.showShort(item.title)
         }
+
+        ScreenUtils.getAppScreenWidth()
+
         rv_image_box.setLinearManager()
         rv_image_box.adapter = adapter
         rv_image_box.setHasFixedSize(true)

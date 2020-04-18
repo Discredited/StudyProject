@@ -1,7 +1,6 @@
 package com.june.imageabout.box
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -32,16 +31,16 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
     private var mImageHeight: Int = 0 //图片高度
     private var mExpectImageWidth: Int = 0 //宽度预估值
     private var mExpectImageHeight: Int = 0 //高度预估值
-    private var mSingleStyle: Int = 0 //单张图片的显示类型
     private var mImageGap = 10  //图片之前的间隙
+    private var mSingleStyle: Int = 0 //单张图片的显示类型
+    private var mSingleFixedColumn: Boolean = false //固定列数  及单张图片时也按照列数设置宽高
 
     //在列表中首次获取width可能为0,所以需要一个默认LayoutParams大小的预设值
-    private var mExpectLayoutParamsSize: Int = 400//默认LayoutParams推荐大小
+    private var mExpectLayoutParamsSize: Int = 300//默认LayoutParams推荐大小
 
     private var mRow: Int = 0
     private var mColumn: Int = 0
     private var mExpectColumn: Int = 3  //默认显示三列
-    private var mFixedColumn: Boolean = false //固定列数
 
     private var mImageMax = 9  //图片最大显示数量 -1表示不限制
     private var mImageMaxOver = false //是否显示超过Max的图片数量
@@ -54,7 +53,12 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
     private val mImageViewCache: MutableList<BoxImageView> = mutableListOf()
 
     init {
-        val array = context.obtainStyledAttributes(attrs, R.styleable.ImageBoxLayout, defStyleAttr, 0)
+        val array = context.obtainStyledAttributes(
+            attrs,
+            R.styleable.ImageBoxLayout,
+            defStyleAttr,
+            0
+        )
         try {
             mFourStyle = array.getInt(
                 R.styleable.ImageBoxLayout_imageBoxFourStyle,
@@ -64,11 +68,23 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
             mImageGap = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxGap, 5)
             mImageMax = array.getInt(R.styleable.ImageBoxLayout_imageBoxMax, 9)
             mImageMaxOver = array.getBoolean(R.styleable.ImageBoxLayout_imageBoxMaxOver, false)
-            mFixedColumn = array.getBoolean(R.styleable.ImageBoxLayout_imageBoxFixedColumn, false)
+            mSingleFixedColumn = array.getBoolean(
+                R.styleable.ImageBoxLayout_imageBoxFixedColumn,
+                false
+            )
             mImageRadius = array.getDimension(R.styleable.ImageBoxLayout_imageBoxRadius, 0F)
-            mExpectImageWidth = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxSingleWidth, 0)
-            mExpectImageHeight = array.getDimensionPixelSize(R.styleable.ImageBoxLayout_imageBoxSingleHeight, 0)
-            mSingleStyle = array.getInt(R.styleable.ImageBoxLayout_imageBoxSingleStyle, SINGLE_STYLE_FIXED)
+            mExpectImageWidth = array.getDimensionPixelSize(
+                R.styleable.ImageBoxLayout_imageBoxSingleWidth,
+                0
+            )
+            mExpectImageHeight = array.getDimensionPixelSize(
+                R.styleable.ImageBoxLayout_imageBoxSingleHeight,
+                0
+            )
+            mSingleStyle = array.getInt(
+                R.styleable.ImageBoxLayout_imageBoxSingleStyle,
+                SINGLE_STYLE_FIXED
+            )
         } finally {
             array.recycle()
         }
@@ -87,7 +103,7 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height: Int = if (mImageList.size == 1) {
-            if (mFixedColumn) {
+            if (mSingleFixedColumn) {
                 mImageWidth = (width - paddingStart - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
                 mImageHeight = mImageWidth
             } else {
@@ -224,7 +240,7 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
             mRow = rowColumn[0]
             mColumn = rowColumn[1]
             //val vo = list[0]
-            if (mFixedColumn) {
+            if (mSingleFixedColumn) {
                 mImageWidth = (width - paddingStart - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
                 mImageHeight = mImageWidth
             } else {
@@ -237,11 +253,10 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
                 mImageHeight = mExpectImageHeight
             }
 
-            Timber.e("mImageWidth$mImageWidth    mImageHeight:$mImageHeight")
-
             val cacheImageView = getImageViewFromCache(0)
             addView(cacheImageView, getDefaultParams(mImageWidth, mImageHeight))
-            mImageBoxLoader?.loadImage(cacheImageView, list[0], 0)
+            Timber.i("width:${cacheImageView.width}    height:${cacheImageView.height}    measureWidth:${cacheImageView.measuredWidth}    measureHeight:${cacheImageView.measuredHeight}")
+            mImageBoxLoader?.loadImage(cacheImageView, list[0], 0, mImageWidth, mImageHeight)
         } else {
             //多张图片
             mRow = rowColumn[0]
@@ -264,7 +279,13 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
                     cacheImageView,
                     getDefaultParams(mExpectLayoutParamsSize, mExpectLayoutParamsSize)
                 )
-                mImageBoxLoader?.loadImage(cacheImageView, vo, index)
+                mImageBoxLoader?.loadImage(
+                    cacheImageView,
+                    vo,
+                    index,
+                    mExpectLayoutParamsSize,
+                    mExpectLayoutParamsSize
+                )
             }
         }
         //Timber.e("当前ImageWidth:$mImageWidth  ImageHeight:$mImageHeight    width:$width,height:$height")

@@ -9,8 +9,12 @@ import com.june.studyproject.base.ext.loadImageBoxItem
 
 class ImageLoader : ImageBoxLoader<ImageVo> {
 
-    override fun loadImage(imageView: ImageView, image: ImageVo, position: Int) {
-        imageView.loadImageBoxItem(image.url)
+    override fun loadImage(imageView: ImageView,
+                           image: ImageVo,
+                           position: Int,
+                           width: Int,
+                           height: Int) {
+        imageView.loadImageBoxItem(image.url, width, height)
     }
 
     override fun clickImage(imageView: ImageView, imageList: MutableList<ImageVo>, position: Int) {
