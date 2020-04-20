@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_example.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
 /**
- * @author <a href="mailto:xujun@snqu.com">徐俊</a>
+ * @author <a href="mailto:xujun@snqu.com">June</a>
  * @description
  * 包含：
  * Activity生命周期

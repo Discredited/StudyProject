@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.view_toolbar_layout.*
 import timber.log.Timber
 
 /**
- * @author <a href="mailto:xujun@snqu.com">徐俊</a>
+ * @author <a href="mailto:xujun@snqu.com">June</a>
  * @description Activity生命周期演示二
  * @version 1.0.0
  * @time 2020/3/30

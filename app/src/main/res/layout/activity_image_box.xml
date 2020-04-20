@@ -19,7 +19,18 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvBoxImageList"
+        android:id="@+id/tvBoxImageLayout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_62"
+        android:gravity="center"
+        android:text="ImageBoxLayout"
+        android:textSize="@dimen/sp_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBoxImageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBoxImageLayoutList"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_62"
         android:gravity="center"
@@ -27,5 +38,5 @@
         android:textSize="@dimen/sp_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBoxImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBoxImageLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

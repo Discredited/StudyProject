@@ -39,6 +39,7 @@
         <activity android:name="com.june.imageabout.watcher.ImageWatchActivity" />
         <activity android:name=".component.recycler.RecyclerActivity" />
         <activity android:name=".component.recycler.custom.CustomLayoutManagerActivity" />
+        <activity android:name=".expand.image.box.ImageBoxLayoutActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

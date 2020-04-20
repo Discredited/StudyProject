@@ -293,4 +293,16 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
         mImageList.clear()
         mImageList.addAll(list)
     }
+
+    fun setFourStyle(style: Int) {
+        mFourStyle = style
+    }
+
+    fun setExpectColumn(column: Int) {
+        mExpectColumn = column
+    }
+
+    fun setImageRadius(radius: Float) {
+        mImageRadius = radius
+    }
 }

@@ -17,7 +17,10 @@ class ImageBoxActivity : BaseActivity() {
         tvBoxImageView.setOnClickListener {
             startActivity(Intent(this, BoxImageActivity::class.java))
         }
-        tvBoxImageList.setOnClickListener {
+        tvBoxImageLayout.setOnClickListener {
+            startActivity(Intent(this, ImageBoxLayoutActivity::class.java))
+        }
+        tvBoxImageLayoutList.setOnClickListener {
             startActivity(Intent(this, ImageBoxListActivity::class.java))
         }
     }

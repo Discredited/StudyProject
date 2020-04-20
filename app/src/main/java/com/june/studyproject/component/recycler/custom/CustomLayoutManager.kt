@@ -8,7 +8,7 @@ import kotlin.math.floor
 import kotlin.math.pow
 
 /**
- * @author <a href="mailto:xujun@snqu.com">徐俊</a>
+ * @author <a href="mailto:xujun@snqu.com">June</a>
  * @description 自定义LayoutManger
  * @version 1.0.0
  * @time 2020/4/9 16:16

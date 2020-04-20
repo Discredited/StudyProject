@@ -1,10 +1,9 @@
-package com.june.imageabout.vo
+package com.june.studyproject.expand.image.box
 
 import android.os.Parcel
 import android.os.Parcelable
 
-@Deprecated("ImageVo")
-class ImageVo(
+class MediaVo(
     val url: String,
     val thumbnail: String,
     val width: Int,
@@ -27,14 +26,13 @@ class ImageVo(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<ImageVo> {
-        override fun createFromParcel(parcel: Parcel): ImageVo {
-            return ImageVo(parcel)
+    companion object CREATOR : Parcelable.Creator<MediaVo> {
+        override fun createFromParcel(parcel: Parcel): MediaVo {
+            return MediaVo(parcel)
         }
 
-        override fun newArray(size: Int): Array<ImageVo?> {
+        override fun newArray(size: Int): Array<MediaVo?> {
             return arrayOfNulls(size)
         }
     }
-
 }
