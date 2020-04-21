@@ -141,10 +141,10 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
             val childRight = childLeft + mImageWidth
             val childTop = row * (mImageHeight + mImageGap) + paddingTop
             val childBottom = childTop + mImageHeight
-//            Timber.e(
-//                "layout=>childCount:$childCount    index:$index    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom"
-//            )
             child.layout(childLeft, childTop, childRight, childBottom)
+            Timber.e(
+                "layout=>childCount:$childCount    index:$index    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom    width:${child.width}    height:width:${child.height} "
+            )
         }
     }
 
@@ -165,13 +165,11 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
                 (cacheImageView.parent as ViewGroup).removeView(cacheImageView)
             }
             cacheImageView.resetMaxOver()
-            //Timber.e("position:$position    cacheImageView直接从缓存中读取  ${mImageViewCache.size}")
             cacheImageView
         } else {
             //创建新的ImageView并添加至缓存
             val newImageView = BoxImageView(context)
             mImageViewCache.add(newImageView)
-            //Timber.e("position:$position    newImageView创建新的ImageView  ${mImageViewCache.size}")
             newImageView.setCorner(mImageRadius, invalidate = false)
             newImageView.setOnClickListener {
                 if (position >= 0 && position < mImageList.size) {
@@ -223,8 +221,6 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
             visibility = View.GONE
         }
 
-//        Timber.e("----------------------------------------")
-//        Timber.e("当前ImageVo数量：${list.size}")
         removeAllViews()
 
         //获取行列
@@ -235,10 +231,12 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
         } else {
             0
         }
+
+        mRow = rowColumn[0]
+        mColumn = rowColumn[1]
+
         if (imageSize == 1) {
             //单张图片
-            mRow = rowColumn[0]
-            mColumn = rowColumn[1]
             //val vo = list[0]
             if (mSingleFixedColumn) {
                 mImageWidth = (width - paddingStart - paddingEnd - mImageGap * (mExpectColumn - 1)) / mExpectColumn
@@ -259,8 +257,6 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
             mImageBoxLoader?.loadImage(cacheImageView, list[0], 0, mImageWidth, mImageHeight)
         } else {
             //多张图片
-            mRow = rowColumn[0]
-            mColumn = rowColumn[1]
 
             //在列表中首次加载该布局时，getWidth == 0
             //此时只能使用默认的mExpectLayoutParamsSize推荐值大小
@@ -288,7 +284,6 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
                 )
             }
         }
-        //Timber.e("当前ImageWidth:$mImageWidth  ImageHeight:$mImageHeight    width:$width,height:$height")
 
         mImageList.clear()
         mImageList.addAll(list)
@@ -296,13 +291,28 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
 
     fun setFourStyle(style: Int) {
         mFourStyle = style
+        val rowColumn = getRowColumn(mImageList.size, mFourStyle)
+        mRow = rowColumn[0]
+        mColumn = rowColumn[1]
     }
 
     fun setExpectColumn(column: Int) {
         mExpectColumn = column
+        val rowColumn = getRowColumn(mImageList.size, mFourStyle)
+        mRow = rowColumn[0]
+        mColumn = rowColumn[1]
     }
 
     fun setImageRadius(radius: Float) {
         mImageRadius = radius
+        mImageViewCache.forEach {
+            it.setCorner(radius)
+        }
     }
+
+    fun clearImageViewCache() {
+        mImageViewCache.clear()
+    }
+
+    fun getImageList(): MutableList<T> = mImageList
 }

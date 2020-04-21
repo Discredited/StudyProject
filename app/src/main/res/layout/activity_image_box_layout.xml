@@ -1,111 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <include layout="@layout/view_toolbar_layout" />
 
-    <FrameLayout
-        android:id="@+id/flContainer"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="H,1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_48"
+        android:fillViewport="true">
 
         <com.june.imageabout.box.ImageBoxLayout
             android:id="@+id/vImageBoxLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center" />
-    </FrameLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flContainer">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvColumnTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_56"
-                android:layout_marginStart="@dimen/common_margin"
-                android:gravity="center"
-                android:text="列数"
-                android:textColor="@color/color_text_66"
-                android:textSize="@dimen/sp_16"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinnerColumn"
-                android:layout_width="@dimen/dp_80"
-                android:layout_height="@dimen/dp_56"
-                android:layout_marginStart="@dimen/common_margin"
-                app:layout_constraintBottom_toBottomOf="@+id/tvColumnTitle"
-                app:layout_constraintStart_toEndOf="@+id/tvColumnTitle"
-                app:layout_constraintTop_toTopOf="@+id/tvColumnTitle" />
-
-            <RadioGroup
-                android:id="@+id/rgStyleGroup"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp_56"
-                android:layout_marginStart="@dimen/common_margin"
-                android:layout_marginEnd="@dimen/common_margin"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/tvColumnTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/spinnerColumn"
-                app:layout_constraintTop_toTopOf="@+id/tvColumnTitle">
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rbStyleNormal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="normal" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rbStyleSquare"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/common_margin"
-                    android:text="square" />
-            </RadioGroup>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvImageGapTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_56"
-                android:layout_marginStart="@dimen/common_margin"
-                android:gravity="center"
-                android:text="间距"
-                android:textColor="@color/color_text_66"
-                android:textSize="@dimen/sp_16"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvColumnTitle" />
-
-            <androidx.appcompat.widget.AppCompatSeekBar
-                android:id="@+id/sbImageGapSeek"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp_40"
-                android:layout_marginStart="@dimen/common_margin"
-                android:layout_marginEnd="@dimen/common_margin"
-                android:max="100"
-                android:progress="0"
-                app:layout_constraintBottom_toBottomOf="@id/tvImageGapTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvImageGapTitle"
-                app:layout_constraintTop_toTopOf="@id/tvImageGapTitle" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin"
+            android:layout_marginBottom="@dimen/common_margin" />
     </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/flBottomSheetContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:behavior_peekHeight="@dimen/dp_56"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
