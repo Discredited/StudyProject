@@ -14,7 +14,7 @@ import timber.log.Timber
 
 class ImageBoxLayoutActivity : BaseActivity() {
 
-    private var mBottomSheet: BottomSheetBehavior<FrameLayout>? = null
+    private var mBottomSheetBehavior: BottomSheetBehavior<FrameLayout>? = null
     private lateinit var mImageBoxLayout: ImageBoxLayout<MediaVo>
 
     override fun getLayoutResId(): Int = R.layout.activity_image_box_layout
@@ -23,10 +23,20 @@ class ImageBoxLayoutActivity : BaseActivity() {
         mImageBoxLayout = findViewById(R.id.vImageBoxLayout)
         mImageBoxLayout.setImageLoader(ImageLoader())
 
-        toolbar.initToolbar(javaClass.simpleName)
+        toolbar.initToolbar(javaClass.simpleName, R.menu.menu_more_black)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
+        toolbar.setOnMenuItemClickListener {
+            //open panel
+            mBottomSheetBehavior?.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+            true
+        }
 
-        mBottomSheet = BottomSheetBehavior.from(flBottomSheetContainer)
-        mBottomSheet?.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+        mBottomSheetBehavior = BottomSheetBehavior.from(flBottomSheetContainer)
+        mBottomSheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
+        mBottomSheetBehavior?.setUpdateImportantForAccessibilityOnSiblings(true)
+        mBottomSheetBehavior?.isFitToContents = true
+        mBottomSheetBehavior?.halfExpandedRatio = 0.4f
+        mBottomSheetBehavior?.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 Timber.e("slideOffset:$slideOffset")
             }

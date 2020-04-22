@@ -30,7 +30,7 @@
             android:layout_height="@dimen/dp_56"
             android:layout_marginStart="@dimen/common_margin"
             android:gravity="center"
-            android:text="列数"
+            android:text="@string/str_column"
             android:textColor="@color/color_text_66"
             android:textSize="@dimen/sp_16"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,14 +62,14 @@
                 android:id="@+id/rbStyleNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="normal" />
+                android:text="@string/image_box_normal" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/rbStyleSquare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/common_margin"
-                android:text="square" />
+                android:text="@string/image_box_square" />
         </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -78,7 +78,7 @@
             android:layout_height="@dimen/dp_56"
             android:layout_marginStart="@dimen/common_margin"
             android:gravity="center"
-            android:text="间距"
+            android:text="@string/str_gap"
             android:textColor="@color/color_text_66"
             android:textSize="@dimen/sp_16"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,11 +90,36 @@
             android:layout_height="@dimen/dp_40"
             android:layout_marginStart="@dimen/common_margin"
             android:layout_marginEnd="@dimen/common_margin"
-            android:max="100"
-            android:progress="0"
+            android:max="60"
+            android:progress="10"
             app:layout_constraintBottom_toBottomOf="@id/tvImageGapTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvImageGapTitle"
             app:layout_constraintTop_toTopOf="@id/tvImageGapTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvImageRadiusTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginStart="@dimen/common_margin"
+            android:gravity="center"
+            android:text="@string/str_radius"
+            android:textColor="@color/color_text_66"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvImageGapTitle" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/sbImageRadiusSeek"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="@dimen/common_margin"
+            android:layout_marginEnd="@dimen/common_margin"
+            android:max="100"
+            android:progress="0"
+            app:layout_constraintBottom_toBottomOf="@id/tvImageRadiusTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvImageRadiusTitle"
+            app:layout_constraintTop_toTopOf="@id/tvImageRadiusTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

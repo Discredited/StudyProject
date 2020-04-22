@@ -303,15 +303,15 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
         mColumn = rowColumn[1]
     }
 
+    fun setImageGap(gap: Int) {
+        mImageGap = gap
+    }
+
     fun setImageRadius(radius: Float) {
         mImageRadius = radius
         mImageViewCache.forEach {
             it.setCorner(radius)
         }
-    }
-
-    fun clearImageViewCache() {
-        mImageViewCache.clear()
     }
 
     fun getImageList(): MutableList<T> = mImageList

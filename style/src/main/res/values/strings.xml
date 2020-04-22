@@ -38,6 +38,15 @@
     <string name="str_rx_java">Rx Java</string>
     <string name="str_next">next</string>
     <string name="str_radius">圆角</string>
+    <string name="str_gap">间距</string>
 
     <string name="str_display_title">- %s -</string>
+
+
+    <!-- ImageBoxLayout Begin -->
+    <string name="image_box_current_images">当前生成了%d张图片</string>
+    <string name="image_box_normal">normal</string>
+    <string name="image_box_square">square</string>
+    <string name="str_column">列数</string>
+    <!-- ImageBoxLayout End -->
 </resources>

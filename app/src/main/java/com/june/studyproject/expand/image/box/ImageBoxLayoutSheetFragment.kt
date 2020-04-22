@@ -20,6 +20,21 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
 
     private var mImageBoxLayout: ImageBoxLayout<MediaVo>? = null
 
+    //间距
+    private val mGapSeekBarListener = object : SeekBar.OnSeekBarChangeListener {
+        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        }
+
+        override fun onStartTrackingTouch(seekBar: SeekBar) {
+        }
+
+        override fun onStopTrackingTouch(seekBar: SeekBar) {
+            mImageBoxLayout?.setImageGap(seekBar.progress)
+            mImageBoxLayout?.requestLayout()
+        }
+    }
+
+    //圆角
     private val mRadiusSeekBarListener = object : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
         }
@@ -71,13 +86,21 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
             }
         }
 
+        //设置Gap
+        sbImageGapSeek.setOnSeekBarChangeListener(mGapSeekBarListener)
+
         //设置Radius
-        sbImageGapSeek.setOnSeekBarChangeListener(mRadiusSeekBarListener)
+        sbImageRadiusSeek.setOnSeekBarChangeListener(mRadiusSeekBarListener)
 
         //设置更新数据源
         tvImageCount.setOnClickListener {
             mImageBoxLayout?.let {
-                ConstHelper.getDiffImage((Math.random() * 20).toInt())
+                val diffImage = ConstHelper.getDiffImage((Math.random() * 20).toInt())
+                val list = diffImage.map { url ->
+                    MediaVo(url, url, 0, 0)
+                }.toMutableList()
+                it.setImageList(list)
+                tvImageCount?.text = getString(R.string.image_box_current_images, list.size)
             }
         }
     }
@@ -85,7 +108,8 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mImageBoxLayout = activity?.findViewById(R.id.vImageBoxLayout)
-        tvImageCount.text = "当前生成了${mImageBoxLayout?.getImageList()?.size ?: 0}张图片"
+        tvImageCount.text = getString(R.string.image_box_current_images, mImageBoxLayout?.getImageList()?.size
+            ?: 0)
     }
 
     override fun onDestroyView() {

@@ -17,15 +17,15 @@
         <com.june.imageabout.box.ImageBoxLayout
             android:id="@+id/vImageBoxLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/common_margin"
-            android:layout_marginBottom="@dimen/common_margin" />
+            android:layout_height="wrap_content" />
     </androidx.core.widget.NestedScrollView>
 
     <FrameLayout
         android:id="@+id/flBottomSheetContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_62"
+        app:behavior_hideable="true"
         app:behavior_peekHeight="@dimen/dp_56"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
