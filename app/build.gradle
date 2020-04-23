@@ -19,6 +19,15 @@ android {
         }
     }
 
+    signingConfigs {
+        config {
+            storeFile file('TmmKeyStore.jks')
+            storePassword "tmm2020"
+            keyAlias "tmm"
+            keyPassword "tmm2020"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8

@@ -1,10 +1,12 @@
 package com.june.studyproject
 
+import android.content.pm.PackageManager
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 class MainActivity : BaseActivity() {
 

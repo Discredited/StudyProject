@@ -27,7 +27,7 @@ class ImageBoxLayoutActivity : BaseActivity() {
         toolbar.setNavigationOnClickListener { onBackPressed() }
         toolbar.setOnMenuItemClickListener {
             //open panel
-            mBottomSheetBehavior?.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+            mBottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
             true
         }
 
@@ -35,7 +35,7 @@ class ImageBoxLayoutActivity : BaseActivity() {
         mBottomSheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
         mBottomSheetBehavior?.setUpdateImportantForAccessibilityOnSiblings(true)
         mBottomSheetBehavior?.isFitToContents = true
-        mBottomSheetBehavior?.halfExpandedRatio = 0.4f
+        //mBottomSheetBehavior?.halfExpandedRatio = 0.4f
         mBottomSheetBehavior?.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 Timber.e("slideOffset:$slideOffset")
