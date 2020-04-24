@@ -73,6 +73,49 @@
         </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvImageMaxLimitTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginStart="@dimen/common_margin"
+            android:gravity="center"
+            android:text="@string/image_box_max_count"
+            android:textColor="@color/color_text_66"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvColumnTitle" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbImageMaxLimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:checked="true"
+            app:layout_constraintBottom_toBottomOf="@+id/tvImageMaxLimitTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvImageMaxLimitTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvImageMaxLimitTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvImageMaxCoverTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginStart="@dimen/dp_20"
+            android:gravity="center"
+            android:text="@string/image_box_max_cover"
+            android:textColor="@color/color_text_66"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintStart_toEndOf="@+id/cbImageMaxLimit"
+            app:layout_constraintTop_toBottomOf="@+id/tvColumnTitle" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbImageMaxCover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            app:layout_constraintBottom_toBottomOf="@+id/tvImageMaxCoverTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvImageMaxCoverTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvImageMaxCoverTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvImageGapTitle"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_56"
@@ -82,7 +125,7 @@
             android:textColor="@color/color_text_66"
             android:textSize="@dimen/sp_16"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvColumnTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvImageMaxLimitTitle" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/sbImageGapSeek"

@@ -253,7 +253,6 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
 
             val cacheImageView = getImageViewFromCache(0)
             addView(cacheImageView, getDefaultParams(mImageWidth, mImageHeight))
-            Timber.i("width:${cacheImageView.width}    height:${cacheImageView.height}    measureWidth:${cacheImageView.measuredWidth}    measureHeight:${cacheImageView.measuredHeight}")
             mImageBoxLoader?.loadImage(cacheImageView, list[0], 0, mImageWidth, mImageHeight)
         } else {
             //多张图片
@@ -289,6 +288,7 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
         mImageList.addAll(list)
     }
 
+    //设置四张图的样式
     fun setFourStyle(style: Int) {
         mFourStyle = style
         val rowColumn = getRowColumn(mImageList.size, mFourStyle)
@@ -296,6 +296,7 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
         mColumn = rowColumn[1]
     }
 
+    //修改期望列数值
     fun setExpectColumn(column: Int) {
         mExpectColumn = column
         val rowColumn = getRowColumn(mImageList.size, mFourStyle)
@@ -303,15 +304,27 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
         mColumn = rowColumn[1]
     }
 
+    //修改图片间距
     fun setImageGap(gap: Int) {
         mImageGap = gap
     }
 
+    //修改图片圆角
     fun setImageRadius(radius: Float) {
         mImageRadius = radius
         mImageViewCache.forEach {
             it.setCorner(radius)
         }
+    }
+
+    //设置最大限制张数
+    fun setImageMax(max: Int) {
+        mImageMax = max
+    }
+
+    //设置是否显示MaxLimitCover
+    fun setImageMaxCover(isMaxCover: Boolean) {
+        mImageMaxOver = isMaxCover
     }
 
     fun getImageList(): MutableList<T> = mImageList

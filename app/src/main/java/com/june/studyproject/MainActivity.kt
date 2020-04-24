@@ -1,6 +1,5 @@
 package com.june.studyproject
 
-import android.content.pm.PackageManager
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.june.studyproject.base.component.BaseActivity

@@ -103,6 +103,33 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
                 tvImageCount?.text = getString(R.string.image_box_current_images, list.size)
             }
         }
+
+        cbImageMaxLimit.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                mImageBoxLayout?.setImageMax(-1)
+                mImageBoxLayout?.getImageList()?.let {
+                    mImageBoxLayout?.setImageList(it)
+                }
+            } else {
+                mImageBoxLayout?.setImageMax(9)
+                mImageBoxLayout?.getImageList()?.let {
+                    mImageBoxLayout?.setImageList(it)
+                }
+            }
+        }
+
+        cbImageMaxCover.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                mImageBoxLayout?.setImageMax(9)
+            } else {
+                mImageBoxLayout?.setImageMax(-1)
+            }
+
+            mImageBoxLayout?.setImageMaxCover(isChecked)
+            mImageBoxLayout?.getImageList()?.let {
+                mImageBoxLayout?.setImageList(it)
+            }
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
