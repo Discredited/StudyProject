@@ -49,7 +49,7 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
 
     private var mImageBoxLoader: ImageBoxLoader<T>? = null
 
-    private val mImageList: MutableList<T> = mutableListOf()
+    private var mImageList: MutableList<T> = mutableListOf()
     private val mImageViewCache: MutableList<BoxImageView> = mutableListOf()
 
     init {
@@ -143,7 +143,7 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
             val childBottom = childTop + mImageHeight
             child.layout(childLeft, childTop, childRight, childBottom)
             Timber.e(
-                "layout=>childCount:$childCount    index:$index    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom    width:${child.width}    height:width:${child.height} "
+                "layout=>childCount:$childCount    index:$index    row:$row    column:$column    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom    width:${child.width}    height:width:${child.height} "
             )
         }
     }
@@ -223,6 +223,8 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
 
         removeAllViews()
 
+        mImageList = list
+
         //获取行列
         val imageSize = getImageSize(list.size)
         val rowColumn = getRowColumn(imageSize, mFourStyle)
@@ -283,9 +285,6 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
                 )
             }
         }
-
-        mImageList.clear()
-        mImageList.addAll(list)
     }
 
     //设置四张图的样式

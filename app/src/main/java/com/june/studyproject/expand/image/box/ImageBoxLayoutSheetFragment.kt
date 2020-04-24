@@ -106,12 +106,12 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
 
         cbImageMaxLimit.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                mImageBoxLayout?.setImageMax(-1)
+                mImageBoxLayout?.setImageMax(9)
                 mImageBoxLayout?.getImageList()?.let {
                     mImageBoxLayout?.setImageList(it)
                 }
             } else {
-                mImageBoxLayout?.setImageMax(9)
+                mImageBoxLayout?.setImageMax(-1)
                 mImageBoxLayout?.getImageList()?.let {
                     mImageBoxLayout?.setImageList(it)
                 }
