@@ -40,6 +40,7 @@
         <activity android:name=".component.recycler.RecyclerActivity" />
         <activity android:name=".component.recycler.custom.CustomLayoutManagerActivity" />
         <activity android:name=".expand.image.box.ImageBoxLayoutActivity" />
+        <activity android:name=".expand.image.watcher.ImageDragLayoutActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

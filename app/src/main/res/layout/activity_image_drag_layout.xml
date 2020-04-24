@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/view_toolbar_layout" />
+
+    <com.june.imageabout.watcher.ImageDragLayout
+        android:id="@+id/vImageDragLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_48"
+        android:background="@color/color_theme">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDragStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_40"
+            android:gravity="center"
+            android:textColor="@color/color_text_66"
+            android:textSize="@dimen/sp_24"
+            tools:text="触摸状态" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDragInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_100"
+            android:gravity="center"
+            android:textColor="@color/color_text_66"
+            android:textSize="@dimen/sp_18"
+            tools:text="触摸信息" />
+    </com.june.imageabout.watcher.ImageDragLayout>
+</FrameLayout>
