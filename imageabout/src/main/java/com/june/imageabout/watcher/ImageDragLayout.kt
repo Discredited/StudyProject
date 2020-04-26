@@ -11,13 +11,15 @@ class ImageDragLayout @JvmOverloads constructor(
 
     private var mImageDragListener: OnImageDragListener? = null
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        when (event?.action) {
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        super.onTouchEvent(event)
+        when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 mImageDragListener?.onDragStateChange(MotionEvent.ACTION_DOWN, event.x, event.y)
             }
             MotionEvent.ACTION_MOVE -> {
                 mImageDragListener?.onDragStateChange(MotionEvent.ACTION_MOVE, event.x, event.y)
+                translationY = event.y
             }
             MotionEvent.ACTION_UP -> {
                 mImageDragListener?.onDragStateChange(MotionEvent.ACTION_UP, event.x, event.y)
@@ -26,7 +28,7 @@ class ImageDragLayout @JvmOverloads constructor(
                 mImageDragListener?.onDragStateChange(MotionEvent.ACTION_CANCEL, event.x, event.y)
             }
         }
-        return super.onTouchEvent(event)
+        return true
     }
 
     fun setImageDragListener(listener: OnImageDragListener) {
