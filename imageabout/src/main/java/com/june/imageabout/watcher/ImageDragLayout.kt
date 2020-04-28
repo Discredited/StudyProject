@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.FrameLayout
+import timber.log.Timber
 import kotlin.math.abs
 
 class ImageDragLayout @JvmOverloads constructor(
@@ -23,6 +24,12 @@ class ImageDragLayout @JvmOverloads constructor(
             mUpThreshold = -(height / 2).toFloat()
             mDownThreshold = (height / 2).toFloat()
         }
+    }
+
+    override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
+        val pointerCount = event.pointerCount
+        Timber.e("pointerCount:$pointerCount")
+        return pointerCount == 1
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

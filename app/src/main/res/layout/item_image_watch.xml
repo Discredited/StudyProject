@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.june.imageabout.watcher.ImageDragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vImageDragLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,6 +8,6 @@
         android:id="@+id/vImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerInside"
-        android:background="#000000" />
-</FrameLayout>
+        android:background="#000000"
+        android:scaleType="centerInside" />
+</com.june.imageabout.watcher.ImageDragLayout>
