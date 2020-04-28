@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.FrameLayout
-import timber.log.Timber
 import kotlin.math.abs
 
 class ImageDragLayout @JvmOverloads constructor(
@@ -38,15 +37,15 @@ class ImageDragLayout @JvmOverloads constructor(
                 mTranslationY = event.rawY - mDownRawY
                 translationY = mTranslationY
 
+                //缩放设置
                 val percent = (height - abs(mTranslationY)) / height
-
                 scaleX = percent
                 scaleY = percent
             }
             MotionEvent.ACTION_UP -> {
                 mImageDragListener?.onDragStateChange(MotionEvent.ACTION_UP, event.x, event.y)
                 if (mTranslationY < mUpThreshold || mTranslationY > mDownThreshold) {
-                    Timber.i("drag to close====>${mTranslationY}")
+                    mImageDragListener?.onDragOverThreshold()
                 } else {
                     mTranslationY = 0F
                     translationY = mTranslationY

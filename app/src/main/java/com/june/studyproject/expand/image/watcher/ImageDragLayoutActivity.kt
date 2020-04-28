@@ -20,6 +20,10 @@ class ImageDragLayoutActivity : BaseActivity() {
             tvDragStatus.text = dragState
             tvDragInfo.text = "x:${x}\ny:${y}"
         }
+
+        override fun onDragOverThreshold() {
+            onBackPressed()
+        }
     }
 
     override fun getLayoutResId(): Int = R.layout.activity_image_drag_layout
