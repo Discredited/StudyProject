@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import timber.log.Timber
 import kotlin.math.floor
 import kotlin.math.pow
 
@@ -38,9 +39,15 @@ class CustomLayoutManager(
     private var mItemViewWidth: Int = 0  //itemView宽度
     private var mItemViewHeight: Int = 0  //itemView高度
     private var mItemCount: Int = 0 //item数量
-    private var mScrollOffset: Int = Int.MAX_VALUE
+    private var mScrollOffset: Int = 0
     private val mScale = 0.9
 
+    //- generateDefaultLayoutParams
+    override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
+        return RecyclerView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.WRAP_CONTENT)
+    }
+
+    //- onLayoutChildren
     override fun onLayoutChildren(recycler: RecyclerView.Recycler, state: RecyclerView.State) {
         if (state.itemCount == 0 || state.isPreLayout) return
         removeAndRecycleAllViews(recycler)
@@ -137,6 +144,8 @@ class CustomLayoutManager(
     }
 
     override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler, state: RecyclerView.State): Int {
+        //dy > 0 手指从下往上移动->加载后面的View
+        //dy < 0 手指从上往下移动->加载前面的View
         val pendingScrollOffset = mScrollOffset + dy
         mScrollOffset = mItemViewHeight.coerceAtLeast(mScrollOffset + dy).coerceAtMost(mItemCount * mItemViewHeight)
         layoutChild(recycler)

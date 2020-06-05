@@ -5,8 +5,6 @@ import androidx.navigation.NavController
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
-import timber.log.Timber
-import java.util.*
 
 class MainActivity : BaseActivity() {
 
@@ -35,6 +33,14 @@ class MainActivity : BaseActivity() {
             intent = intent
         )
         mCurrentNavController = controller
+
+//        tvToPay.setOnClickListener {
+//            val uri = Uri.parse("tmmtmm://coinPayment?no=af59a80b85f293c75ae420d1fb6e6b06&idcr=c646f48a116a3bcdaa9a416b4c512f3f")
+//
+//            val tmmIntent = Intent("tmmtmm.app", uri)
+//            tmmIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//            startActivity(tmmIntent)
+//        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -28,12 +28,7 @@ class ComponentFragment : BaseFragment() {
         rv_component.setGridManager(2)
         rv_component.adapter = adapter
         rv_component.setHasFixedSize(true)
-        rv_component.addItemDecoration(
-            GridItemDecoration(
-                2, resources
-                .getDimensionPixelSize(R.dimen.dp_5)
-            )
-        )
+        rv_component.addItemDecoration(GridItemDecoration(2, resources.getDimensionPixelSize(R.dimen.dp_5)))
 
         adapter.setOnItemClickListener { adapter, _, position ->
             (adapter.getItem(position) as CardExampleVo).action()

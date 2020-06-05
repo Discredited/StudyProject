@@ -19,6 +19,9 @@ class RecyclerActivity : BaseActivity() {
         tvCustomLayoutManager.setOnClickListener {
             startActivity(Intent(this, CustomLayoutManagerActivity::class.java))
         }
+        tvItemDecoration.setOnClickListener {
+            startActivity(Intent(this, ItemDecorationActivity::class.java))
+        }
     }
 
     override fun loadData() {
