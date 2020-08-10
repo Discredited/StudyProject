@@ -2,7 +2,7 @@ package com.june.studyproject.common
 
 object ConstHelper {
 
-    val IMAGE_SOURCE_ALL = arrayOf(
+    private val IMAGE_SOURCE_ALL = arrayOf(
         "http://www.jshddq.net/UploadFiles/img_3_3560281984_1977672327_26.jpg",
         "http://img0.imgtn.bdimg.com/it/u=3058041753,3990052783&fm=15&gp=0.jpg",
         "http://img4.imgtn.bdimg.com/it/u=3318550662,3589021928&fm=26&gp=0.jpg",

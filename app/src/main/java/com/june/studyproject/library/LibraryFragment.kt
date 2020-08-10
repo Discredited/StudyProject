@@ -37,7 +37,7 @@ class LibraryFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter.setNewData(
+        adapter.setNewInstance(
             mutableListOf(
                 CardExampleVo(
                     "OkHttp + Retrofit",

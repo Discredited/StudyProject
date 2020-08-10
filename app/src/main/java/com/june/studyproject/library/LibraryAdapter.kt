@@ -7,8 +7,9 @@ import com.june.studyproject.component.index.CardExampleVo
 import kotlinx.android.synthetic.main.item_library.view.*
 
 class LibraryAdapter : BaseQuickAdapter<CardExampleVo, BaseViewHolder>(R.layout.item_library) {
-    override fun convert(helper: BaseViewHolder, item: CardExampleVo) {
-        helper.itemView.iv_library_cover.setImageResource(item.iconRes)
-        helper.itemView.tv_library_name.text = item.title
+
+    override fun convert(holder: BaseViewHolder, item: CardExampleVo) {
+        holder.itemView.iv_library_cover.setImageResource(item.iconRes)
+        holder.itemView.tv_library_name.text = item.title
     }
 }
