@@ -28,4 +28,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCustomLayoutManager" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBaseAdapter"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_62"
+        android:gravity="center"
+        android:text="使用BaseAdapter"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemDecoration" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,6 +43,8 @@
         <activity android:name=".expand.image.box.ImageBoxLayoutActivity" />
         <activity android:name=".expand.image.watcher.ImageDragLayoutActivity" />
         <activity android:name=".component.recycler.ItemDecorationActivity" />
+        <activity android:name=".component.recycler.rvadapter.normal.NormalListActivity" />
+        <activity android:name=".component.recycler.rvadapter.RecyclerViewAdapterActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

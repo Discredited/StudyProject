@@ -1,8 +1,12 @@
-package com.june.studyproject.common.adapter
+package com.june.studyproject.common.adapter.column
 
 import com.chad.library.adapter.base.BaseProviderMultiAdapter
 
 class ColumnAdapter : BaseProviderMultiAdapter<ColumnInterface>() {
+
+    init {
+        addItemProvider(ColumnTextProvider())
+    }
 
     override fun getItemType(data: List<ColumnInterface>, position: Int): Int = data[position].getType()
 }
