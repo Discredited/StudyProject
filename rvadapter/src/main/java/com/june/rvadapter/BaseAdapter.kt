@@ -4,15 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class BaseAdapter : RecyclerView.Adapter<ItemViewHolder>() {
+class BaseAdapter : RecyclerView.Adapter<ItemViewHolder<*>>() {
 
-    private val mData: MutableList<Any> = mutableListOf()
+    private val mItems: MutableList<Any> = mutableListOf()
 
-    override fun getItemCount(): Int = mData.size
+    private val mCreators: Map<Int, ItemViewCreator<*>> = mutableMapOf()
+
+    override fun getItemCount(): Int = mItems.size
 
     override fun getItemViewType(position: Int): Int = 0
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder<*> {
         val createItemHolder = createItemViewHolder(parent, viewType)
         createItemHolder?.let { holder ->
             return holder
@@ -21,12 +23,18 @@ class BaseAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         throw Exception("Please check if your item type is included")
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemViewHolder<*>, position: Int) {
+        holder.onBind(mItems[position], position, mItems)
     }
 
-    private fun createItemViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder? {
+    private fun createItemViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder<*>? {
+        //有哪些类型
+        val creator = mCreators[viewType]
         //根据类型创建ViewHolder
-        return ItemViewHolder(LayoutInflater.from(parent.context).inflate(0, parent, false))
+        creator?.let {
+            return it.createViewHolder(LayoutInflater.from(parent.context).inflate(it.getItemViewId(), parent, false))
+        }
+        return null
     }
 
     fun putItem() {
