@@ -1,14 +1,17 @@
 package com.june.studyproject.library
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseFragment
 import com.june.studyproject.base.ext.initToolbar
+import com.june.studyproject.base.ext.itemClick
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.index.CardExampleVo
+import com.june.studyproject.library.okhttp.OkHttpActivity
 import kotlinx.android.synthetic.main.fragment_library.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
@@ -22,6 +25,9 @@ class LibraryFragment : BaseFragment() {
         toolbar.initToolbar(getString(R.string.str_library), navIcon = 0, titleCenter = false)
 
         adapter = LibraryAdapter()
+        adapter.itemClick { _, _, _ ->
+            startActivity(Intent(requireActivity(), OkHttpActivity::class.java))
+        }
         rv_library.setLinearManager()
         rv_library.adapter = adapter
         rv_library.addItemDecoration(

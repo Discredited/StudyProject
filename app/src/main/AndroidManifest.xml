@@ -45,6 +45,7 @@
         <activity android:name=".component.recycler.ItemDecorationActivity" />
         <activity android:name=".component.recycler.rvadapter.normal.NormalListActivity" />
         <activity android:name=".component.recycler.rvadapter.RecyclerViewAdapterActivity" />
+        <activity android:name=".library.okhttp.OkHttpActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

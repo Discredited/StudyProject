@@ -5,6 +5,7 @@ interface ColumnInterface {
     fun getType(): Int
 
     companion object {
+        const val COLUMN_TITLE = 0
         const val COLUMN_TEXT = 1
         const val COLUMN_IMAGE = 2
         const val COLUMN_VIDEO = 3
