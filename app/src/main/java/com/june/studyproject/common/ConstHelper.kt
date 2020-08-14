@@ -41,7 +41,7 @@ object ConstHelper {
         "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586410266900&di=8dc6f8c38dcc1592180d69e49a10a7ef&imgtype=0&src=http%3A%2F%2Fwx4.sinaimg.cn%2Forj360%2F67ff7977ly1gdf6ljst1fj20ly2jzkjl.jpg"
     )
 
-    val IMAGE_SOURCE = arrayOf(
+    val IMAGE_SOURCE_GIF = arrayOf(
         "http://www.jshddq.net/UploadFiles/img_3_3560281984_1977672327_26.jpg",
         "http://img0.imgtn.bdimg.com/it/u=3058041753,3990052783&fm=15&gp=0.jpg",
         "http://img4.imgtn.bdimg.com/it/u=3318550662,3589021928&fm=26&gp=0.jpg",
@@ -66,6 +66,11 @@ object ConstHelper {
         "http://uploads.5068.com/allimg/1801/82-1P123151011-50.jpg"
     )
 
+    val VIDEO_SOURCE = arrayOf(
+        "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0300f120000bhaokemqv7m6s290p4i0",
+        "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200fbc0000bd3jf6jcp23da5ss8tsg"
+    )
+
     fun getDiffImage(array: Array<String> = IMAGE_SOURCE_ALL): String {
         val random = (Math.random() * array.size).toInt()
         return array[random]
@@ -78,5 +83,15 @@ object ConstHelper {
             imageSet.add(image)
         } while (imageSet.size < count)
         return imageSet.toMutableList()
+    }
+
+    fun getDiffVideos(count: Int = 1): MutableList<String> {
+        val videoSet = mutableSetOf<String>()
+        do {
+            val random = (Math.random() * VIDEO_SOURCE.size).toInt()
+            val video = VIDEO_SOURCE[random]
+            videoSet.add(video)
+        } while (videoSet.size < count)
+        return videoSet.toMutableList()
     }
 }

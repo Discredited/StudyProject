@@ -93,11 +93,11 @@ class BoxImageActivity : BaseActivity() {
 
         vRadiusSeek.setOnSeekBarChangeListener(mSeekBarChangeListener)
 
-        ivRandImage.setOnClickListener { ivBoxImage.loadImage(ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE)) }
+        ivRandImage.setOnClickListener { ivBoxImage.loadImage(ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)) }
     }
 
     override fun loadData() {
-        ivBoxImage.loadImage(ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE))
+        ivBoxImage.loadImage(ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF))
     }
 
     override fun onDestroy() {

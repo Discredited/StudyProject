@@ -46,6 +46,7 @@
         <activity android:name=".component.recycler.rvadapter.normal.NormalListActivity" />
         <activity android:name=".component.recycler.rvadapter.RecyclerViewAdapterActivity" />
         <activity android:name=".library.okhttp.OkHttpActivity" />
+        <activity android:name=".library.okhttp.DownloadActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

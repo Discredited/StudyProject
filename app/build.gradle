@@ -51,6 +51,7 @@ dependencies {
     implementation project(path: ':style')
     implementation project(path: ':imageabout')
     implementation project(path: ':rvadapter')
+    implementation project(path: ':network')
     //implementation 'com.june.imageabout:imageabout:1.0.0'
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.14'

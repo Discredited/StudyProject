@@ -3,30 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
-    <include layout="@layout/view_toolbar_layout" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvOkHttp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDownloadProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:listitem="@layout/item_column_text" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="50 / 100" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btDownload"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dp_56"
-        android:layout_marginStart="@dimen/common_margin"
-        android:layout_marginEnd="@dimen/common_margin"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
         android:layout_marginBottom="@dimen/dp_20"
         android:text="@string/str_download"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

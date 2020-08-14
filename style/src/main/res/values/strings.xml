@@ -51,5 +51,6 @@
     <string name="image_box_square">square</string>
     <string name="image_box_max_count">Max Limit</string>
     <string name="image_box_max_cover">Max Cover</string>
+    <string name="str_download">Download</string>
     <!-- ImageBoxLayout End -->
 </resources>
