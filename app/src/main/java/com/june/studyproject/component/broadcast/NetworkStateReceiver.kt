@@ -16,20 +16,20 @@ class NetworkStateReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
         //获得ConnectivityManager
-        val connectManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
-        val isNetworkActive = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            val networkInfo = connectManager.activeNetworkInfo
-            networkInfo?.let {
-                it.isConnected && (it.type == ConnectivityManager.TYPE_WIFI || it.type == ConnectivityManager.TYPE_MOBILE)
-            } ?: false
-        } else {
-            //获取当前网络连接的信息
-            val network = connectManager.activeNetwork
-            network?.let {
-                val networkCapabilities = connectManager.getNetworkCapabilities(it)
-                true
-            } ?: false
-        }
+//        val connectManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+//
+//        val isNetworkActive = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+//            val networkInfo = connectManager.activeNetworkInfo
+//            networkInfo?.let {
+//                it.isConnected && (it.type == ConnectivityManager.TYPE_WIFI || it.type == ConnectivityManager.TYPE_MOBILE)
+//            } ?: false
+//        } else {
+//            //获取当前网络连接的信息
+//            val network = connectManager.activeNetwork
+//            network?.let {
+//                val networkCapabilities = connectManager.getNetworkCapabilities(it)
+//                true
+//            } ?: false
+//        }
     }
 }

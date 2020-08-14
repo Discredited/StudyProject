@@ -10,14 +10,14 @@ class RecordDisplayAdapter(list: MutableList<RecordDisplayVo>) : BaseQuickAdapte
     list
 ) {
 
-    override fun convert(helper: BaseViewHolder, item: RecordDisplayVo) {
-        helper.itemView.tvRecordMillis.text = item.millis
-        helper.itemView.tvRecordHour.text = item.hour
-        helper.itemView.tvRecordMinute.text = item.minute
-        helper.itemView.tvRecordSecond.text = item.second
-        helper.itemView.tvRecordTitle.text = item.title
-        helper.itemView.tvRecordTitle.setTextColor(item.titleColor)
-        helper.itemView.tvRecordDesc.text = item.desc
-        helper.itemView.tvRecordDesc.setTextColor(item.descColor)
+    override fun convert(holder: BaseViewHolder, item: RecordDisplayVo) {
+        holder.itemView.tvRecordMillis.text = item.millis
+        holder.itemView.tvRecordHour.text = item.hour
+        holder.itemView.tvRecordMinute.text = item.minute
+        holder.itemView.tvRecordSecond.text = item.second
+        holder.itemView.tvRecordTitle.text = item.title
+        holder.itemView.tvRecordTitle.setTextColor(item.titleColor)
+        holder.itemView.tvRecordDesc.text = item.desc
+        holder.itemView.tvRecordDesc.setTextColor(item.descColor)
     }
 }
