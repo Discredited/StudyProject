@@ -37,7 +37,7 @@ class ComponentFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter.setNewData(
+        adapter.setNewInstance(
             mutableListOf(
                 CardExampleVo(
                     getString(R.string.str_activity),
