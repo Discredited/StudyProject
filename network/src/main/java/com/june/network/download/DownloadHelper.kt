@@ -1,17 +1,16 @@
-package com.june.network
+package com.june.network.download
 
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
 import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
 
 class DownloadHelper {
 
     private val mClient = OkHttpClient()
 
     fun startDownload(url: String, filePath: String): String? {
-
         val file = File(filePath)
         if (file.exists()) {
             val isDelete = file.delete()
@@ -26,6 +25,7 @@ class DownloadHelper {
         val response = newCall.execute()
         val inputStream = response.body?.byteStream()
         val outputStream = FileOutputStream(file)
+
         return inputStream?.use {
             outputStream.use { fileOut ->
                 val length = it.copyTo(fileOut)

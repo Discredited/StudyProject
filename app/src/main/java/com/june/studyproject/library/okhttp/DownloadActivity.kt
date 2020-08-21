@@ -5,7 +5,7 @@ import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PathUtils
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.june.network.DownloadHelper
+import com.june.network.download.DownloadHelper
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.click
