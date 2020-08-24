@@ -51,6 +51,10 @@
     <string name="image_box_square">square</string>
     <string name="image_box_max_count">Max Limit</string>
     <string name="image_box_max_cover">Max Cover</string>
-    <string name="str_download">Download</string>
     <!-- ImageBoxLayout End -->
+
+
+    <string name="str_download">Download</string>
+    <string name="str_unzip">解压文件</string>
+    <string name="str_unzip_progress">解压中…</string>
 </resources>

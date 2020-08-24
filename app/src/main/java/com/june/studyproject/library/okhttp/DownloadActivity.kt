@@ -1,17 +1,21 @@
 package com.june.studyproject.library.okhttp
 
+import android.content.Intent
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PathUtils
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.june.network.download.DownloadHelper
+import com.june.network.download.ProgressListener
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.click
 import com.june.studyproject.base.ext.loadImage
+import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.FilePathHelper
 import com.june.studyproject.common.Toast
+import com.june.studyproject.expand.zip.UnzipActivity
 import kotlinx.android.synthetic.main.activity_ok_http_download.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,6 +33,9 @@ class DownloadActivity : BaseActivity() {
             //checkStoragePermission()
             startDownload()
         }
+        btUnzip.click {
+            startActivity(Intent(this, UnzipActivity::class.java))
+        }
     }
 
     override fun loadData() {
@@ -39,6 +46,8 @@ class DownloadActivity : BaseActivity() {
         if (file.exists()) {
             ivImage.loadImage(imageUrl)
         }
+
+        tvDownloadProgress.text = "0 / 0"
     }
 
     private fun checkStoragePermission() {
@@ -57,43 +66,36 @@ class DownloadActivity : BaseActivity() {
     }
 
     private fun startDownload() {
-        //val videoUrl = ConstHelper.getDiffVideos(1)[0]
-        //Timber.e("videoUrl:$videoUrl")
-        val imageUrl = "http://img.ewebweb.com/uploads/20191127/13/1574832894-rPXLSjDWIn.jpg"
+        val zipUrl = ConstHelper.getLolZip()
 
         val appPath = FilePathHelper.appExternalDataPath()
         Timber.e("appPath:$appPath")
 
-//        val file = File(appPath)
-//        Timber.e("当前文件目录：${file.name}")
-//        if (file.isDirectory) {
-//            file.listFiles()?.forEach {
-//                Timber.e("--子目录：${it.absolutePath}")
-//                if (it.name == "1597415289310.jpg") {
-//                    Timber.e("待删除文件：${it.absolutePath}")
-//                    if (it.exists()) {
-//                        val delete = deleteFile(it.name)
-//                        Timber.e("删除文件：$it        $delete")
-//                    } else {
-//                        Timber.e("文件不存在")
-//                    }
-//                }
-//            }
-//        }
-
-        val fileName = "${System.currentTimeMillis()}.jpg"
+        val fileName = "LeagueOfLegendsIcon.zip"
         Timber.e("fileName:$fileName")
         val filePath = "${appPath}/${fileName}"
         Timber.e("filePath:$filePath")
 
-        val downloadHelper = DownloadHelper()
+        val downloadHelper = DownloadHelper(object : ProgressListener {
+            override fun onProgress(progress: Long, max: Long, percent: Float) {
+                Timber.e("下载进度:progress:$progress    max:$max    percent:$percent")
+                lifecycleScope.launch {
+                    withContext(Dispatchers.Main) {
+                        tvDownloadProgress.text = "$progress / $max"
+                    }
+                }
+            }
+        })
         lifecycleScope.launch {
             val downloadResult = withContext(Dispatchers.IO) {
-                downloadHelper.startDownload(imageUrl, filePath)
+                downloadHelper.startDownload(zipUrl, filePath)
             }
             downloadResult?.let {
                 Timber.e("save success:$it")
                 Toast.showShort("save success:$it")
+            }
+            if (downloadResult == null) {
+                Toast.showShort("download GG")
             }
         }
     }

@@ -68,7 +68,8 @@ object ConstHelper {
 
     val VIDEO_SOURCE = arrayOf(
         "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0300f120000bhaokemqv7m6s290p4i0",
-        "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200fbc0000bd3jf6jcp23da5ss8tsg"
+        "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200fbc0000bd3jf6jcp23da5ss8tsg",
+        "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
     )
 
     fun getDiffImage(array: Array<String> = IMAGE_SOURCE_ALL): String {
@@ -93,5 +94,9 @@ object ConstHelper {
             videoSet.add(video)
         } while (videoSet.size < count)
         return videoSet.toMutableList()
+    }
+
+    fun getLolZip(): String {
+        return "https://vip.d0.baidupan.com/file/?UDYAPg4/VGUDClFpUWQBbVplVW1R5gaPUedQvwHGUNUC6lWDAMkOvVOeAchX5lDKV7MD4FWqAIVWcVC/BdlV21C2AM8O3VRHA3VRKlHtAYtasVW5UZUGgFG+UNcByVC2AplVnQC7DtBThQG/V4BQ7FfoA51VtADkVvFQ0QVvVWBQCABhDmdULQN7UX1RbAFwWiZVNlFnBmhRM1AJATRQNQI/VTQAaQ5uUz0BZFc3UGFXKwNgVXkAP1ZkUGIFYVVgUGQAZQ5kVCYDJVF3UTgBMlowVWFRNwYrUWZQZwFyUGECNVUtADgOPlM8ATVXM1BmV2wDZVVsAGZWMlBjBT9VY1AyAGEOYlQwA2JRP1EwATdaNVUzUTcGPFE1UGEBZVAyAjFVYQBzDiBTbAEnVyVQJFd+A2NVeABrVjVQawVrVWdQYgBuDmBUNANzUXNRbAFtWmVVNlEzBjVRY1BvAWVQYwI3VTMAbg5vUzABeVctUHdXawNqVX0AP1ZgUGMFYFVsUGEAYg5iVDYDZ1E1USMBdVpwVSdRMwY1UWNQYgFrUGkCNlUzAG4OYlM1AXFXdlA4V30DO1U4ADBWY1B4BWtVZVBiAHkOYVQzA21RKVE0ATZaNg=="
     }
 }

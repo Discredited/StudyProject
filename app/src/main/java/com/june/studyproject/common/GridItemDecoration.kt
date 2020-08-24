@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class GridItemDecoration(
     var mColumn: Int = 2, //列数
-    var mSpace: Int = 30 //线宽
+    var mSpace: Int = 10 //线宽
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(

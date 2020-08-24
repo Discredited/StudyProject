@@ -1,16 +1,25 @@
 package com.june.network.download
 
-import okhttp3.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
-import java.io.IOException
 
-class DownloadHelper {
+class DownloadHelper(private val listener: ProgressListener?) {
 
-    private val mClient = OkHttpClient()
+    private val mClient: OkHttpClient
+
+    init {
+        val builder = OkHttpClient.Builder()
+        listener?.let {
+            builder.addInterceptor(ProgressInterceptor(listener))
+        }
+        mClient = builder.build()
+    }
 
     fun startDownload(url: String, filePath: String): String? {
+
         val file = File(filePath)
         if (file.exists()) {
             val isDelete = file.delete()
