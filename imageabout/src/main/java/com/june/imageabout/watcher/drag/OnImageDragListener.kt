@@ -1,4 +1,4 @@
-package com.june.imageabout.watcher
+package com.june.imageabout.watcher.drag
 
 interface OnImageDragListener {
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ImageLoadingProgressView">
+        <attr name="loading_progress" format="float" />
+        <attr name="loading_stroke_width" format="dimension" />
+        <attr name="loading_stroke_gap" format="dimension" />
+        <attr name="loading_progress_color" format="color" />
+        <attr name="loading_text_color" format="color" />
+        <attr name="loading_text_size" format="dimension" />
+    </declare-styleable>
+</resources>

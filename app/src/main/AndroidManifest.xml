@@ -38,7 +38,9 @@
         <activity android:name=".component.fragment.FragmentActivity" />
         <activity android:name=".component.fragment.lifecycle.FragmentLifecycleActivity" />
 
-        <activity android:name=".expand.image.watcher.ImageWatchActivity" />
+        <activity
+            android:name=".expand.image.watcher.ImageWatchActivity"
+            android:theme="@style/TransparentStyleTheme" />
         <activity android:name=".component.recycler.RecyclerActivity" />
         <activity android:name=".component.recycler.custom.CustomLayoutManagerActivity" />
         <activity android:name=".expand.image.box.ImageBoxLayoutActivity" />

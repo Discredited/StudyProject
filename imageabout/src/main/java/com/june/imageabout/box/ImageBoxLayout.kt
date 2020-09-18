@@ -6,8 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.june.imageabout.R
-import timber.log.Timber
 
+/**
+ * ImageBoxLayout
+ * 图片九宫格展示控件
+ * 设置4张图片的显示样式
+ * 设置单张图片自定义宽高(ImageLoader)
+ * 设置
+ */
 class ImageBoxLayout<T> @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
@@ -125,7 +131,6 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
             // 3 4
             mRow * mImageHeight + mImageGap * (mRow - 1) + paddingTop + paddingBottom
         }
-        //Timber.e("measure=>w:$width,$height")
         setMeasuredDimension(width, height)
     }
 
@@ -142,9 +147,9 @@ class ImageBoxLayout<T> @JvmOverloads constructor(
             val childTop = row * (mImageHeight + mImageGap) + paddingTop
             val childBottom = childTop + mImageHeight
             child.layout(childLeft, childTop, childRight, childBottom)
-            Timber.e(
-                "layout=>childCount:$childCount    index:$index    row:$row    column:$column    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom    width:${child.width}    height:width:${child.height} "
-            )
+//            Timber.e(
+//                "layout=>childCount:$childCount    index:$index    row:$row    column:$column    childLeft:$childLeft    childRight:$childRight    childTop:$childTop    childBottom:$childBottom    width:${child.width}    height:width:${child.height} "
+//            )
         }
     }
 

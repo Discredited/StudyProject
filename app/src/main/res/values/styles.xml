@@ -13,11 +13,16 @@
         <!-- 但是不设置，视图又不能沉侵至状态栏 -->
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-<!--        <item name="android:statusBarColor">@color/color_transparent</item>-->
+        <!--        <item name="android:statusBarColor">@color/color_transparent</item>-->
         <!-- 窗口背景颜色 -->
         <item name="android:windowBackground">@color/color_white</item>
         <!-- actionMode  true-弹出时覆盖部分布局 false-不符盖将原有布局下移 -->
         <item name="windowActionModeOverlay">false</item>
     </style>
 
+    <!-- 背景透明 -->
+    <style name="TransparentStyleTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/color_transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>

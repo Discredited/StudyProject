@@ -3,7 +3,7 @@ package com.june.studyproject.expand.image.watcher
 import android.content.Context
 import android.content.Intent
 import androidx.viewpager2.widget.ViewPager2
-import com.june.imageabout.watcher.OnImageDragListener
+import com.june.imageabout.watcher.drag.OnImageDragListener
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.expand.image.box.MediaVo
@@ -42,7 +42,7 @@ class ImageWatchActivity : BaseActivity() {
     override fun loadData() {
         val imageList = intent.getParcelableArrayListExtra<MediaVo>("IMAGE_LIST")
         imageList?.let {
-            adapter.setNewData(it)
+            adapter.setNewInstance(it)
         }
         val position = intent.getIntExtra("IMAGE_POSITION", 0)
         //smoothScroll false去掉翻页时的动画
