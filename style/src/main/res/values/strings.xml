@@ -57,4 +57,5 @@
     <string name="str_download">Download</string>
     <string name="str_unzip">解压文件</string>
     <string name="str_unzip_progress">解压中…</string>
+    <string name="str_permissions">Permissions</string>
 </resources>

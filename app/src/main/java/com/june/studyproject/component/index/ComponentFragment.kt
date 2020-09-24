@@ -10,6 +10,7 @@ import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.activity.ExampleActivity
 import com.june.studyproject.component.fragment.FragmentActivity
+import com.june.studyproject.component.permission.PermissionsActivity
 import com.june.studyproject.component.recycler.RecyclerActivity
 import com.june.studyproject.component.service.ServiceActivity
 import kotlinx.android.synthetic.main.fragment_component.*
@@ -80,6 +81,12 @@ class ComponentFragment : BaseFragment() {
                     getString(R.string.view_pager_2_desc),
                     { Toast.showShort(R.string.str_view_pager_2) },
                     iconRes = R.color.color_red
+                ),
+                CardExampleVo(
+                    "Permission",
+                    "权限请求",
+                    { startActivity(Intent(requireActivity(), PermissionsActivity::class.java)) },
+                    iconRes = R.color.color_theme
                 )
             )
         )
