@@ -51,6 +51,11 @@ class ImageWatchActivity : BaseActivity() {
         }
     }
 
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+    }
+
     override fun onDestroy() {
         vpImageWatch.unregisterOnPageChangeCallback(mPageChangeListener)
         super.onDestroy()

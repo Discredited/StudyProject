@@ -23,6 +23,7 @@
     <!-- 背景透明 -->
     <style name="TransparentStyleTheme" parent="AppTheme">
         <item name="android:windowBackground">@color/color_transparent</item>
+        <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
 </resources>

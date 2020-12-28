@@ -1,8 +1,10 @@
 package com.june.imageabout.watcher.drag
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.MotionEvent
+import android.view.View
 import android.widget.FrameLayout
 import timber.log.Timber
 import kotlin.math.abs
@@ -17,6 +19,7 @@ class ImageDragLayout @JvmOverloads constructor(
     private var mOverThreshold = 0.0F
 
     private var mImageDragListener: OnImageDragListener? = null
+    private var mPhotoView: View? = null
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val measureHeightHalf = MeasureSpec.getSize(heightMeasureSpec) shr 2
@@ -57,6 +60,7 @@ class ImageDragLayout @JvmOverloads constructor(
                     translationY = 0F
                     scaleX = 1F
                     scaleY = 1F
+                    mPhotoView?.setBackgroundColor(Color.argb(255, 0, 0, 0))
                 }
             }
             MotionEvent.ACTION_MOVE -> {
@@ -68,6 +72,7 @@ class ImageDragLayout @JvmOverloads constructor(
                 val percent = (height - abs(mTranslationY)) / height
                 scaleX = percent
                 scaleY = percent
+                mPhotoView?.setBackgroundColor(Color.argb(0, 0, 0, 0))
             }
             MotionEvent.ACTION_CANCEL -> {
                 mImageDragListener?.onDragStateChange(MotionEvent.ACTION_CANCEL, event.x, event.y)
@@ -75,6 +80,7 @@ class ImageDragLayout @JvmOverloads constructor(
                 translationY = 0F
                 scaleX = 1F
                 scaleY = 1F
+                mPhotoView?.setBackgroundColor(Color.argb(255, 0, 0, 0))
             }
         }
         return true
@@ -82,5 +88,9 @@ class ImageDragLayout @JvmOverloads constructor(
 
     fun setImageDragListener(listener: OnImageDragListener) {
         mImageDragListener = listener
+    }
+
+    fun bindView(view: View) {
+        mPhotoView = view
     }
 }

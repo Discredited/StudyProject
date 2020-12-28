@@ -1,5 +1,6 @@
 package com.june.studyproject.expand.image.watcher
 
+import android.view.View
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -20,7 +21,13 @@ class ImageWatchAdapter : BaseQuickAdapter<MediaVo, BaseViewHolder>(R.layout.ite
         ProgressInterceptor.addListener(item.thumbnail, object : LoadingProgressListener {
             override fun onProgress(progress: Long, total: Long, percent: Float) {
                 Timber.e("${Thread.currentThread().name}    progress:$progress    total:$total    percent:$percent")
-                holder.itemView.vProgress.setProgress(percent)
+                holder.itemView.post {
+                    holder.itemView.vProgress.setProgress(percent)
+                    if (percent == 1F) {
+                        ProgressInterceptor.removeListener(item.thumbnail)
+                        holder.itemView.vProgress.visibility = View.GONE
+                    }
+                }
             }
         })
 
@@ -32,6 +39,7 @@ class ImageWatchAdapter : BaseQuickAdapter<MediaVo, BaseViewHolder>(R.layout.ite
         mImageDragListener?.let {
             holder.itemView.vImageDragLayout.setImageDragListener(it)
         }
+        holder.itemView.vImageDragLayout.bindView(holder.itemView.vImageView)
     }
 
     fun setImageDragListener(listener: OnImageDragListener) {
