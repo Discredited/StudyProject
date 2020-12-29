@@ -1,6 +1,7 @@
-package com.june.studyproject.component.activity
+package com.june.studyproject.component.activity.lifecycle
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.content.ContextCompat
@@ -139,5 +140,11 @@ class LifecycleActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Timber.e("onDestroy()")
+    }
+
+    companion object {
+        fun starter(context: Context) {
+            context.startActivity(Intent(context, LifecycleActivity::class.java))
+        }
     }
 }

@@ -8,7 +8,7 @@ import com.june.studyproject.R
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    protected lateinit var mActivity: AppCompatActivity
+    lateinit var mActivity: AppCompatActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //设置状态栏颜色

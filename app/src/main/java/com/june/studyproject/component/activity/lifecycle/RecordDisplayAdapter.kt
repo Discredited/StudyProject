@@ -1,4 +1,4 @@
-package com.june.studyproject.component.activity
+package com.june.studyproject.component.activity.lifecycle
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder

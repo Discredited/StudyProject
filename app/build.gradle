@@ -13,19 +13,25 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
 
     signingConfigs {
         config {
-            storeFile file('TmmKeyStore.jks')
-            storePassword "tmm2020"
-            keyAlias "tmm"
-            keyPassword "tmm2020"
+            storeFile file('StudySign.jks')
+            storePassword "june123"
+            keyAlias "study"
+            keyPassword "june123"
+        }
+    }
+
+    buildTypes {
+        debug{
+            signingConfig signingConfigs.config
+        }
+
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -36,6 +42,10 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    dataBinding  {
+        enabled = true
     }
 }
 
@@ -76,7 +86,7 @@ dependencies {
     //哔哩哔哩  boxing
     implementation 'com.bilibili:boxing:1.0.4'
 
-    //BaseRecyclerViewAdapter
+    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
     implementation 'com.github.DingMouRen:LayoutManagerGroup:1e6f4f96eb'

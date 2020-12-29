@@ -8,7 +8,7 @@ import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.Toast
-import com.june.studyproject.component.activity.RecordDisplayVo
+import com.june.studyproject.component.activity.lifecycle.RecordDisplayVo
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 import timber.log.Timber
 

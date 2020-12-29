@@ -8,7 +8,7 @@ import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setGridManager
 import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.common.Toast
-import com.june.studyproject.component.activity.ExampleActivity
+import com.june.studyproject.component.activity.index.ExampleActivity
 import com.june.studyproject.component.fragment.FragmentActivity
 import com.june.studyproject.component.permission.PermissionsActivity
 import com.june.studyproject.component.recycler.RecyclerActivity

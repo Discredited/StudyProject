@@ -56,37 +56,37 @@ gradle.getTaskGraph().addTaskExecutionGraphListener(new TaskExecutionGraphListen
 //4）、最后，执行指定的 task 及其依赖的 task
 
 
-long beginOfSetting = System.currentTimeMillis()
-def beginOfConfig
-def configHasBegin = false
-def beginOfProjectConfig = new HashMap()
-def beginOfProjectExecute
-gradle.projectsLoaded {
-    println 'init,time consuming:' + (System.currentTimeMillis() - beginOfSetting) + 'ms'
-}
-gradle.beforeProject { project ->
-    if (!configHasBegin) {
-        configHasBegin = true
-        beginOfConfig = System.currentTimeMillis()
-    }
-    beginOfProjectConfig.put(project, System.currentTimeMillis())
-}
-gradle.afterProject { project ->
-    def begin = beginOfProjectConfig.get(project)
-    println 'config,time consuming:' + project + 'time:' + (System.currentTimeMillis() - begin) + 'ms'
-}
-gradle.taskGraph.whenReady {
-    println 'config,time consuming total:' + (System.currentTimeMillis() - beginOfConfig) + 'ms'
-    beginOfProjectExecute = System.currentTimeMillis()
-}
-gradle.taskGraph.beforeTask { task ->
-    task.doFirst {
-        task.ext.beginOfTask = System.currentTimeMillis()
-    }
-    task.doLast {
-        println 'running,' + task + 'time:' + (System.currentTimeMillis() - task.beginOfTask) + 'ms'
-    }
-}
-gradle.buildFinished {
-    println('running,time consuming:' + (System.currentTimeMillis() - beginOfProjectExecute) + 'ms')
-}
+//long beginOfSetting = System.currentTimeMillis()
+//def beginOfConfig
+//def configHasBegin = false
+//def beginOfProjectConfig = new HashMap()
+//def beginOfProjectExecute
+//gradle.projectsLoaded {
+//    println 'init,time consuming:' + (System.currentTimeMillis() - beginOfSetting) + 'ms'
+//}
+//gradle.beforeProject { project ->
+//    if (!configHasBegin) {
+//        configHasBegin = true
+//        beginOfConfig = System.currentTimeMillis()
+//    }
+//    beginOfProjectConfig.put(project, System.currentTimeMillis())
+//}
+//gradle.afterProject { project ->
+//    def begin = beginOfProjectConfig.get(project)
+//    println 'config,time consuming:' + project + 'time:' + (System.currentTimeMillis() - begin) + 'ms'
+//}
+//gradle.taskGraph.whenReady {
+//    println 'config,time consuming total:' + (System.currentTimeMillis() - beginOfConfig) + 'ms'
+//    beginOfProjectExecute = System.currentTimeMillis()
+//}
+//gradle.taskGraph.beforeTask { task ->
+//    task.doFirst {
+//        task.ext.beginOfTask = System.currentTimeMillis()
+//    }
+//    task.doLast {
+//        println 'running,' + task + 'time:' + (System.currentTimeMillis() - task.beginOfTask) + 'ms'
+//    }
+//}
+//gradle.buildFinished {
+//    println('running,time consuming:' + (System.currentTimeMillis() - beginOfProjectExecute) + 'ms')
+//}

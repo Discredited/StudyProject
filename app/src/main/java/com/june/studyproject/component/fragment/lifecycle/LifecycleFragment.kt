@@ -10,8 +10,8 @@ import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseFragment
 import com.june.studyproject.base.ext.addLinearItemDecoration
 import com.june.studyproject.base.ext.setLinearManager
-import com.june.studyproject.component.activity.RecordDisplayAdapter
-import com.june.studyproject.component.activity.RecordDisplayVo
+import com.june.studyproject.component.activity.lifecycle.RecordDisplayAdapter
+import com.june.studyproject.component.activity.lifecycle.RecordDisplayVo
 import kotlinx.android.synthetic.main.fragment_lifecycle.*
 import timber.log.Timber
 

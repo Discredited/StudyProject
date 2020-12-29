@@ -33,10 +33,10 @@
         <activity android:name="com.june.studyproject.expand.thread.ThreadPoolActivity" />
         <activity android:name=".component.service.ServiceActivity" />
         <activity android:name="com.june.studyproject.library.rxjava.RxJavaActivity" />
-        <activity android:name=".component.activity.ExampleActivity" />
+        <activity android:name=".component.activity.index.ExampleActivity" />
         <activity android:name=".expand.image.box.ImageBoxListActivity" />
-        <activity android:name=".component.activity.LifecycleActivity" />
-        <activity android:name=".component.activity.LifecycleSecondActivity" />
+        <activity android:name=".component.activity.lifecycle.LifecycleActivity" />
+        <activity android:name=".component.activity.lifecycle.LifecycleSecondActivity" />
         <activity android:name=".expand.image.box.BoxImageActivity" />
         <activity android:name=".expand.image.box.ImageBoxActivity" />
         <activity android:name=".component.fragment.FragmentActivity" />
