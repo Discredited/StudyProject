@@ -2,13 +2,13 @@ package com.june.studyproject.component.recycler
 
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.setGridManager
 import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.component.recycler.custom.CustomLayoutManagerAdapter
 import kotlinx.android.synthetic.main.activity_item_decoration.*
 
-class ItemDecorationActivity : BaseActivity() {
+class ItemDecorationActivityBasic : BasicActivity() {
 
     private val adapter = CustomLayoutManagerAdapter()
 

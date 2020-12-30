@@ -5,14 +5,14 @@ import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.june.imageabout.box.ImageBoxLayout
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.ConstHelper
 import kotlinx.android.synthetic.main.activity_image_box_layout.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 import timber.log.Timber
 
-class ImageBoxLayoutActivity : BaseActivity() {
+class ImageBoxLayoutActivityBasic : BasicActivity() {
 
     private var mBottomSheetBehavior: BottomSheetBehavior<FrameLayout>? = null
     private lateinit var mImageBoxLayout: ImageBoxLayout<MediaVo>

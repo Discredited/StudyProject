@@ -9,10 +9,10 @@ import com.june.studyproject.base.ext.setGridManager
 import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.activity.index.ExampleActivity
-import com.june.studyproject.component.fragment.FragmentActivity
-import com.june.studyproject.component.permission.PermissionsActivity
-import com.june.studyproject.component.recycler.RecyclerActivity
-import com.june.studyproject.component.service.ServiceActivity
+import com.june.studyproject.component.fragment.FragmentActivityBasic
+import com.june.studyproject.component.permission.PermissionsActivityBasic
+import com.june.studyproject.component.recycler.RecyclerActivityBasic
+import com.june.studyproject.component.service.ServiceActivityBasic
 import kotlinx.android.synthetic.main.fragment_component.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
@@ -49,19 +49,19 @@ class ComponentFragment : BaseFragment() {
                 CardExampleVo(
                     getString(R.string.str_service),
                     getString(R.string.service_desc),
-                    { ServiceActivity.start(requireActivity()) },
+                    { ServiceActivityBasic.start(requireActivity()) },
                     iconRes = R.color.color_purple
                 ),
                 CardExampleVo(
                     getString(R.string.str_broad_cast),
                     getString(R.string.broad_cast_desc),
-                    { ServiceActivity.start(requireActivity()) },
+                    { ServiceActivityBasic.start(requireActivity()) },
                     iconRes = R.color.color_pink
                 ),
                 CardExampleVo(
                     getString(R.string.str_fragment),
                     getString(R.string.fragment_desc),
-                    { startActivity(Intent(requireActivity(), FragmentActivity::class.java)) },
+                    { startActivity(Intent(requireActivity(), FragmentActivityBasic::class.java)) },
                     iconRes = R.color.color_blue
                 ),
                 CardExampleVo(
@@ -73,7 +73,7 @@ class ComponentFragment : BaseFragment() {
                 CardExampleVo(
                     getString(R.string.str_recyclerView),
                     getString(R.string.recycler_desc),
-                    { startActivity(Intent(requireActivity(), RecyclerActivity::class.java)) },
+                    { startActivity(Intent(requireActivity(), RecyclerActivityBasic::class.java)) },
                     iconRes = R.color.color_yellow
                 ),
                 CardExampleVo(
@@ -85,7 +85,7 @@ class ComponentFragment : BaseFragment() {
                 CardExampleVo(
                     "Permission",
                     "权限请求",
-                    { startActivity(Intent(requireActivity(), PermissionsActivity::class.java)) },
+                    { startActivity(Intent(requireActivity(), PermissionsActivityBasic::class.java)) },
                     iconRes = R.color.color_theme
                 )
             )

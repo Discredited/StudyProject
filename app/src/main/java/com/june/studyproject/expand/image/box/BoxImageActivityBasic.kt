@@ -3,14 +3,14 @@ package com.june.studyproject.expand.image.box
 import android.widget.SeekBar
 import com.june.imageabout.box.BoxImageView
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.common.ConstHelper
 import kotlinx.android.synthetic.main.activity_box_image_view.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
-class BoxImageActivity : BaseActivity() {
+class BoxImageActivityBasic : BasicActivity() {
 
     private var mRadiusMax: Int = -1
     private val mSeekBarChangeListener = object : SeekBar.OnSeekBarChangeListener {

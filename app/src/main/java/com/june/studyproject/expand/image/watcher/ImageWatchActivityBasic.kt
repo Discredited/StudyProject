@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.viewpager2.widget.ViewPager2
 import com.june.imageabout.watcher.drag.OnImageDragListener
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.expand.image.box.MediaVo
 import kotlinx.android.synthetic.main.activity_image_watch.*
 
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_image_watch.*
  * 大图展示页面
  * 需要自己注册ImageWatchActivity，方便配置Activity的Style
  */
-class ImageWatchActivity : BaseActivity() {
+class ImageWatchActivityBasic : BasicActivity() {
 
     private val adapter: ImageWatchAdapter = ImageWatchAdapter()
     private val mPageChangeListener = object : ViewPager2.OnPageChangeCallback() {
@@ -63,7 +63,7 @@ class ImageWatchActivity : BaseActivity() {
 
     companion object {
         fun starter(context: Context, list: MutableList<MediaVo>, position: Int) {
-            val intent = Intent(context, ImageWatchActivity::class.java)
+            val intent = Intent(context, ImageWatchActivityBasic::class.java)
             val arrayList = arrayListOf<MediaVo>()
             list.forEach { arrayList.add(it) }
             intent.putExtra("IMAGE_LIST", arrayList)

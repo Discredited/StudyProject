@@ -9,13 +9,13 @@ import com.blankj.utilcode.util.ToastUtils
 import com.june.network.download.DownloadHelper
 import com.june.network.download.ProgressListener
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.click
 import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.FilePathHelper
 import com.june.studyproject.common.Toast
-import com.june.studyproject.expand.zip.UnzipActivity
+import com.june.studyproject.expand.zip.UnzipActivityBasic
 import kotlinx.android.synthetic.main.activity_ok_http_download.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.io.File
 
-class DownloadActivity : BaseActivity() {
+class DownloadActivityBasic : BasicActivity() {
 
     override fun getLayoutResId(): Int = R.layout.activity_ok_http_download
 
@@ -34,7 +34,7 @@ class DownloadActivity : BaseActivity() {
             startDownload()
         }
         btUnzip.click {
-            startActivity(Intent(this, UnzipActivity::class.java))
+            startActivity(Intent(this, UnzipActivityBasic::class.java))
         }
     }
 

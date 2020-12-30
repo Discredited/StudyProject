@@ -6,9 +6,8 @@ import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.adapter.TitleDescAdapter
 import com.june.studyproject.common.vo.TitleDescVo
-import com.june.studyproject.component.activity.lifecycle.LifecycleActivity
-import kotlinx.android.synthetic.main.activity_example.*
-import kotlinx.android.synthetic.main.view_toolbar_layout.*
+import com.june.studyproject.component.activity.lifecycle.LifecycleActivityBasic
+import com.june.studyproject.databinding.ActivityExampleBinding
 
 /**
  * @author <a href="mailto:xujun@snqu.com">June</a>
@@ -20,25 +19,25 @@ import kotlinx.android.synthetic.main.view_toolbar_layout.*
  * @version 1.0.0
  * @time 2020/3/30 17:29
  */
-class ExampleActivity : BaseActivity() {
+class ExampleActivity : BaseActivity<ActivityExampleBinding>() {
 
     private val mAdapter: TitleDescAdapter = TitleDescAdapter()
 
     override fun getLayoutResId(): Int = R.layout.activity_example
 
     override fun initView() {
-        toolbar.initToolbar(getString(R.string.str_activity))
-        toolbar.setNavigationOnClickListener { onBackPressed() }
+        mBinding.tlLayout.toolbar.initToolbar(getString(R.string.str_activity))
+        mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         mAdapter.setOnItemClickListener { _, _, position ->
             if (position == 0) {
-                LifecycleActivity.starter(this)
+                LifecycleActivityBasic.starter(this)
             }
         }
 
-        rv_activity.layoutManager = LinearLayoutManager(this)
-        rv_activity.adapter = mAdapter
-        rv_activity.setHasFixedSize(true)
+        mBinding.rvActivity.layoutManager = LinearLayoutManager(this)
+        mBinding.rvActivity.adapter = mAdapter
+        mBinding.rvActivity.setHasFixedSize(true)
     }
 
     override fun loadData() {

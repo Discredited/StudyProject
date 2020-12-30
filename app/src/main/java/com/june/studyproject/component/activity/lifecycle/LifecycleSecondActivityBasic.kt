@@ -5,7 +5,7 @@ import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
@@ -19,7 +19,7 @@ import timber.log.Timber
  * @version 1.0.0
  * @time 2020/3/30
  */
-class LifecycleSecondActivity : BaseActivity() {
+class LifecycleSecondActivityBasic : BasicActivity() {
 
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
@@ -136,7 +136,7 @@ class LifecycleSecondActivity : BaseActivity() {
         const val RESPONSE_CODE_LIFECYCLE = "RESPONSE_CODE_LIFECYCLE"
 
         fun starter(activity: Activity, list: ArrayList<RecordDisplayVo>) {
-            val intent = Intent(activity, LifecycleSecondActivity::class.java)
+            val intent = Intent(activity, LifecycleSecondActivityBasic::class.java)
             intent.putExtra("RECORD_LIST", list)
             activity.startActivityForResult(intent, REQUEST_CODE_LIFECYCLE)
         }

@@ -5,11 +5,11 @@ import androidx.core.app.ActivityCompat
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PermissionUtils
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.click
 import kotlinx.android.synthetic.main.activity_permissions.*
 
-class PermissionsActivity : BaseActivity() {
+class PermissionsActivityBasic : BasicActivity() {
 
     override fun getLayoutResId() = R.layout.activity_permissions
 

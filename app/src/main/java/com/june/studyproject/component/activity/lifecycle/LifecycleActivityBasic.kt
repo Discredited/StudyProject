@@ -6,7 +6,7 @@ import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_lifecycle.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 import timber.log.Timber
 
-class LifecycleActivity : BaseActivity() {
+class LifecycleActivityBasic : BasicActivity() {
 
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
@@ -35,7 +35,7 @@ class LifecycleActivity : BaseActivity() {
             //具体参照logo日志
             isToNext = true
             mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName))
-            LifecycleSecondActivity.starter(this, mRecordList)
+            LifecycleSecondActivityBasic.starter(this, mRecordList)
             true
         }
 
@@ -92,10 +92,10 @@ class LifecycleActivity : BaseActivity() {
         if (resultCode != Activity.RESULT_OK) {
             return
         }
-        if (requestCode == LifecycleSecondActivity.REQUEST_CODE_LIFECYCLE) {
+        if (requestCode == LifecycleSecondActivityBasic.REQUEST_CODE_LIFECYCLE) {
             isFromResult = true
             isToNext = false
-            data?.getParcelableArrayListExtra<RecordDisplayVo>(LifecycleSecondActivity.RESPONSE_CODE_LIFECYCLE)?.let {
+            data?.getParcelableArrayListExtra<RecordDisplayVo>(LifecycleSecondActivityBasic.RESPONSE_CODE_LIFECYCLE)?.let {
                 mRecordList.clear()
                 mRecordList.addAll(it)
                 adapter.notifyDataSetChanged()
@@ -144,7 +144,7 @@ class LifecycleActivity : BaseActivity() {
 
     companion object {
         fun starter(context: Context) {
-            context.startActivity(Intent(context, LifecycleActivity::class.java))
+            context.startActivity(Intent(context, LifecycleActivityBasic::class.java))
         }
     }
 }

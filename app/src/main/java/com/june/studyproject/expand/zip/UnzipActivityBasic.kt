@@ -3,7 +3,7 @@ package com.june.studyproject.expand.zip
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.click
 import com.june.studyproject.base.ext.setGridManager
 import com.june.studyproject.common.FilePathHelper
@@ -18,7 +18,7 @@ import java.io.File
 /**
  * Zip解压
  */
-class UnzipActivity : BaseActivity() {
+class UnzipActivityBasic : BasicActivity() {
 
     private val mAdapter = UnzipAdapter()
 

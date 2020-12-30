@@ -7,12 +7,12 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.view.View
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.component.service.TestBindService.TestBinder
 import kotlinx.android.synthetic.main.activity_service.*
 import timber.log.Timber
 
-class ServiceActivity : BaseActivity(), View.OnClickListener, ServiceConnection {
+class ServiceActivityBasic : BasicActivity(), View.OnClickListener, ServiceConnection {
 
     private var isBindService = false
 
@@ -80,7 +80,7 @@ class ServiceActivity : BaseActivity(), View.OnClickListener, ServiceConnection 
 
     companion object {
         fun start(context: Context) {
-            val starter = Intent(context, ServiceActivity::class.java)
+            val starter = Intent(context, ServiceActivityBasic::class.java)
             context.startActivity(starter)
         }
     }

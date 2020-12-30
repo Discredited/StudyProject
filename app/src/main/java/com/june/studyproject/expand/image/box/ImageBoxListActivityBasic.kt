@@ -3,7 +3,7 @@ package com.june.studyproject.expand.image.box
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ScreenUtils
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.addLinearItemDecoration
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
@@ -21,7 +21,7 @@ import kotlinx.coroutines.withContext
  * @version 1.0.0
  * @time 2020/3/30 16:37
  */
-class ImageBoxListActivity : BaseActivity() {
+class ImageBoxListActivityBasic : BasicActivity() {
 
     private lateinit var adapter: ImageBoxLayoutAdapter
 
