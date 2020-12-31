@@ -4,7 +4,7 @@ import android.content.Intent
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.initToolbar
-import com.june.studyproject.expand.image.watcher.ImageDragLayoutActivityBasic
+import com.june.studyproject.expand.image.watcher.ImageDragLayoutActivity
 import kotlinx.android.synthetic.main.activity_image_box.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
@@ -25,7 +25,7 @@ class ImageBoxActivityBasic : BasicActivity() {
             startActivity(Intent(this, ImageBoxListActivityBasic::class.java))
         }
         tvImageDragLayout.setOnClickListener {
-            startActivity(Intent(this, ImageDragLayoutActivityBasic::class.java))
+            startActivity(Intent(this, ImageDragLayoutActivity::class.java))
         }
     }
 

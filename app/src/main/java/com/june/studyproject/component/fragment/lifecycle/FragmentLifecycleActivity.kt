@@ -5,14 +5,15 @@ import android.content.Intent
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayVo
+import com.june.studyproject.databinding.ActivityFragmentLifecycleBinding
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 import timber.log.Timber
 
-class FragmentLifecycleActivityBasic : BasicActivity() {
+class FragmentLifecycleActivity : BaseActivity<ActivityFragmentLifecycleBinding>() {
 
     private val mLifecycleViewModel by viewModels<FragmentLifecycleViewModel>()
     private var mTitleColor: Int = 0
@@ -160,7 +161,9 @@ class FragmentLifecycleActivityBasic : BasicActivity() {
         Timber.e("onDestroy()")
     }
 
-    override fun getLayoutResId(): Int = R.layout.activity_fragment_lifecycle
+    override fun viewBinding(): ActivityFragmentLifecycleBinding {
+        return ActivityFragmentLifecycleBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
         toolbar.initToolbar(javaClass.simpleName)
@@ -193,7 +196,7 @@ class FragmentLifecycleActivityBasic : BasicActivity() {
 
     companion object {
         fun starter(context: Context) {
-            val intent = Intent(context, FragmentLifecycleActivityBasic::class.java)
+            val intent = Intent(context, FragmentLifecycleActivity::class.java)
             context.startActivity(intent)
         }
     }

@@ -6,15 +6,14 @@ import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
-import kotlinx.android.synthetic.main.activity_lifecycle.*
-import kotlinx.android.synthetic.main.view_toolbar_layout.*
+import com.june.studyproject.databinding.ActivityLifecycleBinding
 import timber.log.Timber
 
-class LifecycleActivityBasic : BasicActivity() {
+class LifecycleActivity : BaseActivity<ActivityLifecycleBinding>() {
 
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
@@ -25,25 +24,25 @@ class LifecycleActivityBasic : BasicActivity() {
     private var mTitleColor = 0
     private var mDescColor = 0
 
-    override fun getLayoutResId(): Int = R.layout.activity_lifecycle
+    override fun viewBinding(): ActivityLifecycleBinding = ActivityLifecycleBinding.inflate(layoutInflater)
 
     override fun initView() {
-        toolbar.initToolbar(javaClass.simpleName, R.menu.menu_text_next)
-        toolbar.setNavigationOnClickListener { onBackPressed() }
-        toolbar.setOnMenuItemClickListener {
+        mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName, R.menu.menu_text_next)
+        mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
+        mBinding.tlLayout.toolbar.setOnMenuItemClickListener {
             //跳转其他页面之前,当前当前页面会先执行onPause
             //具体参照logo日志
             isToNext = true
             mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName))
-            LifecycleSecondActivityBasic.starter(this, mRecordList)
+            LifecycleSecondActivity.starter(this, mRecordList)
             true
         }
 
         adapter = RecordDisplayAdapter(mRecordList)
-        rvLifecycle.setLinearManager()
-        rvLifecycle.adapter = adapter
-        rvLifecycle.setHasFixedSize(true)
-        rvLifecycle.addItemDecoration(
+        mBinding.rvLifecycle.setLinearManager()
+        mBinding.rvLifecycle.adapter = adapter
+        mBinding.rvLifecycle.setHasFixedSize(true)
+        mBinding.rvLifecycle.addItemDecoration(
             LinearItemDecoration(
                 ContextCompat.getColor(
                     this,
@@ -92,10 +91,10 @@ class LifecycleActivityBasic : BasicActivity() {
         if (resultCode != Activity.RESULT_OK) {
             return
         }
-        if (requestCode == LifecycleSecondActivityBasic.REQUEST_CODE_LIFECYCLE) {
+        if (requestCode == LifecycleSecondActivity.REQUEST_CODE_LIFECYCLE) {
             isFromResult = true
             isToNext = false
-            data?.getParcelableArrayListExtra<RecordDisplayVo>(LifecycleSecondActivityBasic.RESPONSE_CODE_LIFECYCLE)?.let {
+            data?.getParcelableArrayListExtra<RecordDisplayVo>(LifecycleSecondActivity.RESPONSE_CODE_LIFECYCLE)?.let {
                 mRecordList.clear()
                 mRecordList.addAll(it)
                 adapter.notifyDataSetChanged()
@@ -144,7 +143,7 @@ class LifecycleActivityBasic : BasicActivity() {
 
     companion object {
         fun starter(context: Context) {
-            context.startActivity(Intent(context, LifecycleActivityBasic::class.java))
+            context.startActivity(Intent(context, LifecycleActivity::class.java))
         }
     }
 }

@@ -11,7 +11,7 @@ import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.index.CardExampleVo
-import com.june.studyproject.library.okhttp.OkHttpActivityBasic
+import com.june.studyproject.library.okhttp.OkHttpActivity
 import kotlinx.android.synthetic.main.fragment_library.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
@@ -26,7 +26,7 @@ class LibraryFragment : BaseFragment() {
 
         adapter = LibraryAdapter()
         adapter.itemClick { _, _, _ ->
-            startActivity(Intent(requireActivity(), OkHttpActivityBasic::class.java))
+            startActivity(Intent(requireActivity(), OkHttpActivity::class.java))
         }
         rv_library.setLinearManager()
         rv_library.adapter = adapter

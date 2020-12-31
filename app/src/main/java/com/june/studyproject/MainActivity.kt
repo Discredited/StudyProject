@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
-import com.june.studyproject.databinding.ActivityMainBindingImpl
+import com.june.studyproject.databinding.ActivityMainBinding
 
-class MainActivity : BaseActivity<ActivityMainBindingImpl>() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private var mCurrentNavController: LiveData<NavController>? = null
 
-    override fun getLayoutResId(): Int = R.layout.activity_main
+    override fun viewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
     override fun initView() {
         //6.0及以上的API

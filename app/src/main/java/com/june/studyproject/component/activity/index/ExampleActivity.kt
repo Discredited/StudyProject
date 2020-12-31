@@ -6,7 +6,7 @@ import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.adapter.TitleDescAdapter
 import com.june.studyproject.common.vo.TitleDescVo
-import com.june.studyproject.component.activity.lifecycle.LifecycleActivityBasic
+import com.june.studyproject.component.activity.lifecycle.LifecycleActivity
 import com.june.studyproject.databinding.ActivityExampleBinding
 
 /**
@@ -23,7 +23,9 @@ class ExampleActivity : BaseActivity<ActivityExampleBinding>() {
 
     private val mAdapter: TitleDescAdapter = TitleDescAdapter()
 
-    override fun getLayoutResId(): Int = R.layout.activity_example
+    override fun viewBinding(): ActivityExampleBinding {
+        return ActivityExampleBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(getString(R.string.str_activity))
@@ -31,7 +33,7 @@ class ExampleActivity : BaseActivity<ActivityExampleBinding>() {
 
         mAdapter.setOnItemClickListener { _, _, position ->
             if (position == 0) {
-                LifecycleActivityBasic.starter(this)
+                LifecycleActivity.starter(this)
             }
         }
 

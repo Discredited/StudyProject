@@ -30,32 +30,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.june.studyproject.expand.thread.ThreadPoolActivityBasic" />
-        <activity android:name=".component.service.ServiceActivityBasic" />
+        <activity android:name="com.june.studyproject.expand.thread.ThreadPoolActivity" />
+        <activity android:name=".component.service.ServiceActivity" />
         <activity android:name="com.june.studyproject.library.rxjava.RxJavaActivity" />
         <activity android:name=".component.activity.index.ExampleActivity" />
         <activity android:name=".expand.image.box.ImageBoxListActivityBasic" />
-        <activity android:name=".component.activity.lifecycle.LifecycleActivityBasic" />
-        <activity android:name=".component.activity.lifecycle.LifecycleSecondActivityBasic" />
+        <activity android:name=".component.activity.lifecycle.LifecycleActivity" />
+        <activity android:name=".component.activity.lifecycle.LifecycleSecondActivity" />
         <activity android:name=".expand.image.box.BoxImageActivityBasic" />
         <activity android:name=".expand.image.box.ImageBoxActivityBasic" />
-        <activity android:name=".component.fragment.FragmentActivityBasic" />
-        <activity android:name=".component.fragment.lifecycle.FragmentLifecycleActivityBasic" />
+        <activity android:name=".component.fragment.FragmentActivity" />
+        <activity android:name=".component.fragment.lifecycle.FragmentLifecycleActivity" />
 
         <activity
-            android:name=".expand.image.watcher.ImageWatchActivityBasic"
+            android:name=".expand.image.watcher.ImageWatchActivity"
             android:theme="@style/TransparentStyleTheme" />
-        <activity android:name=".component.recycler.RecyclerActivityBasic" />
-        <activity android:name=".component.recycler.custom.CustomLayoutManagerActivityBasic" />
+        <activity android:name=".component.recycler.RecyclerActivity" />
+        <activity android:name=".component.recycler.custom.CustomLayoutManagerActivity" />
         <activity android:name=".expand.image.box.ImageBoxLayoutActivityBasic" />
-        <activity android:name=".expand.image.watcher.ImageDragLayoutActivityBasic" />
-        <activity android:name=".component.recycler.ItemDecorationActivityBasic" />
-        <activity android:name=".component.recycler.rvadapter.normal.NormalListActivityBasic" />
-        <activity android:name=".component.recycler.rvadapter.RecyclerViewAdapterActivityBasic" />
-        <activity android:name=".library.okhttp.OkHttpActivityBasic" />
-        <activity android:name=".library.okhttp.DownloadActivityBasic" />
+        <activity android:name=".expand.image.watcher.ImageDragLayoutActivity" />
+        <activity android:name=".component.recycler.ItemDecorationActivity" />
+        <activity android:name=".component.recycler.rvadapter.normal.NormalListActivity" />
+        <activity android:name=".component.recycler.rvadapter.RecyclerViewAdapterActivity" />
+        <activity android:name=".library.okhttp.OkHttpActivity" />
+        <activity android:name=".library.okhttp.DownloadActivity" />
         <activity android:name=".expand.zip.UnzipActivityBasic" />
-        <activity android:name=".component.permission.PermissionsActivityBasic" />
+        <activity android:name=".component.permission.PermissionsActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

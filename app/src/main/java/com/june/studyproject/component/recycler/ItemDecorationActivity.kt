@@ -8,7 +8,7 @@ import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.component.recycler.custom.CustomLayoutManagerAdapter
 import kotlinx.android.synthetic.main.activity_item_decoration.*
 
-class ItemDecorationActivityBasic : BasicActivity() {
+class ItemDecorationActivity : BasicActivity() {
 
     private val adapter = CustomLayoutManagerAdapter()
 

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:background="@color/color_yellow_light">
+    tools:background="@color/color_yellow_light"
+    tools:viewBindingIgnore="true">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSimpleTextTitle"

@@ -4,16 +4,16 @@ import android.content.Intent
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.click
-import com.june.studyproject.component.recycler.rvadapter.normal.NormalListActivityBasic
+import com.june.studyproject.component.recycler.rvadapter.normal.NormalListActivity
 import kotlinx.android.synthetic.main.activity_recycler_view_adapter.*
 
-class RecyclerViewAdapterActivityBasic : BasicActivity() {
+class RecyclerViewAdapterActivity : BasicActivity() {
 
     override fun getLayoutResId(): Int = R.layout.activity_recycler_view_adapter
 
     override fun initView() {
         tvNormalMultiLayout.click {
-            startActivity(Intent(this, NormalListActivityBasic::class.java))
+            startActivity(Intent(this, NormalListActivity::class.java))
         }
     }
 

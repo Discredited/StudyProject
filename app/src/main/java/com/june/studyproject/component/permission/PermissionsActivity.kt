@@ -9,7 +9,7 @@ import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.click
 import kotlinx.android.synthetic.main.activity_permissions.*
 
-class PermissionsActivityBasic : BasicActivity() {
+class PermissionsActivity : BasicActivity() {
 
     override fun getLayoutResId() = R.layout.activity_permissions
 

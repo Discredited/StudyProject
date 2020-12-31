@@ -5,12 +5,11 @@ import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
-import kotlinx.android.synthetic.main.activity_lifecycle.*
-import kotlinx.android.synthetic.main.view_toolbar_layout.*
+import com.june.studyproject.databinding.ActivityLifecycleBinding
 import timber.log.Timber
 
 /**
@@ -19,7 +18,7 @@ import timber.log.Timber
  * @version 1.0.0
  * @time 2020/3/30
  */
-class LifecycleSecondActivityBasic : BasicActivity() {
+class LifecycleSecondActivity : BaseActivity<ActivityLifecycleBinding>() {
 
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
@@ -28,17 +27,19 @@ class LifecycleSecondActivityBasic : BasicActivity() {
     private var mDescColor = 0
     private var isFirstResume = true
 
-    override fun getLayoutResId(): Int = R.layout.activity_lifecycle
+    override fun viewBinding(): ActivityLifecycleBinding {
+        return ActivityLifecycleBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
-        toolbar.initToolbar(javaClass.simpleName)
-        toolbar.setNavigationOnClickListener { onBackPressed() }
+        mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName)
+        mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         adapter = RecordDisplayAdapter(mRecordList)
-        rvLifecycle.setLinearManager()
-        rvLifecycle.adapter = adapter
-        rvLifecycle.setHasFixedSize(true)
-        rvLifecycle.addItemDecoration(
+        mBinding.rvLifecycle.setLinearManager()
+        mBinding.rvLifecycle.adapter = adapter
+        mBinding.rvLifecycle.setHasFixedSize(true)
+        mBinding.rvLifecycle.addItemDecoration(
             LinearItemDecoration(
                 ContextCompat.getColor(
                     this,
@@ -136,7 +137,7 @@ class LifecycleSecondActivityBasic : BasicActivity() {
         const val RESPONSE_CODE_LIFECYCLE = "RESPONSE_CODE_LIFECYCLE"
 
         fun starter(activity: Activity, list: ArrayList<RecordDisplayVo>) {
-            val intent = Intent(activity, LifecycleSecondActivityBasic::class.java)
+            val intent = Intent(activity, LifecycleSecondActivity::class.java)
             intent.putExtra("RECORD_LIST", list)
             activity.startActivityForResult(intent, REQUEST_CODE_LIFECYCLE)
         }

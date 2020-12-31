@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     app:cardBackgroundColor="@color/color_theme"
-    app:cardCornerRadius="@dimen/dp_10">
+    app:cardCornerRadius="@dimen/dp_10"
+    tools:viewBindingIgnore="true">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCardPosition"

@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.io.File
 
-class DownloadActivityBasic : BasicActivity() {
+class DownloadActivity : BasicActivity() {
 
     override fun getLayoutResId(): Int = R.layout.activity_ok_http_download
 

@@ -6,7 +6,7 @@ import com.june.studyproject.R
 import com.june.studyproject.base.component.BasicActivity
 import kotlinx.android.synthetic.main.activity_image_drag_layout.*
 
-class ImageDragLayoutActivityBasic : BasicActivity() {
+class ImageDragLayoutActivity : BasicActivity() {
 
     private val mImageDraListener: OnImageDragListener = object : OnImageDragListener {
         override fun onDragStateChange(state: Int, x: Float, y: Float) {

@@ -4,7 +4,7 @@ import android.widget.ImageView
 import com.blankj.utilcode.util.ToastUtils
 import com.june.imageabout.box.ImageBoxLoader
 import com.june.studyproject.base.ext.loadImageBoxItem
-import com.june.studyproject.expand.image.watcher.ImageWatchActivityBasic
+import com.june.studyproject.expand.image.watcher.ImageWatchActivity
 
 class ImageLoader : ImageBoxLoader<MediaVo> {
 
@@ -18,7 +18,7 @@ class ImageLoader : ImageBoxLoader<MediaVo> {
 
     override fun clickImage(imageView: ImageView, imageList: MutableList<MediaVo>, position: Int) {
         ToastUtils.showShort("点击了第${position + 1} 张图片")
-        ImageWatchActivityBasic.starter(imageView.context, imageList, position)
+        ImageWatchActivity.starter(imageView.context, imageList, position)
     }
 
     override fun singleImageWidth(image: MediaVo, singleType: Int): Int {

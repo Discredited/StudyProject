@@ -11,7 +11,7 @@ import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalSimple
 import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalSimpleText
 import kotlinx.android.synthetic.main.activity_normal_list.*
 
-class NormalListActivityBasic : BasicActivity() {
+class NormalListActivity : BasicActivity() {
 
     private val mAdapter = NormalMultiAdapter()
 

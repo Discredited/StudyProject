@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_image_watch.*
  * 大图展示页面
  * 需要自己注册ImageWatchActivity，方便配置Activity的Style
  */
-class ImageWatchActivityBasic : BasicActivity() {
+class ImageWatchActivity : BasicActivity() {
 
     private val adapter: ImageWatchAdapter = ImageWatchAdapter()
     private val mPageChangeListener = object : ViewPager2.OnPageChangeCallback() {
@@ -63,7 +63,7 @@ class ImageWatchActivityBasic : BasicActivity() {
 
     companion object {
         fun starter(context: Context, list: MutableList<MediaVo>, position: Int) {
-            val intent = Intent(context, ImageWatchActivityBasic::class.java)
+            val intent = Intent(context, ImageWatchActivity::class.java)
             val arrayList = arrayListOf<MediaVo>()
             list.forEach { arrayList.add(it) }
             intent.putExtra("IMAGE_LIST", arrayList)

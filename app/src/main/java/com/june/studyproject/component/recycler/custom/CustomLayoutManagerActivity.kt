@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_custom_layout_manager.*
 import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
 
-class CustomLayoutManagerActivityBasic : BasicActivity() {
+class CustomLayoutManagerActivity : BasicActivity() {
 
     private lateinit var adapter: CustomLayoutManagerAdapter
 

@@ -8,7 +8,7 @@ import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.adapter.column.*
 import kotlinx.android.synthetic.main.activity_ok_http.*
 
-class OkHttpActivityBasic : BasicActivity() {
+class OkHttpActivity : BasicActivity() {
 
     private val mAdapter = ColumnAdapter()
 
@@ -20,7 +20,7 @@ class OkHttpActivityBasic : BasicActivity() {
         rvOkHttp.setHasFixedSize(true)
 
         btDownload.click {
-            startActivity(Intent(this, DownloadActivityBasic::class.java))
+            startActivity(Intent(this, DownloadActivity::class.java))
         }
     }
 

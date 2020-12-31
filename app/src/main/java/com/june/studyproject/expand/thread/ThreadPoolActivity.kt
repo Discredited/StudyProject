@@ -11,7 +11,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 
-class ThreadPoolActivityBasic : BasicActivity(), View.OnClickListener {
+class ThreadPoolActivity : BasicActivity(), View.OnClickListener {
     private var threadCounter = 0
     override fun getLayoutResId(): Int {
         return R.layout.activity_thread_pool_activity
@@ -104,7 +104,7 @@ class ThreadPoolActivityBasic : BasicActivity(), View.OnClickListener {
 
     companion object {
         fun start(context: Context) {
-            val starter = Intent(context, ThreadPoolActivityBasic::class.java)
+            val starter = Intent(context, ThreadPoolActivity::class.java)
             context.startActivity(starter)
         }
     }
