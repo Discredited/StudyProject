@@ -3,7 +3,7 @@
 .idea
 gradlew
 gradlew.bat
-/local.properties
+local.properties
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml

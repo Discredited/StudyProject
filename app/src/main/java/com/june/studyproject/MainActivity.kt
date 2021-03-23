@@ -1,13 +1,16 @@
 package com.june.studyproject
 
+import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import com.june.studyproject.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
+    private val mHandler = Handler()
     private var mCurrentNavController: LiveData<NavController>? = null
 
     override fun viewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -33,6 +36,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             intent = intent
         )
         mCurrentNavController = controller
+
+
+        Timber.e("===>>  1")
+        mHandler.postDelayed({ Timber.e("===>>  2") }, 200)
+        Timber.e("===>>  3")
+        mHandler.post { Timber.e("===>>  4") }
+        Timber.e("===>>  5")
+        mHandler.postDelayed({ Timber.e("===>>  6") }, 100)
     }
 
     override fun onSupportNavigateUp(): Boolean {
