@@ -1,7 +1,7 @@
 package com.june.studyproject.component.recycler.rvadapter.normal
 
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.addLinearItemDecoration
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.ConstHelper
@@ -11,7 +11,7 @@ import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalSimple
 import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalSimpleText
 import kotlinx.android.synthetic.main.activity_normal_list.*
 
-class NormalListActivity : BaseActivity() {
+class NormalListActivity : BasicActivity() {
 
     private val mAdapter = NormalMultiAdapter()
 

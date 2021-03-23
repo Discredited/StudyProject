@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bn_navigation"
+        android:id="@+id/bottom_navigation"
         style="@style/Widget.Design.BottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_56"
@@ -20,11 +20,11 @@
         app:menu="@menu/menu_main_navigation" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fc_container"
+        android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/bn_navigation"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

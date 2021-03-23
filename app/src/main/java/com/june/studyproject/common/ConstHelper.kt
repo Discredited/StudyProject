@@ -4,27 +4,28 @@ object ConstHelper {
 
     private val IMAGE_SOURCE_ALL = arrayOf(
         "http://www.jshddq.net/UploadFiles/img_3_3560281984_1977672327_26.jpg",
-        "http://img0.imgtn.bdimg.com/it/u=3058041753,3990052783&fm=15&gp=0.jpg",
-        "http://img4.imgtn.bdimg.com/it/u=3318550662,3589021928&fm=26&gp=0.jpg",
-        "http://img4.imgtn.bdimg.com/it/u=2288838084,1662905828&fm=214&gp=0.jpg",
-
-        "http://img1.imgtn.bdimg.com/it/u=3617785790,3731361837&fm=26&gp=0.jpg",
-        "http://img2.imgtn.bdimg.com/it/u=407514011,2250260535&fm=26&gp=0.jpg",
         "http://tupian.qqw21.com/article/UploadPic/2020-3/20203152257648414.jpg",
-        "http://img0.imgtn.bdimg.com/it/u=3644175430,362551032&fm=214&gp=0.jpg",
         "http://img.improve-yourmemory.com/pic/4b97187aa32bd662c09ff25ab5ea2f03-0.jpg",
-
         "http://www.yozrun.com/UploadFiles/img_1_3281518170_2505144515_26.jpg",
         "http://img.qqzhi.com/upload/img_3_2537823874D1901268111_27.jpg",
-        "http://img3.imgtn.bdimg.com/it/u=3457130936,774247519&fm=26&gp=0.jpg",
-        "http://img0.imgtn.bdimg.com/it/u=3644175430,362551032&fm=214&gp=0.jpg",
-        "http://img.ewebweb.com/uploads/20191127/13/1574832894-rPXLSjDWIn.jpg",
 
-        "http://img1.imgtn.bdimg.com/it/u=1441467321,2789170753&fm=214&gp=0.jpg",
+        "http://img.ewebweb.com/uploads/20191127/13/1574832894-rPXLSjDWIn.jpg",
         "http://tupian.qqw21.com/article/UploadPic/2020-3/2020371171838593.jpg",
         "http://www.jshddq.net/UploadFiles/img_2_2304607039_3307652783_26.jpg",
         "http://tupian.qqw21.com/article/UploadPic/2020-3/2020371171913337.jpg",
         "http://uploads.5068.com/allimg/1801/82-1P123151011-50.jpg",
+
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2360589365,3897914221&fm=26&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2784003206,128253725&fm=26&gp=0.jpg",
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1249633517,2092238595&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1776696956,764099548&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3946256225,2794430391&fm=26&gp=0.jpg",
+
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=328772058,3232268119&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=341262213,960005851&fm=11&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3947471826,985525577&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1097429675,3351878819&fm=26&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1527167455,463108876&fm=26&gp=0.jpg",
 
         //GIF
         "http://imgsrc.baidu.com/forum/w=580/sign=35ffe1078735e5dd902ca5d746c7a7f5/79fcc758ccbf6c81fa372dbdbe3eb13532fa40e5.gif",
@@ -43,32 +44,34 @@ object ConstHelper {
 
     val IMAGE_SOURCE_GIF = arrayOf(
         "http://www.jshddq.net/UploadFiles/img_3_3560281984_1977672327_26.jpg",
-        "http://img0.imgtn.bdimg.com/it/u=3058041753,3990052783&fm=15&gp=0.jpg",
-        "http://img4.imgtn.bdimg.com/it/u=3318550662,3589021928&fm=26&gp=0.jpg",
-        "http://img4.imgtn.bdimg.com/it/u=2288838084,1662905828&fm=214&gp=0.jpg",
-
-        "http://img1.imgtn.bdimg.com/it/u=3617785790,3731361837&fm=26&gp=0.jpg",
-        "http://img2.imgtn.bdimg.com/it/u=407514011,2250260535&fm=26&gp=0.jpg",
         "http://tupian.qqw21.com/article/UploadPic/2020-3/20203152257648414.jpg",
-        "http://img0.imgtn.bdimg.com/it/u=3644175430,362551032&fm=214&gp=0.jpg",
         "http://img.improve-yourmemory.com/pic/4b97187aa32bd662c09ff25ab5ea2f03-0.jpg",
-
         "http://www.yozrun.com/UploadFiles/img_1_3281518170_2505144515_26.jpg",
         "http://img.qqzhi.com/upload/img_3_2537823874D1901268111_27.jpg",
-        "http://img3.imgtn.bdimg.com/it/u=3457130936,774247519&fm=26&gp=0.jpg",
-        "http://img0.imgtn.bdimg.com/it/u=3644175430,362551032&fm=214&gp=0.jpg",
-        "http://img.ewebweb.com/uploads/20191127/13/1574832894-rPXLSjDWIn.jpg",
 
-        "http://img1.imgtn.bdimg.com/it/u=1441467321,2789170753&fm=214&gp=0.jpg",
+        "http://img.ewebweb.com/uploads/20191127/13/1574832894-rPXLSjDWIn.jpg",
         "http://tupian.qqw21.com/article/UploadPic/2020-3/2020371171838593.jpg",
         "http://www.jshddq.net/UploadFiles/img_2_2304607039_3307652783_26.jpg",
         "http://tupian.qqw21.com/article/UploadPic/2020-3/2020371171913337.jpg",
-        "http://uploads.5068.com/allimg/1801/82-1P123151011-50.jpg"
+        "http://uploads.5068.com/allimg/1801/82-1P123151011-50.jpg",
+
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2360589365,3897914221&fm=26&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2784003206,128253725&fm=26&gp=0.jpg",
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1249633517,2092238595&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1776696956,764099548&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3946256225,2794430391&fm=26&gp=0.jpg",
+
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=328772058,3232268119&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=341262213,960005851&fm=11&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3947471826,985525577&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1097429675,3351878819&fm=26&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1527167455,463108876&fm=26&gp=0.jpg"
     )
 
     val VIDEO_SOURCE = arrayOf(
         "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0300f120000bhaokemqv7m6s290p4i0",
-        "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200fbc0000bd3jf6jcp23da5ss8tsg"
+        "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200fbc0000bd3jf6jcp23da5ss8tsg",
+        "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
     )
 
     fun getDiffImage(array: Array<String> = IMAGE_SOURCE_ALL): String {
@@ -93,5 +96,9 @@ object ConstHelper {
             videoSet.add(video)
         } while (videoSet.size < count)
         return videoSet.toMutableList()
+    }
+
+    fun getLolZip(): String {
+        return "https://vip.d0.baidupan.com/file/?UDYAPg4/VGUDClFpUWQBbVplVW1R5gaPUedQvwHGUNUC6lWDAMkOvVOeAchX5lDKV7MD4FWqAIVWcVC/BdlV21C2AM8O3VRHA3VRKlHtAYtasVW5UZUGgFG+UNcByVC2AplVnQC7DtBThQG/V4BQ7FfoA51VtADkVvFQ0QVvVWBQCABhDmdULQN7UX1RbAFwWiZVNlFnBmhRM1AJATRQNQI/VTQAaQ5uUz0BZFc3UGFXKwNgVXkAP1ZkUGIFYVVgUGQAZQ5kVCYDJVF3UTgBMlowVWFRNwYrUWZQZwFyUGECNVUtADgOPlM8ATVXM1BmV2wDZVVsAGZWMlBjBT9VY1AyAGEOYlQwA2JRP1EwATdaNVUzUTcGPFE1UGEBZVAyAjFVYQBzDiBTbAEnVyVQJFd+A2NVeABrVjVQawVrVWdQYgBuDmBUNANzUXNRbAFtWmVVNlEzBjVRY1BvAWVQYwI3VTMAbg5vUzABeVctUHdXawNqVX0AP1ZgUGMFYFVsUGEAYg5iVDYDZ1E1USMBdVpwVSdRMwY1UWNQYgFrUGkCNlUzAG4OYlM1AXFXdlA4V30DO1U4ADBWY1B4BWtVZVBiAHkOYVQzA21RKVE0ATZaNg=="
     }
 }

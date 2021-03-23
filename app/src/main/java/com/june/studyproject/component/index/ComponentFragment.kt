@@ -8,8 +8,9 @@ import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setGridManager
 import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.common.Toast
-import com.june.studyproject.component.activity.ExampleActivity
+import com.june.studyproject.component.activity.index.ExampleActivity
 import com.june.studyproject.component.fragment.FragmentActivity
+import com.june.studyproject.component.permission.PermissionsActivity
 import com.june.studyproject.component.recycler.RecyclerActivity
 import com.june.studyproject.component.service.ServiceActivity
 import kotlinx.android.synthetic.main.fragment_component.*
@@ -37,7 +38,7 @@ class ComponentFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter.setNewData(
+        adapter.setNewInstance(
             mutableListOf(
                 CardExampleVo(
                     getString(R.string.str_activity),
@@ -80,6 +81,12 @@ class ComponentFragment : BaseFragment() {
                     getString(R.string.view_pager_2_desc),
                     { Toast.showShort(R.string.str_view_pager_2) },
                     iconRes = R.color.color_red
+                ),
+                CardExampleVo(
+                    "Permission",
+                    "权限请求",
+                    { startActivity(Intent(requireActivity(), PermissionsActivity::class.java)) },
+                    iconRes = R.color.color_theme
                 )
             )
         )

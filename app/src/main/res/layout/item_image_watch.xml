@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.june.imageabout.watcher.ImageDragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.june.imageabout.watcher.drag.ImageDragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vImageDragLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:viewBindingIgnore="true">
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/vImageView"
@@ -10,4 +13,13 @@
         android:layout_height="match_parent"
         android:background="#000000"
         android:scaleType="centerInside" />
-</com.june.imageabout.watcher.ImageDragLayout>
+
+    <com.june.imageabout.watcher.progress.ImageLoadingProgressView
+        android:id="@+id/vProgress"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_gravity="center"
+        app:loading_progress_color="@color/color_theme"
+        app:loading_stroke_gap="@dimen/dp_4"
+        app:loading_stroke_width="@dimen/dp_2" />
+</com.june.imageabout.watcher.drag.ImageDragLayout>

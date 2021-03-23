@@ -7,6 +7,11 @@ import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatImageView
 import com.june.imageabout.R
 
+/**
+ * BoxImageView
+ * 主要用于九宫格内部图片展示
+ * 可以设置圆角样式:全部圆角、局部圆角
+ */
 class BoxImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : AppCompatImageView(context, attrs, defStyleAttr) {

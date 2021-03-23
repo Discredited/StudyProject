@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_rect_gray_radius_5">
+    android:background="@drawable/shape_rect_gray_radius_5"
+    tools:viewBindingIgnore="true">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvRecordMillis"

@@ -2,13 +2,13 @@ package com.june.studyproject.library.okhttp
 
 import android.content.Intent
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.base.ext.click
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.adapter.column.*
 import kotlinx.android.synthetic.main.activity_ok_http.*
 
-class OkHttpActivity : BaseActivity() {
+class OkHttpActivity : BasicActivity() {
 
     private val mAdapter = ColumnAdapter()
 

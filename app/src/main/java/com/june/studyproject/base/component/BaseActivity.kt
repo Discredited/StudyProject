@@ -1,32 +1,27 @@
 package com.june.studyproject.base.component
 
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.june.studyproject.R
+import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
-    protected lateinit var mActivity: AppCompatActivity
+    protected lateinit var mBinding: V
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //设置状态栏颜色
-        //window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        //window?.statusBarColor = ContextCompat.getColor(this, R.color.color_transparent)
         super.onCreate(savedInstanceState)
-        mActivity = this
-        setContentView(getLayoutResId())
+        mBinding = viewBinding()
+        setContentView(mBinding.root)
         initView()
         loadData()
     }
 
     /**
-     * 获取布局资源文件ID
+     * 设置viewBinding
      *
      * @return
      */
-    protected abstract fun getLayoutResId(): Int
+    protected abstract fun viewBinding(): V
 
     /**
      * 初始化View

@@ -8,7 +8,7 @@ import com.june.studyproject.base.component.BaseFragment
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.component.index.CardExampleVo
 import com.june.studyproject.component.recycler.custom.CustomLayoutManager
-import com.june.studyproject.expand.image.box.ImageBoxActivity
+import com.june.studyproject.expand.image.box.ImageBoxActivityBasic
 import kotlinx.android.synthetic.main.fragment_expand.*
 import timber.log.Timber
 
@@ -57,37 +57,37 @@ class ExpandFragment : BaseFragment() {
             CardExampleVo(
                 getString(R.string.str_display_title, "ImageBoxLayout"),
                 "图片九宫格布局，BoxImage演示",
-                { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                { startActivity(Intent(context, ImageBoxActivityBasic::class.java)) },
                 iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
             ),
             CardExampleVo(
                 getString(R.string.str_display_title, "ImageBoxLayout2"),
                 "图片九宫格布局，BoxImage演示",
-                { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                { startActivity(Intent(context, ImageBoxActivityBasic::class.java)) },
                 iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
             ),
             CardExampleVo(
                 getString(R.string.str_display_title, "ImageBoxLayout3"),
                 "图片九宫格布局，BoxImage演示",
-                { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                { startActivity(Intent(context, ImageBoxActivityBasic::class.java)) },
                 iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
             ),
             CardExampleVo(
                 getString(R.string.str_display_title, "ImageBoxLayout4"),
                 "图片九宫格布局，BoxImage演示",
-                { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                { startActivity(Intent(context, ImageBoxActivityBasic::class.java)) },
                 iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
             ),
             CardExampleVo(
                 getString(R.string.str_display_title, "ImageBoxLayout5"),
                 "图片九宫格布局，BoxImage演示",
-                { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                { startActivity(Intent(context, ImageBoxActivityBasic::class.java)) },
                 iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
             ),
             CardExampleVo(
                 getString(R.string.str_display_title, "ImageBoxLayout6"),
                 "图片九宫格布局，BoxImage演示",
-                { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                { startActivity(Intent(context, ImageBoxActivityBasic::class.java)) },
                 iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
             )
         ))

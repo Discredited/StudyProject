@@ -12,4 +12,5 @@
     android:paddingBottom="@dimen/dp_6"
     android:textColor="@color/color_white"
     android:textSize="@dimen/sp_18"
-    tools:text="什么是OkHttp?" />
+    tools:text="什么是OkHttp?"
+    tools:viewBindingIgnore="true" />

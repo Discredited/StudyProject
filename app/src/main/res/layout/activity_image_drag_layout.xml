@@ -7,7 +7,7 @@
 
     <include layout="@layout/view_toolbar_layout" />
 
-    <com.june.imageabout.watcher.ImageDragLayout
+    <com.june.imageabout.watcher.drag.ImageDragLayout
         android:id="@+id/vImageDragLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,5 +33,5 @@
             android:textColor="@color/color_text_66"
             android:textSize="@dimen/sp_18"
             tools:text="触摸信息" />
-    </com.june.imageabout.watcher.ImageDragLayout>
+    </com.june.imageabout.watcher.drag.ImageDragLayout>
 </FrameLayout>

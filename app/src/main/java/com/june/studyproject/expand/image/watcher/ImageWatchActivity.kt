@@ -3,9 +3,9 @@ package com.june.studyproject.expand.image.watcher
 import android.content.Context
 import android.content.Intent
 import androidx.viewpager2.widget.ViewPager2
-import com.june.imageabout.watcher.OnImageDragListener
+import com.june.imageabout.watcher.drag.OnImageDragListener
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.base.component.BasicActivity
 import com.june.studyproject.expand.image.box.MediaVo
 import kotlinx.android.synthetic.main.activity_image_watch.*
 
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_image_watch.*
  * 大图展示页面
  * 需要自己注册ImageWatchActivity，方便配置Activity的Style
  */
-class ImageWatchActivity : BaseActivity() {
+class ImageWatchActivity : BasicActivity() {
 
     private val adapter: ImageWatchAdapter = ImageWatchAdapter()
     private val mPageChangeListener = object : ViewPager2.OnPageChangeCallback() {
@@ -42,13 +42,18 @@ class ImageWatchActivity : BaseActivity() {
     override fun loadData() {
         val imageList = intent.getParcelableArrayListExtra<MediaVo>("IMAGE_LIST")
         imageList?.let {
-            adapter.setNewData(it)
+            adapter.setNewInstance(it)
         }
         val position = intent.getIntExtra("IMAGE_POSITION", 0)
         //smoothScroll false去掉翻页时的动画
         if (position > 0) {
             vpImageWatch.setCurrentItem(position, false)
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
     override fun onDestroy() {

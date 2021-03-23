@@ -1,6 +1,7 @@
-package com.june.studyproject.component.activity
+package com.june.studyproject.component.activity.lifecycle
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.content.ContextCompat
@@ -9,11 +10,10 @@ import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
-import kotlinx.android.synthetic.main.activity_lifecycle.*
-import kotlinx.android.synthetic.main.view_toolbar_layout.*
+import com.june.studyproject.databinding.ActivityLifecycleBinding
 import timber.log.Timber
 
-class LifecycleActivity : BaseActivity() {
+class LifecycleActivity : BaseActivity<ActivityLifecycleBinding>() {
 
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
@@ -24,12 +24,12 @@ class LifecycleActivity : BaseActivity() {
     private var mTitleColor = 0
     private var mDescColor = 0
 
-    override fun getLayoutResId(): Int = R.layout.activity_lifecycle
+    override fun viewBinding(): ActivityLifecycleBinding = ActivityLifecycleBinding.inflate(layoutInflater)
 
     override fun initView() {
-        toolbar.initToolbar(javaClass.simpleName, R.menu.menu_text_next)
-        toolbar.setNavigationOnClickListener { onBackPressed() }
-        toolbar.setOnMenuItemClickListener {
+        mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName, R.menu.menu_text_next)
+        mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
+        mBinding.tlLayout.toolbar.setOnMenuItemClickListener {
             //跳转其他页面之前,当前当前页面会先执行onPause
             //具体参照logo日志
             isToNext = true
@@ -39,10 +39,10 @@ class LifecycleActivity : BaseActivity() {
         }
 
         adapter = RecordDisplayAdapter(mRecordList)
-        rvLifecycle.setLinearManager()
-        rvLifecycle.adapter = adapter
-        rvLifecycle.setHasFixedSize(true)
-        rvLifecycle.addItemDecoration(
+        mBinding.rvLifecycle.setLinearManager()
+        mBinding.rvLifecycle.adapter = adapter
+        mBinding.rvLifecycle.setHasFixedSize(true)
+        mBinding.rvLifecycle.addItemDecoration(
             LinearItemDecoration(
                 ContextCompat.getColor(
                     this,
@@ -139,5 +139,11 @@ class LifecycleActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Timber.e("onDestroy()")
+    }
+
+    companion object {
+        fun starter(context: Context) {
+            context.startActivity(Intent(context, LifecycleActivity::class.java))
+        }
     }
 }

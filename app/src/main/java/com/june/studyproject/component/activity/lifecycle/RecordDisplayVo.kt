@@ -1,4 +1,4 @@
-package com.june.studyproject.component.activity
+package com.june.studyproject.component.activity.lifecycle
 
 import android.graphics.Color
 import android.os.Parcel
