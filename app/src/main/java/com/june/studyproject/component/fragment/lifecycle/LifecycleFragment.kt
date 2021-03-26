@@ -12,24 +12,22 @@ import com.june.studyproject.base.ext.addLinearItemDecoration
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayAdapter
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayVo
-import kotlinx.android.synthetic.main.fragment_lifecycle.*
+import com.june.studyproject.databinding.FragmentLifecycleBinding
 import timber.log.Timber
 
-class LifecycleFragment : BaseFragment() {
+class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
 
     private val mLifecycleViewModel by activityViewModels<FragmentLifecycleViewModel>()
     private lateinit var adapter: RecordDisplayAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Timber.e("onCreate()")
         mLifecycleViewModel.mRecordList.add(RecordDisplayVo("onCreate", javaClass.simpleName))
     }
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        Timber.e("onCreateView()")
         mLifecycleViewModel.mRecordList.add(RecordDisplayVo("onCreateView", javaClass.simpleName))
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -44,10 +42,10 @@ class LifecycleFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         Timber.e("onActivityCreated()")
         mLifecycleViewModel.mRecordList.add(
-            RecordDisplayVo(
-                "onActivityCreated()",
-                javaClass.simpleName
-            )
+                RecordDisplayVo(
+                        "onActivityCreated()",
+                        javaClass.simpleName
+                )
         )
 
         mLifecycleViewModel.mItemChangeLive.observe(viewLifecycleOwner, Observer {
@@ -61,10 +59,10 @@ class LifecycleFragment : BaseFragment() {
         super.onStart()
         Timber.e("onStart()")
         mLifecycleViewModel.mRecordList.add(
-            RecordDisplayVo(
-                "onStart()",
-                javaClass.simpleName
-            )
+                RecordDisplayVo(
+                        "onStart()",
+                        javaClass.simpleName
+                )
         )
     }
 
@@ -72,10 +70,10 @@ class LifecycleFragment : BaseFragment() {
         super.onResume()
         Timber.e("onResume()")
         mLifecycleViewModel.mRecordList.add(
-            RecordDisplayVo(
-                "onResume()",
-                javaClass.simpleName
-            )
+                RecordDisplayVo(
+                        "onResume()",
+                        javaClass.simpleName
+                )
         )
         adapter.notifyDataSetChanged()
     }
@@ -84,10 +82,10 @@ class LifecycleFragment : BaseFragment() {
         super.onPause()
         Timber.e("onPause()")
         mLifecycleViewModel.mRecordList.add(
-            RecordDisplayVo(
-                "onPause()",
-                javaClass.simpleName
-            )
+                RecordDisplayVo(
+                        "onPause()",
+                        javaClass.simpleName
+                )
         )
     }
 
@@ -95,10 +93,10 @@ class LifecycleFragment : BaseFragment() {
         super.onStop()
         Timber.e("onStop()")
         mLifecycleViewModel.mRecordList.add(
-            RecordDisplayVo(
-                "onStop()",
-                javaClass.simpleName
-            )
+                RecordDisplayVo(
+                        "onStop()",
+                        javaClass.simpleName
+                )
         )
     }
 
@@ -112,17 +110,19 @@ class LifecycleFragment : BaseFragment() {
         Timber.e("onDestroy()")
     }
 
-    override fun getLayoutResId(): Int = R.layout.fragment_lifecycle
+    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentLifecycleBinding {
+        return FragmentLifecycleBinding.inflate(inflater, container, false)
+    }
 
     override fun initView() {
         adapter = RecordDisplayAdapter(mLifecycleViewModel.mRecordList)
 
-        rvFragmentLifecycle.setLinearManager()
-        rvFragmentLifecycle.adapter = adapter
-        rvFragmentLifecycle.setHasFixedSize(true)
-        rvFragmentLifecycle.addLinearItemDecoration(
-            size = resources.getDimensionPixelSize(R.dimen.dp_5)
-        )
+        mBinding.rvFragmentLifecycle.apply {
+            setLinearManager()
+            adapter = adapter
+            setHasFixedSize(true)
+            addLinearItemDecoration(size = resources.getDimensionPixelSize(R.dimen.dp_5))
+        }
     }
 
     companion object {

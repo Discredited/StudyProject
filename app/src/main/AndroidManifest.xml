@@ -38,7 +38,7 @@
         <activity android:name=".component.activity.lifecycle.LifecycleActivity" />
         <activity android:name=".component.activity.lifecycle.LifecycleSecondActivity" />
         <activity android:name=".expand.image.box.BoxImageActivityBasic" />
-        <activity android:name=".expand.image.box.ImageBoxActivityBasic" />
+        <activity android:name=".expand.image.box.ImageBoxActivity" />
         <activity android:name=".component.fragment.FragmentActivity" />
         <activity android:name=".component.fragment.lifecycle.FragmentLifecycleActivity" />
 
@@ -47,7 +47,7 @@
             android:theme="@style/TransparentStyleTheme" />
         <activity android:name=".component.recycler.RecyclerActivity" />
         <activity android:name=".component.recycler.custom.CustomLayoutManagerActivity" />
-        <activity android:name=".expand.image.box.ImageBoxLayoutActivityBasic" />
+        <activity android:name=".expand.image.box.ImageBoxLayoutActivity" />
         <activity android:name=".expand.image.watcher.ImageDragLayoutActivity" />
         <activity android:name=".component.recycler.ItemDecorationActivity" />
         <activity android:name=".component.recycler.rvadapter.normal.NormalListActivity" />

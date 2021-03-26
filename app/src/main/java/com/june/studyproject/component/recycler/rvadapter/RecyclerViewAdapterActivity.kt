@@ -1,18 +1,19 @@
 package com.june.studyproject.component.recycler.rvadapter
 
 import android.content.Intent
-import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.click
 import com.june.studyproject.component.recycler.rvadapter.normal.NormalListActivity
-import kotlinx.android.synthetic.main.activity_recycler_view_adapter.*
+import com.june.studyproject.databinding.ActivityRecyclerViewAdapterBinding
 
-class RecyclerViewAdapterActivity : BasicActivity() {
+class RecyclerViewAdapterActivity : BaseActivity<ActivityRecyclerViewAdapterBinding>() {
 
-    override fun getLayoutResId(): Int = R.layout.activity_recycler_view_adapter
+    override fun viewBinding(): ActivityRecyclerViewAdapterBinding {
+        return ActivityRecyclerViewAdapterBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
-        tvNormalMultiLayout.click {
+        mBinding.tvNormalMultiLayout.click {
             startActivity(Intent(this, NormalListActivity::class.java))
         }
     }

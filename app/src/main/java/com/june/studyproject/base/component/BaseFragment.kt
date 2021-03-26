@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import timber.log.Timber
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<V : ViewBinding> : Fragment() {
+
+    private var _binding: V? = null
+    protected val mBinding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +22,8 @@ abstract class BaseFragment : Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         Timber.v("----${javaClass.simpleName}:onCreateView")
-        return inflater.inflate(getLayoutResId(), container, false)
+        _binding = viewBinding(inflater, container)
+        return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,11 +69,11 @@ abstract class BaseFragment : Fragment() {
     }
 
     /**
-     * 获取布局资源文件ID
+     * 设置viewBinding
      *
      * @return
      */
-    protected abstract fun getLayoutResId(): Int
+    abstract fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): V
 
     /**
      * 初始化View

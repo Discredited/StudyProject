@@ -1,25 +1,28 @@
 package com.june.studyproject.library.okhttp
 
 import android.content.Intent
-import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.click
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.adapter.column.*
-import kotlinx.android.synthetic.main.activity_ok_http.*
+import com.june.studyproject.databinding.ActivityOkHttpBinding
 
-class OkHttpActivity : BasicActivity() {
+class OkHttpActivity : BaseActivity<ActivityOkHttpBinding>() {
 
     private val mAdapter = ColumnAdapter()
 
-    override fun getLayoutResId(): Int = R.layout.activity_ok_http
+    override fun viewBinding(): ActivityOkHttpBinding {
+        return ActivityOkHttpBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
-        rvOkHttp.setLinearManager()
-        rvOkHttp.adapter = mAdapter
-        rvOkHttp.setHasFixedSize(true)
+        mBinding.rvOkHttp.apply {
+            setLinearManager()
+            adapter = mAdapter
+            setHasFixedSize(true)
+        }
 
-        btDownload.click {
+        mBinding.btDownload.click {
             startActivity(Intent(this, DownloadActivity::class.java))
         }
     }
@@ -38,27 +41,27 @@ class OkHttpActivity : BasicActivity() {
         list.add(ColumnTitleVo("OkHttp使用方法"))
         list.add(ColumnTextVo("val client = OkHttpClient()"))
         list.add(ColumnTextVo("public Builder() {\n" +
-            "        dispatcher = new Dispatcher();\n" +
-            "        protocols = DEFAULT_PROTOCOLS;\n" +
-            "        connectionSpecs = DEFAULT_CONNECTION_SPECS;\n" +
-            "        eventListenerFactory = EventListener.factory(EventListener.NONE);\n" +
-            "        proxySelector = ProxySelector.getDefault();\n" +
-            "        cookieJar = CookieJar.NO_COOKIES;\n" +
-            "        socketFactory = SocketFactory.getDefault();\n" +
-            "        hostnameVerifier = OkHostnameVerifier.INSTANCE;\n" +
-            "        certificatePinner = CertificatePinner.DEFAULT;\n" +
-            "        proxyAuthenticator = Authenticator.NONE;\n" +
-            "        authenticator = Authenticator.NONE;\n" +
-            "        connectionPool = new ConnectionPool();\n" +
-            "        dns = Dns.SYSTEM;\n" +
-            "        followSslRedirects = true;\n" +
-            "        followRedirects = true;\n" +
-            "        retryOnConnectionFailure = true;\n" +
-            "        connectTimeout = 10_000;\n" +
-            "        readTimeout = 10_000;\n" +
-            "        writeTimeout = 10_000;\n" +
-            "        pingInterval = 0;\n" +
-            "}"))
+                "        dispatcher = new Dispatcher();\n" +
+                "        protocols = DEFAULT_PROTOCOLS;\n" +
+                "        connectionSpecs = DEFAULT_CONNECTION_SPECS;\n" +
+                "        eventListenerFactory = EventListener.factory(EventListener.NONE);\n" +
+                "        proxySelector = ProxySelector.getDefault();\n" +
+                "        cookieJar = CookieJar.NO_COOKIES;\n" +
+                "        socketFactory = SocketFactory.getDefault();\n" +
+                "        hostnameVerifier = OkHostnameVerifier.INSTANCE;\n" +
+                "        certificatePinner = CertificatePinner.DEFAULT;\n" +
+                "        proxyAuthenticator = Authenticator.NONE;\n" +
+                "        authenticator = Authenticator.NONE;\n" +
+                "        connectionPool = new ConnectionPool();\n" +
+                "        dns = Dns.SYSTEM;\n" +
+                "        followSslRedirects = true;\n" +
+                "        followRedirects = true;\n" +
+                "        retryOnConnectionFailure = true;\n" +
+                "        connectTimeout = 10_000;\n" +
+                "        readTimeout = 10_000;\n" +
+                "        writeTimeout = 10_000;\n" +
+                "        pingInterval = 0;\n" +
+                "}"))
         mAdapter.setNewInstance(list)
     }
 }

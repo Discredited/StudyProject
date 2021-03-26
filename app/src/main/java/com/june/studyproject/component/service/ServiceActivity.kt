@@ -7,23 +7,25 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.view.View
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.component.service.TestBindService.TestBinder
-import kotlinx.android.synthetic.main.activity_service.*
+import com.june.studyproject.databinding.ActivityServiceBinding
 import timber.log.Timber
 
-class ServiceActivity : BasicActivity(), View.OnClickListener, ServiceConnection {
+class ServiceActivity : BaseActivity<ActivityServiceBinding>(), View.OnClickListener, ServiceConnection {
 
     private var isBindService = false
 
-    override fun getLayoutResId(): Int = R.layout.activity_service
+    override fun viewBinding(): ActivityServiceBinding {
+        return ActivityServiceBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
-        tv_bind_service.setOnClickListener(this)
-        tv_start_service.setOnClickListener(this)
-        tv_unbind_service.setOnClickListener(this)
-        tv_stop_service.setOnClickListener(this)
-        tv_to_next_bind.setOnClickListener(this)
+        mBinding.tvBindService.setOnClickListener(this)
+        mBinding.tvBindService.setOnClickListener(this)
+        mBinding.tvUnbindService.setOnClickListener(this)
+        mBinding.tvStopService.setOnClickListener(this)
+        mBinding.tvToNextBind.setOnClickListener(this)
     }
 
     override fun loadData() {}
@@ -45,12 +47,12 @@ class ServiceActivity : BasicActivity(), View.OnClickListener, ServiceConnection
     override fun onClick(v: View) {
         when (v.id) {
             R.id.tv_start_service -> startService(
-                Intent(this, TestBindService::class.java)
+                    Intent(this, TestBindService::class.java)
             )
             R.id.tv_bind_service -> bindService(
-                Intent(this, TestBindService::class.java),
-                this,
-                Context.BIND_AUTO_CREATE
+                    Intent(this, TestBindService::class.java),
+                    this,
+                    Context.BIND_AUTO_CREATE
             )
             R.id.tv_unbind_service -> {
                 //如果不判断是否绑定，直接unBindService 就会喜提异常：java.lang
@@ -61,7 +63,7 @@ class ServiceActivity : BasicActivity(), View.OnClickListener, ServiceConnection
                 }
             }
             R.id.tv_stop_service -> stopService(Intent(this,
-                                                       TestBindService::class.java))
+                    TestBindService::class.java))
             R.id.tv_to_next_bind -> start(this)
         }
     }
@@ -69,8 +71,10 @@ class ServiceActivity : BasicActivity(), View.OnClickListener, ServiceConnection
     override fun onServiceConnected(name: ComponentName, service: IBinder) {
         isBindService = true
         Timber.e("onServiceConnected: 连接成功:${name.className}")
-        Timber.e("onServiceConnected: ${(service as TestBinder).service
-            .serviceInformation}")
+        Timber.e("onServiceConnected: ${
+            (service as TestBinder).service
+                    .serviceInformation
+        }")
     }
 
     override fun onServiceDisconnected(name: ComponentName) {

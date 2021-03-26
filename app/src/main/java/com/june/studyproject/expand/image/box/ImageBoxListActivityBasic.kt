@@ -3,14 +3,13 @@ package com.june.studyproject.expand.image.box
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ScreenUtils
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.addLinearItemDecoration
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.Toast
-import kotlinx.android.synthetic.main.activity_image_box_layout_list.*
-import kotlinx.android.synthetic.main.view_toolbar_layout.*
+import com.june.studyproject.databinding.ActivityImageBoxLayoutListBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,15 +20,19 @@ import kotlinx.coroutines.withContext
  * @version 1.0.0
  * @time 2020/3/30 16:37
  */
-class ImageBoxListActivityBasic : BasicActivity() {
+class ImageBoxListActivityBasic : BaseActivity<ActivityImageBoxLayoutListBinding>() {
 
     private lateinit var adapter: ImageBoxLayoutAdapter
 
-    override fun getLayoutResId(): Int = R.layout.activity_image_box_layout_list
+    override fun viewBinding(): ActivityImageBoxLayoutListBinding {
+        return ActivityImageBoxLayoutListBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
-        toolbar.initToolbar(javaClass.simpleName)
-        toolbar.setNavigationOnClickListener { onBackPressed() }
+        mBinding.tlLayout.toolbar.apply {
+            initToolbar(javaClass.simpleName)
+            setNavigationOnClickListener { onBackPressed() }
+        }
 
         adapter = ImageBoxLayoutAdapter()
         adapter.setOnItemClickListener { adapter, _, position ->
@@ -39,10 +42,12 @@ class ImageBoxListActivityBasic : BasicActivity() {
 
         ScreenUtils.getAppScreenWidth()
 
-        rv_image_box.setLinearManager()
-        rv_image_box.adapter = adapter
-        rv_image_box.setHasFixedSize(true)
-        rv_image_box.addLinearItemDecoration(size = resources.getDimensionPixelSize(R.dimen.dp_15))
+        mBinding.rvImageBox.apply {
+            setLinearManager()
+            adapter = adapter
+            setHasFixedSize(true)
+            addLinearItemDecoration(size = resources.getDimensionPixelSize(R.dimen.dp_15))
+        }
     }
 
     override fun loadData() {
@@ -55,7 +60,7 @@ class ImageBoxListActivityBasic : BasicActivity() {
                 }
                 list
             }
-            adapter.setNewData(result)
+            adapter.setNewInstance(result)
         }
     }
 

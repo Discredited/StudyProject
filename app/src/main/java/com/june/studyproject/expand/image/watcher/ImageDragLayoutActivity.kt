@@ -2,11 +2,10 @@ package com.june.studyproject.expand.image.watcher
 
 import android.view.MotionEvent
 import com.june.imageabout.watcher.drag.OnImageDragListener
-import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
-import kotlinx.android.synthetic.main.activity_image_drag_layout.*
+import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.databinding.ActivityImageDragLayoutBinding
 
-class ImageDragLayoutActivity : BasicActivity() {
+class ImageDragLayoutActivity : BaseActivity<ActivityImageDragLayoutBinding>() {
 
     private val mImageDraListener: OnImageDragListener = object : OnImageDragListener {
         override fun onDragStateChange(state: Int, x: Float, y: Float) {
@@ -17,8 +16,8 @@ class ImageDragLayoutActivity : BasicActivity() {
                 MotionEvent.ACTION_CANCEL -> "ACTION_CANCEL"
                 else -> "UN KNOW"
             }
-            tvDragStatus.text = dragState
-            tvDragInfo.text = "x:${x}\ny:${y}"
+            mBinding.tvDragStatus.text = dragState
+            mBinding.tvDragInfo.text = "x:${x}\ny:${y}"
         }
 
         override fun onDragOverThreshold() {
@@ -26,10 +25,12 @@ class ImageDragLayoutActivity : BasicActivity() {
         }
     }
 
-    override fun getLayoutResId(): Int = R.layout.activity_image_drag_layout
+    override fun viewBinding(): ActivityImageDragLayoutBinding {
+        return ActivityImageDragLayoutBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
-        vImageDragLayout.setImageDragListener(mImageDraListener)
+        mBinding.vImageDragLayout.setImageDragListener(mImageDraListener)
     }
 
     override fun loadData() {

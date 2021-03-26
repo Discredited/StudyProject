@@ -5,24 +5,26 @@ import android.content.Intent
 import androidx.viewpager2.widget.ViewPager2
 import com.june.imageabout.watcher.drag.OnImageDragListener
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.databinding.ActivityImageWatchBinding
 import com.june.studyproject.expand.image.box.MediaVo
-import kotlinx.android.synthetic.main.activity_image_watch.*
 
 /**
  * 大图展示页面
  * 需要自己注册ImageWatchActivity，方便配置Activity的Style
  */
-class ImageWatchActivity : BasicActivity() {
+class ImageWatchActivity : BaseActivity<ActivityImageWatchBinding>() {
 
     private val adapter: ImageWatchAdapter = ImageWatchAdapter()
     private val mPageChangeListener = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
-            tvImagePosition?.text = "${position + 1} / ${adapter.itemCount}"
+            mBinding.tvImagePosition.text = "${position + 1} / ${adapter.itemCount}"
         }
     }
 
-    override fun getLayoutResId(): Int = R.layout.activity_image_watch
+    override fun viewBinding(): ActivityImageWatchBinding {
+        return ActivityImageWatchBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
         adapter.setImageDragListener(object : OnImageDragListener {
@@ -34,9 +36,9 @@ class ImageWatchActivity : BasicActivity() {
             }
         })
 
-        vpImageWatch.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        vpImageWatch.adapter = adapter
-        vpImageWatch.registerOnPageChangeCallback(mPageChangeListener)
+        mBinding.vpImageWatch.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        mBinding.vpImageWatch.adapter = adapter
+        mBinding.vpImageWatch.registerOnPageChangeCallback(mPageChangeListener)
     }
 
     override fun loadData() {
@@ -47,7 +49,7 @@ class ImageWatchActivity : BasicActivity() {
         val position = intent.getIntExtra("IMAGE_POSITION", 0)
         //smoothScroll false去掉翻页时的动画
         if (position > 0) {
-            vpImageWatch.setCurrentItem(position, false)
+            mBinding.vpImageWatch.setCurrentItem(position, false)
         }
     }
 
@@ -57,7 +59,7 @@ class ImageWatchActivity : BasicActivity() {
     }
 
     override fun onDestroy() {
-        vpImageWatch.unregisterOnPageChangeCallback(mPageChangeListener)
+        mBinding.vpImageWatch.unregisterOnPageChangeCallback(mPageChangeListener)
         super.onDestroy()
     }
 

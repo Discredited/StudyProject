@@ -1,27 +1,26 @@
 package com.june.studyproject.expand.thread
 
-import android.content.Context
-import android.content.Intent
 import android.view.View
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
-import kotlinx.android.synthetic.main.activity_thread_pool_activity.*
+import com.june.studyproject.base.component.BaseActivity
+import com.june.studyproject.databinding.ActivityThreadPoolActivityBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 
-class ThreadPoolActivity : BasicActivity(), View.OnClickListener {
+class ThreadPoolActivity : BaseActivity<ActivityThreadPoolActivityBinding>(), View.OnClickListener {
     private var threadCounter = 0
-    override fun getLayoutResId(): Int {
-        return R.layout.activity_thread_pool_activity
+
+    override fun viewBinding(): ActivityThreadPoolActivityBinding {
+        return ActivityThreadPoolActivityBinding.inflate(layoutInflater)
     }
 
     override fun initView() {
-        tv_cached.setOnClickListener(this);
-        tv_fixed.setOnClickListener(this);
-        tv_scheduled.setOnClickListener(this);
-        tv_single.setOnClickListener(this);
+        mBinding.tvCached.setOnClickListener(this);
+        mBinding.tvFixed.setOnClickListener(this);
+        mBinding.tvScheduled.setOnClickListener(this);
+        mBinding.tvSingle.setOnClickListener(this);
     }
 
     override fun loadData() {}
@@ -29,7 +28,7 @@ class ThreadPoolActivity : BasicActivity(), View.OnClickListener {
         for (i in 0..9) {
             executorService.execute {
                 val current = getString(R.string.current_thread_information,
-                                        Thread.currentThread().name)
+                        Thread.currentThread().name)
                 runOnUiThread { setInformation(current, false) }
             }
         }
@@ -56,25 +55,25 @@ class ThreadPoolActivity : BasicActivity(), View.OnClickListener {
         threadCounter = 0
         //延迟零秒后执行，每隔一秒执行一次
         scheduledExecutorService.scheduleAtFixedRate(
-            {
-                val current = getString(R.string.current_thread_information,
-                                        Thread.currentThread().name)
-                runOnUiThread {
-                    setInformation(current, false)
-                    threadCounter++
-                    if (threadCounter == 10) {
-                        scheduledExecutorService.shutdown()
+                {
+                    val current = getString(R.string.current_thread_information,
+                            Thread.currentThread().name)
+                    runOnUiThread {
+                        setInformation(current, false)
+                        threadCounter++
+                        if (threadCounter == 10) {
+                            scheduledExecutorService.shutdown()
+                        }
                     }
-                }
-            }, 0, 1, TimeUnit.SECONDS)
+                }, 0, 1, TimeUnit.SECONDS)
     }
 
     private fun setInformation(information: String, isClear: Boolean) {
         if (isClear) {
-            tv_information.text = ""
+            mBinding.tvInformation.text = ""
         }
-        tv_information.append(information)
-        tv_information.append("\n")
+        mBinding.tvInformation.append(information)
+        mBinding.tvInformation.append("\n")
     }
 
     override fun onClick(v: View) {
@@ -96,16 +95,17 @@ class ThreadPoolActivity : BasicActivity(), View.OnClickListener {
                 doExecute(Executors.newSingleThreadExecutor())
             }
         }
-        tv_cached.isSelected = v.id == tv_cached.id
-        tv_fixed.isSelected = v.id == tv_fixed.id
-        tv_scheduled.isSelected = v.id == tv_scheduled.id
-        tv_single.isSelected = v.id == tv_single.id
+        mBinding.tvCached.isSelected = v.id == mBinding.tvCached.id
+        mBinding.tvFixed.isSelected = v.id == mBinding.tvFixed.id
+        mBinding.tvScheduled.isSelected = v.id == mBinding.tvScheduled.id
+        mBinding.tvSingle.isSelected = v.id == mBinding.tvSingle.id
     }
 
-    companion object {
-        fun start(context: Context) {
-            val starter = Intent(context, ThreadPoolActivity::class.java)
-            context.startActivity(starter)
-        }
-    }
+//    companion object {
+//        fun start(context: Context) {
+//            val starter = Intent(context, ThreadPoolActivity::class.java)
+//            context.startActivity(starter)
+//        }
+//    }
+
 }

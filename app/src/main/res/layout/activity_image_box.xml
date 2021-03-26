@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/view_toolbar_layout" />
+    <include
+        android:id="@+id/tl_layout"
+        layout="@layout/view_toolbar_layout" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBoxImageView"
@@ -16,7 +18,7 @@
         android:textSize="@dimen/sp_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/tl_layout" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBoxImageLayout"

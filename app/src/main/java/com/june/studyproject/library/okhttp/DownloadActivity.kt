@@ -2,38 +2,36 @@ package com.june.studyproject.library.okhttp
 
 import android.content.Intent
 import androidx.lifecycle.lifecycleScope
-import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PathUtils
-import com.blankj.utilcode.util.PermissionUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.june.network.download.DownloadHelper
 import com.june.network.download.ProgressListener
-import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.click
 import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.FilePathHelper
 import com.june.studyproject.common.Toast
+import com.june.studyproject.databinding.ActivityOkHttpDownloadBinding
 import com.june.studyproject.expand.zip.UnzipActivityBasic
-import kotlinx.android.synthetic.main.activity_ok_http_download.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.io.File
 
-class DownloadActivity : BasicActivity() {
+class DownloadActivity : BaseActivity<ActivityOkHttpDownloadBinding>() {
 
-    override fun getLayoutResId(): Int = R.layout.activity_ok_http_download
+    override fun viewBinding(): ActivityOkHttpDownloadBinding {
+        return ActivityOkHttpDownloadBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
-        btDownload.click {
+        mBinding.btDownload.click {
             //检查文件读写权限
             //checkStoragePermission()
             startDownload()
         }
-        btUnzip.click {
+        mBinding.btUnzip.click {
             startActivity(Intent(this, UnzipActivityBasic::class.java))
         }
     }
@@ -44,25 +42,10 @@ class DownloadActivity : BasicActivity() {
         Timber.e("imageUrl:$imageUrl")
         val file = File(imageUrl)
         if (file.exists()) {
-            ivImage.loadImage(imageUrl)
+            mBinding.ivImage.loadImage(imageUrl)
         }
 
-        tvDownloadProgress.text = "0 / 0"
-    }
-
-    private fun checkStoragePermission() {
-        PermissionUtils.permission(PermissionConstants.STORAGE)
-            .callback(object : PermissionUtils.FullCallback {
-                override fun onGranted(granted: MutableList<String>) {
-                    startDownload()
-                }
-
-                override fun onDenied(deniedForever: MutableList<String>,
-                                      denied: MutableList<String>) {
-                    ToastUtils.showShort("StudyProject需要文件读写权限")
-                }
-            })
-            .request()
+        mBinding.tvDownloadProgress.text = "0 / 0"
     }
 
     private fun startDownload() {
@@ -81,7 +64,7 @@ class DownloadActivity : BasicActivity() {
                 Timber.e("下载进度:progress:$progress    max:$max    percent:$percent")
                 lifecycleScope.launch {
                     withContext(Dispatchers.Main) {
-                        tvDownloadProgress.text = "$progress / $max"
+                        mBinding.tvDownloadProgress.text = "$progress / $max"
                     }
                 }
             }

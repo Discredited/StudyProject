@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/view_toolbar_layout" />
+    <include
+        android:id="@+id/tl_layout"
+        layout="@layout/view_toolbar_layout" />
 
     <com.june.imageabout.box.BoxImageView
         android:id="@+id/ivBoxImage"

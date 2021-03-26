@@ -2,42 +2,47 @@ package com.june.studyproject.component.recycler.custom
 
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BasicActivity
+import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
-import kotlinx.android.synthetic.main.activity_custom_layout_manager.*
-import kotlinx.android.synthetic.main.view_toolbar_layout.*
+import com.june.studyproject.databinding.ActivityCustomLayoutManagerBinding
 
 
-class CustomLayoutManagerActivity : BasicActivity() {
+class CustomLayoutManagerActivity : BaseActivity<ActivityCustomLayoutManagerBinding>() {
 
     private lateinit var adapter: CustomLayoutManagerAdapter
 
-    override fun getLayoutResId(): Int = R.layout.activity_custom_layout_manager
+    override fun viewBinding(): ActivityCustomLayoutManagerBinding {
+        return ActivityCustomLayoutManagerBinding.inflate(layoutInflater)
+    }
 
     override fun initView() {
-        toolbar.initToolbar(javaClass.simpleName)
-        toolbar.setNavigationOnClickListener { onBackPressed() }
+        mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName)
+        mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         adapter = CustomLayoutManagerAdapter()
 
-        rvCard.layoutManager = CustomLayoutManager(this)
-        rvCard.adapter = adapter
-        rvCard.setHasFixedSize(true)
+        mBinding.rvCard.apply {
+            layoutManager = CustomLayoutManager(this@CustomLayoutManagerActivity)
+            adapter = adapter
+            setHasFixedSize(true)
+        }
     }
 
     override fun loadData() {
-        adapter.setNewData(mutableListOf(
-            ContextCompat.getColor(this, R.color.color_style_1_1),
-            ContextCompat.getColor(this, R.color.color_style_1_2),
-            ContextCompat.getColor(this, R.color.color_style_1_3),
-            ContextCompat.getColor(this, R.color.color_style_1_4),
-            ContextCompat.getColor(this, R.color.color_style_1_5),
+        adapter.setNewInstance(
+                mutableListOf(
+                        ContextCompat.getColor(this, R.color.color_style_1_1),
+                        ContextCompat.getColor(this, R.color.color_style_1_2),
+                        ContextCompat.getColor(this, R.color.color_style_1_3),
+                        ContextCompat.getColor(this, R.color.color_style_1_4),
+                        ContextCompat.getColor(this, R.color.color_style_1_5),
 
-            ContextCompat.getColor(this, R.color.color_style_1_1),
-            ContextCompat.getColor(this, R.color.color_style_1_2),
-            ContextCompat.getColor(this, R.color.color_style_1_3),
-            ContextCompat.getColor(this, R.color.color_style_1_4),
-            ContextCompat.getColor(this, R.color.color_style_1_5)
-        ))
+                        ContextCompat.getColor(this, R.color.color_style_1_1),
+                        ContextCompat.getColor(this, R.color.color_style_1_2),
+                        ContextCompat.getColor(this, R.color.color_style_1_3),
+                        ContextCompat.getColor(this, R.color.color_style_1_4),
+                        ContextCompat.getColor(this, R.color.color_style_1_5)
+                )
+        )
     }
 }

@@ -2,6 +2,8 @@ package com.june.studyproject.library
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
 import com.june.studyproject.base.component.BaseFragment
@@ -11,71 +13,74 @@ import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.LinearItemDecoration
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.index.CardExampleVo
+import com.june.studyproject.databinding.FragmentLibraryBinding
 import com.june.studyproject.library.okhttp.OkHttpActivity
-import kotlinx.android.synthetic.main.fragment_library.*
-import kotlinx.android.synthetic.main.view_toolbar_layout.*
 
-class LibraryFragment : BaseFragment() {
+class LibraryFragment : BaseFragment<FragmentLibraryBinding>() {
 
-    private lateinit var adapter: LibraryAdapter
+    private lateinit var mAdapter: LibraryAdapter
 
-    override fun getLayoutResId(): Int = R.layout.fragment_library
+    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentLibraryBinding {
+        return FragmentLibraryBinding.inflate(inflater, container, false)
+    }
 
     override fun initView() {
-        toolbar.initToolbar(getString(R.string.str_library), navIcon = 0, titleCenter = false)
+        mBinding.tlLayout.toolbar.initToolbar(getString(R.string.str_library), navIcon = 0, titleCenter = false)
 
-        adapter = LibraryAdapter()
-        adapter.itemClick { _, _, _ ->
+        mAdapter = LibraryAdapter()
+        mAdapter.itemClick { _, _, _ ->
             startActivity(Intent(requireActivity(), OkHttpActivity::class.java))
         }
-        rv_library.setLinearManager()
-        rv_library.adapter = adapter
-        rv_library.addItemDecoration(
-            LinearItemDecoration(
-                ContextCompat.getColor(
-                    requireActivity(),
-                    R.color.color_transparent
-                ),
-                size = resources.getDimensionPixelSize(R.dimen.dp_5)
+        mBinding.rvLibrary.apply {
+            setLinearManager()
+            adapter = mAdapter
+            addItemDecoration(
+                    LinearItemDecoration(
+                            ContextCompat.getColor(
+                                    requireActivity(),
+                                    R.color.color_transparent
+                            ),
+                            size = resources.getDimensionPixelSize(R.dimen.dp_5)
+                    )
             )
-        )
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter.setNewInstance(
-            mutableListOf(
-                CardExampleVo(
-                    "OkHttp + Retrofit",
-                    "",
-                    { Toast.showShort("OkHttp + Retrofit") },
-                    iconRes = R.color.color_style_1_1
-                ),
-                CardExampleVo(
-                    "RxJava",
-                    "",
-                    { Toast.showShort("RxJava") },
-                    iconRes = R.color.color_style_1_2
-                ),
-                CardExampleVo(
-                    "Glide",
-                    "",
-                    { Toast.showShort("Glide") },
-                    iconRes = R.color.color_style_1_3
-                ),
-                CardExampleVo(
-                    "BaseQuickAdapter",
-                    "",
-                    { Toast.showShort("BaseQuickAdapter") },
-                    iconRes = R.color.color_style_1_4
-                ),
-                CardExampleVo(
-                    "Video",
-                    "",
-                    { Toast.showShort("Video") },
-                    iconRes = R.color.color_style_1_5
+        mAdapter.setNewInstance(
+                mutableListOf(
+                        CardExampleVo(
+                                "OkHttp + Retrofit",
+                                "",
+                                { Toast.showShort("OkHttp + Retrofit") },
+                                iconRes = R.color.color_style_1_1
+                        ),
+                        CardExampleVo(
+                                "RxJava",
+                                "",
+                                { Toast.showShort("RxJava") },
+                                iconRes = R.color.color_style_1_2
+                        ),
+                        CardExampleVo(
+                                "Glide",
+                                "",
+                                { Toast.showShort("Glide") },
+                                iconRes = R.color.color_style_1_3
+                        ),
+                        CardExampleVo(
+                                "BaseQuickAdapter",
+                                "",
+                                { Toast.showShort("BaseQuickAdapter") },
+                                iconRes = R.color.color_style_1_4
+                        ),
+                        CardExampleVo(
+                                "Video",
+                                "",
+                                { Toast.showShort("Video") },
+                                iconRes = R.color.color_style_1_5
+                        )
                 )
-            )
         )
     }
 }

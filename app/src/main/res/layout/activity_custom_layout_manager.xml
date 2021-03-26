@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/view_toolbar_layout" />
+    <include
+        android:id="@+id/tl_layout"
+        layout="@layout/view_toolbar_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCard"
@@ -15,6 +17,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/tl_layout"
         tools:listitem="@layout/item_custom_layout_card" />
 </androidx.constraintlayout.widget.ConstraintLayout>
