@@ -1,17 +1,20 @@
 package com.june.studyproject.base.ext
 
 import android.view.View
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import kotlinx.android.synthetic.main.view_toolbar_layout.view.*
 
 fun Toolbar.initToolbar(
-    title: String,
-    menu: Int = 0,
-    navIcon: Int = R.drawable.ic_back_black,
-    titleCenter: Boolean = true
+        title: String,
+        menu: Int = 0,
+        navIcon: Int = R.drawable.ic_back_black,
+        titleCenter: Boolean = true
 ) {
+
+    val toolbarTitle = findViewById<AppCompatTextView>(R.id.toolbarTitle)
+
     //设置返回键按钮
     if (navIcon == 0) {
         val padding = resources.getDimensionPixelSize(R.dimen.common_margin)

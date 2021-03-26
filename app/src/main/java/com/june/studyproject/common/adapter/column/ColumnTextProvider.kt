@@ -3,7 +3,6 @@ package com.june.studyproject.common.adapter.column
 import com.chad.library.adapter.base.provider.BaseItemProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.june.studyproject.R
-import kotlinx.android.synthetic.main.item_column_text.view.*
 
 class ColumnTextProvider : BaseItemProvider<ColumnInterface>() {
 
@@ -15,6 +14,6 @@ class ColumnTextProvider : BaseItemProvider<ColumnInterface>() {
 
     override fun convert(helper: BaseViewHolder, item: ColumnInterface) {
         val data = item as ColumnTextVo
-        helper.itemView.tvColumnContent.text = data.content
+        helper.setText(R.id.tvColumnContent, data.content)
     }
 }

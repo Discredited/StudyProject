@@ -9,14 +9,14 @@ import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.view.children
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.june.imageabout.box.ImageBoxLayout
 import com.june.studyproject.R
+import com.june.studyproject.base.component.BaseBottomSheetDialogFragment
 import com.june.studyproject.common.ConstHelper
-import kotlinx.android.synthetic.main.fragment_image_box_layout.*
+import com.june.studyproject.databinding.FragmentImageBoxLayoutBinding
 import timber.log.Timber
 
-class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
+class ImageBoxLayoutSheetFragment : BaseBottomSheetDialogFragment<FragmentImageBoxLayoutBinding>() {
 
     private var mImageBoxLayout: ImageBoxLayout<MediaVo>? = null
 
@@ -47,17 +47,16 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_image_box_layout, container, false)
+    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentImageBoxLayoutBinding {
+        return FragmentImageBoxLayoutBinding.inflate(inflater, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initView() {
         //设置列数
         val spinnerItems = arrayOf("2", "3", "4")
         val columnAdapter = ArrayAdapter(requireActivity(), R.layout.item_spinner_text, spinnerItems)
-        spinnerColumn.adapter = columnAdapter
-        spinnerColumn.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        mBinding.spinnerColumn.adapter = columnAdapter
+        mBinding.spinnerColumn.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
 
@@ -69,7 +68,7 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
         }
 
         //设置FourStyle
-        rgStyleGroup.setOnCheckedChangeListener { group, checkedId ->
+        mBinding.rgStyleGroup.setOnCheckedChangeListener { group, checkedId ->
             Timber.i("checkId:$checkedId")
             group.children.forEachIndexed { index, view ->
                 if (view is AppCompatRadioButton) {
@@ -87,24 +86,24 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
         }
 
         //设置Gap
-        sbImageGapSeek.setOnSeekBarChangeListener(mGapSeekBarListener)
+        mBinding.sbImageGapSeek.setOnSeekBarChangeListener(mGapSeekBarListener)
 
         //设置Radius
-        sbImageRadiusSeek.setOnSeekBarChangeListener(mRadiusSeekBarListener)
+        mBinding.sbImageRadiusSeek.setOnSeekBarChangeListener(mRadiusSeekBarListener)
 
         //设置更新数据源
-        tvImageCount.setOnClickListener {
+        mBinding.tvImageCount.setOnClickListener {
             mImageBoxLayout?.let {
                 val diffImage = ConstHelper.getDiffImage((Math.random() * 20).toInt())
                 val list = diffImage.map { url ->
                     MediaVo(url, url, 0, 0)
                 }.toMutableList()
                 it.setImageList(list)
-                tvImageCount?.text = getString(R.string.image_box_current_images, list.size)
+                mBinding.tvImageCount.text = getString(R.string.image_box_current_images, list.size)
             }
         }
 
-        cbImageMaxLimit.setOnCheckedChangeListener { _, isChecked ->
+        mBinding.cbImageMaxLimit.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 mImageBoxLayout?.setImageMax(9)
                 mImageBoxLayout?.getImageList()?.let {
@@ -118,7 +117,7 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
             }
         }
 
-        cbImageMaxCover.setOnCheckedChangeListener { _, isChecked ->
+        mBinding.cbImageMaxCover.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 mImageBoxLayout?.setImageMax(9)
             } else {
@@ -135,8 +134,8 @@ class ImageBoxLayoutSheetFragment : BottomSheetDialogFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mImageBoxLayout = activity?.findViewById(R.id.vImageBoxLayout)
-        tvImageCount.text = getString(R.string.image_box_current_images, mImageBoxLayout?.getImageList()?.size
-            ?: 0)
+        mBinding.tvImageCount.text = getString(R.string.image_box_current_images, mImageBoxLayout?.getImageList()?.size
+                ?: 0)
     }
 
     override fun onDestroyView() {

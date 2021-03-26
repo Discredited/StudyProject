@@ -1,15 +1,15 @@
 package com.june.studyproject.library
 
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.june.studyproject.R
 import com.june.studyproject.component.index.CardExampleVo
-import kotlinx.android.synthetic.main.item_library.view.*
+import com.june.studyproject.databinding.ItemLibraryBinding
 
-class LibraryAdapter : BaseQuickAdapter<CardExampleVo, BaseViewHolder>(R.layout.item_library) {
+class LibraryAdapter : BaseQuickAdapter<CardExampleVo, BaseDataBindingHolder<ItemLibraryBinding>>(R.layout.item_library) {
 
-    override fun convert(holder: BaseViewHolder, item: CardExampleVo) {
-        holder.itemView.iv_library_cover.setImageResource(item.iconRes)
-        holder.itemView.tv_library_name.text = item.title
+    override fun convert(holder: BaseDataBindingHolder<ItemLibraryBinding>, item: CardExampleVo) {
+        holder.dataBinding?.ivLibraryCover?.setImageResource(item.iconRes)
+        holder.dataBinding?.tvLibraryName?.text = item.title
     }
 }

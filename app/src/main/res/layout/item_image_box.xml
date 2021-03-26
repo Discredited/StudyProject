@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:viewBindingIgnore="true">
+<layout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_image"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_56"
-        android:gravity="center_vertical"
-        android:paddingStart="@dimen/common_margin"
-        android:paddingEnd="@dimen/common_margin"
-        android:textColor="@color/color_theme"
-        tools:text="第一组  共有多少张图片" />
-
-    <com.june.imageabout.box.ImageBoxLayout
-        android:id="@+id/v_image_box"
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:imageBoxExpectColumn="3"
-        app:imageBoxFourStyle="normal"
-        app:imageBoxGap="@dimen/dp_2"
-        app:imageBoxMax="9"
-        app:imageBoxMaxOver="true"
-        app:imageBoxRadius="@dimen/dp_5"
-        app:imageBoxSingleHeight="@dimen/dp_280"
-        app:imageBoxSingleWidth="@dimen/dp_280" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+        android:orientation="vertical"
+        tools:viewBindingIgnore="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_56"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/common_margin"
+            android:paddingEnd="@dimen/common_margin"
+            android:textColor="@color/color_theme"
+            tools:text="第一组  共有多少张图片" />
+
+        <com.june.imageabout.box.ImageBoxLayout
+            android:id="@+id/v_image_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageBoxExpectColumn="3"
+            app:imageBoxFourStyle="normal"
+            app:imageBoxGap="@dimen/dp_2"
+            app:imageBoxMax="9"
+            app:imageBoxMaxOver="true"
+            app:imageBoxRadius="@dimen/dp_5"
+            app:imageBoxSingleHeight="@dimen/dp_280"
+            app:imageBoxSingleWidth="@dimen/dp_280" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

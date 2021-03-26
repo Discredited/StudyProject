@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/dp_5"
-    tools:viewBindingIgnore="true">
+<layout>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_component_cover"
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_180"
-        tools:background="@color/color_theme" />
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dp_5"
+        tools:viewBindingIgnore="true">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_component_name"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_30"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="@dimen/dp_40"
-        android:background="#33000000"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:lines="1"
-        android:paddingStart="@dimen/dp_10"
-        android:paddingEnd="@dimen/dp_10"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/sp_16"
-        tools:text="标题" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_component_cover"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_180"
+            tools:background="@color/color_theme" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_component_description"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_gravity="bottom"
-        android:background="#33000000"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:lines="2"
-        android:paddingStart="@dimen/dp_10"
-        android:paddingEnd="@dimen/dp_10"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/sp_12"
-        tools:text="描述描述描述描述描述描述描描述描述描述描述描述描述描述描述描述描描述描述描述描述描述描述描述述描述描述描述描述描述描述描述描述描述描述述描述描述描述描述描述描述" />
-</androidx.cardview.widget.CardView>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_component_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:background="#33000000"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_16"
+            tools:text="标题" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_component_description"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="bottom"
+            android:background="#33000000"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_12"
+            tools:text="描述描述描述描述描述描述描描述描述描述描述描述描述描述描述描述描描述描述描述描述描述描述描述述描述描述描述描述描述描述描述描述描述描述述描述描述描述描述描述描述" />
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -10,7 +10,6 @@ import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayVo
 import com.june.studyproject.databinding.ActivityFragmentLifecycleBinding
-import kotlinx.android.synthetic.main.view_toolbar_layout.*
 import timber.log.Timber
 
 class FragmentLifecycleActivity : BaseActivity<ActivityFragmentLifecycleBinding>() {
@@ -166,8 +165,8 @@ class FragmentLifecycleActivity : BaseActivity<ActivityFragmentLifecycleBinding>
     }
 
     override fun initView() {
-        toolbar.initToolbar(javaClass.simpleName)
-        toolbar.setNavigationOnClickListener { onBackPressed() }
+        mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName)
+        mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         mTitleColor = ContextCompat.getColor(this, R.color.color_yellow)
         mDescColor = ContextCompat.getColor(this, R.color.color_yellow_light)
