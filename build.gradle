@@ -45,7 +45,7 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 29
     //test
-    junit = '4.13.1'
+    junit = '4.13.2'
     extRunner = '1.3.0'
     espressoCore = '3.3.0'
     //core
