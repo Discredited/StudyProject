@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.4.20'
+    ext.kotlin_version = '1.4.32'
 
     repositories {
         jcenter()
@@ -9,7 +9,7 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.1'
+        classpath 'com.android.tools.build:gradle:4.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         //JCenter Push Plugin
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
@@ -59,7 +59,7 @@ ext {
 //扩展性：gradle支持插件机制，所以我们可以复用这些插件，就如同复用库一样简单方便
 //兼容性：兼容所有的 Maven、Ant 功能
 
-//gradel的构建过程分为三部分：初始化、配置、执行
+//gradle的构建过程分为三部分：初始化、配置、执行
 //初始化：解析整个工程中所有的Project，构建所有Project对应的project对象
 //        读取跟工程中的setting.gradle中的include信息，确定有多少个工程加入构建
 //        为每一个项目(build.gradle脚本文件)创建一个与之对应的Project实例
