@@ -42,3 +42,29 @@ PBF（按功能分包 Package By Feature） 推荐
 [Android 开发规范（完结版）](https://blankj.com/2017/03/08/android-standard-dev-final/#2-as-%E8%A7%84%E8%8C%83)
 
 ***
+
+### 组件化设计
+
+###### BaseComponent 基础组件
+
+说明：提供基本能力的组件，如：基础组件(BaseActivity等等)... 该类组件一般不会依赖除了Google Android标准库的第三方依赖
+
+包名：com.june.base.组件名
+
+实例：com.june.base.component
+
+###### FunctionComponent 功能组件
+
+说明：包含某种或某方面功能、能力的组件，如：网络组件、图片加载组件... 该类组件一般是提供某种功能和能力，不会与业务相关
+
+包名：com.june.fun.组件名
+
+实例：com.june.fun.network
+
+###### BusinessComponent 业务组件
+
+说明：包含完整业务逻辑的组件，如：登录组件... 该类一组件一般会与业务相关，但是又会在多个地方使用
+
+包名：com.june.biz.组件名
+
+实例：com.june.biz.login

@@ -6,7 +6,6 @@ import androidx.navigation.NavController
 import com.june.studyproject.base.component.BaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import com.june.studyproject.databinding.ActivityMainBinding
-import timber.log.Timber
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
