@@ -2,11 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion androidConfig.compileSdkVersion
+    buildToolsVersion androidConfig.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -24,11 +25,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:$rootProject.appcompat"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayout"
-
-    testImplementation "junit:junit:$rootProject.junit"
-    androidTestImplementation "androidx.test:runner:$rootProject.extRunner"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoCore"
+    rootProject.androidxBasicDependencies(dependencies)
+    rootProject.junitDependencies(dependencies)
 }
