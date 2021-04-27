@@ -5,7 +5,7 @@ import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.june.imageabout.box.ImageBoxLayout
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.databinding.ActivityImageBoxLayoutBinding

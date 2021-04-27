@@ -1,4 +1,4 @@
-package com.june.studyproject.common
+package com.june.base.basic.decoration
 
 import android.graphics.Canvas
 import android.graphics.Rect

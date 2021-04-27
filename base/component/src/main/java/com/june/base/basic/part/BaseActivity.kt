@@ -1,4 +1,4 @@
-package com.june.studyproject.base.component
+package com.june.base.basic.part
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +15,15 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
         initView()
         loadData()
     }
+
+    // 通过反射创建ViewBinding失败
+    //    private fun viewBinding2(): V {
+    //        val parameterizedType = this.javaClass.genericSuperclass as ParameterizedType
+    //        val clazz: Class<V> = parameterizedType.actualTypeArguments[0] as Class<V>
+    //        val argsClazz: Array<Class<out LayoutInflater>> = arrayOf(layoutInflater.javaClass)
+    //        val constructor: Constructor<V> = clazz.getConstructor(*argsClazz)
+    //        return constructor.newInstance(*argsClazz)
+    //    }
 
     /**
      * 设置viewBinding

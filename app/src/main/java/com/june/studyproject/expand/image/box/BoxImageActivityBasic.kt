@@ -3,7 +3,7 @@ package com.june.studyproject.expand.image.box
 import android.widget.SeekBar
 import com.june.imageabout.box.BoxImageView
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.common.ConstHelper

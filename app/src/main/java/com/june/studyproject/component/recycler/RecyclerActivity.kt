@@ -1,8 +1,8 @@
 package com.june.studyproject.component.recycler
 
 import android.content.Intent
-import com.june.studyproject.base.component.BaseActivity
-import com.june.studyproject.base.ext.click
+import com.june.base.basic.ext.click
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.component.recycler.custom.CustomLayoutManagerActivity
 import com.june.studyproject.component.recycler.rvadapter.RecyclerViewAdapterActivity

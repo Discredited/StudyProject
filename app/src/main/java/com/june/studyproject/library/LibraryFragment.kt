@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseFragment
+import com.june.base.basic.part.BaseFragment
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.itemClick
-import com.june.studyproject.base.ext.setLinearManager
-import com.june.studyproject.common.LinearItemDecoration
+import com.june.base.basic.ext.setLinearManager
+import com.june.base.basic.decoration.LinearItemDecoration
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.index.CardExampleVo
 import com.june.studyproject.databinding.FragmentLibraryBinding

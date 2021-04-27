@@ -2,7 +2,7 @@ package com.june.studyproject.expand.image.watcher
 
 import android.view.MotionEvent
 import com.june.imageabout.watcher.drag.OnImageDragListener
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.databinding.ActivityImageDragLayoutBinding
 
 class ImageDragLayoutActivity : BaseActivity<ActivityImageDragLayoutBinding>() {

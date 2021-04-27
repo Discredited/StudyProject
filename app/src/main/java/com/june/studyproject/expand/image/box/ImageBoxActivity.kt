@@ -1,7 +1,7 @@
 package com.june.studyproject.expand.image.box
 
 import android.content.Intent
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityImageBoxBinding
 import com.june.studyproject.expand.image.watcher.ImageDragLayoutActivity

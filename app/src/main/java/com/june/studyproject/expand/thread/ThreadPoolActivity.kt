@@ -2,7 +2,7 @@ package com.june.studyproject.expand.thread
 
 import android.view.View
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.databinding.ActivityThreadPoolActivityBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors

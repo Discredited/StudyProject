@@ -1,15 +1,13 @@
 package com.june.studyproject
 
-import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import com.june.studyproject.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private val mHandler = Handler()
     private var mCurrentNavController: LiveData<NavController>? = null
 
     override fun viewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)

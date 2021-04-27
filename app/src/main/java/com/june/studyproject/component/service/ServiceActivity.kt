@@ -7,7 +7,7 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.view.View
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.component.service.TestBindService.TestBinder
 import com.june.studyproject.databinding.ActivityServiceBinding
 import timber.log.Timber

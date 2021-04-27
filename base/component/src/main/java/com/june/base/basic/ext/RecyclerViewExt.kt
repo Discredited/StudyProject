@@ -1,11 +1,11 @@
-package com.june.studyproject.base.ext
+package com.june.base.basic.ext
 
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.june.studyproject.R
-import com.june.studyproject.common.LinearItemDecoration
+import com.june.base.basic.decoration.LinearItemDecoration
+
 
 fun RecyclerView.setLinearManager(
     orientation: Int = RecyclerView.VERTICAL,
@@ -23,7 +23,7 @@ fun RecyclerView.setGridManager(
 }
 
 fun RecyclerView.addLinearItemDecoration(
-    color: Int = ContextCompat.getColor(context, R.color.color_transparent),
+    color: Int = ContextCompat.getColor(context, android.R.color.transparent),
     marginStart: Int = 0,
     marginEnd: Int = 0,
     size: Int = 10,

@@ -3,10 +3,10 @@ package com.june.studyproject.library.okhttp
 import android.content.Intent
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.PathUtils
+import com.june.base.basic.ext.click
 import com.june.network.download.DownloadHelper
 import com.june.network.download.ProgressListener
-import com.june.studyproject.base.component.BaseActivity
-import com.june.studyproject.base.ext.click
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.FilePathHelper

@@ -2,11 +2,11 @@ package com.june.studyproject.expand.image.box
 
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ScreenUtils
+import com.june.base.basic.ext.addLinearItemDecoration
+import com.june.base.basic.ext.setLinearManager
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
-import com.june.studyproject.base.ext.addLinearItemDecoration
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
-import com.june.studyproject.base.ext.setLinearManager
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.Toast
 import com.june.studyproject.databinding.ActivityImageBoxLayoutListBinding

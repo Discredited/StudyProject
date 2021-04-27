@@ -6,10 +6,10 @@ import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
+import com.june.base.basic.decoration.LinearItemDecoration
+import com.june.base.basic.ext.setLinearManager
 import com.june.studyproject.base.ext.initToolbar
-import com.june.studyproject.base.ext.setLinearManager
-import com.june.studyproject.common.LinearItemDecoration
 import com.june.studyproject.databinding.ActivityLifecycleBinding
 import timber.log.Timber
 

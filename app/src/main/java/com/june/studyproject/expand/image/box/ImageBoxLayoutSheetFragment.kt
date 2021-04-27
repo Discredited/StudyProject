@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.view.children
 import com.june.imageabout.box.ImageBoxLayout
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseBottomSheetDialogFragment
+import com.june.base.basic.part.BaseBottomSheetDialogFragment
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.databinding.FragmentImageBoxLayoutBinding
 import timber.log.Timber

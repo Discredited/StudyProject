@@ -1,6 +1,6 @@
 package com.june.studyproject.component.fragment
 
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.component.fragment.lifecycle.FragmentLifecycleActivity
 import com.june.studyproject.databinding.ActivityFragmentBinding

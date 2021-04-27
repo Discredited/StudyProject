@@ -2,7 +2,7 @@ package com.june.studyproject.component.recycler.custom
 
 import androidx.core.content.ContextCompat
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityCustomLayoutManagerBinding
 

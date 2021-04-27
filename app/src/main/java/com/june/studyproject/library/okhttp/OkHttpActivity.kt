@@ -1,9 +1,9 @@
 package com.june.studyproject.library.okhttp
 
 import android.content.Intent
-import com.june.studyproject.base.component.BaseActivity
-import com.june.studyproject.base.ext.click
-import com.june.studyproject.base.ext.setLinearManager
+import com.june.base.basic.ext.click
+import com.june.base.basic.part.BaseActivity
+import com.june.base.basic.ext.setLinearManager
 import com.june.studyproject.common.adapter.column.*
 import com.june.studyproject.databinding.ActivityOkHttpBinding
 

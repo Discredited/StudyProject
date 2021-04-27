@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.june.base.basic.ext.addLinearItemDecoration
+import com.june.base.basic.ext.setLinearManager
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseFragment
-import com.june.studyproject.base.ext.addLinearItemDecoration
-import com.june.studyproject.base.ext.setLinearManager
+import com.june.base.basic.part.BaseFragment
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayAdapter
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayVo
 import com.june.studyproject.databinding.FragmentLifecycleBinding

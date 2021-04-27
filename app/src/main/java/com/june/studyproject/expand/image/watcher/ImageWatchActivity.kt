@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.viewpager2.widget.ViewPager2
 import com.june.imageabout.watcher.drag.OnImageDragListener
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseActivity
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.databinding.ActivityImageWatchBinding
 import com.june.studyproject.expand.image.box.MediaVo
 

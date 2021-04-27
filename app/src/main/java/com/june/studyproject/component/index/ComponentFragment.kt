@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.june.studyproject.R
-import com.june.studyproject.base.component.BaseFragment
+import com.june.base.basic.part.BaseFragment
+import com.june.base.basic.decoration.GridItemDecoration
+import com.june.base.basic.ext.setGridManager
 import com.june.studyproject.base.ext.initToolbar
-import com.june.studyproject.base.ext.setGridManager
-import com.june.studyproject.common.GridItemDecoration
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.activity.index.ExampleActivity
 import com.june.studyproject.component.fragment.FragmentActivity

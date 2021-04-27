@@ -1,8 +1,8 @@
 package com.june.studyproject.component.recycler.rvadapter.normal
 
-import com.june.studyproject.base.component.BaseActivity
-import com.june.studyproject.base.ext.addLinearItemDecoration
-import com.june.studyproject.base.ext.setLinearManager
+import com.june.base.basic.ext.addLinearItemDecoration
+import com.june.base.basic.ext.setLinearManager
+import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalMultiImage
 import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalMultiText
