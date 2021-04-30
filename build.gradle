@@ -3,16 +3,17 @@ apply from: 'deploy.gradle'
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.4.32'
-
     repositories {
         jcenter()
         google()
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        //classpath 'com.android.tools.build:gradle:4.1.3'
+        //classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath Deps.androidGradle
+        classpath Deps.kotlinGradlePlugin
+
         //JCenter Push Plugin
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
@@ -37,22 +38,6 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-//统一管理项目的基本属性
-ext {
-    //android
-    compileSdkVersion = 29
-    buildToolsVersion = '29.0.3'
-    minSdkVersion = 21
-    targetSdkVersion = 29
-    //test
-    junit = '4.13.2'
-    extRunner = '1.3.0'
-    espressoCore = '3.3.0'
-    //core
-    appcompat = '1.2.0'
-    constraintlayout = '2.0.4'
 }
 
 //关于gradle构建项目的理解和说明

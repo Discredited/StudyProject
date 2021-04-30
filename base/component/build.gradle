@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion androidConfig.compileSdkVersion
-    buildToolsVersion androidConfig.buildToolsVersion
+    compileSdkVersion Versions.compileSDK
+    buildToolsVersion Versions.buildTools
 
     defaultConfig {
-        minSdkVersion androidConfig.minSdkVersion
-        targetSdkVersion androidConfig.targetSdkVersion
+        minSdkVersion Versions.minSDK
+        targetSdkVersion Versions.targetSDK
         versionCode 1
         versionName "1.0"
 
@@ -40,6 +40,9 @@ android {
 dependencies {
     rootProject.androidxBasicDependencies(dependencies)
     rootProject.junitDependencies(dependencies)
+
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview-selection:1.1.0-rc03'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'com.jakewharton.timber:timber:4.7.1'
