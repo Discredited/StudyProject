@@ -10,8 +10,8 @@ android {
         applicationId "com.june.studyproject"
         minSdkVersion Versions.minSDK
         targetSdkVersion Versions.targetSDK
-        versionCode Versions.appVersionCode
-        versionName Versions.appVersionName
+        versionCode 1
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -63,7 +63,7 @@ dependencies {
     implementation project(path: ':function:network')
     //implementation 'com.june.imageabout:imageabout:1.0.0'
 
-    implementation Deps.constraintlayout
+    implementation Dependencies.constraintlayout
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.14'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
