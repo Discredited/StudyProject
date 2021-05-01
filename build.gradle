@@ -4,6 +4,7 @@ apply from: 'deploy.gradle'
 
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
         google()
         maven { url 'https://jitpack.io' }
@@ -20,6 +21,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
         jcenter()
         google()
         maven { url 'https://jitpack.io' }

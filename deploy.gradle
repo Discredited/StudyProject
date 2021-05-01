@@ -1,5 +1,4 @@
 //带分组的依赖
-
 static def androidxBasicDependencies(DependencyHandler dependencyHandler) {
     dependencyHandler.implementation Dependencies.kotlin_stdlib
     dependencyHandler.implementation Dependencies.core_ktx
