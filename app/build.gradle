@@ -56,7 +56,8 @@ dependencies {
     rootProject.androidxBasicDependencies(dependencies)
     rootProject.junitDependencies(dependencies)
 
-    implementation project(path: ':base:component')
+    implementation("com.june.base:component:0.0.1")
+    //implementation project(path: ':base:component')
     implementation project(path: ':style')
     implementation project(path: ':function:imageabout')
     implementation project(path: ':function:rvadapter')
