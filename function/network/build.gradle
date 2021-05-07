@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion Versions.compileSDK
@@ -40,4 +41,12 @@ dependencies {
     testImplementation Dependencies.kotlinCoroutinesTest
 
     implementation Dependencies.timber
+}
+
+apply from: rootDir.absolutePath + '/maven-push.gradle'
+
+project.ext {
+    publishingGroupId = 'com.june.function'
+    publishingArtifactId = 'network'
+    publishingVersion = '0.0.1'
 }
