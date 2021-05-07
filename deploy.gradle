@@ -1,13 +1,23 @@
 //带分组的依赖
 static def androidxBasicDependencies(DependencyHandler dependencyHandler) {
-    dependencyHandler.implementation Dependencies.kotlin_stdlib
-    dependencyHandler.implementation Dependencies.core_ktx
+    dependencyHandler.implementation Dependencies.kotlinStdlib
+    dependencyHandler.implementation Dependencies.coreKtx
+    dependencyHandler.implementation Dependencies.appcompat
     dependencyHandler.implementation Dependencies.material
-    dependencyHandler.implementation Dependencies.material
-    dependencyHandler.implementation Dependencies.constraintlayout
+    dependencyHandler.implementation Dependencies.constraintLayout
 }
 
 ext.androidxBasicDependencies = this.&androidxBasicDependencies
+
+
+static def libsDependencies(DependencyHandler dependencyHandler) {
+    dependencyHandler.implementation Dependencies.kotlinStdlib
+    dependencyHandler.implementation Dependencies.coreKtx
+    dependencyHandler.implementation Dependencies.appcompat
+}
+
+ext.libsDependencies = this.&libsDependencies
+
 
 /**
  * Junit4测试依赖

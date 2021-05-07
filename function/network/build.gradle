@@ -25,9 +25,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    rootProject.androidxBasicDependencies(dependencies)
+    rootProject.libsDependencies(dependencies)
     rootProject.junitDependencies(dependencies)
 
-    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation Dependencies.okHttp
+    implementation Dependencies.okHttpLogging
+
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitAdapterRxJava
+    implementation Dependencies.retrofitConvertGson
+
+    implementation Dependencies.kotlinCoroutinesCore
+    implementation Dependencies.kotlinCoroutinesAndroid
+    testImplementation Dependencies.kotlinCoroutinesTest
+
+    implementation Dependencies.timber
 }

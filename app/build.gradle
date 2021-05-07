@@ -64,24 +64,22 @@ dependencies {
     implementation project(path: ':function:network')
     //implementation 'com.june.imageabout:imageabout:1.0.0'
 
-    implementation Dependencies.constraintlayout
+    implementation Dependencies.rxJava
+    implementation Dependencies.rxJavaAndroid
 
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.14'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.recyclerview:recyclerview-selection:1.1.0-rc03'
-    implementation 'androidx.fragment:fragment-ktx:1.2.5'
+    implementation Dependencies.recyclerView
+    implementation Dependencies.recyclerViewSelection
+    implementation Dependencies.fragmentKtx
     //navigation 组件
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.2"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.2"
+    implementation Dependencies.navigationFragmentKtx
+    implementation Dependencies.navigationUiKtx
 
-    implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation 'com.blankj:utilcodex:1.30.6'
+    implementation Dependencies.timber
+    implementation Dependencies.androidUtils
 
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'
-    implementation "com.github.bumptech.glide:okhttp3-integration:4.11.0"
+    implementation Dependencies.glide
+    implementation Dependencies.glideIntegration
+    kapt Dependencies.glideCompiler
 
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
