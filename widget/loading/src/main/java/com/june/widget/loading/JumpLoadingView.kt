@@ -1,5 +1,6 @@
 package com.june.widget.loading
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -7,6 +8,8 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import kotlin.math.abs
+import kotlin.math.cos
 
 class JumpLoadingView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -18,13 +21,20 @@ class JumpLoadingView @JvmOverloads constructor(
     // 文本跳跃的高度
     //private val mJumpHeight = 50
 
-    private val mGap = 20
+    private val mGap = 10
 
     private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
+    private val mWidthList = mutableListOf<Int>()
     private val mHeightList = mutableListOf<Int>()
 
     private val mRect = Rect()
+
+    private var threshold: Int = 0
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     init {
         mPaint.textSize = 100F
@@ -63,12 +73,17 @@ class JumpLoadingView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val textX = (width - mPaint.measureText(mText)) / 2F  // 文字绘制的起始X位置
-        val textY = height - mPaint.descent() + mPaint.ascent()  // 文字绘制左下角起始位置
+        val textXBegin = (width - mPaint.measureText(mText)) / 2F  // 文字绘制的起始X位置
+        val textYBottom = height - mPaint.descent() + mPaint.ascent()  // 文字绘制左下角起始位置
 
-        // 第一个文字高一点
-        canvas.drawText(mText, 0, 1, textX, textY - mHeightList[0], mPaint)
-        canvas.drawText(mText, 1, mText.length - 1, textX + mHeightList[0], textY, mPaint)
+        var textX = textXBegin
+        for (index in mText.indices) {
+            val textY = obtainTextY(index, threshold, textYBottom)
+            //Log.i("June", "${mText[index]}  x:${textX}  width:${mWidthList[index]}  y:${textYTop}  height:${mHeightList[index]}")
+            canvas.drawText(mText, index, index + 1, textX, textY, mPaint)
+
+            textX += if (mWidthList[index] > 0) (mWidthList[index] + mGap).toFloat() else (mGap shl 2).toFloat()
+        }
     }
 
     private fun measureTextHeight() {
@@ -76,7 +91,34 @@ class JumpLoadingView @JvmOverloads constructor(
         for (index in mText.indices) {
             mPaint.getTextBounds(mText, index, index + 1, mRect)
             Log.w("June", "${mText[index]}  width:${mRect.right - mRect.left}  height:${mRect.bottom - mRect.top}")
+            mWidthList.add(index, mRect.right - mRect.left)
             mHeightList.add(index, mRect.bottom - mRect.top)
         }
+    }
+
+    private fun obtainTextY(index: Int, threshold: Int, textYBottom: Float): Float {
+        return if (index >= threshold - 1 && index <= threshold + 1) {
+            val cosHeight = abs(mHeightList[index] * cos(index * 15F % 90F))
+            textYBottom - cosHeight
+        } else {
+            textYBottom
+        }
+    }
+
+    private var mJumpAnimator: ObjectAnimator? = null
+    fun beginAnimator() {
+        mJumpAnimator = ObjectAnimator.ofInt(
+            this,
+            "threshold",
+            0,
+            mText.length
+        )
+        mJumpAnimator?.duration = 2000
+        mJumpAnimator?.repeatCount = -1
+        mJumpAnimator?.start()
+    }
+
+    fun endAnimator() {
+        mJumpAnimator?.end()
     }
 }
