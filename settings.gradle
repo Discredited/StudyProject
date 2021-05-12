@@ -1,3 +1,4 @@
+include ':widget:loading'
 include ':base:component'
 include ':function:network'
 include ':function:rvadapter'

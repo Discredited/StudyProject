@@ -62,6 +62,7 @@ dependencies {
     implementation project(path: ':function:imageabout')
     implementation project(path: ':function:rvadapter')
     implementation project(path: ':function:network')
+    implementation project(path: ':widget:loading')
     //implementation 'com.june.imageabout:imageabout:1.0.0'
 
     implementation Dependencies.rxJava

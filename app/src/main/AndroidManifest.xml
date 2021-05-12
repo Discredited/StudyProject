@@ -56,6 +56,7 @@
         <activity android:name=".library.okhttp.DownloadActivity" />
         <activity android:name=".expand.zip.UnzipActivityBasic" />
         <activity android:name=".component.permission.PermissionsActivity" />
+        <activity android:name=".expand.loading.LoadingActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

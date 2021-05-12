@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import com.june.base.basic.decoration.GridItemDecoration
 import com.june.base.basic.ext.setGridManager
 import com.june.base.basic.part.BaseFragment
-import com.june.studyproject.FullDialogFragment
 import com.june.studyproject.R
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.Toast
@@ -17,6 +16,7 @@ import com.june.studyproject.component.permission.PermissionsActivity
 import com.june.studyproject.component.recycler.RecyclerActivity
 import com.june.studyproject.component.service.ServiceActivity
 import com.june.studyproject.databinding.FragmentComponentBinding
+import com.june.studyproject.expand.loading.LoadingActivity
 
 class ComponentFragment : BaseFragment<FragmentComponentBinding>() {
 
@@ -86,8 +86,8 @@ class ComponentFragment : BaseFragment<FragmentComponentBinding>() {
                     getString(R.string.str_view_pager_2),
                     getString(R.string.view_pager_2_desc),
                     {
-                        FullDialogFragment.newInstance().show(childFragmentManager, "FullDialogFragment")
                         //Toast.showShort(R.string.str_view_pager_2)
+                        LoadingActivity.starter(requireActivity())
                     },
                     iconRes = R.color.color_red
                 ),
