@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="JumpLoadingView">
+        <attr name="jumpText" format="string|reference" />
+        <attr name="jumpTextSize" format="dimension" />
+        <attr name="jumpTextGap" format="dimension" />
+        <attr name="jumpCoefficient" format="float" />
+        <attr name="jumpDuration" format="integer" />
+    </declare-styleable>
+</resources>

@@ -6,30 +6,25 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
+import kotlin.math.abs
 
 class JumpLoadingView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
     // loading文本
-    private val mText = "New Loading..."
+    private var mText = "New Loading..."
 
-    // 文本跳跃的高度
-    //private val mJumpHeight = 50
+    // 字符间隔
+    private var mGap = 10
 
-    private val mGap = 10
+    // 方程的系数，影响一次有多少个字符参与跳动，系数越小，一次跳动的字符越多
+    // 推荐值(0.25 < mCoefficient < 2)
+    private var mCoefficient = 0.5F
 
-    private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-
-    private val mWidthList = mutableListOf<Int>()
-    private val mHeightList = mutableListOf<Int>()
-
-    private val mRect = Rect()
-
-    // 对称轴初始值
-    private val axisInitValue = -2F
+    // 对称轴初始值，方程的系数有关
+    private var axisInitValue = -2F
 
     // 函数对称轴的位置，用于函数右平移的动画数值变化
     private var mAxis: Float = axisInitValue
@@ -38,8 +33,34 @@ class JumpLoadingView @JvmOverloads constructor(
             invalidate()
         }
 
+    // 一次跳动完成需要的事件
+    private var mJumpDuration: Long = 2000L
+
+    // 字符宽度集合
+    private val mWidthList = mutableListOf<Int>()
+
+    // 字符高度集合
+    private val mHeightList = mutableListOf<Int>()
+
+    private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val mRect = Rect()
+
     init {
-        mPaint.textSize = 100F
+        val typeArray = context.obtainStyledAttributes(attrs, R.styleable.JumpLoadingView, defStyleAttr, 0)
+        try {
+            mPaint.textSize = typeArray.getDimension(R.styleable.JumpLoadingView_jumpTextSize, 100F)
+            mText = typeArray.getString(R.styleable.JumpLoadingView_jumpText) ?: "New Loading..."
+
+            mGap = typeArray.getDimensionPixelSize(R.styleable.JumpLoadingView_jumpTextGap, 10)
+            mCoefficient = typeArray.getFloat(R.styleable.JumpLoadingView_jumpCoefficient, 0.5F)
+
+            mJumpDuration = typeArray.getInt(R.styleable.JumpLoadingView_jumpDuration, 2000).toLong()
+        } finally {
+            typeArray.recycle()
+        }
+
+        axisInitValue = -1 / mCoefficient
+        mAxis = axisInitValue
 
         // 处理并获取文本的实际高度
         measureTextHeight()
@@ -53,7 +74,7 @@ class JumpLoadingView @JvmOverloads constructor(
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
 
         val textWidth = mPaint.measureText(mText).toInt() + (mGap shl 2)
-        val textHeight = (mPaint.descent() - mPaint.ascent()).toInt() shl 2
+        val textHeight = (abs(mPaint.descent() + mPaint.ascent()) + mGap).toInt() shl 2
 
         val requestWidth = when (widthMode) {
             MeasureSpec.EXACTLY -> if (textWidth > measureWidth) textWidth else measureWidth
@@ -68,15 +89,15 @@ class JumpLoadingView @JvmOverloads constructor(
         }
 
         setMeasuredDimension(
-            requestWidth,
-            requestHeight
+            MeasureSpec.makeMeasureSpec(requestWidth, widthMode),
+            MeasureSpec.makeMeasureSpec(requestHeight, heightMode)
         )
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val textXBegin = (width - mPaint.measureText(mText)) / 2F  // 文字绘制的起始X位置
-        val textYBottom = height - mPaint.descent() + mPaint.ascent()  // 文字绘制左下角起始位置
+        val textYBottom = height + mPaint.ascent() + mPaint.descent() - mGap  // 文字绘制左下角起始位置
 
         var textX = textXBegin
         for (index in mText.indices) {
@@ -90,7 +111,6 @@ class JumpLoadingView @JvmOverloads constructor(
         mHeightList.clear()
         for (index in mText.indices) {
             mPaint.getTextBounds(mText, index, index + 1, mRect)
-            Log.w("June", "${mText[index]}  width:${mRect.right - mRect.left}  height:${mRect.bottom - mRect.top}")
             mWidthList.add(index, mRect.right - mRect.left)
             mHeightList.add(index, mRect.bottom - mRect.top)
         }
@@ -105,15 +125,12 @@ class JumpLoadingView @JvmOverloads constructor(
      * index对应方程中的x
      */
     private fun obtainTextY(index: Int, textYBottom: Float): Float {
-        val percent = -0.5F * (index - mAxis) * (index - mAxis) + 1F
+        val percent = -mCoefficient * (index - mAxis) * (index - mAxis) + 1F
         val sinHeight = if (percent in 0F..1F) {
             mHeightList[index] * percent
         } else {
             0F
         }
-
-        Log.i("June", "index:${index}  ${mText[index]}  threshold:${mAxis}  percent:${-0.5F * (index - mAxis) * (index - mAxis) + 1F}  sinHeight:${sinHeight}")
-
         return textYBottom - sinHeight
     }
 
@@ -128,7 +145,7 @@ class JumpLoadingView @JvmOverloads constructor(
                 mText.length - axisInitValue
             )
         }
-        mJumpAnimator?.duration = 2000
+        mJumpAnimator?.duration = mJumpDuration
         mJumpAnimator?.repeatCount = -1
         mJumpAnimator?.start()
     }
