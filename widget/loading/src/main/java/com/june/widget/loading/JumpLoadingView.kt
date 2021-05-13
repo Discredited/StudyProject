@@ -3,11 +3,11 @@ package com.june.widget.loading
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
-import kotlin.math.abs
 
 class JumpLoadingView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -45,10 +45,14 @@ class JumpLoadingView @JvmOverloads constructor(
     private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val mRect = Rect()
 
+    // 文本总长度(包含文本字符+文字间隙)
+    private var mTextLength = 0F
+
     init {
         val typeArray = context.obtainStyledAttributes(attrs, R.styleable.JumpLoadingView, defStyleAttr, 0)
         try {
             mPaint.textSize = typeArray.getDimension(R.styleable.JumpLoadingView_jumpTextSize, 100F)
+            mPaint.color = typeArray.getColor(R.styleable.JumpLoadingView_jumpTextColor, Color.parseColor("#000000"))
             mText = typeArray.getString(R.styleable.JumpLoadingView_jumpText) ?: "New Loading..."
 
             mGap = typeArray.getDimensionPixelSize(R.styleable.JumpLoadingView_jumpTextGap, 10)
@@ -63,7 +67,7 @@ class JumpLoadingView @JvmOverloads constructor(
         mAxis = axisInitValue
 
         // 处理并获取文本的实际高度
-        measureTextHeight()
+        measureTextSpec()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -73,8 +77,11 @@ class JumpLoadingView @JvmOverloads constructor(
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
 
-        val textWidth = mPaint.measureText(mText).toInt() + (mGap shl 2)
-        val textHeight = (abs(mPaint.descent() + mPaint.ascent()) + mGap).toInt() shl 2
+        mTextLength += mGap * (mText.length - 1)
+        val textWidth = mTextLength.toInt() + (mGap * 2) + paddingStart + paddingEnd
+
+        mPaint.getTextBounds(mText, 0, mText.length, mRect)
+        val textHeight = (mRect.bottom - mRect.top + mGap) shl 2 + paddingTop + paddingBottom
 
         val requestWidth = when (widthMode) {
             MeasureSpec.EXACTLY -> if (textWidth > measureWidth) textWidth else measureWidth
@@ -96,23 +103,25 @@ class JumpLoadingView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val textXBegin = (width - mPaint.measureText(mText)) / 2F  // 文字绘制的起始X位置
-        val textYBottom = height + mPaint.ascent() + mPaint.descent() - mGap  // 文字绘制左下角起始位置
+        val textXBegin = (width shr 1) - (mTextLength / 2.5F) // 文字绘制的起始X位置
+        val textYBottom = (height - mRect.bottom + mRect.top - mGap).toFloat()  // 文字绘制左下角起始位置
 
         var textX = textXBegin
         for (index in mText.indices) {
             val textY = obtainTextY(index, textYBottom)
             canvas.drawText(mText, index, index + 1, textX, textY, mPaint)
-            textX += if (mWidthList[index] > 0) (mWidthList[index] + mGap).toFloat() else (mGap shl 2).toFloat()
+            textX += if (mWidthList[index] > 0) (mWidthList[index] + mGap).toFloat() else mGap.toFloat()
         }
     }
 
-    private fun measureTextHeight() {
+    private fun measureTextSpec() {
+        mWidthList.clear()
         mHeightList.clear()
         for (index in mText.indices) {
             mPaint.getTextBounds(mText, index, index + 1, mRect)
             mWidthList.add(index, mRect.right - mRect.left)
             mHeightList.add(index, mRect.bottom - mRect.top)
+            mTextLength += (mRect.right - mRect.left).toFloat()
         }
     }
 

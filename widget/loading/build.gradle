@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'maven-publish'
 }
 
 android {
@@ -36,4 +37,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     rootProject.androidxBasicDependencies(dependencies)
     rootProject.junitDependencies(dependencies)
+}
+
+apply from: rootDir.absolutePath + '/maven-push.gradle'
+
+project.ext {
+    publishingGroupId = 'com.june.widget'
+    publishingArtifactId = 'loading'
+    publishingVersion = '0.0.1'
 }
