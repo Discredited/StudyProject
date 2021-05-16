@@ -31,6 +31,17 @@
 
 `git rm -r --cache directoryName`  删除本地目录的缓存，directoryName表示文件名
 
+
+#### 关于GitHub提交记录显示不准确的问题
+
+GitHub的记录提交，需要用户名和用户email才会正确统计提交记录
+
+`git config --gloabl user.name "xxxx"` 是配置全局的用户名
+`git config --gloabl user.email "xxxx"` 是配置全局的邮箱
+
+`git config user.email "xxxx"` 是配置当前仓库的用户名
+`git config user.email "xxxx"` 是配置当前仓库的用户名
+
 ***
 
 ### 关于分包的管理
