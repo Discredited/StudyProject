@@ -147,11 +147,6 @@ class JumpLoadingView @JvmOverloads constructor(
         return textYBottom - sinHeight
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        beginAnimator()
-    }
-
     override fun onDetachedFromWindow() {
         endAnimator()
         super.onDetachedFromWindow()
@@ -170,7 +165,6 @@ class JumpLoadingView @JvmOverloads constructor(
         }
         mJumpAnimator?.duration = mJumpDuration
         mJumpAnimator?.repeatCount = -1
-        mJumpAnimator?.startDelay = 1000
         mJumpAnimator?.start()
     }
 
