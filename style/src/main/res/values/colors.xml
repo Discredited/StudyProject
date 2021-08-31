@@ -9,13 +9,23 @@
     <color name="color_black">#000000</color>
     <color name="color_gray">#ECEDF2</color>
 
-    <color name="color_red">#FF4E33</color>
+    <color name="color_red">#E3170D</color>
+    <color name="color_red_light">#66FF4E33</color>
     <color name="color_blue">#337EFF</color>
+    <color name="color_blue_light">#66337EFF</color>
     <color name="color_green">#0BDE8A</color>
+    <color name="color_green_light">#660BDE8A</color>
     <color name="color_yellow">#FFB433</color>
     <color name="color_yellow_light">#66FFB433</color>
     <color name="color_purple">#E655D3</color>
-    <color name="color_pink">#FF8585</color>
+    <color name="color_purple_light">#66E655D3</color>
+
+    <color name="color_orange">#FF6100</color>
+    <color name="color_brown">#802A2A</color>
+    <color name="color_pink">#FFC0CB</color>
+    <color name="color_green_forest">#228B22</color>
+    <color name="color_blue_sky">#87CEEB</color>
+    <color name="color_chocolate">#D2691E</color>
 
     <color name="color_title">#333333</color>
     <color name="color_desc">#999999</color>
@@ -26,6 +36,18 @@
     <color name="color_style_1_3">#9EA66D</color>
     <color name="color_style_1_4">#FF914D</color>
     <color name="color_style_1_5">#F26D6D</color>
+
+    <!-- style 2 -->
+    <color name="color_style_2_1">#716F81</color>
+    <color name="color_style_2_2">#B97A95</color>
+    <color name="color_style_2_3">#F6AE99</color>
+    <color name="color_style_2_4">#F2E1C1</color>
+
+    <!-- style 3 -->
+    <color name="color_style_3_1">#F6A9A9</color>
+    <color name="color_style_3_2">#FFBF86</color>
+    <color name="color_style_3_3">#FFF47D</color>
+    <color name="color_style_3_4">#C2F784</color>
 
 
     <color name="color_text_99">#999999</color>

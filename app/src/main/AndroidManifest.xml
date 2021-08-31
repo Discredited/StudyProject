@@ -57,6 +57,7 @@
         <activity android:name=".expand.zip.UnzipActivityBasic" />
         <activity android:name=".component.permission.PermissionsActivity" />
         <activity android:name=".expand.loading.LoadingActivity" />
+        <activity android:name=".component.dialogfragment.DialogFragmentActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>

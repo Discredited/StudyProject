@@ -10,7 +10,7 @@ class ComponentAdapter : BaseQuickAdapter<CardExampleVo, BaseDataBindingHolder<I
         holder.dataBinding?.apply {
             ivComponentCover.setImageResource(item.iconRes)
             tvComponentName.text = item.title
-            tvComponentDescription.text = item.title
+            tvComponentDescription.text = item.description
         }
     }
 

@@ -3,7 +3,6 @@ package com.june.studyproject
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.june.base.basic.part.BaseActivity
-import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.base.ext.setupWithNavController
 import com.june.studyproject.databinding.ActivityMainBinding
 
@@ -34,9 +33,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             intent = intent
         )
         mCurrentNavController = controller
-
-
-        mBinding.ivAvatar.loadImage("https://thirdwx.qlogo.cn/mmopen/vi_32/nI7VbK2ReyEXAkWAjd8icGzWNibzGUzoyEh4NywtN4u4fNwTg7VA71jHUboPZ92Xpib8ltto89NdKSWibsNiaIeeJ3Q/132")
     }
 
     override fun onSupportNavigateUp(): Boolean {
