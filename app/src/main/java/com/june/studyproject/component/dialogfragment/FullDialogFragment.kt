@@ -8,7 +8,7 @@ import com.june.studyproject.databinding.DialogFragmentFullBinding
 class FullDialogFragment : BaseDialogFragment<DialogFragmentFullBinding>() {
 
     override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): DialogFragmentFullBinding {
-        return DialogFragmentFullBinding.inflate(layoutInflater)
+        return DialogFragmentFullBinding.inflate(layoutInflater, container, false)
     }
 
     override fun initView() {
