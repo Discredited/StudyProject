@@ -22,6 +22,9 @@ class DialogFragmentActivity : BaseActivity<ActivityDialogFragmentBinding>() {
         mBinding.btDialogFragmentWrap.click {
             WrapDialogFragment.newInstance().show(supportFragmentManager, "WrapDialogFragment")
         }
+        mBinding.btDialogFragmentMargin.click {
+            MarginDialogFragment.newInstance().show(supportFragmentManager, "MarginDialogFragment")
+        }
     }
 
     override fun loadData() {
