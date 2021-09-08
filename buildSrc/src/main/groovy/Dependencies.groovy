@@ -44,7 +44,7 @@ interface Dependencies {
     def navigationUiKtx = 'androidx.navigation:navigation-ui-ktx:2.3.2'
 
     // recyclerView
-    def recyclerView = 'androidx.recyclerview:recyclerview:1.1.0'
+    def recyclerView = 'androidx.recyclerview:recyclerview:1.2.0'
     def recyclerViewSelection = 'androidx.recyclerview:recyclerview-selection:1.1.0-rc03'
 
     // swipeRefreshLayout
