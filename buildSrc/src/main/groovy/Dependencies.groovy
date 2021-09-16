@@ -13,11 +13,11 @@ interface Versions {
 interface Dependencies {
 
     // 插件 ClassPath
-    def androidGradle = "com.android.tools.build:gradle:3.4.1"
-    def kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+    def androidGradle = "com.android.tools.build:gradle:7.0.0"
+    def kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
 
     // 基本配置
-    def kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.4.32"
+    def kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.5.20"
     def coreKtx = "androidx.core:core-ktx:1.3.2"
     def appcompat = "androidx.appcompat:appcompat:1.2.0"
     def material = "com.google.android.material:material:1.2.1"
