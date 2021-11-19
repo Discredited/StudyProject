@@ -83,6 +83,10 @@ dependencies {
     implementation Dependencies.glideIntegration
     kapt Dependencies.glideCompiler
 
+    implementation Dependencies.cameraCode
+    implementation Dependencies.camera2
+    implementation Dependencies.cameraLifecycle
+
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 

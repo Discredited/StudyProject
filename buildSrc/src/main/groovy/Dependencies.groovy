@@ -64,6 +64,16 @@ interface Dependencies {
     def roomKtx = "androidx.room:room-ktx:2.2.5"
     // optional - Test helpers
     def roomTesting = "androidx.room:room-testing:2.2.5"
+
+    // 照相机
+    // The following line is optional, as the core library is included indirectly by camera-camera2
+    def cameraCode = "androidx.camera:camera-core:1.0.2"
+    def camera2 = "androidx.camera:camera-camera2:1.0.2"
+    // If you want to additionally use the CameraX Lifecycle library
+    def cameraLifecycle = "androidx.camera:camera-lifecycle:1.0.2"
+
+    def cameraView = "androidx.camera:camera-view:1.0.0-alpha30"
+    def cameraExtensions = "androidx.camera:camera-extensions:1.0.0-alpha30"
     ////////////////////  Android ktx  End  ////////////////////
 
 
