@@ -8,10 +8,6 @@ import com.june.studyproject.databinding.DialogFragmentMarginBinding
 
 class MarginDialogFragment : BaseDialogFragment<DialogFragmentMarginBinding>() {
 
-    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): DialogFragmentMarginBinding {
-        return DialogFragmentMarginBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
     }
 
