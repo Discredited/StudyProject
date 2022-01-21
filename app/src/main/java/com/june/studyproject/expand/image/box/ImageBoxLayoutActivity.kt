@@ -16,10 +16,6 @@ class ImageBoxLayoutActivity : BaseActivity<ActivityImageBoxLayoutBinding>() {
     private var mBottomSheetBehavior: BottomSheetBehavior<FrameLayout>? = null
     private lateinit var mImageBoxLayout: ImageBoxLayout<MediaVo>
 
-    override fun viewBinding(): ActivityImageBoxLayoutBinding {
-        return ActivityImageBoxLayoutBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mImageBoxLayout = findViewById(R.id.vImageBoxLayout)
         mImageBoxLayout.setImageLoader(ImageLoader())

@@ -10,10 +10,6 @@ import com.june.studyproject.databinding.ActivityDialogFragmentBinding
 
 class DialogFragmentActivity : BaseActivity<ActivityDialogFragmentBinding>() {
 
-    override fun viewBinding(): ActivityDialogFragmentBinding {
-        return ActivityDialogFragmentBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(getString(R.string.str_dialog_fragment))
         mBinding.btDialogFragmentFull.click {

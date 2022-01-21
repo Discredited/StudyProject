@@ -11,10 +11,6 @@ class RecyclerViewAdapterActivity : BaseActivity<ActivityRecyclerViewAdapterBind
 
     private val mAdapter = BaseAdapter()
 
-    override fun viewBinding(): ActivityRecyclerViewAdapterBinding {
-        return ActivityRecyclerViewAdapterBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
 
 

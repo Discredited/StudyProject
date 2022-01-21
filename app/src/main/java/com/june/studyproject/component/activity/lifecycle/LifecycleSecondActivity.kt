@@ -27,10 +27,6 @@ class LifecycleSecondActivity : BaseActivity<ActivityLifecycleBinding>() {
     private var mDescColor = 0
     private var isFirstResume = true
 
-    override fun viewBinding(): ActivityLifecycleBinding {
-        return ActivityLifecycleBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName)
         mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }

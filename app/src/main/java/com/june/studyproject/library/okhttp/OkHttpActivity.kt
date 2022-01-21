@@ -11,10 +11,6 @@ class OkHttpActivity : BaseActivity<ActivityOkHttpBinding>() {
 
     private val mAdapter = ColumnAdapter()
 
-    override fun viewBinding(): ActivityOkHttpBinding {
-        return ActivityOkHttpBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.rvOkHttp.apply {
             setLinearManager()

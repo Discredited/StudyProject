@@ -7,10 +7,6 @@ import com.june.studyproject.databinding.ActivityCameraBinding
 
 class CameraActivity : BaseActivity<ActivityCameraBinding>() {
 
-    override fun viewBinding(): ActivityCameraBinding {
-        return ActivityCameraBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
     }
 

@@ -5,10 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.content.ContextCompat
-import com.june.studyproject.R
-import com.june.base.basic.part.BaseActivity
 import com.june.base.basic.decoration.LinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
+import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.R
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityLifecycleBinding
 import timber.log.Timber
@@ -23,8 +23,6 @@ class LifecycleActivity : BaseActivity<ActivityLifecycleBinding>() {
 
     private var mTitleColor = 0
     private var mDescColor = 0
-
-    override fun viewBinding(): ActivityLifecycleBinding = ActivityLifecycleBinding.inflate(layoutInflater)
 
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName, R.menu.menu_text_next)

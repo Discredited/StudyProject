@@ -10,8 +10,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private var mCurrentNavController: LiveData<NavController>? = null
 
-    override fun viewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-
     override fun initView() {
         //6.0及以上的API
         //window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR//黑色

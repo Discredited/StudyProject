@@ -8,18 +8,17 @@ import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
-    protected lateinit var mBinding: V
+    protected val mBinding: V by lazy { viewBinding() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = viewBinding2()
         setContentView(mBinding.root)
         initView()
         loadData()
     }
 
     // 通过反射创建ViewBinding失败
-    private fun viewBinding2(): V {
+    private fun viewBinding(): V {
         // 获取 Java类的 ParameterizedType
         val parameterizedType = this.javaClass.genericSuperclass as ParameterizedType
         // 通过 ParameterizedType 工具获得泛型具体类型
@@ -28,13 +27,6 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
         val inflateMethod = clazz.getMethod("inflate", LayoutInflater::class.java)
         return inflateMethod.invoke(null, layoutInflater) as V
     }
-
-    /**
-     * 设置viewBinding
-     *
-     * @return
-     */
-    protected abstract fun viewBinding(): V
 
     /**
      * 初始化View

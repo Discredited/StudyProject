@@ -12,10 +12,6 @@ class ItemDecorationActivity : BaseActivity<ActivityItemDecorationBinding>() {
 
     private val adapter = CustomLayoutManagerAdapter()
 
-    override fun viewBinding(): ActivityItemDecorationBinding {
-        return ActivityItemDecorationBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.rvDecoration1.apply {
             setGridManager(3)

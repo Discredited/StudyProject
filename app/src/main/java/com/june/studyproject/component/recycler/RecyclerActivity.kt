@@ -10,10 +10,6 @@ import com.june.studyproject.databinding.ActivityRecyclerBinding
 
 class RecyclerActivity : BaseActivity<ActivityRecyclerBinding>() {
 
-    override fun viewBinding(): ActivityRecyclerBinding {
-        return ActivityRecyclerBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName)
         mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }

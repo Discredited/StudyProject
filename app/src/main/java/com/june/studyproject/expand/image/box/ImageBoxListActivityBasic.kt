@@ -4,8 +4,8 @@ import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ScreenUtils
 import com.june.base.basic.ext.addLinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
-import com.june.studyproject.R
 import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.R
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.Toast
@@ -23,10 +23,6 @@ import kotlinx.coroutines.withContext
 class ImageBoxListActivityBasic : BaseActivity<ActivityImageBoxLayoutListBinding>() {
 
     private lateinit var adapter: ImageBoxLayoutAdapter
-
-    override fun viewBinding(): ActivityImageBoxLayoutListBinding {
-        return ActivityImageBoxLayoutListBinding.inflate(layoutInflater)
-    }
 
     override fun initView() {
         mBinding.tlLayout.toolbar.apply {
