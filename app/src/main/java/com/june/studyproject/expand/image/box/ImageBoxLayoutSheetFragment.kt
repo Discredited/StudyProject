@@ -1,17 +1,15 @@
 package com.june.studyproject.expand.image.box
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.view.children
+import com.june.base.basic.part.BaseBottomSheetDialogFragment
 import com.june.imageabout.box.ImageBoxLayout
 import com.june.studyproject.R
-import com.june.base.basic.part.BaseBottomSheetDialogFragment
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.databinding.FragmentImageBoxLayoutBinding
 import timber.log.Timber
@@ -45,10 +43,6 @@ class ImageBoxLayoutSheetFragment : BaseBottomSheetDialogFragment<FragmentImageB
         override fun onStopTrackingTouch(seekBar: SeekBar) {
             mImageBoxLayout?.setImageRadius(seekBar.progress.toFloat())
         }
-    }
-
-    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentImageBoxLayoutBinding {
-        return FragmentImageBoxLayoutBinding.inflate(inflater, container, false)
     }
 
     override fun initView() {
