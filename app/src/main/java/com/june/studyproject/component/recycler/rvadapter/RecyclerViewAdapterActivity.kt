@@ -12,8 +12,6 @@ class RecyclerViewAdapterActivity : BaseActivity<ActivityRecyclerViewAdapterBind
     private val mAdapter = BaseAdapter()
 
     override fun initView() {
-
-
         mBinding.tvNormalMultiLayout.click {
             startActivity(Intent(this, NormalListActivity::class.java))
         }

@@ -20,7 +20,7 @@ class BaseAdapter : RecyclerView.Adapter<ItemViewHolder>() {
             return holder
         }
         //请检查您的item类型是否被包含
-        throw Exception("Please check if your item type is included")
+        throw Exception("Please check whether your item type is included!")
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {

@@ -1,4 +1,4 @@
-package com.june.studyproject.component.recycler.rvadapter.normal.vo
+package com.june.studyproject.component.recycler.rvadapter.vo
 
 interface NormalInterface {
 
