@@ -2,11 +2,9 @@ package com.june.studyproject.expand.index
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.june.studyproject.R
 import com.june.base.basic.part.BaseFragment
+import com.june.studyproject.R
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.component.index.CardExampleVo
 import com.june.studyproject.component.recycler.custom.CustomLayoutManager
@@ -17,10 +15,6 @@ import timber.log.Timber
 class ExpandFragment : BaseFragment<FragmentExpandBinding>() {
 
     private lateinit var mAdapter: ExpandAdapter
-
-    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentExpandBinding {
-        return FragmentExpandBinding.inflate(inflater, container, false)
-    }
 
     override fun initView() {
         mAdapter = ExpandAdapter()

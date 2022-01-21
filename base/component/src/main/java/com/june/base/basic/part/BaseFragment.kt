@@ -25,7 +25,7 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Timber.i("----${javaClass.simpleName}:onCreateView")
-        _binding = viewBinding2(inflater, container)
+        _binding = viewBinding(inflater, container)
         return mBinding.root
     }
 
@@ -71,7 +71,10 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
         Timber.i("----${javaClass.simpleName}:onDestroy")
     }
 
-    private fun viewBinding2(inflater: LayoutInflater, container: ViewGroup?): V {
+    /**
+     * 通过反射获取ViewBinding
+     */
+    private fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): V {
         // 获取 Java类的 ParameterizedType
         val parameterizedType = this.javaClass.genericSuperclass as ParameterizedType
         // 通过 ParameterizedType 工具获得泛型具体类型
@@ -80,13 +83,6 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
         val inflateMethod = clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
         return inflateMethod.invoke(null, inflater, container, false) as V
     }
-
-    /**
-     * 设置viewBinding
-     *
-     * @return
-     */
-    abstract fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): V
 
     /**
      * 初始化View
