@@ -12,9 +12,11 @@ abstract class BaseBottomSheetDialogFragment<V : ViewBinding> : BottomSheetDialo
     private var _binding: V? = null
     protected val mBinding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         _binding = viewBinding(inflater, container)
         return mBinding.root
     }
