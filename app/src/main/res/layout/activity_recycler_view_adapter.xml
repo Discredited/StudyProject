@@ -14,4 +14,12 @@
         android:gravity="center"
         android:text="传统的多布局样式"
         android:textSize="@dimen/sp_20" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBaseMultiLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_62"
+        android:gravity="center"
+        android:text="自定义多布局样式"
+        android:textSize="@dimen/sp_20" />
 </androidx.appcompat.widget.LinearLayoutCompat>

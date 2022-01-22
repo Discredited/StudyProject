@@ -59,6 +59,7 @@
         <activity android:name=".expand.loading.LoadingActivity" />
         <activity android:name=".component.dialogfragment.DialogFragmentActivity" />
         <activity android:name=".component.camera.CameraActivity" />
+        <activity android:name=".component.recycler.rvadapter.custom.CustomMultiAdapterActivity" />
 
         <service android:name=".component.service.TestBindService" />
     </application>
