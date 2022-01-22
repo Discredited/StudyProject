@@ -18,7 +18,7 @@
         android:textSize="@dimen/sp_20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/tl_layout" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvItemDecoration"

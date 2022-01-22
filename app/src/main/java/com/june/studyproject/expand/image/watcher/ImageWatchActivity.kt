@@ -22,10 +22,6 @@ class ImageWatchActivity : BaseActivity<ActivityImageWatchBinding>() {
         }
     }
 
-    override fun viewBinding(): ActivityImageWatchBinding {
-        return ActivityImageWatchBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         adapter.setImageDragListener(object : OnImageDragListener {
             override fun onDragStateChange(state: Int, x: Float, y: Float) {

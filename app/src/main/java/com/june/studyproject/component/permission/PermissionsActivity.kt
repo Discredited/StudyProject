@@ -10,10 +10,6 @@ import com.june.studyproject.databinding.ActivityPermissionsBinding
 
 class PermissionsActivity : BaseActivity<ActivityPermissionsBinding>() {
 
-    override fun viewBinding(): ActivityPermissionsBinding {
-        return ActivityPermissionsBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.tvPermissions.click { requestPermissionsByAndroidUtils() }
     }

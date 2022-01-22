@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.PathUtils
 import com.june.base.basic.ext.click
+import com.june.base.basic.part.BaseActivity
 import com.june.network.download.DownloadHelper
 import com.june.network.download.ProgressListener
-import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.FilePathHelper
@@ -20,10 +20,6 @@ import timber.log.Timber
 import java.io.File
 
 class DownloadActivity : BaseActivity<ActivityOkHttpDownloadBinding>() {
-
-    override fun viewBinding(): ActivityOkHttpDownloadBinding {
-        return ActivityOkHttpDownloadBinding.inflate(layoutInflater)
-    }
 
     override fun initView() {
         mBinding.btDownload.click {

@@ -45,8 +45,10 @@ android {
         jvmTarget = "1.8"
     }
 
+    viewBinding {
+        enabled = true
+    }
     buildFeatures {
-        viewBinding = true
         dataBinding = true
     }
 }
@@ -56,14 +58,13 @@ dependencies {
     rootProject.androidxBasicDependencies(dependencies)
     rootProject.junitDependencies(dependencies)
 
-    implementation("com.june.base:component:0.0.1")
-    //implementation project(path: ':base:component')
+    //implementation("com.june.base:component:0.0.1")
+    implementation project(path: ':base:component')
     implementation project(path: ':style')
     implementation project(path: ':function:imageabout')
     implementation project(path: ':function:rvadapter')
     implementation project(path: ':function:network')
     implementation project(path: ':widget:loading')
-    //implementation 'com.june.imageabout:imageabout:1.0.0'
 
     implementation Dependencies.rxJava
     implementation Dependencies.rxJavaAndroid
@@ -81,6 +82,10 @@ dependencies {
     implementation Dependencies.glide
     implementation Dependencies.glideIntegration
     kapt Dependencies.glideCompiler
+
+    implementation Dependencies.cameraCode
+    implementation Dependencies.camera2
+    implementation Dependencies.cameraLifecycle
 
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'

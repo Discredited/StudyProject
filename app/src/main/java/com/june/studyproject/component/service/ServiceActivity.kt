@@ -6,8 +6,8 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
 import android.view.View
-import com.june.studyproject.R
 import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.R
 import com.june.studyproject.component.service.TestBindService.TestBinder
 import com.june.studyproject.databinding.ActivityServiceBinding
 import timber.log.Timber
@@ -15,10 +15,6 @@ import timber.log.Timber
 class ServiceActivity : BaseActivity<ActivityServiceBinding>(), View.OnClickListener, ServiceConnection {
 
     private var isBindService = false
-
-    override fun viewBinding(): ActivityServiceBinding {
-        return ActivityServiceBinding.inflate(layoutInflater)
-    }
 
     override fun initView() {
         mBinding.tvBindService.setOnClickListener(this)

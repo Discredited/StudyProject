@@ -1,8 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
-apply from: 'bintray-push.gradle'
-
 android {
     compileSdkVersion Versions.compileSDK
     buildToolsVersion Versions.buildTools
@@ -10,8 +8,6 @@ android {
     defaultConfig {
         minSdkVersion Versions.minSDK
         targetSdkVersion Versions.targetSDK
-        versionCode 3
-        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'

@@ -14,10 +14,6 @@ class NormalListActivity : BaseActivity<ActivityNormalListBinding>() {
 
     private val mAdapter = NormalMultiAdapter()
 
-    override fun viewBinding(): ActivityNormalListBinding {
-        return ActivityNormalListBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.rvNormalMulti.apply {
             setLinearManager()

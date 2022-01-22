@@ -25,10 +25,6 @@ class ImageDragLayoutActivity : BaseActivity<ActivityImageDragLayoutBinding>() {
         }
     }
 
-    override fun viewBinding(): ActivityImageDragLayoutBinding {
-        return ActivityImageDragLayoutBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.vImageDragLayout.setImageDragListener(mImageDraListener)
     }

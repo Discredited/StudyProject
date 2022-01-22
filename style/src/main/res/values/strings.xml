@@ -4,15 +4,24 @@
     <!-- Activity -->
     <string name="str_activity">Activity</string>
     <string name="activity_desc">Activity生命周期、启动模式和相关属性参数</string>
-
+    <!-- Service -->
     <string name="str_service">Service</string>
     <string name="service_desc">Service服务生命周期，启动方式以及日常使用场景</string>
-
+    <!-- BroadCast -->
     <string name="str_broad_cast">BroadCast</string>
     <string name="broad_cast_desc">BroadCast服务生命周期，启动方式以及日常使用场景</string>
-
+    <!-- ContentProvider -->
+    <string name="str_content_provider">ContentProvider</string>
+    <string name="content_provider_desc">内容提供者，及其基本使用</string>
+    <!-- Fragment -->
     <string name="str_fragment">Fragment</string>
     <string name="fragment_desc">Fragment生命周期、切换、属性方法调用</string>
+    <!-- Dialog -->
+    <string name="str_dialog">Dialog</string>
+    <string name="dialog_desc">Dialog生命周期、切换、属性方法调用</string>
+    <!-- DialogFragment -->
+    <string name="str_dialog_fragment">DialogFragment</string>
+    <string name="dialog_fragment_desc">DialogFragment生命周期、样式、属性方法调用</string>
 
     <string name="str_coordinator">Coordinator</string>
     <string name="coordinator_desc">关于折叠布局属性设置和Behavior</string>

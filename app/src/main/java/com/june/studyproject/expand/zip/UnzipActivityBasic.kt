@@ -22,10 +22,6 @@ class UnzipActivityBasic : BaseActivity<ActivityUnzipBinding>() {
 
     private val mAdapter = UnzipAdapter()
 
-    override fun viewBinding(): ActivityUnzipBinding {
-        return ActivityUnzipBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.rvSkillIcon.apply {
             setGridManager(3)

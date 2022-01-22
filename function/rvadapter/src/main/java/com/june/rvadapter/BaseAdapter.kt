@@ -4,17 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class BaseAdapter : RecyclerView.Adapter<ItemViewHolder<*>>() {
+class BaseAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
     private val mItems: MutableList<Any> = mutableListOf()
 
-    private val mCreators: Map<Int, ItemViewCreator<*>> = mutableMapOf()
+    private val mCreators: MutableMap<Int, ItemViewCreator<out Any>> = mutableMapOf()
 
     override fun getItemCount(): Int = mItems.size
 
     override fun getItemViewType(position: Int): Int = 0
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder<*> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val createItemHolder = createItemViewHolder(parent, viewType)
         createItemHolder?.let { holder ->
             return holder
@@ -23,11 +23,11 @@ class BaseAdapter : RecyclerView.Adapter<ItemViewHolder<*>>() {
         throw Exception("Please check if your item type is included")
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder<*>, position: Int) {
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.onBind(mItems[position], position, mItems)
     }
 
-    private fun createItemViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder<*>? {
+    private fun createItemViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder? {
         //有哪些类型
         val creator = mCreators[viewType]
         //根据类型创建ViewHolder
@@ -37,8 +37,7 @@ class BaseAdapter : RecyclerView.Adapter<ItemViewHolder<*>>() {
         return null
     }
 
-    fun putItem() {
-        //resourceId
-        //viewHolder
+    fun putItem(itemCreator: ItemViewCreator<out Any>) {
+        mCreators[itemCreator.getItemViewId()] = itemCreator
     }
 }

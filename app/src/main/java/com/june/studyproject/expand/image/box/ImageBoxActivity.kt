@@ -8,10 +8,6 @@ import com.june.studyproject.expand.image.watcher.ImageDragLayoutActivity
 
 class ImageBoxActivity : BaseActivity<ActivityImageBoxBinding>() {
 
-    override fun viewBinding(): ActivityImageBoxBinding {
-        return ActivityImageBoxBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName)
 

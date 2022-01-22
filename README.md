@@ -5,7 +5,7 @@
 
 ***
 
-### Git常用命令
+#### Git常用命令
 
 `git clone xxxxxx.git`  拉取远程git仓库
 
@@ -17,13 +17,19 @@
 
 `git pull`  拉取远程仓库文件
 
+#### 分支的管理
+
 `git branch`  查看本地仓库的分支
 
 `git branch -a`  查看仓库中的所有分支（本地和远程）
 
+`git branch branchName`  切换到指定分支
+
 `git branch -d branchName`  删除本地分支
 
 `git push origin --delete branchName`  删除远程分支
+
+#### 文件忽略
 
 .ignore忽略文件只能影响没有add过的文件，所以如果把不应该提交的文件push到远程仓库的分支上以后，只是通过配置.ignore文件是不生效的。如果想要删除远程仓库分支中提交错误的文件，使用如下命令：
 

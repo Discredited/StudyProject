@@ -1,8 +1,8 @@
 package com.june.studyproject.expand.thread
 
 import android.view.View
-import com.june.studyproject.R
 import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.R
 import com.june.studyproject.databinding.ActivityThreadPoolActivityBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -11,10 +11,6 @@ import java.util.concurrent.TimeUnit
 
 class ThreadPoolActivity : BaseActivity<ActivityThreadPoolActivityBinding>(), View.OnClickListener {
     private var threadCounter = 0
-
-    override fun viewBinding(): ActivityThreadPoolActivityBinding {
-        return ActivityThreadPoolActivityBinding.inflate(layoutInflater)
-    }
 
     override fun initView() {
         mBinding.tvCached.setOnClickListener(this);
@@ -27,8 +23,10 @@ class ThreadPoolActivity : BaseActivity<ActivityThreadPoolActivityBinding>(), Vi
     private fun doExecute(executorService: ExecutorService) {
         for (i in 0..9) {
             executorService.execute {
-                val current = getString(R.string.current_thread_information,
-                        Thread.currentThread().name)
+                val current = getString(
+                    R.string.current_thread_information,
+                    Thread.currentThread().name
+                )
                 runOnUiThread { setInformation(current, false) }
             }
         }
@@ -39,33 +37,36 @@ class ThreadPoolActivity : BaseActivity<ActivityThreadPoolActivityBinding>(), Vi
 
     private fun doSchedule(scheduledExecutorService: ScheduledExecutorService) {
         //延迟一秒后执行
-//        scheduledExecutorService.schedule(new Runnable() {
-//            @Override
-//            public void run() {
-//                final String current = getString(R.string
-//                .current_thread_information, Thread.currentThread().getName());
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        setInformation(current, false);
-//                    }
-//                });
-//            }
-//        }, 1, TimeUnit.SECONDS);
+        //        scheduledExecutorService.schedule(new Runnable() {
+        //            @Override
+        //            public void run() {
+        //                final String current = getString(R.string
+        //                .current_thread_information, Thread.currentThread().getName());
+        //                runOnUiThread(new Runnable() {
+        //                    @Override
+        //                    public void run() {
+        //                        setInformation(current, false);
+        //                    }
+        //                });
+        //            }
+        //        }, 1, TimeUnit.SECONDS);
         threadCounter = 0
         //延迟零秒后执行，每隔一秒执行一次
         scheduledExecutorService.scheduleAtFixedRate(
-                {
-                    val current = getString(R.string.current_thread_information,
-                            Thread.currentThread().name)
-                    runOnUiThread {
-                        setInformation(current, false)
-                        threadCounter++
-                        if (threadCounter == 10) {
-                            scheduledExecutorService.shutdown()
-                        }
+            {
+                val current = getString(
+                    R.string.current_thread_information,
+                    Thread.currentThread().name
+                )
+                runOnUiThread {
+                    setInformation(current, false)
+                    threadCounter++
+                    if (threadCounter == 10) {
+                        scheduledExecutorService.shutdown()
                     }
-                }, 0, 1, TimeUnit.SECONDS)
+                }
+            }, 0, 1, TimeUnit.SECONDS
+        )
     }
 
     private fun setInformation(information: String, isClear: Boolean) {
@@ -101,11 +102,11 @@ class ThreadPoolActivity : BaseActivity<ActivityThreadPoolActivityBinding>(), Vi
         mBinding.tvSingle.isSelected = v.id == mBinding.tvSingle.id
     }
 
-//    companion object {
-//        fun start(context: Context) {
-//            val starter = Intent(context, ThreadPoolActivity::class.java)
-//            context.startActivity(starter)
-//        }
-//    }
+    //    companion object {
+    //        fun start(context: Context) {
+    //            val starter = Intent(context, ThreadPoolActivity::class.java)
+    //            context.startActivity(starter)
+    //        }
+    //    }
 
 }

@@ -16,10 +16,6 @@ class LoadingActivity : BaseActivity<ActivityLoadingBinding>() {
     override fun loadData() {
     }
 
-    override fun viewBinding(): ActivityLoadingBinding {
-        return ActivityLoadingBinding.inflate(layoutInflater)
-    }
-
     companion object {
         @JvmStatic
         fun starter(context: Context) {

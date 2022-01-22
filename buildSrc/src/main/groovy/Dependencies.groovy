@@ -13,11 +13,11 @@ interface Versions {
 interface Dependencies {
 
     // 插件 ClassPath
-    def androidGradle = "com.android.tools.build:gradle:3.4.1"
-    def kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+    def androidGradle = "com.android.tools.build:gradle:7.0.0"
+    def kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
 
     // 基本配置
-    def kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.4.32"
+    def kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.5.20"
     def coreKtx = "androidx.core:core-ktx:1.3.2"
     def appcompat = "androidx.appcompat:appcompat:1.2.0"
     def material = "com.google.android.material:material:1.2.1"
@@ -44,7 +44,7 @@ interface Dependencies {
     def navigationUiKtx = 'androidx.navigation:navigation-ui-ktx:2.3.2'
 
     // recyclerView
-    def recyclerView = 'androidx.recyclerview:recyclerview:1.1.0'
+    def recyclerView = 'androidx.recyclerview:recyclerview:1.2.0'
     def recyclerViewSelection = 'androidx.recyclerview:recyclerview-selection:1.1.0-rc03'
 
     // swipeRefreshLayout
@@ -64,6 +64,16 @@ interface Dependencies {
     def roomKtx = "androidx.room:room-ktx:2.2.5"
     // optional - Test helpers
     def roomTesting = "androidx.room:room-testing:2.2.5"
+
+    // 照相机
+    // The following line is optional, as the core library is included indirectly by camera-camera2
+    def cameraCode = "androidx.camera:camera-core:1.0.2"
+    def camera2 = "androidx.camera:camera-camera2:1.0.2"
+    // If you want to additionally use the CameraX Lifecycle library
+    def cameraLifecycle = "androidx.camera:camera-lifecycle:1.0.2"
+
+    def cameraView = "androidx.camera:camera-view:1.0.0-alpha30"
+    def cameraExtensions = "androidx.camera:camera-extensions:1.0.0-alpha30"
     ////////////////////  Android ktx  End  ////////////////////
 
 

@@ -1,8 +1,8 @@
 package com.june.studyproject.component.recycler.custom
 
 import androidx.core.content.ContextCompat
-import com.june.studyproject.R
 import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.R
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityCustomLayoutManagerBinding
 
@@ -10,10 +10,6 @@ import com.june.studyproject.databinding.ActivityCustomLayoutManagerBinding
 class CustomLayoutManagerActivity : BaseActivity<ActivityCustomLayoutManagerBinding>() {
 
     private lateinit var adapter: CustomLayoutManagerAdapter
-
-    override fun viewBinding(): ActivityCustomLayoutManagerBinding {
-        return ActivityCustomLayoutManagerBinding.inflate(layoutInflater)
-    }
 
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName)

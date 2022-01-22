@@ -28,10 +28,6 @@ class BoxImageActivityBasic : BaseActivity<ActivityBoxImageViewBinding>() {
         }
     }
 
-    override fun viewBinding(): ActivityBoxImageViewBinding {
-        return ActivityBoxImageViewBinding.inflate(layoutInflater)
-    }
-
     override fun initView() {
         mBinding.tlLayout.toolbar.apply {
             initToolbar(javaClass.simpleName, R.menu.menu_image_box_corner)
