@@ -110,10 +110,6 @@ class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
         Timber.e("onDestroy()")
     }
 
-    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentLifecycleBinding {
-        return FragmentLifecycleBinding.inflate(inflater, container, false)
-    }
-
     override fun initView() {
         adapter = RecordDisplayAdapter(mLifecycleViewModel.mRecordList)
 

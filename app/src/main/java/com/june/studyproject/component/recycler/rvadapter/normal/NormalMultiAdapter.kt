@@ -4,12 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.june.studyproject.R
-import com.june.studyproject.component.recycler.rvadapter.normal.holder.MultiImageViewHolder
-import com.june.studyproject.component.recycler.rvadapter.normal.holder.MultiTextViewHolder
-import com.june.studyproject.component.recycler.rvadapter.normal.holder.SimpleImageViewHolder
-import com.june.studyproject.component.recycler.rvadapter.normal.holder.SimpleTextViewHolder
-import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalInterface
+import com.june.studyproject.component.recycler.rvadapter.normal.holder.*
+import com.june.studyproject.component.recycler.rvadapter.vo.NormalInterface
 
+/**
+ * 最普通的Adapter的定义方式
+ * 直接继承 RecyclerView.Adapter<VH extends ViewHolder>
+ * 重写一下几个方法：
+ * getItemCount()
+ * getItemViewType(position: Int)
+ * onCreateViewHolder(parent: ViewGroup, viewType: Int)
+ * onBindViewHolder(holder: NormalBaseViewHolder, position: Int)
+ */
 class NormalMultiAdapter : RecyclerView.Adapter<NormalBaseViewHolder>() {
 
     private val mItemList: MutableList<NormalInterface> = mutableListOf()
@@ -25,8 +31,7 @@ class NormalMultiAdapter : RecyclerView.Adapter<NormalBaseViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NormalBaseViewHolder, position: Int) {
-        val item = mItemList[position]
-        holder.onBindData(item, position)
+        holder.onBindData(mItemList[position], position)
     }
 
     private fun createViewHolders(parent: ViewGroup, viewType: Int): NormalBaseViewHolder {

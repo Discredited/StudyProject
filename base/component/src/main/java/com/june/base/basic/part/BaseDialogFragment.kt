@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
+import java.lang.reflect.ParameterizedType
 
 abstract class BaseDialogFragment<V : ViewBinding> : DialogFragment() {
 
@@ -35,7 +36,18 @@ abstract class BaseDialogFragment<V : ViewBinding> : DialogFragment() {
         )
     }
 
-    protected abstract fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): V
+    /**
+     * 通过反射获取ViewBinding
+     */
+    private fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): V {
+        // 获取 Java类的 ParameterizedType
+        val parameterizedType = this.javaClass.genericSuperclass as ParameterizedType
+        // 通过 ParameterizedType 工具获得泛型具体类型
+        val clazz: Class<V> = parameterizedType.actualTypeArguments[0] as Class<V>
+        // 获取ViewBinding的inflate方法
+        val inflateMethod = clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
+        return inflateMethod.invoke(null, inflater, container, false) as V
+    }
 
     abstract fun initView()
 

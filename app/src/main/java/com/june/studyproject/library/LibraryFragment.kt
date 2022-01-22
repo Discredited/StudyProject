@@ -21,10 +21,6 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding>() {
 
     private lateinit var mAdapter: LibraryAdapter
 
-    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentLibraryBinding {
-        return FragmentLibraryBinding.inflate(inflater, container, false)
-    }
-
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(getString(R.string.str_library), navIcon = 0, titleCenter = false)
 

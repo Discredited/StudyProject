@@ -1,4 +1,4 @@
-package com.june.studyproject.component.recycler.rvadapter.normal
+package com.june.studyproject.component.recycler.rvadapter.normal.holder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

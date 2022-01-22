@@ -2,8 +2,6 @@ package com.june.studyproject.component.index
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import com.june.base.basic.decoration.GridItemDecoration
 import com.june.base.basic.ext.setGridManager
 import com.june.base.basic.part.BaseFragment
@@ -21,10 +19,6 @@ import com.june.studyproject.expand.loading.LoadingActivity
 class ComponentFragment : BaseFragment<FragmentComponentBinding>() {
 
     private lateinit var mAdapter: ComponentAdapter
-
-    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentComponentBinding {
-        return FragmentComponentBinding.inflate(inflater, container, false)
-    }
 
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(getString(R.string.str_component), navIcon = 0, titleCenter = false)

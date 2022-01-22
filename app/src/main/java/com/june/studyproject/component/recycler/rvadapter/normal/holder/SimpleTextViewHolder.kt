@@ -3,9 +3,8 @@ package com.june.studyproject.component.recycler.rvadapter.normal.holder
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import com.june.studyproject.R
-import com.june.studyproject.component.recycler.rvadapter.normal.NormalBaseViewHolder
-import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalInterface
-import com.june.studyproject.component.recycler.rvadapter.normal.vo.NormalSimpleText
+import com.june.studyproject.component.recycler.rvadapter.vo.NormalInterface
+import com.june.studyproject.component.recycler.rvadapter.vo.NormalSimpleText
 
 class SimpleTextViewHolder(view: View) : NormalBaseViewHolder(view) {
 
