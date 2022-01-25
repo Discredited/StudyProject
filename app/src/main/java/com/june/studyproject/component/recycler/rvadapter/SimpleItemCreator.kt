@@ -18,7 +18,7 @@ class SimpleItemCreator : ItemViewCreator<String>() {
         }
     }
 
-    override fun covert(item: String, holder: ItemViewHolder) {
+    override fun covert(item: Any, holder: ItemViewHolder) {
         holder.onBind(item, holder.layoutPosition, mutableListOf())
     }
 }

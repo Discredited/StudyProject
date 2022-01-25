@@ -2,11 +2,11 @@ package com.june.rvadapter
 
 import android.view.View
 
-abstract class ItemViewCreator<MODEL : Any> {
+abstract class ItemViewCreator<in T> {
 
     abstract fun getItemViewId(): Int
 
     abstract fun createViewHolder(view: View): ItemViewHolder
 
-    abstract fun covert(item: MODEL, holder: ItemViewHolder)
+    abstract fun covert(item: T, holder: ItemViewHolder)
 }

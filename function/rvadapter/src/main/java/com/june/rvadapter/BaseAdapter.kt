@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class BaseAdapter : RecyclerView.Adapter<ItemViewHolder>() {
+open class BaseAdapter<T> : RecyclerView.Adapter<ItemViewHolder>() {
 
-    private val mItems: MutableList<Any> = mutableListOf()
+    private val mItems: MutableList<T> = mutableListOf()
 
-    private val mCreators: MutableMap<Int, ItemViewCreator<out Any>> = mutableMapOf()
+    private val mCreators: MutableMap<Int, ItemViewCreator<T>> = mutableMapOf()
 
     override fun getItemCount(): Int = mItems.size
 
@@ -24,7 +24,7 @@ class BaseAdapter : RecyclerView.Adapter<ItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.onBind(mItems[position], position, mItems)
+        mCreators[holder.itemViewId()]?.covert(mItems[position], holder)
     }
 
     private fun createItemViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder? {
@@ -37,7 +37,26 @@ class BaseAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         return null
     }
 
-    fun putItem(itemCreator: ItemViewCreator<out Any>) {
+    fun putItem(itemCreator: ItemViewCreator<T>) {
         mCreators[itemCreator.getItemViewId()] = itemCreator
+    }
+
+
+    class Builder<T> {
+
+        private lateinit var adapter: BaseAdapter<T>
+        private val creators: MutableList<ItemViewCreator<T>> = mutableListOf()
+
+        fun putItem(itemCreator: ItemViewCreator<T>): Builder<T> {
+            creators.add(itemCreator)
+            return this
+        }
+
+        fun build(): BaseAdapter<T> {
+            adapter = BaseAdapter()
+            creators.forEach { adapter.putItem(it) }
+            return adapter
+        }
+
     }
 }
