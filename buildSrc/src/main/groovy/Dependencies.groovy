@@ -101,5 +101,10 @@ interface Dependencies {
     // RxJava2
     def rxJava = "io.reactivex.rxjava2:rxjava:2.2.14"
     def rxJavaAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    // Immersion Bar 沉浸式状态栏
+    // https://github.com/gyf-dev/ImmersionBar
+    def immersionBar = 'com.geyifeng.immersionbar:immersionbar:3.2.1'
+    def immersionBarKtx = 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.1'  // kotlin扩展（可选）
     ////////////////////  第三方类库  End  ////////////////////
 }

@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-open class BaseAdapter<T> : RecyclerView.Adapter<ItemViewHolder>() {
+open class BaseAdapter<T, IVC : ItemViewCreator<out T>> : RecyclerView.Adapter<ItemViewHolder>() {
 
-    private val mItems: MutableList<T> = mutableListOf()
+    private val mItems: MutableList<out T> = mutableListOf()
 
-    private val mCreators: MutableMap<Int, ItemViewCreator<T>> = mutableMapOf()
+    private val mCreators: MutableMap<Int, IVC> = mutableMapOf()
 
     override fun getItemCount(): Int = mItems.size
 
@@ -24,7 +24,7 @@ open class BaseAdapter<T> : RecyclerView.Adapter<ItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        mCreators[holder.itemViewId()]?.covert(mItems[position], holder)
+        mCreators[holder.itemViewId()]?.covert(mItems[position] as Nothing, holder)
     }
 
     private fun createItemViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder? {
@@ -37,22 +37,22 @@ open class BaseAdapter<T> : RecyclerView.Adapter<ItemViewHolder>() {
         return null
     }
 
-    fun putItem(itemCreator: ItemViewCreator<T>) {
+    fun putItem(itemCreator: IVC) {
         mCreators[itemCreator.getItemViewId()] = itemCreator
     }
 
 
-    class Builder<T> {
+    class Builder<T, IVC : ItemViewCreator<out T>> {
 
-        private lateinit var adapter: BaseAdapter<T>
-        private val creators: MutableList<ItemViewCreator<T>> = mutableListOf()
+        private lateinit var adapter: BaseAdapter<T, IVC>
+        private val creators: MutableList<IVC> = mutableListOf()
 
-        fun putItem(itemCreator: ItemViewCreator<T>): Builder<T> {
+        fun putItem(itemCreator: IVC): Builder<T, IVC> {
             creators.add(itemCreator)
             return this
         }
 
-        fun build(): BaseAdapter<T> {
+        fun build(): BaseAdapter<T, IVC> {
             adapter = BaseAdapter()
             creators.forEach { adapter.putItem(it) }
             return adapter

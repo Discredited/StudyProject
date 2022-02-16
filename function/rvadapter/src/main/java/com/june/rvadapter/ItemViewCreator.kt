@@ -2,7 +2,7 @@ package com.june.rvadapter
 
 import android.view.View
 
-abstract class ItemViewCreator<in T> {
+abstract class ItemViewCreator<T> {
 
     abstract fun getItemViewId(): Int
 

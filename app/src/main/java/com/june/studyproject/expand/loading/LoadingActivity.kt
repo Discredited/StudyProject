@@ -3,10 +3,10 @@ package com.june.studyproject.expand.loading
 import android.content.Context
 import android.content.Intent
 import com.june.base.basic.ext.click
-import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.databinding.ActivityLoadingBinding
 
-class LoadingActivity : BaseActivity<ActivityLoadingBinding>() {
+class LoadingActivity : StudyBaseActivity<ActivityLoadingBinding>() {
 
     override fun initView() {
         mBinding.tvBegin.click { mBinding.vLoadingView.beginAnimator() }

@@ -2,10 +2,10 @@ package com.june.studyproject.component.camera
 
 import android.content.Context
 import android.content.Intent
-import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.databinding.ActivityCameraBinding
 
-class CameraActivity : BaseActivity<ActivityCameraBinding>() {
+class CameraActivity : StudyBaseActivity<ActivityCameraBinding>() {
 
     override fun initView() {
     }

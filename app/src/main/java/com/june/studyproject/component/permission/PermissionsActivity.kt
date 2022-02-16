@@ -5,10 +5,10 @@ import androidx.core.app.ActivityCompat
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PermissionUtils
 import com.june.base.basic.ext.click
-import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.databinding.ActivityPermissionsBinding
 
-class PermissionsActivity : BaseActivity<ActivityPermissionsBinding>() {
+class PermissionsActivity : StudyBaseActivity<ActivityPermissionsBinding>() {
 
     override fun initView() {
         mBinding.tvPermissions.click { requestPermissionsByAndroidUtils() }

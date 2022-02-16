@@ -1,11 +1,11 @@
 package com.june.studyproject.component.recycler.rvadapter.custom
 
 import android.view.View
-import com.june.base.basic.part.BaseActivity
 import com.june.rvadapter.BaseAdapter
 import com.june.rvadapter.ItemViewCreator
 import com.june.rvadapter.ItemViewHolder
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.component.recycler.rvadapter.vo.NormalInterface
 import com.june.studyproject.component.recycler.rvadapter.vo.NormalSimpleText
 import com.june.studyproject.databinding.ActivityNormalListBinding
@@ -20,7 +20,7 @@ import com.june.studyproject.databinding.ActivityNormalListBinding
  *            ......
  *            .build()
  */
-class CustomMultiAdapterActivity : BaseActivity<ActivityNormalListBinding>() {
+class CustomMultiAdapterActivity : StudyBaseActivity<ActivityNormalListBinding>() {
 
     private val mAdapter by lazy {
         val creator = object : ItemViewCreator<NormalSimpleText>() {
@@ -36,9 +36,9 @@ class CustomMultiAdapterActivity : BaseActivity<ActivityNormalListBinding>() {
             }
         }
 
-//        BaseAdapter.Builder<NormalInterface>()
-//            .putItem(creator)
-//            .build()
+        BaseAdapter.Builder<NormalInterface, ItemViewCreator<out NormalInterface>>()
+            .putItem(creator)
+            .build()
     }
 
     override fun initView() {

@@ -2,7 +2,7 @@ package com.june.studyproject.component.recycler.rvadapter.normal
 
 import com.june.base.basic.ext.addLinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
-import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.component.recycler.rvadapter.vo.NormalMultiImage
 import com.june.studyproject.component.recycler.rvadapter.vo.NormalMultiText
@@ -10,7 +10,7 @@ import com.june.studyproject.component.recycler.rvadapter.vo.NormalSimpleImage
 import com.june.studyproject.component.recycler.rvadapter.vo.NormalSimpleText
 import com.june.studyproject.databinding.ActivityNormalListBinding
 
-class NormalListActivity : BaseActivity<ActivityNormalListBinding>() {
+class NormalListActivity : StudyBaseActivity<ActivityNormalListBinding>() {
 
     private val mAdapter = NormalMultiAdapter()
 

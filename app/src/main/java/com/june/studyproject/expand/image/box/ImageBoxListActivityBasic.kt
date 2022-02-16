@@ -4,8 +4,8 @@ import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ScreenUtils
 import com.june.base.basic.ext.addLinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
-import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.common.Toast
@@ -15,12 +15,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * @author <a href="mailto:xujun@snqu.com">徐俊</a>
  * @description ImageBoxLayout 列表中的表现
  * @version 1.0.0
  * @time 2020/3/30 16:37
  */
-class ImageBoxListActivityBasic : BaseActivity<ActivityImageBoxLayoutListBinding>() {
+class ImageBoxListActivityBasic : StudyBaseActivity<ActivityImageBoxLayoutListBinding>() {
 
     private lateinit var adapter: ImageBoxLayoutAdapter
 

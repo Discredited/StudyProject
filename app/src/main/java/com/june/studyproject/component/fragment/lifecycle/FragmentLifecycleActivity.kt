@@ -4,15 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayVo
 import com.june.studyproject.databinding.ActivityFragmentLifecycleBinding
 import timber.log.Timber
 
-class FragmentLifecycleActivity : BaseActivity<ActivityFragmentLifecycleBinding>() {
+class FragmentLifecycleActivity : StudyBaseActivity<ActivityFragmentLifecycleBinding>() {
 
     private val mLifecycleViewModel by viewModels<FragmentLifecycleViewModel>()
     private var mTitleColor: Int = 0

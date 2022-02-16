@@ -6,13 +6,13 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
 import android.view.View
-import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.component.service.TestBindService.TestBinder
 import com.june.studyproject.databinding.ActivityServiceBinding
 import timber.log.Timber
 
-class ServiceActivity : BaseActivity<ActivityServiceBinding>(), View.OnClickListener, ServiceConnection {
+class ServiceActivity : StudyBaseActivity<ActivityServiceBinding>(), View.OnClickListener, ServiceConnection {
 
     private var isBindService = false
 

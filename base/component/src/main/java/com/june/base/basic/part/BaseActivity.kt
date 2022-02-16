@@ -6,15 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
+/**
+ * 业务方接入BaseActivity时，
+ * 应该自行继承扩展自己的BaseActivity
+ */
+open class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
     protected val mBinding: V by lazy { viewBinding() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
-        initView()
-        loadData()
     }
 
     // 通过反射创建ViewBinding失败
@@ -27,14 +29,4 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
         val inflateMethod = clazz.getMethod("inflate", LayoutInflater::class.java)
         return inflateMethod.invoke(null, layoutInflater) as V
     }
-
-    /**
-     * 初始化View
-     */
-    protected abstract fun initView()
-
-    /**
-     * 加载数据
-     */
-    protected abstract fun loadData()
 }

@@ -2,10 +2,10 @@ package com.june.studyproject.expand.image.watcher
 
 import android.view.MotionEvent
 import com.june.imageabout.watcher.drag.OnImageDragListener
-import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.databinding.ActivityImageDragLayoutBinding
 
-class ImageDragLayoutActivity : BaseActivity<ActivityImageDragLayoutBinding>() {
+class ImageDragLayoutActivity : StudyBaseActivity<ActivityImageDragLayoutBinding>() {
 
     private val mImageDraListener: OnImageDragListener = object : OnImageDragListener {
         override fun onDragStateChange(state: Int, x: Float, y: Float) {

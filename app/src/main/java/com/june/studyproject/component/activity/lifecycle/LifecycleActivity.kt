@@ -7,13 +7,13 @@ import android.view.KeyEvent
 import androidx.core.content.ContextCompat
 import com.june.base.basic.decoration.LinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
-import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityLifecycleBinding
 import timber.log.Timber
 
-class LifecycleActivity : BaseActivity<ActivityLifecycleBinding>() {
+class LifecycleActivity : StudyBaseActivity<ActivityLifecycleBinding>() {
 
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
