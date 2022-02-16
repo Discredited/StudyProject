@@ -1,4 +1,3 @@
-
 # StudyProject
 
 记录学习和测试的Project
@@ -33,10 +32,9 @@
 
 .ignore忽略文件只能影响没有add过的文件，所以如果把不应该提交的文件push到远程仓库的分支上以后，只是通过配置.ignore文件是不生效的。如果想要删除远程仓库分支中提交错误的文件，使用如下命令：
 
-`git rm --cache fileName` 删除本地文件的缓存，即移除该文件的版本控制  fileName表示文件名称
+`git rm --cache fileName` 删除本地文件的缓存，即移除该文件的版本控制 fileName表示文件名称
 
 `git rm -r --cache directoryName`  删除本地目录的缓存，directoryName表示文件名
-
 
 #### 关于GitHub提交记录显示不准确的问题
 
@@ -47,6 +45,21 @@ GitHub的记录提交，需要用户名和用户email才会正确统计提交记
 
 `git config user.email "xxxx"` 是配置当前仓库的用户名
 `git config user.email "xxxx"` 是配置当前仓库的用户名
+
+***
+
+### 关于项目结构的管理
+
+目前使用 BuildSrc 统一管理项目模块
+
+***
+
+### 关于Gradle的管理
+
+统一配置`application module`的`build.gradle`
+统一配置`library module`的`build.gradle`
+
+[Android中的Gradle基操](https://juejin.cn/post/7053985196906905636)
 
 ***
 
