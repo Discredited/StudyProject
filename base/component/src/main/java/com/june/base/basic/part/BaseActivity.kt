@@ -9,6 +9,8 @@ import java.lang.reflect.ParameterizedType
 /**
  * 业务方接入BaseActivity时，
  * 应该自行继承扩展自己的BaseActivity
+ *
+ * 改基类只提供ViewBinding的基本注入
  */
 open class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
@@ -19,7 +21,7 @@ open class BaseActivity<V : ViewBinding> : AppCompatActivity() {
         setContentView(mBinding.root)
     }
 
-    // 通过反射创建ViewBinding失败
+    // 通过反射创建ViewBinding
     private fun viewBinding(): V {
         // 获取 Java类的 ParameterizedType
         val parameterizedType = this.javaClass.genericSuperclass as ParameterizedType
