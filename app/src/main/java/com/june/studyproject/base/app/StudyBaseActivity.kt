@@ -16,7 +16,9 @@ abstract class StudyBaseActivity<V : ViewBinding> : BaseActivity<V>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ImmersionBar.with(this).init()
+        initStatusBar()
+        initView()
+        loadData()
     }
 
 
@@ -29,4 +31,8 @@ abstract class StudyBaseActivity<V : ViewBinding> : BaseActivity<V>() {
      * 加载数据
      */
     protected abstract fun loadData()
+
+    protected open fun initStatusBar() {
+        ImmersionBar.with(this).statusBarDarkFont(true).init()
+    }
 }

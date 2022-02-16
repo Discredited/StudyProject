@@ -1,28 +1,5 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-
-android {
-    compileSdkVersion Versions.compileSDK
-    buildToolsVersion Versions.buildTools
-
-    defaultConfig {
-        minSdkVersion Versions.minSDK
-        targetSdkVersion Versions.targetSDK
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+apply from: rootDir.absolutePath + '/default-library.gradle'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    rootProject.androidxBasicDependencies(dependencies)
-    rootProject.junitDependencies(dependencies)
+    implementation Dependencies.appcompat
 }

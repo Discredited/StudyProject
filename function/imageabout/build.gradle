@@ -1,43 +1,22 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-
-android {
-    compileSdkVersion Versions.compileSDK
-    buildToolsVersion Versions.buildTools
-
-    defaultConfig {
-        minSdkVersion Versions.minSDK
-        targetSdkVersion Versions.targetSDK
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+apply from: rootDir.absolutePath + '/default-library.gradle'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    rootProject.androidxBasicDependencies(dependencies)
-    rootProject.junitDependencies(dependencies)
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.constraintLayout
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation Dependencies.lifecycleExt
 
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.recyclerview:recyclerview-selection:1.1.0-rc03'
+    implementation Dependencies.recyclerView
+    implementation Dependencies.recyclerViewSelection
 
-    api 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation Dependencies.glide
+    annotationProcessor Dependencies.glideCompiler
+    implementation Dependencies.glideIntegration
 
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-    implementation "com.github.bumptech.glide:okhttp3-integration:4.11.0"
+    implementation Dependencies.timber
 
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    api 'com.github.chrisbanes:PhotoView:2.3.0'
 }
 
 

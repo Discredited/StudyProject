@@ -9,8 +9,7 @@ import java.lang.reflect.ParameterizedType
 /**
  * 业务方接入BaseActivity时，
  * 应该自行继承扩展自己的BaseActivity
- *
- * 改基类只提供ViewBinding的基本注入
+ * 该基类只提供ViewBinding的基本注入
  */
 open class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 

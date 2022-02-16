@@ -6,7 +6,6 @@ static def androidxBasicDependencies(DependencyHandler dependencyHandler) {
     dependencyHandler.implementation Dependencies.material
     dependencyHandler.implementation Dependencies.constraintLayout
 }
-
 ext.androidxBasicDependencies = this.&androidxBasicDependencies
 
 
@@ -15,7 +14,6 @@ static def libsDependencies(DependencyHandler dependencyHandler) {
     dependencyHandler.implementation Dependencies.coreKtx
     dependencyHandler.implementation Dependencies.appcompat
 }
-
 ext.libsDependencies = this.&libsDependencies
 
 
