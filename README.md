@@ -73,6 +73,16 @@ PBF（按功能分包 Package By Feature） 推荐
 
 ***
 
+### 关于启动图标的制作
+
+8.0版本以后，都推荐使用Android Studio的Image Asset功能
+
+只需要一张512*512的logo图片(官方推荐的是前景图和背景图分开，而不是只切一张)
+
+*使用Image Asset生成之前，最好先把所有的mipmap文件删除，避免生成出来的尺寸和分辨率不对或者不全*
+
+***
+
 ### 组件化设计
 
 ###### BaseComponent 基础组件
