@@ -5,6 +5,13 @@ import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ImmersionBar
 import com.june.base.basic.part.BaseActivity
 
+/**
+ * Activity基类
+ *
+ * 2022年02月16日15:27:19
+ *
+ * @author June
+ */
 abstract class StudyBaseActivity<V : ViewBinding> : BaseActivity<V>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
