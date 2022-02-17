@@ -9,13 +9,13 @@ import androidx.lifecycle.Observer
 import com.june.base.basic.ext.addLinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
 import com.june.studyproject.R
-import com.june.base.basic.part.BaseFragment
+import com.june.studyproject.base.app.StudyBaseFragment
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayAdapter
 import com.june.studyproject.component.activity.lifecycle.RecordDisplayVo
 import com.june.studyproject.databinding.FragmentLifecycleBinding
 import timber.log.Timber
 
-class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
+class LifecycleFragment : StudyBaseFragment<FragmentLifecycleBinding>() {
 
     private val mLifecycleViewModel by activityViewModels<FragmentLifecycleViewModel>()
     private lateinit var adapter: RecordDisplayAdapter
@@ -25,9 +25,11 @@ class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
         mLifecycleViewModel.mRecordList.add(RecordDisplayVo("onCreate", javaClass.simpleName))
     }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         mLifecycleViewModel.mRecordList.add(RecordDisplayVo("onCreateView", javaClass.simpleName))
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -42,10 +44,10 @@ class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
         super.onActivityCreated(savedInstanceState)
         Timber.e("onActivityCreated()")
         mLifecycleViewModel.mRecordList.add(
-                RecordDisplayVo(
-                        "onActivityCreated()",
-                        javaClass.simpleName
-                )
+            RecordDisplayVo(
+                "onActivityCreated()",
+                javaClass.simpleName
+            )
         )
 
         mLifecycleViewModel.mItemChangeLive.observe(viewLifecycleOwner, Observer {
@@ -59,10 +61,10 @@ class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
         super.onStart()
         Timber.e("onStart()")
         mLifecycleViewModel.mRecordList.add(
-                RecordDisplayVo(
-                        "onStart()",
-                        javaClass.simpleName
-                )
+            RecordDisplayVo(
+                "onStart()",
+                javaClass.simpleName
+            )
         )
     }
 
@@ -70,10 +72,10 @@ class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
         super.onResume()
         Timber.e("onResume()")
         mLifecycleViewModel.mRecordList.add(
-                RecordDisplayVo(
-                        "onResume()",
-                        javaClass.simpleName
-                )
+            RecordDisplayVo(
+                "onResume()",
+                javaClass.simpleName
+            )
         )
         adapter.notifyDataSetChanged()
     }
@@ -82,10 +84,10 @@ class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
         super.onPause()
         Timber.e("onPause()")
         mLifecycleViewModel.mRecordList.add(
-                RecordDisplayVo(
-                        "onPause()",
-                        javaClass.simpleName
-                )
+            RecordDisplayVo(
+                "onPause()",
+                javaClass.simpleName
+            )
         )
     }
 
@@ -93,10 +95,10 @@ class LifecycleFragment : BaseFragment<FragmentLifecycleBinding>() {
         super.onStop()
         Timber.e("onStop()")
         mLifecycleViewModel.mRecordList.add(
-                RecordDisplayVo(
-                        "onStop()",
-                        javaClass.simpleName
-                )
+            RecordDisplayVo(
+                "onStop()",
+                javaClass.simpleName
+            )
         )
     }
 

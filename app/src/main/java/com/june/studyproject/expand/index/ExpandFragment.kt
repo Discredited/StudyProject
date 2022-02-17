@@ -3,8 +3,8 @@ package com.june.studyproject.expand.index
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
-import com.june.base.basic.part.BaseFragment
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseFragment
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.component.index.CardExampleVo
 import com.june.studyproject.component.recycler.custom.CustomLayoutManager
@@ -12,7 +12,7 @@ import com.june.studyproject.databinding.FragmentExpandBinding
 import com.june.studyproject.expand.image.box.ImageBoxActivity
 import timber.log.Timber
 
-class ExpandFragment : BaseFragment<FragmentExpandBinding>() {
+class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
 
     private lateinit var mAdapter: ExpandAdapter
 
