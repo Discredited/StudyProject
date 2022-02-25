@@ -5,10 +5,11 @@ import android.content.Intent
 import com.june.base.basic.ext.click
 import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityDialogFragmentBinding
 
-class DialogFragmentActivity : BaseActivity<ActivityDialogFragmentBinding>() {
+class DialogFragmentActivity : StudyBaseActivity<ActivityDialogFragmentBinding>() {
 
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(getString(R.string.str_dialog_fragment))

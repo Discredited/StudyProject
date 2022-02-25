@@ -1,8 +1,8 @@
 package com.june.studyproject.component.activity.index
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.adapter.TitleDescAdapter
 import com.june.studyproject.common.vo.TitleDescVo
@@ -19,7 +19,7 @@ import com.june.studyproject.databinding.ActivityExampleBinding
  * @version 1.0.0
  * @time 2020/3/30 17:29
  */
-class ExampleActivity : BaseActivity<ActivityExampleBinding>() {
+class ExampleActivity : StudyBaseActivity<ActivityExampleBinding>() {
 
     private val mAdapter: TitleDescAdapter = TitleDescAdapter()
 

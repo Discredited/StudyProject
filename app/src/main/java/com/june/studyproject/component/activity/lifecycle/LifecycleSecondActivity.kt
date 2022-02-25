@@ -8,6 +8,7 @@ import com.june.studyproject.R
 import com.june.base.basic.part.BaseActivity
 import com.june.base.basic.decoration.LinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityLifecycleBinding
 import timber.log.Timber
@@ -18,7 +19,7 @@ import timber.log.Timber
  * @version 1.0.0
  * @time 2020/3/30
  */
-class LifecycleSecondActivity : BaseActivity<ActivityLifecycleBinding>() {
+class LifecycleSecondActivity : StudyBaseActivity<ActivityLifecycleBinding>() {
 
     private lateinit var adapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()

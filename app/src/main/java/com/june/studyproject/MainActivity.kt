@@ -2,17 +2,15 @@ package com.june.studyproject
 
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
-import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import com.june.studyproject.databinding.ActivityMainBinding
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
 
     private var mCurrentNavController: LiveData<NavController>? = null
 
     override fun initView() {
-        //6.0及以上的API
-        //window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR//黑色
         mBinding.bottomNavigation.itemIconTintList = null
     }
 

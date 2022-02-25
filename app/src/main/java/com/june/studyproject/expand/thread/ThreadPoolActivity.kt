@@ -1,15 +1,15 @@
 package com.june.studyproject.expand.thread
 
 import android.view.View
-import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.databinding.ActivityThreadPoolActivityBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 
-class ThreadPoolActivity : BaseActivity<ActivityThreadPoolActivityBinding>(), View.OnClickListener {
+class ThreadPoolActivity : StudyBaseActivity<ActivityThreadPoolActivityBinding>(), View.OnClickListener {
     private var threadCounter = 0
 
     override fun initView() {

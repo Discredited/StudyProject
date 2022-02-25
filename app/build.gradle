@@ -87,6 +87,9 @@ dependencies {
     implementation Dependencies.camera2
     implementation Dependencies.cameraLifecycle
 
+    implementation Dependencies.immersionBar
+    implementation Dependencies.immersionBarKtx
+
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 

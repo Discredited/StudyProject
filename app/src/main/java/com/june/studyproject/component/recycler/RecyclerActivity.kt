@@ -2,13 +2,13 @@ package com.june.studyproject.component.recycler
 
 import android.content.Intent
 import com.june.base.basic.ext.click
-import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.component.recycler.custom.CustomLayoutManagerActivity
 import com.june.studyproject.component.recycler.rvadapter.RecyclerViewAdapterActivity
 import com.june.studyproject.databinding.ActivityRecyclerBinding
 
-class RecyclerActivity : BaseActivity<ActivityRecyclerBinding>() {
+class RecyclerActivity : StudyBaseActivity<ActivityRecyclerBinding>() {
 
     override fun initView() {
         mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName)

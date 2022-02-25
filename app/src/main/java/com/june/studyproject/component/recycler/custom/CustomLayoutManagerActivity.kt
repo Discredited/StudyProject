@@ -1,13 +1,13 @@
 package com.june.studyproject.component.recycler.custom
 
 import androidx.core.content.ContextCompat
-import com.june.base.basic.part.BaseActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityCustomLayoutManagerBinding
 
 
-class CustomLayoutManagerActivity : BaseActivity<ActivityCustomLayoutManagerBinding>() {
+class CustomLayoutManagerActivity : StudyBaseActivity<ActivityCustomLayoutManagerBinding>() {
 
     private lateinit var adapter: CustomLayoutManagerAdapter
 
@@ -26,19 +26,19 @@ class CustomLayoutManagerActivity : BaseActivity<ActivityCustomLayoutManagerBind
 
     override fun loadData() {
         adapter.setNewInstance(
-                mutableListOf(
-                        ContextCompat.getColor(this, R.color.color_style_1_1),
-                        ContextCompat.getColor(this, R.color.color_style_1_2),
-                        ContextCompat.getColor(this, R.color.color_style_1_3),
-                        ContextCompat.getColor(this, R.color.color_style_1_4),
-                        ContextCompat.getColor(this, R.color.color_style_1_5),
+            mutableListOf(
+                ContextCompat.getColor(this, R.color.color_style_1_1),
+                ContextCompat.getColor(this, R.color.color_style_1_2),
+                ContextCompat.getColor(this, R.color.color_style_1_3),
+                ContextCompat.getColor(this, R.color.color_style_1_4),
+                ContextCompat.getColor(this, R.color.color_style_1_5),
 
-                        ContextCompat.getColor(this, R.color.color_style_1_1),
-                        ContextCompat.getColor(this, R.color.color_style_1_2),
-                        ContextCompat.getColor(this, R.color.color_style_1_3),
-                        ContextCompat.getColor(this, R.color.color_style_1_4),
-                        ContextCompat.getColor(this, R.color.color_style_1_5)
-                )
+                ContextCompat.getColor(this, R.color.color_style_1_1),
+                ContextCompat.getColor(this, R.color.color_style_1_2),
+                ContextCompat.getColor(this, R.color.color_style_1_3),
+                ContextCompat.getColor(this, R.color.color_style_1_4),
+                ContextCompat.getColor(this, R.color.color_style_1_5)
+            )
         )
     }
 }

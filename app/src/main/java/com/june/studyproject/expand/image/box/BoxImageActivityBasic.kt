@@ -3,13 +3,13 @@ package com.june.studyproject.expand.image.box
 import android.widget.SeekBar
 import com.june.imageabout.box.BoxImageView
 import com.june.studyproject.R
-import com.june.base.basic.part.BaseActivity
+import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.loadImage
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.databinding.ActivityBoxImageViewBinding
 
-class BoxImageActivityBasic : BaseActivity<ActivityBoxImageViewBinding>() {
+class BoxImageActivityBasic : StudyBaseActivity<ActivityBoxImageViewBinding>() {
 
     private var mRadiusMax: Int = -1
     private val mSeekBarChangeListener = object : SeekBar.OnSeekBarChangeListener {

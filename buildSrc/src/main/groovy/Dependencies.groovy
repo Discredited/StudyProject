@@ -44,8 +44,8 @@ interface Dependencies {
     def navigationUiKtx = 'androidx.navigation:navigation-ui-ktx:2.3.2'
 
     // recyclerView
-    def recyclerView = 'androidx.recyclerview:recyclerview:1.2.0'
-    def recyclerViewSelection = 'androidx.recyclerview:recyclerview-selection:1.1.0-rc03'
+    def recyclerView = 'androidx.recyclerview:recyclerview:1.2.1'
+    def recyclerViewSelection = 'androidx.recyclerview:recyclerview-selection:1.2.0-alpha01'
 
     // swipeRefreshLayout
     def swipeRefreshLayout = 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
@@ -82,24 +82,34 @@ interface Dependencies {
     def timber = "com.jakewharton.timber:timber:4.7.1"
 
     // AndroidUtils
-    def androidUtils = "com.blankj:utilcodex:1.30.6"
+    def androidUtils = "com.blankj:utilcodex:1.31.0"
 
     // OkHttp
-    def okHttp = "com.squareup.okhttp3:okhttp:4.9.1"
-    def okHttpLogging = "com.squareup.okhttp3:logging-interceptor:4.9.1"
+    def okHttp = "com.squareup.okhttp3:okhttp:4.9.3"
+    def okHttpLogging = "com.squareup.okhttp3:logging-interceptor:4.9.3"
 
     // Retrofit
     def retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
     def retrofitConvertGson = "com.squareup.retrofit2:converter-gson:2.9.0"
     def retrofitAdapterRxJava = "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
 
-    // Glide
-    def glide = "com.github.bumptech.glide:glide:4.11.0"
-    def glideCompiler = "com.github.bumptech.glide:compiler:4.11.0"
-    def glideIntegration = "com.github.bumptech.glide:okhttp3-integration:4.11.0"
+    /**
+     * Glide
+     * https://github.com/bumptech/glide
+     */
+    def glide = "com.github.bumptech.glide:glide:4.13.0"
+    def glideCompiler = "com.github.bumptech.glide:compiler:4.13.0"
+    def glideIntegration = "com.github.bumptech.glide:okhttp3-integration:4.13.0"
 
     // RxJava2
     def rxJava = "io.reactivex.rxjava2:rxjava:2.2.14"
     def rxJavaAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    /**
+     * Immersion Bar 沉浸式状态栏
+     * https://github.com/gyf-dev/ImmersionBar
+     */
+    def immersionBar = 'com.geyifeng.immersionbar:immersionbar:3.2.1'
+    def immersionBarKtx = 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.1'  // kotlin扩展（可选）
     ////////////////////  第三方类库  End  ////////////////////
 }
