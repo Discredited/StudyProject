@@ -18,10 +18,10 @@ interface Dependencies {
 
     // 基本配置
     def kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.5.20"
-    def coreKtx = "androidx.core:core-ktx:1.3.2"
-    def appcompat = "androidx.appcompat:appcompat:1.2.0"
-    def material = "com.google.android.material:material:1.2.1"
-    def constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
+    def coreKtx = "androidx.core:core-ktx:1.7.0"
+    def appcompat = "androidx.appcompat:appcompat:1.4.1"
+    def material = "com.google.android.material:material:1.5.0"
+    def constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
 
     // 测试项
     def junit = "junit:junit:4.13.2"
@@ -30,18 +30,18 @@ interface Dependencies {
 
     ////////////////////  Kotlin  Begin  ////////////////////
     // Coroutines 协程
-    def kotlinCoroutinesCore = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
-    def kotlinCoroutinesAndroid = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    def kotlinCoroutinesCore = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    def kotlinCoroutinesAndroid = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
     def kotlinCoroutinesTest = 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7'
     ////////////////////  Kotlin  End  ////////////////////
 
     ////////////////////  Android ktx  Begin  ////////////////////
     // fragment
-    def fragmentKtx = 'androidx.fragment:fragment-ktx:1.2.5'
+    def fragmentKtx = 'androidx.fragment:fragment-ktx:1.4.1'
 
     // navigation
-    def navigationFragmentKtx = 'androidx.navigation:navigation-fragment-ktx:2.3.2'
-    def navigationUiKtx = 'androidx.navigation:navigation-ui-ktx:2.3.2'
+    def navigationFragmentKtx = 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    def navigationUiKtx = 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     // recyclerView
     def recyclerView = 'androidx.recyclerview:recyclerview:1.2.1'
@@ -51,11 +51,12 @@ interface Dependencies {
     def swipeRefreshLayout = 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     // lifecycle
-    def lifecycleExt = 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    def lifecycleRuntimeKtx = 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
-    def lifecycleCommonJava8 = 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
-    def lifecycleViewModelKtx = 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    def lifecycleLiveDataKtx = 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    def lifecycle_version = "2.5.0-alpha02"
+    //def lifecycleExt = 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    def lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycle_version}"
+    def lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:${lifecycle_version}"
+    def lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycle_version}"
+    def lifecycleLiveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycle_version}"
 
     // room
     def roomRuntime = "androidx.room:room-runtime:2.2.5"

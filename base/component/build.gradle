@@ -14,7 +14,7 @@ dependencies {
 
     implementation Dependencies.timber
 
-    implementation Dependencies.lifecycleExt
+    //implementation Dependencies.lifecycleExt
 
     implementation Dependencies.recyclerView
     implementation Dependencies.recyclerViewSelection

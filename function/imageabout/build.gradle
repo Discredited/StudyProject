@@ -5,7 +5,7 @@ dependencies {
     implementation Dependencies.material
     implementation Dependencies.constraintLayout
 
-    implementation Dependencies.lifecycleExt
+    //implementation Dependencies.lifecycleExt
 
     implementation Dependencies.recyclerView
     implementation Dependencies.recyclerViewSelection
