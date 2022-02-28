@@ -3,11 +3,11 @@
  */
 interface Versions {
 
-    def compileSDK = 30 // 编译SDK版本
-    def buildTools = "30.0.3" // Gradle编译项目工具版本
+    def compileSDK = 31 // 编译SDK版本
+    def buildTools = "31.0.0" // Gradle编译项目工具版本
 
     def minSDK = 21 // 最低兼容Android版本
-    def targetSDK = 30 // 最高兼容Android版本
+    def targetSDK = 31 // 最高兼容Android版本
 }
 
 interface Dependencies {
@@ -52,7 +52,6 @@ interface Dependencies {
 
     // lifecycle
     def lifecycle_version = "2.5.0-alpha02"
-    //def lifecycleExt = 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     def lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycle_version}"
     def lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:${lifecycle_version}"
     def lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycle_version}"

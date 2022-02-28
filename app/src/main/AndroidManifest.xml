@@ -23,45 +23,102 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.june.studyproject.expand.thread.ThreadPoolActivity" />
-        <activity android:name=".component.service.ServiceActivity" />
-        <activity android:name="com.june.studyproject.library.rxjava.RxJavaActivity" />
-        <activity android:name=".component.activity.index.ExampleActivity" />
-        <activity android:name=".expand.image.box.ImageBoxListActivityBasic" />
-        <activity android:name=".component.activity.lifecycle.LifecycleActivity" />
-        <activity android:name=".component.activity.lifecycle.LifecycleSecondActivity" />
-        <activity android:name=".expand.image.box.BoxImageActivityBasic" />
-        <activity android:name=".expand.image.box.ImageBoxActivity" />
-        <activity android:name=".component.fragment.FragmentActivity" />
-        <activity android:name=".component.fragment.lifecycle.FragmentLifecycleActivity" />
+        <activity
+            android:name="com.june.studyproject.expand.thread.ThreadPoolActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.service.ServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.june.studyproject.library.rxjava.RxJavaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.activity.index.ExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".expand.image.box.ImageBoxListActivityBasic"
+            android:exported="false" />
+        <activity
+            android:name=".component.activity.lifecycle.LifecycleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.activity.lifecycle.LifecycleSecondActivity"
+            android:exported="false" />
+        <activity
+            android:name=".expand.image.box.BoxImageActivityBasic"
+            android:exported="false" />
+        <activity
+            android:name=".expand.image.box.ImageBoxActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.fragment.FragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.fragment.lifecycle.FragmentLifecycleActivity"
+            android:exported="false" />
 
         <activity
             android:name=".expand.image.watcher.ImageWatchActivity"
+            android:exported="false"
             android:theme="@style/TransparentStyleTheme" />
-        <activity android:name=".component.recycler.RecyclerActivity" />
-        <activity android:name=".component.recycler.custom.CustomLayoutManagerActivity" />
-        <activity android:name=".expand.image.box.ImageBoxLayoutActivity" />
-        <activity android:name=".expand.image.watcher.ImageDragLayoutActivity" />
-        <activity android:name=".component.recycler.ItemDecorationActivity" />
-        <activity android:name=".component.recycler.rvadapter.normal.NormalListActivity" />
-        <activity android:name=".component.recycler.rvadapter.RecyclerViewAdapterActivity" />
-        <activity android:name=".library.okhttp.OkHttpActivity" />
-        <activity android:name=".library.okhttp.DownloadActivity" />
-        <activity android:name=".expand.zip.UnzipActivityBasic" />
-        <activity android:name=".component.permission.PermissionsActivity" />
-        <activity android:name=".expand.loading.LoadingActivity" />
-        <activity android:name=".component.dialogfragment.DialogFragmentActivity" />
-        <activity android:name=".component.camera.CameraActivity" />
-        <activity android:name=".component.recycler.rvadapter.custom.CustomMultiAdapterActivity" />
+        <activity
+            android:name=".component.recycler.RecyclerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.recycler.custom.CustomLayoutManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".expand.image.box.ImageBoxLayoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".expand.image.watcher.ImageDragLayoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.recycler.ItemDecorationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.recycler.rvadapter.normal.NormalListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.recycler.rvadapter.RecyclerViewAdapterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".library.okhttp.OkHttpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".library.okhttp.DownloadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".expand.zip.UnzipActivityBasic"
+            android:exported="false" />
+        <activity
+            android:name=".component.permission.PermissionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".expand.loading.LoadingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.dialogfragment.DialogFragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.camera.CameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.recycler.rvadapter.custom.CustomMultiAdapterActivity"
+            android:exported="false" />
 
-        <service android:name=".component.service.TestBindService" />
+        <service
+            android:name=".component.service.TestBindService"
+            android:exported="false" />
     </application>
 
 </manifest>
