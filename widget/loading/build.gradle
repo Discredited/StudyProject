@@ -32,9 +32,9 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    rootProject.androidxBasicDependencies(dependencies)
-    rootProject.junitDependencies(dependencies)
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.constraintLayout
 }
 
 apply from: rootDir.absolutePath + '/maven-push.gradle'
@@ -42,5 +42,5 @@ apply from: rootDir.absolutePath + '/maven-push.gradle'
 project.ext {
     publishingGroupId = 'com.june.widget'
     publishingArtifactId = 'loading'
-    publishingVersion = '0.0.1'
+    publishingVersion = '0.0.2'
 }

@@ -20,5 +20,5 @@ apply from: rootDir.absolutePath + '/maven-push.gradle'
 project.ext {
     publishingGroupId = 'com.june.function'
     publishingArtifactId = 'network'
-    publishingVersion = '0.0.1'
+    publishingVersion = '0.0.2'
 }
