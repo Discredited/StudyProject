@@ -88,6 +88,7 @@ interface Dependencies {
     // OkHttp
     def okHttp = "com.squareup.okhttp3:okhttp:4.9.3"
     def okHttpLogging = "com.squareup.okhttp3:logging-interceptor:4.9.3"
+    def okio = "com.squareup.okio:okio:3.0.0"
 
     // Retrofit
     def retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
@@ -110,7 +111,13 @@ interface Dependencies {
      * Immersion Bar 沉浸式状态栏
      * https://github.com/gyf-dev/ImmersionBar
      */
-    def immersionBar = 'com.geyifeng.immersionbar:immersionbar:3.2.1'
-    def immersionBarKtx = 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.1'  // kotlin扩展（可选）
+    def immersionBar = "com.geyifeng.immersionbar:immersionbar:3.2.1"
+    def immersionBarKtx = "com.geyifeng.immersionbar:immersionbar-ktx:3.2.1"  // kotlin扩展（可选）
+
+
+    /**
+     * PhotoView
+     */
+    def photoView = "com.github.chrisbanes:PhotoView:2.3.0"
     ////////////////////  第三方类库  End  ////////////////////
 }

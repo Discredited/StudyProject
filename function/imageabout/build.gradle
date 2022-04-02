@@ -5,18 +5,9 @@ dependencies {
     implementation Dependencies.material
     implementation Dependencies.constraintLayout
 
-    //implementation Dependencies.lifecycleExt
-
-    implementation Dependencies.recyclerView
-    implementation Dependencies.recyclerViewSelection
-
-    implementation Dependencies.glide
-    annotationProcessor Dependencies.glideCompiler
-    implementation Dependencies.glideIntegration
-
     implementation Dependencies.timber
 
-    api 'com.github.chrisbanes:PhotoView:2.3.0'
+    api Dependencies.photoView
 }
 
 
