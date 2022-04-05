@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.roundToInt
 
 class LinearItemDecoration(
-    var mDivider: Drawable,
-    var mOrientation: Int = RecyclerView.VERTICAL,
-    var mMarginStart: Int = 0,
-    var mMarginEnd: Int = 0
+    private val mDivider: Drawable,
+    private val mOrientation: Int = RecyclerView.VERTICAL,
+    private val mMarginStart: Int = 0,
+    private val mMarginEnd: Int = 0
 ) : RecyclerView.ItemDecoration() {
 
     private val mBounds: Rect = Rect()
