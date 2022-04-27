@@ -24,6 +24,7 @@ class CustomLayoutManagerActivity : StudyBaseActivity<ActivityCustomLayoutManage
 
         mBinding.rvCard.apply {
             layoutManager = CustomLayoutManager(this@CustomLayoutManagerActivity)
+            //layoutManager = StackLayoutManager(this@CustomLayoutManagerActivity)
             adapter = mAdapter
             setHasFixedSize(true)
         }
