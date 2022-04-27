@@ -1,10 +1,11 @@
 //include表示有多少个项目工程需要加入构建
 //并为加入构建的项目创建与之对应的Project实例
 
+include ':style'
 include ':widget:loading'
 include ':base:component'
 include ':function:network'
 include ':function:rvadapter'
 include ':function:imageabout'
+include ':function:pdfpreview'
 include ':app'
-include ':style'
