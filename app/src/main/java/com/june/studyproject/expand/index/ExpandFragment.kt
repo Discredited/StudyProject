@@ -2,7 +2,10 @@ package com.june.studyproject.expand.index
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.june.base.basic.ext.click
+import com.june.function.pdfpreview.PDFPreViewActivity
 import com.june.studyproject.R
 import com.june.studyproject.base.app.StudyBaseFragment
 import com.june.studyproject.common.ConstHelper
@@ -48,48 +51,56 @@ class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
                 }
             })
         }
+
+        mBinding.btOpenPdf.click {
+            //PDFPreViewActivity.start(requireActivity(), "file:///android_asset/demo.pdf")
+            //PDFPreViewActivity.start(requireActivity(), "file:///android_asset/kotlin-reference.pdf")
+            PDFPreViewActivity.start(requireActivity(), "https://kotlinlang.org/docs/kotlin-reference.pdf?_ga=2.194794596.877109590.1651038040-806405991.1640094785")
+        }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        mAdapter.setNewInstance(mutableListOf(
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mAdapter.setNewInstance(
+            mutableListOf(
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout2"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout2"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout3"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout3"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout4"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout4"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout5"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout5"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout6"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout6"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 )
-        ))
+            )
+        )
     }
 
     override fun fitsSystemWindows(): Boolean = false
