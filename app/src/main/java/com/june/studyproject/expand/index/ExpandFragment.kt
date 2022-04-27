@@ -53,9 +53,15 @@ class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
         }
 
         mBinding.btOpenPdf.click {
+            // 测试本地小文件，1M
             //PDFPreViewActivity.start(requireActivity(), "file:///android_asset/demo.pdf")
+            // 测试本地大文件，30M
             //PDFPreViewActivity.start(requireActivity(), "file:///android_asset/kotlin-reference.pdf")
-            PDFPreViewActivity.start(requireActivity(), "https://kotlinlang.org/docs/kotlin-reference.pdf?_ga=2.194794596.877109590.1651038040-806405991.1640094785")
+            // 测试网络大文件，30M
+            PDFPreViewActivity.start(
+                requireActivity(),
+                "https://kotlinlang.org/docs/kotlin-reference.pdf?_ga=2.194794596.877109590.1651038040-806405991.1640094785"
+            )
         }
     }
 
