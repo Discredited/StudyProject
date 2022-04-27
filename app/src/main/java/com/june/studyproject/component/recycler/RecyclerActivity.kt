@@ -8,6 +8,13 @@ import com.june.studyproject.component.recycler.custom.CustomLayoutManagerActivi
 import com.june.studyproject.component.recycler.rvadapter.RecyclerViewAdapterActivity
 import com.june.studyproject.databinding.ActivityRecyclerBinding
 
+/**
+ * RecyclerViewActivity
+ *
+ * 2022年04月27日15:26:28
+ *
+ * @author:June
+ */
 class RecyclerActivity : StudyBaseActivity<ActivityRecyclerBinding>() {
 
     override fun initView() {

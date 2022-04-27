@@ -9,10 +9,11 @@ import kotlin.math.floor
 import kotlin.math.pow
 
 /**
- * @author <a href="mailto:xujun@snqu.com">June</a>
- * @description 自定义LayoutManger
- * @version 1.0.0
- * @time 2020/4/9 16:16
+ * 定义LayoutManager
+ *
+ * 2022年04月27日15:33:42
+ *
+ * @author:June
  */
 class CustomLayoutManager(
     context: Context,
@@ -36,9 +37,10 @@ class CustomLayoutManager(
     private var mMeasureWidth: Int = 0
     private var mMeasureHeight: Int = 0
 
-    private var mItemViewWidth: Int = 0  //itemView宽度
-    private var mItemViewHeight: Int = 0  //itemView高度
-    private var mItemCount: Int = 0 //item数量
+    private var mItemViewWidth: Int = 0     //itemView宽度
+    private var mItemViewHeight: Int = 0    //itemView高度
+    private var mItemCount: Int = 0         //item数量
+
     private var mScrollOffset: Int = 0
     private val mScale = 0.9
 
@@ -58,17 +60,20 @@ class CustomLayoutManager(
         }
 
         mItemViewWidth = (mMeasureWidth * 0.95f).toInt()
-        mItemViewHeight = (mItemViewWidth * 1.5f).toInt()
+        mItemViewHeight = (mItemViewWidth * 1.78f).toInt()  // 9:16
+
         mItemCount = itemCount
         mScrollOffset = mItemViewHeight.coerceAtLeast(mScrollOffset).coerceAtMost(mItemCount * mItemViewHeight)
-
+        Timber.i("mScrollOffset:${mScrollOffset}  mItemViewHeight:${mItemViewHeight}")
         layoutChild(recycler)
     }
 
     private fun layoutChild(recycler: RecyclerView.Recycler) {
         if (itemCount == 0) return
 
+        // floor 向下取整
         var bottomItemPosition = floor(mScrollOffset.toDouble() / mItemViewHeight).toInt()
+        // 第一张卡片距离顶部的间距
         var remainSpace = mMeasureHeight - mItemViewHeight
 
         val bottomItemVisibleHeight = mScrollOffset % mItemViewHeight
