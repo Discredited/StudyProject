@@ -9,6 +9,8 @@ import com.june.function.pdfpreview.databinding.ActivityPdfPreviewBinding
 
 /**
  * pdf预览页面
+ * 2022年04月27日15:16:04
+ * https://github.com/skymxc/Example/tree/master/displaypdf
  *
  * 2022/4/27
  * @author June
