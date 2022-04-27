@@ -10,46 +10,46 @@ import com.june.studyproject.databinding.ActivityItemDecorationBinding
 
 class ItemDecorationActivity : StudyBaseActivity<ActivityItemDecorationBinding>() {
 
-    private val adapter = CustomLayoutManagerAdapter()
+    private val mAdapter = CustomLayoutManagerAdapter()
 
     override fun initView() {
         mBinding.rvDecoration1.apply {
             setGridManager(3)
-            adapter = adapter
+            adapter = mAdapter
             setHasFixedSize(true)
             addItemDecoration(GridItemDecoration(3, 100))
         }
 
         mBinding.rvDecoration2.apply {
             setGridManager(4)
-            adapter = adapter
+            adapter = mAdapter
             setHasFixedSize(true)
             addItemDecoration(GridItemDecoration(4, 100))
         }
 
         mBinding.rvDecoration3.apply {
             setGridManager(5)
-            adapter = adapter
+            adapter = mAdapter
             setHasFixedSize(true)
             addItemDecoration(GridItemDecoration(5, 100))
         }
     }
 
     override fun loadData() {
-        adapter.setNewInstance(
-                mutableListOf(
-                        ContextCompat.getColor(this, R.color.color_style_1_1),
-                        ContextCompat.getColor(this, R.color.color_style_1_2),
-                        ContextCompat.getColor(this, R.color.color_style_1_3),
-                        ContextCompat.getColor(this, R.color.color_style_1_4),
-                        ContextCompat.getColor(this, R.color.color_style_1_5),
+        mAdapter.setNewInstance(
+            mutableListOf(
+                ContextCompat.getColor(this, R.color.color_style_1_1),
+                ContextCompat.getColor(this, R.color.color_style_1_2),
+                ContextCompat.getColor(this, R.color.color_style_1_3),
+                ContextCompat.getColor(this, R.color.color_style_1_4),
+                ContextCompat.getColor(this, R.color.color_style_1_5),
 
-                        ContextCompat.getColor(this, R.color.color_style_1_1),
-                        ContextCompat.getColor(this, R.color.color_style_1_2),
-                        ContextCompat.getColor(this, R.color.color_style_1_3),
-                        ContextCompat.getColor(this, R.color.color_style_1_4),
-                        ContextCompat.getColor(this, R.color.color_style_1_5)
-                )
+                ContextCompat.getColor(this, R.color.color_style_1_1),
+                ContextCompat.getColor(this, R.color.color_style_1_2),
+                ContextCompat.getColor(this, R.color.color_style_1_3),
+                ContextCompat.getColor(this, R.color.color_style_1_4),
+                ContextCompat.getColor(this, R.color.color_style_1_5)
+            )
         )
     }
 }

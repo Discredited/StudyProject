@@ -12,18 +12,18 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDecoration1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dp_180" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDecoration2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_180"
             android:layout_marginTop="@dimen/dp_50" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDecoration3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_180"
             android:layout_marginTop="@dimen/dp_50" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>
