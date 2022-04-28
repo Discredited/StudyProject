@@ -10,6 +10,6 @@ apply from: rootDir.absolutePath + '/maven-push.gradle'
 
 project.ext {
     publishingGroupId = 'com.june.widget'
-    publishingArtifactId = 'loading'
+    publishingArtifactId = 'explosion'
     publishingVersion = '0.0.2'
 }

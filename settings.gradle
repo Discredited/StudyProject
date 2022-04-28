@@ -3,6 +3,7 @@
 
 include ':style'
 include ':widget:loading'
+include ':widget:explosion'
 include ':base:component'
 include ':function:network'
 include ':function:rvadapter'
