@@ -4,12 +4,15 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.animation.ValueAnimator.AnimatorUpdateListener
+import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import java.util.*
 
 
@@ -81,5 +84,18 @@ class ExplosionFieldView @JvmOverloads constructor(
     fun clear() {
         mExplosions.clear()
         invalidate()
+    }
+
+    companion object {
+        fun attach2Window(activity: Activity): ExplosionFieldView? {
+            val rootView = activity.findViewById<View>(Window.ID_ANDROID_CONTENT) as ViewGroup
+            val explosionField = ExplosionFieldView(activity)
+            rootView.addView(
+                explosionField, ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            )
+            return explosionField
+        }
     }
 }

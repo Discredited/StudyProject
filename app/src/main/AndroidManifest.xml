@@ -115,6 +115,7 @@
         <activity
             android:name=".component.recycler.rvadapter.custom.CustomMultiAdapterActivity"
             android:exported="false" />
+        <activity android:name=".expand.ExplosionActivity" />
 
         <service
             android:name=".component.service.TestBindService"

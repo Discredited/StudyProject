@@ -7,6 +7,7 @@ import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Interpolator
 import java.util.*
+import kotlin.math.pow
 
 
 /**
@@ -32,20 +33,22 @@ class ExplosionAnimator(
     }
 
     private val mPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val mParticles: Array<Particle> = arrayOf()
+    private val mParticles: MutableList<Particle> = mutableListOf()
 
     init {
         val random = Random(System.currentTimeMillis())
 
-        val width = bitmap.width
-        val height = bitmap.height
         val partLen = 15
+        val width = bitmap.width / (partLen + 2)
+        val height = bitmap.height / (partLen + 2)
 
         for (i in 0..partLen) {
             for (j in 0..partLen) {
-                mParticles[(i * partLen) + j] = generateParticle(
-                    bitmap.getPixel((j + 1) * width, (i + 1) * height),
-                    random
+                mParticles.add(
+                    generateParticle(
+                        bitmap.getPixel((j + 1) * width, (i + 1) * height),
+                        random
+                    )
                 )
             }
         }
@@ -106,9 +109,9 @@ class ExplosionAnimator(
             return false
         }
         for (particle in mParticles) {
-            advance(particle,animatedValue as Float)
+            advance(particle, animatedValue as Float)
             if (particle.alpha > 0f) {
-                mPaint!!.color = particle.color
+                mPaint.color = particle.color
                 mPaint.alpha = ((Color.alpha(particle.color) * particle.alpha).toInt())
                 canvas.drawCircle(particle.cx, particle.cy, particle.radius, mPaint)
             }
@@ -124,7 +127,7 @@ class ExplosionAnimator(
 
     fun advance(particle: Particle, factor: Float) {
         var f = 0f
-        var normalization = attr.factor / END_VALUE
+        var normalization = factor / END_VALUE
         if (normalization < particle.life || normalization > 1f - particle.overflow) {
             particle.alpha = 0f
             return
@@ -137,7 +140,7 @@ class ExplosionAnimator(
         particle.alpha = 1f - f
         f = particle.bottom * f2
         particle.cx = particle.baseCx + f
-        particle.cy = (particle.baseCy - particle.neg * Math.pow(f.toDouble(), 2.0)) as Float - f * particle.mag
+        particle.cy = (particle.baseCy - particle.neg * (f.toDouble().pow(2.0).toFloat())) - f * particle.mag
         particle.radius = V + (particle.baseRadius - V) * f2
     }
 }

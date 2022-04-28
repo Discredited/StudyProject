@@ -12,6 +12,7 @@ import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.component.index.CardExampleVo
 import com.june.studyproject.component.recycler.custom.CustomLayoutManager
 import com.june.studyproject.databinding.FragmentExpandBinding
+import com.june.studyproject.expand.ExplosionActivity
 import com.june.studyproject.expand.image.box.ImageBoxActivity
 import timber.log.Timber
 
@@ -62,6 +63,9 @@ class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
                 requireActivity(),
                 "https://kotlinlang.org/docs/kotlin-reference.pdf?_ga=2.194794596.877109590.1651038040-806405991.1640094785"
             )
+        }
+        mBinding.btOpenExplosion.click {
+            startActivity(Intent(requireActivity(), ExplosionActivity::class.java))
         }
     }
 
