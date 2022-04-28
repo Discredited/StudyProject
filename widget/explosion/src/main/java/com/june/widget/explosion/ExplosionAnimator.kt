@@ -1,6 +1,5 @@
 package com.june.widget.explosion
 
-import android.R.attr
 import android.animation.ValueAnimator
 import android.graphics.*
 import android.view.View
@@ -18,7 +17,7 @@ import kotlin.math.pow
  */
 class ExplosionAnimator(
     private val container: View,
-    private val bitmap: Bitmap,
+    bitmap: Bitmap,
     private val bound: Rect
 ) : ValueAnimator() {
 
@@ -125,7 +124,7 @@ class ExplosionAnimator(
         container.invalidate(bound)
     }
 
-    fun advance(particle: Particle, factor: Float) {
+    private fun advance(particle: Particle, factor: Float) {
         var f = 0f
         var normalization = factor / END_VALUE
         if (normalization < particle.life || normalization > 1f - particle.overflow) {

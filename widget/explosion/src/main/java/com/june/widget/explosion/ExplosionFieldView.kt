@@ -10,6 +10,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -33,11 +34,6 @@ class ExplosionFieldView @JvmOverloads constructor(
         Arrays.fill(mExpandInset, ExplosionUtils.dp2Px(32))
     }
 
-    fun expandExplosionBound(dx: Int, dy: Int) {
-        mExpandInset[0] = dx
-        mExpandInset[1] = dy
-    }
-
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         for (explosion in mExplosions) {
@@ -45,7 +41,7 @@ class ExplosionFieldView @JvmOverloads constructor(
         }
     }
 
-    fun explode(bitmap: Bitmap?, bound: Rect, startDelay: Long, duration: Long) {
+    private fun explode(bitmap: Bitmap?, bound: Rect, startDelay: Long, duration: Long) {
         bitmap ?: return
 
         val explosion = ExplosionAnimator(this, bitmap, bound)
@@ -60,25 +56,51 @@ class ExplosionFieldView @JvmOverloads constructor(
         explosion.start()
     }
 
+    /**
+     * 爆炸
+     */
     fun explode(view: View) {
-        val r = Rect()
-        view.getGlobalVisibleRect(r)
+        // 获取当前View在屏幕中的位置
+        val rect = Rect()
         val location = IntArray(2)
+        view.getGlobalVisibleRect(rect)
         getLocationOnScreen(location)
-        r.offset(-location[0], -location[1])
-        r.inset(-mExpandInset[0], -mExpandInset[1])
-        val startDelay = 100
-        val animator = ValueAnimator.ofFloat(0f, 1f).setDuration(150)
+        rect.offset(-location[0], -location[1])
+        rect.inset(-mExpandInset[0], -mExpandInset[1])
+
+        val explosionStartDelay = 100L
+        val shakeDuration = explosionStartDelay + 50L
+        // 抖动动画
+        val animator = ValueAnimator.ofFloat(0f, 1f).setDuration(shakeDuration)
         animator.addUpdateListener(object : AnimatorUpdateListener {
             var random = Random()
             override fun onAnimationUpdate(animation: ValueAnimator) {
                 view.translationX = (random.nextFloat() - 0.5f) * view.width * 0.05f
                 view.translationY = (random.nextFloat() - 0.5f) * view.height * 0.05f
+
+                if ((animation.animatedValue is Float) && (animation.animatedValue as Float >= 1F)) {
+                    view.visibility = GONE
+                }
+
+                Log.e("June", "onAnimationUpdate:${animation.animatedValue}")
             }
         })
         animator.start()
-        view.animate().setDuration(150).setStartDelay(startDelay.toLong()).scaleX(0f).scaleY(0f).alpha(0f).start()
-        explode(ExplosionUtils.createBitmapFromView(view), r, startDelay.toLong(), ExplosionAnimator.DEFAULT_DURATION)
+        view.animate()
+            .setDuration(150)
+            .setStartDelay(shakeDuration)
+            .scaleX(0f)
+            .scaleY(0f)
+            .alpha(0f)
+            .start()
+
+        // 开始爆炸动画
+        explode(
+            ExplosionUtils.createBitmapFromView(view),
+            rect,
+            explosionStartDelay,
+            ExplosionAnimator.DEFAULT_DURATION
+        )
     }
 
     fun clear() {
