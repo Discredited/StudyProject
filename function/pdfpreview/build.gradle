@@ -1,0 +1,15 @@
+apply from: rootDir.absolutePath + '/default-library.gradle'
+
+android {
+    viewBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation Dependencies.appcompat
+    implementation Dependencies.constraintLayout
+
+    implementation project(path: ':base:component')
+    implementation project(path: ':style')
+}

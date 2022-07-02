@@ -14,11 +14,6 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
     private var _binding: V? = null
     protected val mBinding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Timber.i("----${javaClass.simpleName}:onCreate")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,43 +27,6 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.fitsSystemWindows = fitsSystemWindows()
         super.onViewCreated(view, savedInstanceState)
-        Timber.i("----${javaClass.simpleName}:onViewCreated")
-        initView()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Timber.i("----${javaClass.simpleName}:onActivityCreated")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Timber.i("----${javaClass.simpleName}:onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Timber.i("----${javaClass.simpleName}:onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.i("----${javaClass.simpleName}:onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Timber.i("----${javaClass.simpleName}:onStop")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Timber.i("----${javaClass.simpleName}:onDestroyView")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.i("----${javaClass.simpleName}:onDestroy")
     }
 
     /**
@@ -83,11 +41,6 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
         val inflateMethod = clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
         return inflateMethod.invoke(null, inflater, container, false) as V
     }
-
-    /**
-     * 初始化View
-     */
-    protected abstract fun initView()
 
     protected open fun fitsSystemWindows(): Boolean = true
 }

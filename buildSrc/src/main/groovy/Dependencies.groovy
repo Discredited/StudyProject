@@ -3,25 +3,26 @@
  */
 interface Versions {
 
-    def compileSDK = 30 // 编译SDK版本
-    def buildTools = "30.0.3" // Gradle编译项目工具版本
+    def compileSDK = 31 // 编译SDK版本
+    def buildTools = "31.0.0" // Gradle编译项目工具版本
 
     def minSDK = 21 // 最低兼容Android版本
-    def targetSDK = 30 // 最高兼容Android版本
+    def targetSDK = 31 // 最高兼容Android版本
 }
 
 interface Dependencies {
 
     // 插件 ClassPath
+    def kotlin_version = "1.5.20"
     def androidGradle = "com.android.tools.build:gradle:7.0.0"
-    def kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
+    def kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
 
     // 基本配置
-    def kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.5.20"
-    def coreKtx = "androidx.core:core-ktx:1.3.2"
-    def appcompat = "androidx.appcompat:appcompat:1.2.0"
-    def material = "com.google.android.material:material:1.2.1"
-    def constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
+    def kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+    def coreKtx = "androidx.core:core-ktx:1.7.0"
+    def appcompat = "androidx.appcompat:appcompat:1.4.1"
+    def material = "com.google.android.material:material:1.5.0"
+    def constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
 
     // 测试项
     def junit = "junit:junit:4.13.2"
@@ -30,18 +31,18 @@ interface Dependencies {
 
     ////////////////////  Kotlin  Begin  ////////////////////
     // Coroutines 协程
-    def kotlinCoroutinesCore = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
-    def kotlinCoroutinesAndroid = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    def kotlinCoroutinesCore = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    def kotlinCoroutinesAndroid = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
     def kotlinCoroutinesTest = 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7'
     ////////////////////  Kotlin  End  ////////////////////
 
     ////////////////////  Android ktx  Begin  ////////////////////
     // fragment
-    def fragmentKtx = 'androidx.fragment:fragment-ktx:1.2.5'
+    def fragmentKtx = 'androidx.fragment:fragment-ktx:1.4.1'
 
     // navigation
-    def navigationFragmentKtx = 'androidx.navigation:navigation-fragment-ktx:2.3.2'
-    def navigationUiKtx = 'androidx.navigation:navigation-ui-ktx:2.3.2'
+    def navigationFragmentKtx = 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    def navigationUiKtx = 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     // recyclerView
     def recyclerView = 'androidx.recyclerview:recyclerview:1.2.1'
@@ -51,11 +52,11 @@ interface Dependencies {
     def swipeRefreshLayout = 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     // lifecycle
-    def lifecycleExt = 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    def lifecycleRuntimeKtx = 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
-    def lifecycleCommonJava8 = 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
-    def lifecycleViewModelKtx = 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    def lifecycleLiveDataKtx = 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    def lifecycle_version = "2.5.0-alpha02"
+    def lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycle_version}"
+    def lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:${lifecycle_version}"
+    def lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycle_version}"
+    def lifecycleLiveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycle_version}"
 
     // room
     def roomRuntime = "androidx.room:room-runtime:2.2.5"
@@ -87,6 +88,7 @@ interface Dependencies {
     // OkHttp
     def okHttp = "com.squareup.okhttp3:okhttp:4.9.3"
     def okHttpLogging = "com.squareup.okhttp3:logging-interceptor:4.9.3"
+    def okio = "com.squareup.okio:okio:3.0.0"
 
     // Retrofit
     def retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
@@ -109,7 +111,13 @@ interface Dependencies {
      * Immersion Bar 沉浸式状态栏
      * https://github.com/gyf-dev/ImmersionBar
      */
-    def immersionBar = 'com.geyifeng.immersionbar:immersionbar:3.2.1'
-    def immersionBarKtx = 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.1'  // kotlin扩展（可选）
+    def immersionBar = "com.geyifeng.immersionbar:immersionbar:3.2.1"
+    def immersionBarKtx = "com.geyifeng.immersionbar:immersionbar-ktx:3.2.1"  // kotlin扩展（可选）
+
+
+    /**
+     * PhotoView
+     */
+    def photoView = "com.github.chrisbanes:PhotoView:2.3.0"
     ////////////////////  第三方类库  End  ////////////////////
 }

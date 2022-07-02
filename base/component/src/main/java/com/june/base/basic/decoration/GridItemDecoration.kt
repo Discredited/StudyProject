@@ -5,8 +5,8 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class GridItemDecoration(
-    var mColumn: Int = 2, //列数
-    var mSpace: Int = 10 //线宽
+    private val column: Int = 2, //列数
+    private val space: Int = 10 //线宽
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -16,15 +16,15 @@ class GridItemDecoration(
         state: RecyclerView.State
     ) {
         val position = parent.getChildAdapterPosition(view)
-        val column = position % mColumn
+        val currentColumn = position % column
 
-        if (position < mColumn) {
+        if (position < column) {
             outRect.top = 0
         } else {
-            outRect.top = mSpace
+            outRect.top = space
         }
 
-        outRect.left = column * mSpace / mColumn
-        outRect.right = mSpace - (column + 1) * mSpace / mColumn
+        outRect.left = currentColumn * space / column
+        outRect.right = space - (currentColumn + 1) * space / column
     }
 }

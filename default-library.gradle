@@ -1,3 +1,8 @@
+// 该 gradle 主要用于 library module 配置的统一
+// 配置文件中不能直接使用 plugin { id "xxx" },
+// 所以使用了 apply { plugin 'xxx' }
+// 该配置中，尽量提取共有的属性，有变动的配置项，
+// 可以让每个module自行实现或者覆盖
 apply {
     plugin 'com.android.library'
     plugin 'kotlin-android'

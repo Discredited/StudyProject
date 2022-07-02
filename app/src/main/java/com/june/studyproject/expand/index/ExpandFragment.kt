@@ -2,17 +2,21 @@ package com.june.studyproject.expand.index
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.june.base.basic.part.BaseFragment
+import com.june.base.basic.ext.click
+import com.june.function.pdfpreview.PDFPreViewActivity
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseFragment
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.component.index.CardExampleVo
 import com.june.studyproject.component.recycler.custom.CustomLayoutManager
 import com.june.studyproject.databinding.FragmentExpandBinding
+import com.june.studyproject.expand.ExplosionActivity
 import com.june.studyproject.expand.image.box.ImageBoxActivity
 import timber.log.Timber
 
-class ExpandFragment : BaseFragment<FragmentExpandBinding>() {
+class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
 
     private lateinit var mAdapter: ExpandAdapter
 
@@ -48,48 +52,65 @@ class ExpandFragment : BaseFragment<FragmentExpandBinding>() {
                 }
             })
         }
+
+        mBinding.btOpenPdf.click {
+            // 测试本地小文件，1M
+            //PDFPreViewActivity.start(requireActivity(), "file:///android_asset/demo.pdf")
+            // 测试本地大文件，30M
+            //PDFPreViewActivity.start(requireActivity(), "file:///android_asset/kotlin-reference.pdf")
+            // 测试网络大文件，30M
+            PDFPreViewActivity.start(
+                requireActivity(),
+                "https://kotlinlang.org/docs/kotlin-reference.pdf?_ga=2.194794596.877109590.1651038040-806405991.1640094785"
+            )
+        }
+        mBinding.btOpenExplosion.click {
+            startActivity(Intent(requireActivity(), ExplosionActivity::class.java))
+        }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        mAdapter.setNewInstance(mutableListOf(
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mAdapter.setNewInstance(
+            mutableListOf(
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout2"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout2"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout3"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout3"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout4"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout4"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout5"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout5"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                        getString(R.string.str_display_title, "ImageBoxLayout6"),
-                        "图片九宫格布局，BoxImage演示",
-                        { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                        iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
+                    getString(R.string.str_display_title, "ImageBoxLayout6"),
+                    "图片九宫格布局，BoxImage演示",
+                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 )
-        ))
+            )
+        )
     }
 
     override fun fitsSystemWindows(): Boolean = false

@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import com.june.base.basic.decoration.GridItemDecoration
 import com.june.base.basic.ext.setGridManager
-import com.june.base.basic.part.BaseFragment
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseFragment
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.Toast
 import com.june.studyproject.component.activity.index.ExampleActivity
@@ -16,7 +16,7 @@ import com.june.studyproject.component.service.ServiceActivity
 import com.june.studyproject.databinding.FragmentComponentBinding
 import com.june.studyproject.expand.loading.LoadingActivity
 
-class ComponentFragment : BaseFragment<FragmentComponentBinding>() {
+class ComponentFragment : StudyBaseFragment<FragmentComponentBinding>() {
 
     private lateinit var mAdapter: ComponentAdapter
 

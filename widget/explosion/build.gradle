@@ -1,0 +1,15 @@
+apply from: rootDir.absolutePath + '/default-library.gradle'
+
+dependencies {
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.constraintLayout
+}
+
+apply from: rootDir.absolutePath + '/maven-push.gradle'
+
+project.ext {
+    publishingGroupId = 'com.june.widget'
+    publishingArtifactId = 'explosion'
+    publishingVersion = '0.0.2'
+}

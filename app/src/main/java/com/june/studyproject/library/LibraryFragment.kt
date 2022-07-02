@@ -2,14 +2,12 @@ package com.june.studyproject.library
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.chad.library.adapter.base.animation.SlideInLeftAnimation
 import com.june.base.basic.decoration.LinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
-import com.june.base.basic.part.BaseFragment
 import com.june.studyproject.R
+import com.june.studyproject.base.app.StudyBaseFragment
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.itemClick
 import com.june.studyproject.common.Toast
@@ -17,7 +15,7 @@ import com.june.studyproject.component.index.CardExampleVo
 import com.june.studyproject.databinding.FragmentLibraryBinding
 import com.june.studyproject.library.okhttp.OkHttpActivity
 
-class LibraryFragment : BaseFragment<FragmentLibraryBinding>() {
+class LibraryFragment : StudyBaseFragment<FragmentLibraryBinding>() {
 
     private lateinit var mAdapter: LibraryAdapter
 

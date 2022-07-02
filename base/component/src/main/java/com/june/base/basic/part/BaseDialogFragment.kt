@@ -17,23 +17,19 @@ abstract class BaseDialogFragment<V : ViewBinding> : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         _binding = viewBinding(inflater, container)
         return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initView()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
-        super.onActivityCreated(savedInstanceState)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(0x00000000))
         dialog?.window?.setGravity(layoutGravity())
         dialog?.window?.setLayout(
             layoutParamsWidth(),
             layoutParamsHeight()
         )
+        initView()
     }
 
     /**
