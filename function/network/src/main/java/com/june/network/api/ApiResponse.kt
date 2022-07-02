@@ -13,12 +13,7 @@ sealed class ApiResponse<T> {
     data class Success<T>(val data: T?) : ApiResponse<T>()
 
     /**
-     * 网络请求失败
-     */
-    data class Fail(val code: Int, val msg: String?) : ApiResponse<Nothing>()
-
-    /**
      * 网络请求异常
      */
-    data class Error(val error: String?) : ApiResponse<Nothing>()
+    data class Error<T>(val code: Int?, val error: String?) : ApiResponse<T>()
 }
