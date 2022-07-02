@@ -26,11 +26,13 @@ afterEvaluate {
         repositories {
             maven {
                 credentials {
-                    username getStringProperty('publishingRepoUsername')
-                    password getStringProperty('publishingRepoPassword')
+                    def localProj = new Properties()
+                    localProj.load(project.rootProject.file('local.properties').newDataInputStream())
+                    def name = localProj.getProperty("publishingRepoUsername")
+                    def pass = localProj.getProperty("publishingRepoPassword")
 
-                    println username
-                    println password
+                    username name
+                    password pass
                 }
                 url = "file://localhost/Users/june/.m2/repository"
             }
