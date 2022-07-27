@@ -1,26 +1,37 @@
-// maven仓库的基本配置
+/**
+ * 读取配置的参数
+ * @param propertyName 参数名
+ * @return 参数值 或 ""
+ */
 def getStringProperty(String propertyName) {
     return project.hasProperty(propertyName) ? project.getProperty(propertyName) : ""
 }
 
+/**
+ * 将源码打包，否则接入方无法看到源码
+ */
 task androidSourcesJar(type: Jar) {
-    classifier = 'sources'
+    // classifier = 'sources'
+    archiveClassifier.set('sources')
     from android.sourceSets.main.java.srcDirs
 }
 
+// 因为组件只在 afterEvaluate 阶段创建，所以必须使用 afterEvaluate() 生命周期方法配置您的发布。
 afterEvaluate {
     publishing {
         publications {
+            // 创建一个名为“release”的 Maven 发布
             release(MavenPublication) {
                 from components.release
-
+                // 将源码打包，否则接入方无法看到源码
                 artifact androidSourcesJar
 
+                // 定义分组、artifact以及版本
                 groupId = getStringProperty("publishingGroupId")
                 artifactId = getStringProperty("publishingArtifactId")
                 version = getStringProperty("publishingVersion")
+                //println("==>>  groupId:" + groupId + "  artifactId:" + artifactId + "  version:" + version)
             }
-
         }
 
         repositories {
@@ -33,24 +44,10 @@ afterEvaluate {
 
                     username name
                     password pass
+                    //println("==>>  username:" + name + "  password:" + pass)
                 }
                 url = "file://localhost/Users/june/.m2/repository"
             }
         }
     }
 }
-
-
-//uploadArchives {
-//
-//    repositories.mavenDeployer {
-//        // 配置本地仓库路径，项目根目录下的repository目录中
-//        repository(url: uri('file://localhost/Users/june/.m2/repository'))
-//        // 唯一标识（通常为模块包名，也可以任意）
-//        pom.groupId = getStringProperty('publishingGroupId')
-//        // 项目名称（通常为类库模块名称，也可以任意）
-//        pom.artifactId = getStringProperty('publishingArtifactId')
-//        // 版本号
-//        pom.version = "0.0.1"
-//    }
-//}
