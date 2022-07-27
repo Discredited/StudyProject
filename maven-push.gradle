@@ -1,5 +1,5 @@
 // maven仓库的基本配置
-def getStringProperty(propertyName) {
+def getStringProperty(String propertyName) {
     return project.hasProperty(propertyName) ? project.getProperty(propertyName) : ""
 }
 
