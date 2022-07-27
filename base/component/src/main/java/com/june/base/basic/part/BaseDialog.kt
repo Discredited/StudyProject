@@ -21,6 +21,11 @@ abstract class BaseDialog<V : ViewBinding>(
         setContentView(mBinding.root)
     }
 
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        _binding = null
+    }
+
     // 通过反射创建ViewBinding失败
     private fun viewBinding(inflater: LayoutInflater): V {
         // 获取 Java类的 ParameterizedType

@@ -33,6 +33,14 @@ abstract class BaseDialogFragment<V : ViewBinding> : DialogFragment() {
     }
 
     /**
+     * 在Fragment销毁的时候释放binding的引用
+     */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    /**
      * 通过反射获取ViewBinding
      */
     private fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): V {

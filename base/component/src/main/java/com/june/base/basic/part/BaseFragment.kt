@@ -42,5 +42,10 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
         return inflateMethod.invoke(null, inflater, container, false) as V
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     protected open fun fitsSystemWindows(): Boolean = true
 }

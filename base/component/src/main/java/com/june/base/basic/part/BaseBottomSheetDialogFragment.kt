@@ -27,6 +27,11 @@ abstract class BaseBottomSheetDialogFragment<V : ViewBinding> : BottomSheetDialo
         initView()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     /**
      * 通过反射获取ViewBinding
      */
