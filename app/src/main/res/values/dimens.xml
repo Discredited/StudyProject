@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="common_margin">@dimen/dp_15</dimen>
+    <dimen name="common_margin">@dimen/dp_10</dimen>
 
     <dimen name="title_size">@dimen/sp_20</dimen>
     <dimen name="desc_size">@dimen/sp_12</dimen>
