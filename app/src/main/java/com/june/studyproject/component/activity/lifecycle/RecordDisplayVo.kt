@@ -5,6 +5,9 @@ import android.os.Parcel
 import android.os.Parcelable
 import java.util.*
 
+/**
+ * 记录演示
+ */
 class RecordDisplayVo(
     val title: String,
     val desc: String,

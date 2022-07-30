@@ -13,9 +13,12 @@ import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityLifecycleBinding
 import timber.log.Timber
 
+/**
+ * Activity生命周期演示
+ */
 class LifecycleActivity : StudyBaseActivity<ActivityLifecycleBinding>() {
 
-    private lateinit var adapter: RecordDisplayAdapter
+    private lateinit var mAdapter: RecordDisplayAdapter
     private val mRecordList = arrayListOf<RecordDisplayVo>()
 
     private var isFromResult = false
@@ -25,30 +28,31 @@ class LifecycleActivity : StudyBaseActivity<ActivityLifecycleBinding>() {
     private var mDescColor = 0
 
     override fun initView() {
-        mBinding.tlLayout.toolbar.initToolbar(javaClass.simpleName, R.menu.menu_text_next)
-        mBinding.tlLayout.toolbar.setNavigationOnClickListener { onBackPressed() }
-        mBinding.tlLayout.toolbar.setOnMenuItemClickListener {
-            //跳转其他页面之前,当前当前页面会先执行onPause
-            //具体参照logo日志
-            isToNext = true
-            mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName))
-            LifecycleSecondActivity.starter(this, mRecordList)
-            true
+        mBinding.tlLayout.toolbar.apply {
+            initToolbar(javaClass.simpleName, R.menu.menu_text_next)
+            setNavigationOnClickListener { onBackPressed() }
+            setOnMenuItemClickListener {
+                //跳转其他页面之前,当前当前页面会先执行onPause
+                //具体参照logo日志
+                isToNext = true
+                mRecordList.add(RecordDisplayVo("onPause()", javaClass.simpleName))
+                LifecycleSecondActivity.starter(this@LifecycleActivity, mRecordList)
+                true
+            }
         }
 
-        adapter = RecordDisplayAdapter(mRecordList)
-        mBinding.rvLifecycle.setLinearManager()
-        mBinding.rvLifecycle.adapter = adapter
-        mBinding.rvLifecycle.setHasFixedSize(true)
-        mBinding.rvLifecycle.addItemDecoration(
-            LinearItemDecoration(
-                ContextCompat.getColor(
-                    this,
-                    R.color.color_transparent
-                ),
-                size = resources.getDimensionPixelSize(R.dimen.dp_10)
+        mAdapter = RecordDisplayAdapter(mRecordList)
+        mBinding.rvLifecycle.apply {
+            setLinearManager()
+            adapter = mAdapter
+            setHasFixedSize(true)
+            addItemDecoration(
+                LinearItemDecoration(
+                    ContextCompat.getColor(this@LifecycleActivity, R.color.color_transparent),
+                    size = resources.getDimensionPixelSize(R.dimen.dp_10)
+                )
             )
-        )
+        }
     }
 
     override fun loadData() {
@@ -80,7 +84,7 @@ class LifecycleActivity : StudyBaseActivity<ActivityLifecycleBinding>() {
             mRecordList.add(RecordDisplayVo("onDestroy()", "LifecycleSecondActivity", mTitleColor, mDescColor))
             isFromResult = false
         }
-        adapter.notifyDataSetChanged()
+        mAdapter.notifyDataSetChanged()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -95,7 +99,7 @@ class LifecycleActivity : StudyBaseActivity<ActivityLifecycleBinding>() {
             data?.getParcelableArrayListExtra<RecordDisplayVo>(LifecycleSecondActivity.RESPONSE_CODE_LIFECYCLE)?.let {
                 mRecordList.clear()
                 mRecordList.addAll(it)
-                adapter.notifyDataSetChanged()
+                mAdapter.notifyDataSetChanged()
             }
         }
     }
