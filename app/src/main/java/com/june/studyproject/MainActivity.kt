@@ -5,8 +5,6 @@ import androidx.navigation.NavController
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import com.june.studyproject.databinding.ActivityMainBinding
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
 class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
 
@@ -35,12 +33,5 @@ class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
 
     override fun onSupportNavigateUp(): Boolean {
         return mCurrentNavController?.value?.navigateUp() ?: false
-    }
-
-    private fun test() {
-        // 在主线程启用协程
-        MainScope().launch {
-
-        }
     }
 }
