@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_component"
-        android:icon="@drawable/selector_checked_nav_component"
+        android:icon="@drawable/svg_icon_component"
         android:title="@string/str_component" />
 
     <item
         android:id="@+id/nav_library"
-        android:icon="@drawable/selector_checked_nav_library"
+        android:icon="@drawable/svg_icon_third_sdk"
         android:title="@string/str_library" />
 
     <item
         android:id="@+id/nav_expand"
-        android:icon="@drawable/selector_checked_nav_expand"
+        android:icon="@drawable/svg_icon_custom"
         android:title="@string/str_expand" />
 </menu>
