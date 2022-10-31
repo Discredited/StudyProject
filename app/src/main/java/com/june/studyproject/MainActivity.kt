@@ -11,7 +11,7 @@ class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
     private var mCurrentNavController: LiveData<NavController>? = null
 
     override fun initView() {
-        mBinding.bottomNavigation.itemIconTintList = null
+        //mBinding.bottomNavigation.itemIconTintList = null
     }
 
     override fun loadData() {
