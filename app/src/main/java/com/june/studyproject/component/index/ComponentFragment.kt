@@ -2,6 +2,7 @@ package com.june.studyproject.component.index
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.june.base.basic.decoration.GridItemDecoration
 import com.june.base.basic.ext.setGridManager
 import com.june.studyproject.R
@@ -36,8 +37,8 @@ class ComponentFragment : StudyBaseFragment<FragmentComponentBinding>() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         mAdapter.setNewInstance(
             mutableListOf(
                 CardExampleVo(

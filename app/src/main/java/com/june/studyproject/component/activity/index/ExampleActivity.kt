@@ -10,7 +10,7 @@ import com.june.studyproject.component.activity.lifecycle.LifecycleActivity
 import com.june.studyproject.databinding.ActivityExampleBinding
 
 /**
- * @author <a href="mailto:xujun@snqu.com">June</a>
+ * @author June
  * @description
  * 包含：
  * Activity生命周期
