@@ -65,7 +65,7 @@ class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
             )
         }
         mBinding.btOpenExplosion.click {
-            startActivity(Intent(requireActivity(), ExplosionActivity::class.java))
+
         }
     }
 
@@ -74,39 +74,26 @@ class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
         mAdapter.setNewInstance(
             mutableListOf(
                 CardExampleVo(
-                    getString(R.string.str_display_title, "ImageBoxLayout"),
-                    "图片九宫格布局，BoxImage演示",
+                    getString(R.string.str_display_title, "视频播放"),
+                    "视频播放演示",
                     { startActivity(Intent(context, ImageBoxActivity::class.java)) },
                     iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                    getString(R.string.str_display_title, "ImageBoxLayout2"),
-                    "图片九宫格布局，BoxImage演示",
-                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    getString(R.string.str_display_title, "爆炸效果"),
+                    "这个应该属于动画相关",
+                    { startActivity(Intent(requireActivity(), ExplosionActivity::class.java)) },
                     iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 ),
                 CardExampleVo(
-                    getString(R.string.str_display_title, "ImageBoxLayout3"),
-                    "图片九宫格布局，BoxImage演示",
-                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
-                ),
-                CardExampleVo(
-                    getString(R.string.str_display_title, "ImageBoxLayout4"),
-                    "图片九宫格布局，BoxImage演示",
-                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
-                ),
-                CardExampleVo(
-                    getString(R.string.str_display_title, "ImageBoxLayout5"),
-                    "图片九宫格布局，BoxImage演示",
-                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
-                    iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
-                ),
-                CardExampleVo(
-                    getString(R.string.str_display_title, "ImageBoxLayout6"),
-                    "图片九宫格布局，BoxImage演示",
-                    { startActivity(Intent(context, ImageBoxActivity::class.java)) },
+                    getString(R.string.str_display_title, "打开PDF"),
+                    "使用H5+JS的方法实现",
+                    {
+                        PDFPreViewActivity.start(
+                            requireActivity(),
+                            "https://kotlinlang.org/docs/kotlin-reference.pdf?_ga=2.194794596.877109590.1651038040-806405991.1640094785"
+                        )
+                    },
                     iconUrl = ConstHelper.getDiffImage(ConstHelper.IMAGE_SOURCE_GIF)
                 )
             )
