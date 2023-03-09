@@ -5,6 +5,8 @@ import androidx.navigation.NavController
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import com.june.studyproject.databinding.ActivityMainBinding
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
 
@@ -16,6 +18,8 @@ class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
 
     override fun loadData() {
         //todo 了解和改造 BottomNavigation与NvaController的关联
+
+        MainScope().launch { }
 
         val navGraphIds = listOf(
             R.navigation.nav_component,
