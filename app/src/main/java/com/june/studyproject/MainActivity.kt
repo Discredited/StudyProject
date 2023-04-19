@@ -1,9 +1,5 @@
 package com.june.studyproject
 
-import android.app.WallpaperManager
-import android.os.Build
-import android.service.wallpaper.WallpaperService
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.june.studyproject.base.app.StudyBaseActivity

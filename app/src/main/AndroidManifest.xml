@@ -117,9 +117,9 @@
         <activity
             android:name=".component.recycler.rvadapter.custom.CustomMultiAdapterActivity"
             android:exported="false" />
-
-        <activity android:name=".expand.ExplosionActivity" />
-
+        <activity
+            android:name=".expand.ExplosionActivity"
+            android:exported="false" />
         <activity android:name=".expand.adaptation.DeviceInfoActivity" />
 
         <activity android:name=".expand.wallpaper.WallpaperActivity" />
