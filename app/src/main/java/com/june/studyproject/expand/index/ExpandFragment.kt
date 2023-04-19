@@ -14,6 +14,7 @@ import com.june.studyproject.component.recycler.custom.CustomLayoutManager
 import com.june.studyproject.databinding.FragmentExpandBinding
 import com.june.studyproject.expand.ExplosionActivity
 import com.june.studyproject.expand.image.box.ImageBoxActivity
+import com.june.studyproject.expand.wallpaper.WallpaperActivity
 import timber.log.Timber
 
 class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
@@ -66,6 +67,9 @@ class ExpandFragment : StudyBaseFragment<FragmentExpandBinding>() {
         }
         mBinding.btOpenExplosion.click {
 
+        }
+        mBinding.btOpenWallpaper.click {
+            startActivity(Intent(requireActivity(), WallpaperActivity::class.java))
         }
     }
 

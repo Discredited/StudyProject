@@ -68,6 +68,9 @@ dependencies {
     implementation project(path: ':widget:loading')
     implementation project(path: ':widget:explosion')
 
+    implementation Dependencies.kotlinCoroutinesCore
+    implementation Dependencies.kotlinCoroutinesAndroid
+
     implementation Dependencies.rxJava
     implementation Dependencies.rxJavaAndroid
 

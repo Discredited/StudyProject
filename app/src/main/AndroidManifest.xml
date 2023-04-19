@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 照相机权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 设置壁纸 -->
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <application
         android:name=".base.app.StudyApplication"
@@ -115,8 +117,12 @@
         <activity
             android:name=".component.recycler.rvadapter.custom.CustomMultiAdapterActivity"
             android:exported="false" />
+
         <activity android:name=".expand.ExplosionActivity" />
+
         <activity android:name=".expand.adaptation.DeviceInfoActivity" />
+
+        <activity android:name=".expand.wallpaper.WallpaperActivity" />
 
         <service
             android:name=".component.service.TestBindService"

@@ -15,6 +15,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btOpenPdf"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginBottom="@dimen/dp_40"
+        android:text="打开PDF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btOpenExplosion"
         android:layout_width="@dimen/dp_200"
         android:layout_height="@dimen/dp_56"
@@ -25,12 +35,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btOpenPdf"
+        android:id="@+id/btOpenWallpaper"
         android:layout_width="@dimen/dp_200"
         android:layout_height="@dimen/dp_56"
-        android:layout_marginBottom="@dimen/dp_40"
-        android:text="打开PDF"
+        android:layout_marginBottom="@dimen/dp_160"
+        android:text="打开壁纸设置"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
