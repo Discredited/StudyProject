@@ -4,8 +4,12 @@ import android.app.WallpaperManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.text.TextUtils
 import androidx.lifecycle.lifecycleScope
+import com.blankj.utilcode.util.PathUtils
 import com.june.base.basic.ext.click
+import com.june.network.log.HeadersInterceptor
+import com.june.network.log.OkHttpLogInterceptor
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.glide.GlideApp
 import com.june.studyproject.common.Toast
@@ -13,7 +17,22 @@ import com.june.studyproject.databinding.ActivityWallpaperBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+import org.jsoup.select.Elements
 import timber.log.Timber
+import java.io.File
+import java.security.KeyStore
+import java.security.SecureRandom
+import java.security.cert.CertificateException
+import java.security.cert.X509Certificate
+import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.TrustManagerFactory
+import javax.net.ssl.X509TrustManager
 
 /**
  * 壁纸页面
@@ -23,7 +42,47 @@ import timber.log.Timber
  */
 class WallpaperActivity : StudyBaseActivity<ActivityWallpaperBinding>() {
 
-    private val wallpaperUrl = "https://img1.baidu.com/it/u=3724107547,2991731744&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=889"
+    private var wallpaperUrl = ""
+
+    private val trustManagers: Array<TrustManager> = arrayOf(
+        object : X509TrustManager {
+            override fun checkClientTrusted(chain: Array<X509Certificate?>?, authType: String?) {}
+
+            @Throws(CertificateException::class)
+            override fun checkServerTrusted(chain: Array<X509Certificate?>?, authType: String?) {
+                try {
+                    val trustManagerFactory: TrustManagerFactory =
+                        TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
+                    trustManagerFactory.init(null as KeyStore?)
+                    for (trustManager in trustManagerFactory.trustManagers) {
+                        (trustManager as X509TrustManager).checkServerTrusted(chain, authType)
+                    }
+                } catch (e: java.lang.Exception) {
+                    throw CertificateException(e)
+                }
+            }
+
+            override fun getAcceptedIssuers(): Array<X509Certificate> {
+                return arrayOf()
+            }
+        }
+    )
+
+    private val okHttpClient by lazy {
+        OkHttpClient.Builder()
+            .readTimeout(10L, TimeUnit.SECONDS)
+            .writeTimeout(10L, TimeUnit.SECONDS)
+            .connectTimeout(10L, TimeUnit.SECONDS)
+            .apply {
+                val sslContext = SSLContext.getInstance("TLS")
+                sslContext.init(null, trustManagers, SecureRandom())
+                sslSocketFactory(sslContext.socketFactory, trustManagers[0] as X509TrustManager)
+
+                addInterceptor(HeadersInterceptor())
+                addInterceptor(OkHttpLogInterceptor())
+            }
+            .build()
+    }
 
     override fun initView() {
         mBinding.btSetWallpaper.click {
@@ -34,9 +93,43 @@ class WallpaperActivity : StudyBaseActivity<ActivityWallpaperBinding>() {
     override fun loadData() {
         wallpaperEnable()
 
-        GlideApp.with(this)
-            .load(wallpaperUrl)
-            .into(mBinding.ivWallpaper)
+        lifecycleScope.launch(Dispatchers.Main) {
+            val responseHtml = requestUrl("https://bing.ioliu.cn")
+            Timber.e("获取到的Html:${responseHtml}")
+
+            val htmlFilePath = withContext(Dispatchers.IO) {
+                val htmlFile = File("${PathUtils.getExternalAppFilesPath()}/htmlTemp.html")
+                if (htmlFile.exists()) {
+                    htmlFile.delete()
+                } else {
+                    htmlFile.createNewFile()
+                }
+
+                htmlFile.bufferedWriter().use { out ->
+                    out.write(responseHtml)
+                }
+
+                htmlFile
+            }
+
+            Timber.e("Html本地文件地址:${htmlFilePath.absolutePath}")
+
+            if (htmlFilePath.exists()) {
+                Toast.showShort("正在解析数据")
+
+                analyzeHtml(htmlFilePath)
+
+                if (!TextUtils.isEmpty(wallpaperUrl)) {
+                    GlideApp.with(this@WallpaperActivity)
+                        .load(wallpaperUrl)
+                        .into(mBinding.ivWallpaper)
+                } else {
+                    Toast.showShort("获取图片失败")
+                }
+            } else {
+                Toast.showShort("Html文件不存在")
+            }
+        }
     }
 
     private fun wallpaperEnable() {
@@ -73,6 +166,42 @@ class WallpaperActivity : StudyBaseActivity<ActivityWallpaperBinding>() {
             } else {
                 val wallpaperManager = getSystemService(WALLPAPER_SERVICE) as WallpaperManager
                 wallpaperManager.setBitmap(bitmap)
+            }
+        }
+    }
+
+
+    private suspend fun analyzeHtml(file: File) {
+        withContext(Dispatchers.IO) {
+            try {
+                val doc: Document = Jsoup.parse(file)
+                Timber.e("获取的Html:${doc.body()}")
+
+                val imageElements: Elements? = doc.select("div.item div.card img.progressive__img")
+
+                imageElements?.forEach {
+                    val imageUrl = it.attr("data-progressive")
+                    Timber.e("获取到的图片地址：${imageUrl}")
+
+                    if (TextUtils.isEmpty(wallpaperUrl)) {
+                        wallpaperUrl = imageUrl
+                    }
+                }
+            } catch (e: Exception) {
+                Timber.e("加载Html异常，${e}")
+            }
+        }
+    }
+
+    private suspend fun requestUrl(url: String): String {
+        return withContext(Dispatchers.IO) {
+            val request = Request.Builder().url(url).method("GET", null).build()
+            try {
+                val response = okHttpClient.newCall(request).execute()
+                response.body.toString()
+            } catch (e: Exception) {
+                Timber.e("网络请求失败:${e}")
+                ""
             }
         }
     }

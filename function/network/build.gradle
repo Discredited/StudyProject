@@ -13,6 +13,7 @@ dependencies {
     testImplementation Dependencies.kotlinCoroutinesTest
 
     implementation Dependencies.timber
+    implementation Dependencies.androidUtils
 }
 
 apply from: rootDir.absolutePath + '/maven-push.gradle'
