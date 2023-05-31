@@ -7,6 +7,7 @@ import android.os.Build
 import android.text.TextUtils
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.PathUtils
+import com.blankj.utilcode.util.ScreenUtils
 import com.june.base.basic.ext.click
 import com.june.network.log.HeadersInterceptor
 import com.june.network.log.OkHttpLogInterceptor
@@ -33,6 +34,7 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.X509TrustManager
+import kotlin.random.Random
 
 /**
  * 壁纸页面
@@ -179,14 +181,32 @@ class WallpaperActivity : StudyBaseActivity<ActivityWallpaperBinding>() {
 
                 val imageElements: Elements? = doc.select("div.item div.card img.progressive__img")
 
+                val imageList = mutableListOf<String>()
+
                 imageElements?.forEach {
                     val imageUrl = it.attr("data-progressive")
                     Timber.e("获取到的图片地址：${imageUrl}")
-
-                    if (TextUtils.isEmpty(wallpaperUrl)) {
-                        wallpaperUrl = imageUrl
+                    if (!TextUtils.isEmpty(imageUrl)) {
+                        imageList.add(imageUrl)
                     }
                 }
+
+                if (imageList.isNotEmpty() && TextUtils.isEmpty(wallpaperUrl)) {
+                    val position = (imageList.size * Math.random()).toInt()
+                    val finalPosition = if (position < 0) {
+                        0
+                    } else if (position >= imageList.size) {
+                        imageList.size - 1
+                    } else {
+                        position
+                    }
+                    val imageUrl = imageList[finalPosition]
+                    val imageFormat = imageUrl.substringAfterLast(".")
+                    val urlPrefix = imageUrl.substringBeforeLast("_")
+                    Timber.e("当前图片格式：${imageFormat}  url前缀:${urlPrefix}")
+                    wallpaperUrl = "${urlPrefix}_1080x1920.${imageFormat}"
+                }
+
             } catch (e: Exception) {
                 Timber.e("加载Html异常，${e}")
             }
@@ -198,7 +218,7 @@ class WallpaperActivity : StudyBaseActivity<ActivityWallpaperBinding>() {
             val request = Request.Builder().url(url).method("GET", null).build()
             try {
                 val response = okHttpClient.newCall(request).execute()
-                response.body.toString()
+                response.body?.string() ?: ""
             } catch (e: Exception) {
                 Timber.e("网络请求失败:${e}")
                 ""
