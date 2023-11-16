@@ -20,7 +20,17 @@ open class BaseActivity<V : ViewBinding> : AppCompatActivity() {
         setContentView(mBinding.root)
     }
 
-    // 通过反射创建ViewBinding
+    /**
+     * 通过反射创建ViewBinding
+     *
+     * 特别说明：警告 "Unchecked cast: Type! to Class<V>" 是因为在 Kotlin 中将一个类型强制转换为泛型
+     * 类型时，编译器不能在编译时期检查和确认这个转换的安全性。这是因为泛型在 Kotlin（以及 Java）中使用了类
+     * 型擦除，意味着在运行时泛型类型的具体信息不可用。
+     *
+     * 但是我知道这个方法只会用在那些确实拥有合适 inflate 方法的 View Binding 类上，因此我也可以选择简单
+     * 地忽略这个警告。
+     */
+    @Suppress("UNCHECKED_CAST")
     private fun viewBinding(): V {
         // 获取 Java类的 ParameterizedType
         val parameterizedType = this.javaClass.genericSuperclass as ParameterizedType
