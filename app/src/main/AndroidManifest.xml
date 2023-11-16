@@ -123,6 +123,8 @@
         <activity android:name=".expand.adaptation.DeviceInfoActivity" />
 
         <activity android:name=".expand.wallpaper.WallpaperActivity" />
+        
+        <activity android:name=".ComposeActivity" />
 
         <service
             android:name=".component.service.TestBindService"

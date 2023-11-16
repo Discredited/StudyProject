@@ -1,12 +1,11 @@
 package com.june.studyproject
 
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.setupWithNavController
 import com.june.studyproject.databinding.ActivityMainBinding
-import kotlinx.coroutines.*
-import timber.log.Timber
 
 class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
 
@@ -15,7 +14,12 @@ class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
     override fun initView() {
         //mBinding.bottomNavigation.itemIconTintList = null
 
-        // testAtomic()
+        mBinding.fragmentContainer.postDelayed(
+            {
+                startActivity(Intent(this, ComposeActivity::class.java))
+            },
+            3000L
+        )
     }
 
     override fun loadData() {
@@ -37,22 +41,5 @@ class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
 
     override fun onSupportNavigateUp(): Boolean {
         return mCurrentNavController?.value?.navigateUp() ?: false
-    }
-
-    /**
-     * 测试协程Atomic启动模式
-     */
-    private fun testAtomic() {
-        val job = MainScope().launch(
-            context = SupervisorJob() + Dispatchers.IO,
-            start = CoroutineStart.ATOMIC
-        ) {
-            for (index in 0..10000) {
-                Timber.i("输出次数：${index}  当前协程状态:${this.isActive}")
-            }
-            delay(2000)
-            Timber.i("输出结束")
-        }
-        job.cancel()
     }
 }

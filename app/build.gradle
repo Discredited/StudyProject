@@ -50,6 +50,10 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.kotlin_version
     }
 }
 
@@ -104,4 +108,15 @@ dependencies {
     implementation 'com.github.DingMouRen:LayoutManagerGroup:1e6f4f96eb'
 
     implementation "org.jsoup:jsoup:1.15.4"
+
+    // Compose
+    implementation platform(Dependencies.composeBom)
+    androidTestImplementation platform(Dependencies.composeBom)
+
+    implementation Dependencies.composeMaterial3
+    implementation Dependencies.composeUiPreview
+    debugImplementation  Dependencies.composeUiTooling
+
+    implementation Dependencies.composeActivity
+    implementation Dependencies.composeViewModel
 }

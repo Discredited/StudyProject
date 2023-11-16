@@ -1,3 +1,4 @@
+@SuppressWarnings
 object Versions {
     const val compileSDK = 31 // 编译SDK版本
     const val buildTools = "31.0.0" // Gradle编译项目工具版本
@@ -8,11 +9,13 @@ object Versions {
     const val kotlin_version = "1.6.10"
 }
 
+@SuppressWarnings
 object Plugins {
     const val androidGradle = "com.android.tools.build:gradle:7.0.0"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_version}"
 }
 
+@SuppressWarnings
 object Dependencies {
 
     // 基本配置
@@ -78,6 +81,15 @@ object Dependencies {
     const val cameraExtensions = "androidx.camera:camera-extensions:1.0.0-alpha30"
     ////////////////////  Android ktx  End  ////////////////////
 
+    ////////////////////  Compose  Begin  ////////////////////
+    const val composeBom = "androidx.compose:compose-bom:2023.01.00"
+    const val composeMaterial3 = "androidx.compose.material3:material3"
+    const val composeUiPreview = "androidx.compose.ui:ui-tooling-preview"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling"
+    const val composeActivity = "androidx.activity:activity-compose:1.6.1"
+    const val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+    const val composeLiveData = "androidx.compose.runtime:runtime-livedata"
+    ////////////////////  Compose  End  ////////////////////
 
     ////////////////////  第三方类库  Begin  ////////////////////
     // Timber 日志
