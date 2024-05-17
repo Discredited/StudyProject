@@ -1,6 +1,5 @@
 //带分组的依赖
 static def androidxBasicDependencies(DependencyHandler dependencyHandler) {
-    dependencyHandler.implementation Dependencies.kotlinStdlib
     dependencyHandler.implementation Dependencies.coreKtx
     dependencyHandler.implementation Dependencies.appcompat
     dependencyHandler.implementation Dependencies.material
@@ -10,7 +9,6 @@ ext.androidxBasicDependencies = this.&androidxBasicDependencies
 
 
 static def libsDependencies(DependencyHandler dependencyHandler) {
-    dependencyHandler.implementation Dependencies.kotlinStdlib
     dependencyHandler.implementation Dependencies.coreKtx
     dependencyHandler.implementation Dependencies.appcompat
 }

@@ -46,7 +46,7 @@ class ExplosionFieldView @JvmOverloads constructor(
 
         val explosion = ExplosionAnimator(this, bitmap, bound)
         explosion.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 mExplosions.remove(animation)
             }
         })

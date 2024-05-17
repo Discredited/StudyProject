@@ -1,6 +1,5 @@
 package com.june.studyproject
 
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.june.studyproject.base.app.StudyBaseActivity
@@ -13,13 +12,6 @@ class MainActivity : StudyBaseActivity<ActivityMainBinding>() {
 
     override fun initView() {
         //mBinding.bottomNavigation.itemIconTintList = null
-
-        mBinding.fragmentContainer.postDelayed(
-            {
-                startActivity(Intent(this, ComposeActivity::class.java))
-            },
-            3000L
-        )
     }
 
     override fun loadData() {

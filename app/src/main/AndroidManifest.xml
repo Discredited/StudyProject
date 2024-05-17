@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.june.studyproject">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -39,9 +43,6 @@
             android:exported="false" />
         <activity
             android:name=".component.service.ServiceActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.june.studyproject.library.rxjava.RxJavaActivity"
             android:exported="false" />
         <activity
             android:name=".component.activity.index.ExampleActivity"
@@ -123,8 +124,6 @@
         <activity android:name=".expand.adaptation.DeviceInfoActivity" />
 
         <activity android:name=".expand.wallpaper.WallpaperActivity" />
-        
-        <activity android:name=".ComposeActivity" />
 
         <service
             android:name=".component.service.TestBindService"
