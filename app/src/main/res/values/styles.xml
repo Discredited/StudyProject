@@ -12,7 +12,8 @@
         <!-- 比如：statusBarColor颜色设置就会失效 -->
         <!-- 但是不设置，视图又不能沉侵至状态栏 -->
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightStatusBar" >false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 <!--        <item name="android:statusBarColor">@color/color_transparent</item>-->
         <!-- 窗口背景颜色 -->
         <item name="android:windowBackground">@color/color_white</item>

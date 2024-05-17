@@ -2,7 +2,9 @@ package com.june.studyproject.base.app
 
 import android.os.Bundle
 import androidx.viewbinding.ViewBinding
+import com.gyf.immersionbar.BarHide
 import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.ktx.immersionBar
 import com.june.base.basic.part.BaseActivity
 
 /**
@@ -33,6 +35,9 @@ abstract class StudyBaseActivity<V : ViewBinding> : BaseActivity<V>() {
     protected abstract fun loadData()
 
     protected open fun initStatusBar() {
-        ImmersionBar.with(this).statusBarDarkFont(true).init()
+        immersionBar {
+            statusBarDarkFont(true)
+            hideBar(BarHide.FLAG_HIDE_NAVIGATION_BAR)
+        }
     }
 }

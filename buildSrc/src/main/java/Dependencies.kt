@@ -109,8 +109,8 @@ object Dependencies {
      * Immersion Bar 沉浸式状态栏
      * https://github.com/gyf-dev/ImmersionBar
      */
-    const val immersionBar = "com.geyifeng.immersionbar:immersionbar:3.2.1"
-    const val immersionBarKtx = "com.geyifeng.immersionbar:immersionbar-ktx:3.2.1"  // kotlin扩展（可选）
+    const val immersionBar = "com.geyifeng.immersionbar:immersionbar:3.2.2"
+    const val immersionBarKtx = "com.geyifeng.immersionbar:immersionbar-ktx:3.2.2"  // kotlin扩展（可选）
 
 
     /**
