@@ -26,7 +26,8 @@ abstract class BaseDialog<V : ViewBinding>(
         _binding = null
     }
 
-    // 通过反射创建ViewBinding失败
+    // 通过反射创建ViewBinding
+    @Suppress("UNCHECKED_CAST")
     private fun viewBinding(inflater: LayoutInflater): V {
         // 获取 Java类的 ParameterizedType
         val parameterizedType = this.javaClass.genericSuperclass as ParameterizedType

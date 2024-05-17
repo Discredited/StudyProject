@@ -43,6 +43,7 @@ abstract class BaseDialogFragment<V : ViewBinding> : DialogFragment() {
     /**
      * 通过反射获取ViewBinding
      */
+    @Suppress("UNCHECKED_CAST")
     private fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): V {
         // 获取 Java类的 ParameterizedType
         val parameterizedType = this.javaClass.genericSuperclass as ParameterizedType
