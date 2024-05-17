@@ -1,13 +1,6 @@
 package com.june.studyproject.component.recycler.rvadapter.custom
 
-import android.view.View
-import com.june.rvadapter.BaseAdapter
-import com.june.rvadapter.ItemViewCreator
-import com.june.rvadapter.ItemViewHolder
-import com.june.studyproject.R
 import com.june.studyproject.base.app.StudyBaseActivity
-import com.june.studyproject.component.recycler.rvadapter.vo.NormalInterface
-import com.june.studyproject.component.recycler.rvadapter.vo.NormalSimpleText
 import com.june.studyproject.databinding.ActivityNormalListBinding
 
 /**
@@ -21,25 +14,6 @@ import com.june.studyproject.databinding.ActivityNormalListBinding
  *            .build()
  */
 class CustomMultiAdapterActivity : StudyBaseActivity<ActivityNormalListBinding>() {
-
-    private val mAdapter by lazy {
-        val creator = object : ItemViewCreator<NormalSimpleText>() {
-            override fun getItemViewId(): Int = R.layout.item_multi_simple_text
-
-            override fun createViewHolder(view: View): ItemViewHolder {
-                return object : ItemViewHolder(view) {
-                    override fun itemViewId(): Int = R.layout.item_multi_simple_text
-                }
-            }
-
-            override fun covert(item: NormalSimpleText, holder: ItemViewHolder) {
-            }
-        }
-
-        BaseAdapter.Builder<NormalInterface, ItemViewCreator<out NormalInterface>>()
-            .putItem(creator)
-            .build()
-    }
 
     override fun initView() {
 

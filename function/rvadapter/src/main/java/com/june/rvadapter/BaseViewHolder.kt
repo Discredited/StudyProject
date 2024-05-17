@@ -1,8 +1,12 @@
 package com.june.rvadapter
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 
-abstract class BaseViewHolder<T>(view: View) : RecyclerView.ViewHolder(view) {
-    abstract fun onBind(item: T, position: Int, itemList: MutableList<Any>)
-}
+/**
+ * BaseViewHolder
+ *
+ * @author June
+ * @date 2024/5/17
+ */
+class BaseViewHolder(val viewBinding: ViewBinding) : RecyclerView.ViewHolder(viewBinding.root)

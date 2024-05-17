@@ -122,6 +122,7 @@
         <activity android:name=".expand.adaptation.DeviceInfoActivity" />
 
         <activity android:name=".expand.wallpaper.WallpaperActivity" />
+        <activity android:name=".component.view.dispatch.ViewDispatchActivity" />
 
         <service
             android:name=".component.service.TestBindService"

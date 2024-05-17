@@ -1,5 +1,11 @@
 apply from: rootDir.absolutePath + '/default-library.gradle'
 
+android {
+    buildFeatures {
+        viewBinding true
+    }
+}
+
 dependencies {
     implementation Dependencies.appcompat
     implementation Dependencies.material
