@@ -13,7 +13,7 @@ import com.june.studyproject.component.activity.index.ExampleActivity
 import com.june.studyproject.component.dialogfragment.DialogFragmentActivity
 import com.june.studyproject.component.recycler.RecyclerActivity
 import com.june.studyproject.component.service.ServiceActivity
-import com.june.studyproject.component.view.dispatch.ViewDispatchActivity
+import com.june.studyproject.component.view.ViewActivity
 import com.june.studyproject.databinding.FragmentComponentBinding
 import com.june.studyproject.expand.loading.LoadingActivity
 
@@ -111,7 +111,10 @@ class ComponentFragment : StudyBaseFragment<FragmentComponentBinding>() {
                 CardExampleVo(
                     "View的事件分发",
                     "事件分发、拦截和消费",
-                    { ViewDispatchActivity.starter(requireActivity()) },
+                    {
+//                        ViewDispatchActivity.starter(requireActivity())
+                        startActivity(Intent(requireActivity(), ViewActivity::class.java))
+                    },
                     iconRes = R.color.color_theme
                 )
             )

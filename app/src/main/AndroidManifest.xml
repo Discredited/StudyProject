@@ -123,6 +123,7 @@
 
         <activity android:name=".expand.wallpaper.WallpaperActivity" />
         <activity android:name=".component.view.dispatch.ViewDispatchActivity" />
+        <activity android:name=".component.view.ViewActivity" />
 
         <service
             android:name=".component.service.TestBindService"

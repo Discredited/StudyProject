@@ -38,10 +38,7 @@ class LifecycleFragment : StudyBaseFragment<FragmentLifecycleBinding>() {
         super.onViewCreated(view, savedInstanceState)
         Timber.e("onViewCreated()")
         mLifecycleViewModel.mRecordList.add(RecordDisplayVo("onViewCreated", javaClass.simpleName))
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         Timber.e("onActivityCreated()")
         mLifecycleViewModel.mRecordList.add(
             RecordDisplayVo(
@@ -50,11 +47,11 @@ class LifecycleFragment : StudyBaseFragment<FragmentLifecycleBinding>() {
             )
         )
 
-        mLifecycleViewModel.mItemChangeLive.observe(viewLifecycleOwner, Observer {
+        mLifecycleViewModel.mItemChangeLive.observe(viewLifecycleOwner) {
             if (it == true) {
                 adapter.notifyDataSetChanged()
             }
-        })
+        }
     }
 
     override fun onStart() {

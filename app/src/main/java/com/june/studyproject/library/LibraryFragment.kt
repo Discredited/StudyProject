@@ -2,6 +2,7 @@ package com.june.studyproject.library
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.chad.library.adapter.base.animation.SlideInLeftAnimation
 import com.june.base.basic.decoration.LinearItemDecoration
@@ -43,8 +44,12 @@ class LibraryFragment : StudyBaseFragment<FragmentLibraryBinding>() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        loadData()
+    }
+
+    private fun loadData() {
         mAdapter.setNewInstance(
             mutableListOf(
                 CardExampleVo(

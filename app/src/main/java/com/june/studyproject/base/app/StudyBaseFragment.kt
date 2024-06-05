@@ -25,11 +25,6 @@ abstract class StudyBaseFragment<V : ViewBinding> : BaseFragment<V>() {
         initView()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Timber.i("----${javaClass.simpleName}:onActivityCreated")
-    }
-
     override fun onStart() {
         super.onStart()
         Timber.i("----${javaClass.simpleName}:onStart")
