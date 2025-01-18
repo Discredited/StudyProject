@@ -1,5 +1,5 @@
 apply from: rootDir.absolutePath + '/default-library.gradle'
 
 dependencies {
-    implementation Dependencies.appcompat
+    implementation(libs.bundles.appBaseLib)
 }

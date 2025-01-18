@@ -7,9 +7,6 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.appcompat
-    implementation Dependencies.material
-    implementation Dependencies.constraintLayout
-
-    implementation Dependencies.recyclerView
+    implementation(libs.bundles.appBaseLib)
+    implementation(libs.recyclerview)
 }

@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdk Versions.compileSDK
+    compileSdk libs.versions.compileSDK.get().toInteger()
 
     defaultConfig {
         applicationId "com.june.studyproject"
-        minSdkVersion Versions.minSDK
-        targetSdkVersion Versions.targetSDK
+        minSdkVersion libs.versions.minSDK.get().toInteger()
+        targetSdkVersion libs.versions.targetSDK.get().toInteger()
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -54,8 +54,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    rootProject.androidxBasicDependencies(dependencies)
-    rootProject.junitDependencies(dependencies)
+    implementation(libs.bundles.appBaseLib)
+    implementation(libs.bundles.junitLib)
 
     //implementation("com.june.base:component:0.0.1")
     implementation project(path: ':base:component')
@@ -67,37 +67,31 @@ dependencies {
     implementation project(path: ':widget:loading')
     implementation project(path: ':widget:explosion')
 
-    implementation Dependencies.kotlinCoroutinesCore
-    implementation Dependencies.kotlinCoroutinesAndroid
+    implementation(libs.kotlin.coroutines.core)
+    implementation(libs.kotlin.coroutines.android)
 
-    implementation Dependencies.recyclerView
-    implementation Dependencies.recyclerViewSelection
-    implementation Dependencies.fragmentKtx
-    //navigation 组件
-    implementation Dependencies.navigationFragmentKtx
-    implementation Dependencies.navigationUiKtx
+    implementation(libs.recyclerview)
+    implementation(libs.recyclerview.selection)
 
-    implementation Dependencies.timber
-    implementation Dependencies.androidUtils
+    implementation(libs.fragment.ktx)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 
-    implementation Dependencies.okHttp
-    implementation Dependencies.okHttpLogging
+    implementation(libs.timber)
+    implementation(libs.androidUtils)
 
-    implementation Dependencies.glide
-    implementation Dependencies.glideIntegration
-    kapt Dependencies.glideCompiler
+    implementation(libs.okHttp)
+    implementation(libs.okHttp.logging)
 
-    implementation Dependencies.cameraCode
-    implementation Dependencies.camera2
-    implementation Dependencies.cameraLifecycle
+    implementation(libs.glide)
+    implementation(libs.glide.integration)
+    kapt(libs.glide.compiler)
 
-    implementation Dependencies.immersionBar
-    implementation Dependencies.immersionBarKtx
+    implementation(libs.immersionBar)
+    implementation(libs.immersionBar.ktx)
 
-    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    implementation(libs.baseRecyclerViewAdapterHelper)
 
     implementation 'com.github.DingMouRen:LayoutManagerGroup:1e6f4f96eb'
-
     implementation "org.jsoup:jsoup:1.15.4"
 }

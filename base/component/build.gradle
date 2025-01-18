@@ -8,16 +8,11 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.appcompat
-    implementation Dependencies.material
-    implementation Dependencies.constraintLayout
-
-    implementation Dependencies.timber
-
-    //implementation Dependencies.lifecycleExt
-
-    implementation Dependencies.recyclerView
-    implementation Dependencies.recyclerViewSelection
+    implementation(libs.bundles.appBaseLib)
+    implementation(libs.timber)
+    implementation(libs.androidUtils)
+    implementation(libs.recyclerview)
+    implementation(libs.recyclerview.selection)
 }
 
 apply from: rootDir.absolutePath + '/maven-push.gradle'

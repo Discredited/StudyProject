@@ -1,9 +1,7 @@
 apply from: rootDir.absolutePath + '/default-library.gradle'
 
 dependencies {
-    implementation Dependencies.appcompat
-    implementation Dependencies.material
-    implementation Dependencies.constraintLayout
+    implementation(libs.bundles.appBaseLib)
 }
 
 apply from: rootDir.absolutePath + '/maven-push.gradle'

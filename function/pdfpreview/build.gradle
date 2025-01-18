@@ -7,8 +7,7 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.appcompat
-    implementation Dependencies.constraintLayout
+    implementation(libs.bundles.appBaseLib)
 
     implementation project(path: ':base:component')
     implementation project(path: ':style')

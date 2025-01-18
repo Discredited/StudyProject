@@ -1,19 +1,16 @@
 apply from: rootDir.absolutePath + '/default-library.gradle'
 
 dependencies {
-    implementation Dependencies.okHttp
-    implementation Dependencies.okHttpLogging
+    implementation(libs.kotlin.coroutines.core)
+    implementation(libs.kotlin.coroutines.android)
+    implementation(libs.kotlin.coroutines.test)
 
-    implementation Dependencies.retrofit
-    implementation Dependencies.retrofitAdapterRxJava
-    implementation Dependencies.retrofitConvertGson
+    implementation(libs.okHttp)
+    implementation(libs.okHttp.logging)
 
-    implementation Dependencies.kotlinCoroutinesCore
-    implementation Dependencies.kotlinCoroutinesAndroid
-    testImplementation Dependencies.kotlinCoroutinesTest
-
-    implementation Dependencies.timber
-    implementation Dependencies.androidUtils
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.convert.gson)
+    implementation(libs.retrofit.adapter.rxJava)
 }
 
 apply from: rootDir.absolutePath + '/maven-push.gradle'

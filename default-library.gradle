@@ -10,11 +10,11 @@ apply {
 }
 
 android {
-    compileSdkVersion Versions.compileSDK
+    compileSdkVersion libs.versions.compileSDK.get().toInteger()
 
     defaultConfig {
-        minSdkVersion Versions.minSDK
-        targetSdkVersion Versions.targetSDK
+        minSdkVersion libs.versions.minSDK.get().toInteger()
+        targetSdkVersion libs.versions.targetSDK.get().toInteger()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -39,10 +39,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation Dependencies.kotlinStdlib
-    implementation Dependencies.coreKtx
+    implementation(libs.coreKtx)
+    implementation(libs.bundles.junitLib)
 
-    testImplementation Dependencies.junit
-    androidTestImplementation Dependencies.junitExt
-    androidTestImplementation Dependencies.espressoCore
+    implementation(libs.timber)
+    implementation(libs.androidUtils)
 }

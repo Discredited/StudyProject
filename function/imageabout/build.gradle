@@ -1,13 +1,10 @@
 apply from: rootDir.absolutePath + '/default-library.gradle'
 
 dependencies {
-    implementation Dependencies.appcompat
-    implementation Dependencies.material
-    implementation Dependencies.constraintLayout
+    implementation(libs.bundles.appBaseLib)
+    implementation(libs.timber)
 
-    implementation Dependencies.timber
-
-    api Dependencies.photoView
+    api(libs.photoView)
 }
 
 
