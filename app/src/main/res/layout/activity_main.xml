@@ -11,7 +11,7 @@
         android:id="@+id/bottom_navigation"
         style="@style/Widget.Design.BottomNavigationView"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dp_56"
+        android:layout_height="wrap_content"
         android:background="@color/color_white"
         app:itemTextColor="@color/color_selector_checked_text_theme_to_gray"
         app:layout_constraintBottom_toBottomOf="parent"
