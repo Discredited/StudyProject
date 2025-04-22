@@ -62,7 +62,6 @@ dependencies {
     implementation project(path: ':base:component')
     implementation project(path: ':style')
     implementation project(path: ':function:imageabout')
-    implementation project(path: ':function:rvadapter')
     implementation project(path: ':function:network')
     implementation project(path: ':function:pdfpreview')
     implementation project(path: ':widget:loading')
