@@ -4,7 +4,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.june.studyproject.R
+import com.june.style.R
 
 fun Toolbar.initToolbar(
         title: String,
@@ -13,11 +13,11 @@ fun Toolbar.initToolbar(
         titleCenter: Boolean = true
 ) {
 
-    val toolbarTitle = findViewById<AppCompatTextView>(R.id.toolbarTitle)
+    val toolbarTitle = findViewById<AppCompatTextView>(com.june.studyproject.R.id.toolbarTitle)
 
     //设置返回键按钮
     if (navIcon == 0) {
-        val padding = resources.getDimensionPixelSize(R.dimen.common_margin)
+        val padding = resources.getDimensionPixelSize(com.june.studyproject.R.dimen.common_margin)
         setPadding(padding, 0, 0, padding)
     } else {
         setNavigationIcon(navIcon)

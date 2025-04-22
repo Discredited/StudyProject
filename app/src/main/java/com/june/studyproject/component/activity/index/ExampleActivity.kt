@@ -1,7 +1,7 @@
 package com.june.studyproject.component.activity.index
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.adapter.TitleDescAdapter

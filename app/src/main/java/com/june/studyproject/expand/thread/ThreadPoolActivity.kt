@@ -1,7 +1,7 @@
 package com.june.studyproject.expand.thread
 
 import android.view.View
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.databinding.ActivityThreadPoolActivityBinding
 import java.util.concurrent.ExecutorService
@@ -79,19 +79,19 @@ class ThreadPoolActivity : StudyBaseActivity<ActivityThreadPoolActivityBinding>(
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.tv_cached -> {
+            com.june.studyproject.R.id.tv_cached -> {
                 setInformation("newCachedThreadPool:", true)
                 doExecute(Executors.newCachedThreadPool())
             }
-            R.id.tv_fixed -> {
+            com.june.studyproject.R.id.tv_fixed -> {
                 setInformation("newFixedThreadPool:", true)
                 doExecute(Executors.newFixedThreadPool(5))
             }
-            R.id.tv_scheduled -> {
+            com.june.studyproject.R.id.tv_scheduled -> {
                 setInformation("newScheduledThreadPool:", true)
                 doSchedule(Executors.newScheduledThreadPool(5))
             }
-            R.id.tv_single -> {
+            com.june.studyproject.R.id.tv_single -> {
                 setInformation("newSingleThreadPool:", true)
                 doExecute(Executors.newSingleThreadExecutor())
             }

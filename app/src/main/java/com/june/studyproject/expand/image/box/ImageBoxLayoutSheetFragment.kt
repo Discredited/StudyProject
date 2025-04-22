@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.view.children
 import com.june.base.basic.part.BaseBottomSheetDialogFragment
 import com.june.imageabout.box.ImageBoxLayout
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.common.ConstHelper
 import com.june.studyproject.databinding.FragmentImageBoxLayoutBinding
 import timber.log.Timber
@@ -48,7 +48,7 @@ class ImageBoxLayoutSheetFragment : BaseBottomSheetDialogFragment<FragmentImageB
     override fun initView() {
         //设置列数
         val spinnerItems = arrayOf("2", "3", "4")
-        val columnAdapter = ArrayAdapter(requireActivity(), R.layout.item_spinner_text, spinnerItems)
+        val columnAdapter = ArrayAdapter(requireActivity(), com.june.studyproject.R.layout.item_spinner_text, spinnerItems)
         mBinding.spinnerColumn.adapter = columnAdapter
         mBinding.spinnerColumn.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -127,7 +127,7 @@ class ImageBoxLayoutSheetFragment : BaseBottomSheetDialogFragment<FragmentImageB
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mImageBoxLayout = activity?.findViewById(R.id.vImageBoxLayout)
+        mImageBoxLayout = activity?.findViewById(com.june.studyproject.R.id.vImageBoxLayout)
         mBinding.tvImageCount.text = getString(R.string.image_box_current_images, mImageBoxLayout?.getImageList()?.size
                 ?: 0)
     }

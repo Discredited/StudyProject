@@ -1,5 +1,11 @@
 apply from: rootDir.absolutePath + '/default-library.gradle'
 
+android {
+    defaultConfig {
+        namespace = "com.june.style"
+    }
+}
+
 dependencies {
     implementation(libs.bundles.appBaseLib)
 }

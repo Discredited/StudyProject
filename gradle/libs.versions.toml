@@ -1,16 +1,16 @@
 [versions]
-compileSDK = "34"
+compileSDK = "35"
 minSDK = "24"
-targetSDK = "34"
+targetSDK = "35"
 
 kotlin = "1.8.10"
-coreKtx = "1.13.1"
-appcompat = "1.6.1"
+coreKtx = "1.15.0"
+appcompat = "1.7.0"
 material = "1.12.0"
-constraintlayout = "2.1.4"
-lifecycle = "2.7.0"
+constraintlayout = "2.2.1"
+lifecycle = "2.8.7"
 kotlinCoroutinies = "1.7.3"
-room = "2.6.1"
+room = "2.7.0"
 
 
 [libraries]

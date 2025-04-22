@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import com.chad.library.adapter.base.animation.SlideInLeftAnimation
 import com.june.base.basic.decoration.LinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.base.app.StudyBaseFragment
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.base.ext.itemClick

@@ -1,7 +1,7 @@
 package com.june.studyproject.component.recycler.custom
 
 import androidx.core.content.ContextCompat
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityCustomLayoutManagerBinding

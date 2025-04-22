@@ -35,9 +35,9 @@ abstract class StudyBaseActivity<V : ViewBinding> : BaseActivity<V>() {
     protected abstract fun loadData()
 
     protected open fun initStatusBar() {
-        immersionBar {
-            statusBarDarkFont(true)
-            hideBar(BarHide.FLAG_HIDE_NAVIGATION_BAR)
-        }
+//        immersionBar {
+//            statusBarDarkFont(true)
+//            hideBar(BarHide.FLAG_HIDE_NAVIGATION_BAR)
+//        }
     }
 }

@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.common.Toast
@@ -182,7 +182,7 @@ class FragmentLifecycleActivity : StudyBaseActivity<ActivityFragmentLifecycleBin
 
         supportFragmentManager.beginTransaction()
             .add(
-                R.id.fcContainer,
+                com.june.studyproject.R.id.fcContainer,
                 LifecycleFragment.newInstance(),
                 LifecycleFragment::class.java.simpleName
             )

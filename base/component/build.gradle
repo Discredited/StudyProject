@@ -1,6 +1,10 @@
 apply from: rootDir.absolutePath + '/default-library.gradle'
 
 android {
+    defaultConfig{
+        namespace = "com.june.base.component"
+    }
+
     buildFeatures {
         viewBinding = true
         //dataBinding = true

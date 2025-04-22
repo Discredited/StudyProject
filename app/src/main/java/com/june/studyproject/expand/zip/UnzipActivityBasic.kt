@@ -5,7 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import com.june.base.basic.decoration.GridItemDecoration
 import com.june.base.basic.ext.click
 import com.june.base.basic.ext.setGridManager
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.common.FilePathHelper
 import com.june.studyproject.common.Toast

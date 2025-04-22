@@ -7,7 +7,7 @@ import android.view.KeyEvent
 import androidx.core.content.ContextCompat
 import com.june.base.basic.decoration.LinearItemDecoration
 import com.june.base.basic.ext.setLinearManager
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.base.ext.initToolbar
 import com.june.studyproject.databinding.ActivityLifecycleBinding
@@ -29,7 +29,7 @@ class LifecycleActivity : StudyBaseActivity<ActivityLifecycleBinding>() {
 
     override fun initView() {
         mBinding.tlLayout.toolbar.apply {
-            initToolbar(javaClass.simpleName, R.menu.menu_text_next)
+            initToolbar(javaClass.simpleName, com.june.studyproject.R.menu.menu_text_next)
             setNavigationOnClickListener { onBackPressed() }
             setOnMenuItemClickListener {
                 //跳转其他页面之前,当前当前页面会先执行onPause

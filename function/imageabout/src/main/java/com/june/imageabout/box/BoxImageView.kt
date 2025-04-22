@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatImageView
-import com.june.imageabout.R
+import com.june.studyproject.imageabout.R
 
 /**
  * BoxImageView

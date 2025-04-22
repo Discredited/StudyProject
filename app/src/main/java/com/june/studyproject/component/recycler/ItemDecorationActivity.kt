@@ -3,7 +3,7 @@ package com.june.studyproject.component.recycler
 import androidx.core.content.ContextCompat
 import com.june.base.basic.decoration.GridItemDecoration
 import com.june.base.basic.ext.setGridManager
-import com.june.studyproject.R
+import com.june.style.R
 import com.june.studyproject.base.app.StudyBaseActivity
 import com.june.studyproject.component.recycler.custom.CustomLayoutManagerAdapter
 import com.june.studyproject.databinding.ActivityItemDecorationBinding
